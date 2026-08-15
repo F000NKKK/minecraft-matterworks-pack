@@ -38,7 +38,7 @@ hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/electrical.js"
-hash = "9450771256a52bf417e271ac6f6e82c09cca7e2aacad7a343e0f2487a7f01663"
+hash = "29bf4da4b53fea6532fc0ecbc4c9dd0e9efd0bc0b79f407ff102e629a3fac51e"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/mekanism.js"
