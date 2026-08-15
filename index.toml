@@ -214,6 +214,11 @@ hash = "a3912a137d65e863b454a129e3ee25e89abe6a2475fc6e025e29e1adb060ccd7"
 metafile = true
 
 [[files]]
+file = "mods/nuclearcraft-neoteric.pw.toml"
+hash = "497dfafe63cf92a67f1f0a0902048596e71fb202c62bf6d642c35869f598b6c4"
+metafile = true
+
+[[files]]
 file = "mods/rhino.pw.toml"
 hash = "ca4411ac6d8a9a892948bb63cd0ba52ae5523ca5e257632d6ae8c933b660c5ee"
 metafile = true
