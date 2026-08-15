@@ -74,7 +74,7 @@ hash = "ca6259ff70c647703179695323eb0d342ddea1d3c1dd69418c46d745089b6940"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/chemistry.js"
-hash = "faa977019f9c23b1b8cff6dcc051d8a679b6719fddf0b9104c074f12bf951093"
+hash = "197849a53a672556ba91a6d1ea5fee2a779dd5a32e97042242ff0e7312032733"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/electrical.js"
