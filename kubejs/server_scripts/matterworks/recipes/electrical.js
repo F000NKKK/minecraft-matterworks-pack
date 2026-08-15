@@ -136,4 +136,92 @@ ServerEvents.recipes(event => {
     console.info(
         '[Matterworks] Electrical component production chain registered'
     )
+
+    /*
+     * ---------------------------------------------------------
+     * Primitive Capacitor
+     * ---------------------------------------------------------
+     *
+     * Early electrical storage/control component.
+     *
+     * This is intentionally mechanical to manufacture:
+     * copper electrodes + dielectric + wax impregnation.
+     */
+
+    event.remove({
+        output: 'createaddition:capacitor'
+    })
+
+    event.recipes.create.sequenced_assembly(
+        'createaddition:capacitor',
+        'create:copper_sheet',
+        [
+            event.recipes.create.deploying(
+                'create:copper_sheet',
+                [
+                    'create:copper_sheet',
+                    'minecraft:paper'
+                ]
+            ),
+
+            event.recipes.create.deploying(
+                'create:copper_sheet',
+                [
+                    'create:copper_sheet',
+                    'minecraft:honeycomb'
+                ]
+            ),
+
+            event.recipes.create.deploying(
+                'create:copper_sheet',
+                [
+                    'create:copper_sheet',
+                    'minecraft:redstone'
+                ]
+            ),
+
+            event.recipes.create.pressing(
+                'create:copper_sheet',
+                'create:copper_sheet'
+            )
+        ]
+    )
+        .transitionalItem('create:copper_sheet')
+        .loops(2)
+
+
+    /*
+     * ---------------------------------------------------------
+     * Electric Motor
+     * ---------------------------------------------------------
+     *
+     * Motor is NOT part of the first electrical age.
+     *
+     * Unlocking FE -> kinetic conversion before Mekanism would
+     * trivialise the mechanical infrastructure that got us here.
+     */
+
+    event.remove({
+        output: 'createaddition:electric_motor'
+    })
+
+    event.shaped(
+        'createaddition:electric_motor',
+        [
+            'SCS',
+            'EPE',
+            'SBS'
+        ],
+        {
+            S: '#forge:ingots/steel',
+            C: 'createaddition:capacitor',
+            E: 'kubejs:electromagnetic_coil',
+            P: 'create:precision_mechanism',
+            B: 'mekanism:basic_control_circuit'
+        }
+    )
+
+    console.info(
+        '[Matterworks] Primitive capacitor and gated electric motor registered'
+    )
 })
