@@ -125,7 +125,6 @@ const matterworksNuclearCraftAtomizerFluids = [
     'neon',
     'chlorine',
     'argon',
-    'radon',
     'carbon_dioxide',
     'carbon_monoxide',
     'ammonia',
@@ -157,6 +156,10 @@ ServerEvents.recipes(event => {
      * Alchemistry generates every liquid/gas chemical conversion with the
      * same interface: 500 mB fluid -> 8 ChemLib chemical units. Mirror that
      * interface for verified equivalent NuclearCraft process fluids.
+     *
+     * Radioactive parent-element fluids such as radon are intentionally not
+     * mirrored: converting them into ordinary ChemLib units would erase the
+     * NuclearCraft-owned nuclear state boundary.
      */
     matterworksNuclearCraftAtomizerFluids.forEach(name => {
         event.custom({
@@ -224,7 +227,52 @@ ServerEvents.recipes(event => {
     }).id('matterworks:chemistry/compat/atomizer/mekanism_ethene')
 
     console.info(
-        '[Matterworks] Chemistry compatibility registered: NuclearCraft/Mekanism fluids -> ChemLib chemical units'
+        '[Matterworks] Chemistry compatibility registered: NuclearCraft/Mekanism ordinary fluids -> ChemLib chemical units'
+    )
+})
+
+const matterworksNuclearOwnedParentElements = [
+    'uranium',
+    'thorium',
+    'polonium',
+    'radium'
+]
+
+const matterworksNuclearOwnedDissolverForms = [
+    'ores',
+    'dusts',
+    'ingots',
+    'plates',
+    'nuggets',
+    'storage_blocks'
+]
+
+ServerEvents.recipes(event => {
+    /*
+     * ---------------------------------------------------------
+     * Nuclear parent-element boundary
+     * ---------------------------------------------------------
+     *
+     * Alchemistry generates generic Dissolver recipes from Forge material
+     * tags. NuclearCraft's U/Th/Po/Ra forms therefore become valid inputs and
+     * can be flattened into ChemLib element units, losing their nuclear
+     * provenance/state before the player reaches particle engineering.
+     *
+     * Keep ordinary element interoperability, but do not let the Dissolver
+     * erase NuclearCraft-owned radioactive parent materials. Alchemistry can
+     * still synthesize those elements later through its post-ring Fusion /
+     * Fission tier.
+     */
+    matterworksNuclearOwnedParentElements.forEach(element => {
+        matterworksNuclearOwnedDissolverForms.forEach(form => {
+            event.remove({
+                id: `alchemistry:dissolver/${form}/${element}`
+            })
+        })
+    })
+
+    console.info(
+        `[Matterworks] Nuclear chemistry boundary registered: ${matterworksNuclearOwnedParentElements.length * matterworksNuclearOwnedDissolverForms.length} radioactive parent-element Dissolver routes blocked`
     )
 })
 
