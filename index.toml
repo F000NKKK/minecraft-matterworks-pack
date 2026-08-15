@@ -33,12 +33,16 @@ file = "kubejs/server_scripts/matterworks/bootstrap.js"
 hash = "d873d6dad2d89a95a24ce638317adf44640bd237a893ef60983571d03088cae8"
 
 [[files]]
+file = "kubejs/server_scripts/matterworks/materials/tags.js"
+hash = "946007dc278c37d66719e2e05f68b688c028b9686f1b4420576d3a665b7c4564"
+
+[[files]]
 file = "kubejs/server_scripts/matterworks/progression/electrical.js"
 hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/electrical.js"
-hash = "29bf4da4b53fea6532fc0ecbc4c9dd0e9efd0bc0b79f407ff102e629a3fac51e"
+hash = "4287e476a834b9efee24c1efda7253224e1c8d71061b85cd486298efa6dbed72"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/mekanism.js"
