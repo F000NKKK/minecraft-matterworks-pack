@@ -145,6 +145,19 @@ const matterworksMekanismGasFluidEquivalents = [
 
 ServerEvents.tags('fluid', event => {
     /*
+     * ChemLib 1.20.1 adds every registered chemical fluid — including acids,
+     * solvents and gases — to minecraft:water. That makes unrelated chemicals
+     * eligible for any recipe that consumes the vanilla water tag.
+     *
+     * Remove the entire ChemLib namespace from minecraft:water. ChemLib/
+     * Alchemistry special-case actual H2O to minecraft:water and do not
+     * register a chemlib:water_fluid, so no real water representation is lost.
+     *
+     * KubeJS tag filters use @namespace for registry-wide namespace matching.
+     */
+    event.remove('minecraft:water', '@chemlib')
+
+    /*
      * ChemLib registers concrete chemical fluids but does not publish
      * per-substance forge:<name> fluid tags. NuclearCraft and Mekanism use
      * those tags as process interfaces, so add only verified same-substance
@@ -184,6 +197,6 @@ ServerEvents.tags('fluid', event => {
     event.add('forge:gases/ethylene', 'mekanism:ethene')
 
     console.info(
-        `[Matterworks] Chemistry fluid tags registered: ${matterworksExactFluidEquivalents.length} exact substances + ethene/ethylene alias`
+        `[Matterworks] Chemistry fluid tags registered: ${matterworksExactFluidEquivalents.length} exact substances + ethene/ethylene alias; ChemLib water-tag pollution removed`
     )
 })
