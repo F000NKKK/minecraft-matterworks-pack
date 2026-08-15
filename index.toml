@@ -21,14 +21,6 @@ file = "kubejs/assets/kubejs/models/item/particle_focusing_coil.json"
 hash = "dd63c58cbddf938ae92c6d9ca9c41e0078ae3aa5b95d3964298bf1bc80cb345b"
 
 [[files]]
-file = "kubejs/assets/kubejs/textures/item/molecular_sieve_charge.png"
-hash = "b94907d6e9af397c1403253bce39837d7f8e900490cd056ec08197e9e6900312"
-
-[[files]]
-file = "kubejs/assets/kubejs/textures/item/particle_focusing_coil.png"
-hash = "89af859682989111e3d80da125532d273ea837c3b77eabef46a7978cf8768397"
-
-[[files]]
 file = "kubejs/assets/kubejs/textures/item/coke.png"
 hash = "cb15d1f0c38b1a534189cf483a66a554547a01abd25c2b58afc58356ced18b01"
 
@@ -59,6 +51,14 @@ hash = "0f898eb2e8cd4b31da238da738f7671f0c4ff8b6c697e66d7c2a02655ce6c184"
 [[files]]
 file = "kubejs/assets/kubejs/textures/item/insulated_copper_wire.png"
 hash = "0f898eb2e8cd4b31da238da738f7671f0c4ff8b6c697e66d7c2a02655ce6c184"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/item/molecular_sieve_charge.png"
+hash = "b94907d6e9af397c1403253bce39837d7f8e900490cd056ec08197e9e6900312"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/item/particle_focusing_coil.png"
+hash = "89af859682989111e3d80da125532d273ea837c3b77eabef46a7978cf8768397"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/bootstrap.js"
@@ -95,6 +95,7 @@ hash = "3e06700d9a0be60ef8c26d48d41bbfeefbbc6f16582b203b1370c1d34401e73d"
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/nitrogen.js"
 hash = "22d75823d3fb12fba6e99fb09cf16fb6ed3f3632e5aec638d088d0b9bd0f5eb1"
+
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/particle.js"
 hash = "ee32b3c9433ba54332b3a9a3c5af700c71417a458bd1e0dc7db4ae6c3651b875"
@@ -184,6 +185,7 @@ metafile = true
 file = "mods/guideme.pw.toml"
 hash = "606e38058a2913795ecebcd9b407a453d8fc24cfd3409a9eb431ff56e10bcfe8"
 metafile = true
+
 [[files]]
 file = "mods/jade.pw.toml"
 hash = "a2277a000bcab08a8e0939dae7c8ef3b1db5327e2fa7bd37919e4e2f1b3c174d"
