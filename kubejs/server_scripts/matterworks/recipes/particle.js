@@ -7,6 +7,100 @@ ServerEvents.recipes(event => {
     }
 
     /*
+     * Target Chamber resource policy
+     *
+     * NuclearCraft ships a broad transmutation table. Keep reactions that
+     * produce isotopes/radioisotopes, consume isotope feedstock, or model
+     * nuclear/spallation processing. Remove only stock bulk-material
+     * conversions that would bypass Matterworks chemistry and extraction.
+     */
+    const blockedStockTargetChamberRecipes = [
+        // Positron
+        'nuclearcraft:target_chamber/positron-2000000-ingots_uranium',
+        // Proton
+        'nuclearcraft:target_chamber/proton-1500-ingots_aluminum',
+        'nuclearcraft:target_chamber/proton-4000-fluorine',
+        'nuclearcraft:target_chamber/proton-4500-ingots_copper',
+        'nuclearcraft:target_chamber/proton-4600-ingots_cobalt',
+        'nuclearcraft:target_chamber/proton-10000-ingots_manganese',
+        'nuclearcraft:target_chamber/proton-12500-ingots_gold',
+        'nuclearcraft:target_chamber/proton-16500-ingots_calcium',
+        'nuclearcraft:target_chamber/proton-19000-oxygen',
+        'nuclearcraft:target_chamber/proton-19000-ingots_silicon',
+        'nuclearcraft:target_chamber/proton-20000-dusts_bismuth',
+        'nuclearcraft:target_chamber/proton-21000-ingots_gold',
+        'nuclearcraft:target_chamber/proton-30000-ingots_calcium',
+        'nuclearcraft:target_chamber/proton-33000-nitrogen',
+        'nuclearcraft:target_chamber/proton-40000-oxygen',
+        'nuclearcraft:target_chamber/proton-45000-ingots_copper',
+        'nuclearcraft:target_chamber/proton-51000-ingots_calcium',
+        'nuclearcraft:target_chamber/proton-150000-dusts_graphite',
+        'nuclearcraft:target_chamber/proton-155000-ingots_aluminum',
+        // Neutron
+        'nuclearcraft:target_chamber/neutron-2800-dusts_sulfur',
+        'nuclearcraft:target_chamber/neutron-3000-chlorine',
+        'nuclearcraft:target_chamber/neutron-3000-ingots_calcium',
+        'nuclearcraft:target_chamber/neutron-5500-ingots_zinc',
+        'nuclearcraft:target_chamber/neutron-6000-nitrogen',
+        'nuclearcraft:target_chamber/neutron-11000-ingots_iron',
+        'nuclearcraft:target_chamber/neutron-11000-ingots_copper',
+        'nuclearcraft:target_chamber/neutron-12000-ingots_chromium',
+        'nuclearcraft:target_chamber/neutron-14000-ingots_calcium',
+        'nuclearcraft:target_chamber/neutron-14000-ingots_zinc',
+        'nuclearcraft:target_chamber/neutron-15000-ingots_potassium',
+        'nuclearcraft:target_chamber/neutron-15000-ingots_zirconium',
+        'nuclearcraft:target_chamber/neutron-18000-ingots_silicon',
+        'nuclearcraft:target_chamber/neutron-19000-ingots_nickel',
+        'nuclearcraft:target_chamber/neutron-19000-ingots_platinum',
+        'nuclearcraft:target_chamber/neutron-21000-ingots_zirconium',
+        'nuclearcraft:target_chamber/neutron-22000-oxygen',
+        'nuclearcraft:target_chamber/neutron-22000-ingots_niobium',
+        'nuclearcraft:target_chamber/neutron-29000-ingots_manganese',
+        'nuclearcraft:target_chamber/neutron-30000-ingots_cobalt',
+        'nuclearcraft:target_chamber/neutron-30000-ingots_yttrium',
+        'nuclearcraft:target_chamber/neutron-30000-ingots_sodium',
+        'nuclearcraft:target_chamber/neutron-30000-ingots_gold',
+        'nuclearcraft:target_chamber/neutron-70000-dusts_bismuth',
+        // Photon
+        'nuclearcraft:target_chamber/photon-11000-ingots_tungsten',
+        'nuclearcraft:target_chamber/photon-11500-ingots_zirconium',
+        'nuclearcraft:target_chamber/photon-12000-dusts_bismuth',
+        'nuclearcraft:target_chamber/photon-13000-ingots_niobium',
+        'nuclearcraft:target_chamber/photon-14500-ingots_iron',
+        'nuclearcraft:target_chamber/photon-16000-ingots_yttrium',
+        'nuclearcraft:target_chamber/photon-18000-ingots_silicon',
+        'nuclearcraft:target_chamber/photon-18000-ingots_calcium',
+        'nuclearcraft:target_chamber/photon-19500-ingots_copper',
+        'nuclearcraft:target_chamber/photon-20000-nitrogen',
+        'nuclearcraft:target_chamber/photon-29000-oxygen',
+        // Electron
+        'nuclearcraft:target_chamber/electron-50000-ingots_iron',
+        'nuclearcraft:target_chamber/electron-50000-ingots_cobalt',
+        'nuclearcraft:target_chamber/electron-50000-ingots_zinc',
+        'nuclearcraft:target_chamber/electron-60000-ingots_zirconium',
+        // Deuteron
+        'nuclearcraft:target_chamber/deuteron-3500-oxygen',
+        'nuclearcraft:target_chamber/deuteron-18000-ingots_gold',
+        'nuclearcraft:target_chamber/deuteron-60000-ingots_yttrium',
+        // Alpha
+        'nuclearcraft:target_chamber/alpha-4000-ingots_beryllium',
+        'nuclearcraft:target_chamber/alpha-11000-fluorine',
+        'nuclearcraft:target_chamber/alpha-12000-ingots_aluminum',
+        'nuclearcraft:target_chamber/alpha-14000-nitrogen',
+        'nuclearcraft:target_chamber/alpha-16000-ingots_copper',
+        'nuclearcraft:target_chamber/alpha-18000-oxygen',
+        'nuclearcraft:target_chamber/alpha-19000-ingots_osmium',
+        'nuclearcraft:target_chamber/alpha-21200-dusts_ytterbium',
+        'nuclearcraft:target_chamber/alpha-30000-nitrogen',
+        // Electron antineutrino
+        'nuclearcraft:target_chamber/electron_antineutrino-200-ingots_nickel',
+        // Positive pion
+        'nuclearcraft:target_chamber/pion_plus-70000-argon'
+    ]
+
+    blockedStockTargetChamberRecipes.forEach(recipeId => event.remove({ id: recipeId }))
+
+    /*
      * Particle Focusing Coil
      *
      * This is the Matterworks-owned accelerator component. It packages
