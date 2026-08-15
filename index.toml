@@ -58,7 +58,7 @@ hash = "d873d6dad2d89a95a24ce638317adf44640bd237a893ef60983571d03088cae8"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/materials/tags.js"
-hash = "2ae7532d610296f645a75bddcd77ed3d1d091c214f8f758eb5bf199409faad6d"
+hash = "9a3f2dba216e5fa034b6462e89030aeeb7b7a9456f93545161ba6c11c319919a"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/electrical.js"
@@ -74,7 +74,7 @@ hash = "ca6259ff70c647703179695323eb0d342ddea1d3c1dd69418c46d745089b6940"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/chemistry.js"
-hash = "9adeeb2623c89d5b491d3770b5bf05a128515d73b593e2af8884bf91fb654ac8"
+hash = "faa977019f9c23b1b8cff6dcc051d8a679b6719fddf0b9104c074f12bf951093"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/electrical.js"
