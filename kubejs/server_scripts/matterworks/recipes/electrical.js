@@ -4,15 +4,15 @@ ServerEvents.recipes(event => {
     /*
      * Matterworks 0.4.1 material vocabulary.
      *
-     * These are deliberately explicit even where an existing mod item
-     * represents the material form. The goal is to make later material
-     * substitutions (rubber, polymers, magnetic alloys, etc.) local and
-     * auditable instead of scattering magic IDs through recipes.
+     * Recipes consume semantic material roles instead of concrete mod IDs.
+     * The backing items live in materials/tags.js. This is what lets later
+     * chemistry/material-science tiers replace primitive materials without
+     * rewriting every downstream recipe.
      */
-    const copperConductor = 'createaddition:copper_wire'
-    const primitiveDielectric = 'minecraft:paper'
-    const primitiveImpregnant = 'minecraft:honeycomb'
-    const magneticCore = 'create:iron_sheet'
+    const copperConductor = '#matterworks:materials/conductors/copper'
+    const primitiveDielectric = '#matterworks:materials/dielectrics/primitive'
+    const primitiveImpregnant = '#matterworks:materials/impregnants/primitive'
+    const magneticCore = '#matterworks:materials/magnetic_cores/primitive'
 
     const insulatedWire = 'kubejs:insulated_copper_wire'
     const incompleteInsulatedWire =
@@ -72,13 +72,12 @@ ServerEvents.recipes(event => {
      * Stage 2: Electromagnetic coil
      * ---------------------------------------------------------
      *
-     * The core now requires processed sheet iron rather than an
-     * abstract iron rod. This is the first step toward a real
-     * magnetic-material system.
+     * The first core is merely processed iron sheet. It is intentionally
+     * classified as a primitive magnetic core rather than being treated as
+     * universally valid magnetic material.
      *
-     * In later tiers generic iron will stop being sufficient:
-     * soft magnetic iron, silicon steel and specialised magnetic
-     * alloys will have distinct operating envelopes.
+     * Later tiers will introduce soft magnetic iron, silicon steel and
+     * specialised alloys with their own operating envelopes.
      */
 
     event.recipes.create.sequenced_assembly(
@@ -142,11 +141,11 @@ ServerEvents.recipes(event => {
             },
 
             C: {
-                item: coil
+                tag: 'matterworks:components/coils/primitive'
             },
 
             R: {
-                item: 'createaddition:capacitor'
+                tag: 'matterworks:components/capacitors/primitive'
             }
         },
 
@@ -237,8 +236,8 @@ ServerEvents.recipes(event => {
         ],
         {
             S: '#forge:ingots/steel',
-            C: 'createaddition:capacitor',
-            E: coil,
+            C: '#matterworks:components/capacitors/primitive',
+            E: '#matterworks:components/coils/primitive',
             P: 'create:precision_mechanism',
             B: 'mekanism:basic_control_circuit'
         }
@@ -249,6 +248,6 @@ ServerEvents.recipes(event => {
     )
 
     console.info(
-        '[Matterworks] Materials foundation: conductor, dielectric and magnetic core roles registered'
+        '[Matterworks] Materials foundation: semantic material roles active'
     )
 })
