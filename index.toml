@@ -5,6 +5,22 @@ file = "kubejs/README.md"
 hash = "c4bcb33fb1b27641f55c01f275c08c91af0394490e1b684f6514289b9e6cd947"
 
 [[files]]
+file = "kubejs/assets/kubejs/models/item/accelerator_calibration_target.json"
+hash = "29f4251480d201c923ab70cc2b0ff8ab184cca9170b4c3ec39c0acf92f9b56d5"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/activated_calibration_target.json"
+hash = "e1abf9e494bfc39030d5057d2a2c2ef769f9044cd52f2abb03bd282a8b5fb9f3"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/oxygen_loaded_psa_adsorbent.json"
+hash = "f5ef884b6d179df88936cce481c4b5ef226926de38cbf9633b8570c218fea38e"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/psa_adsorbent.json"
+hash = "a056955f8d3833480a584fa62d6cf09d99d706721649f3c082f42e828f125a0f"
+
+[[files]]
 file = "kubejs/assets/kubejs/textures/item/coke.png"
 hash = "cb15d1f0c38b1a534189cf483a66a554547a01abd25c2b58afc58356ced18b01"
 
@@ -50,7 +66,7 @@ hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/atmosphere.js"
-hash = "f3215fe6b397f844df622e2c218d1fa0bc126013763f85b8bb3ed6b80191b985"
+hash = "1fa36b1dfa55eede22d201eb5f301e4a9647cda3fb1ee815c256a6284773ddc3"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/carbon.js"
@@ -74,11 +90,11 @@ hash = "22d75823d3fb12fba6e99fb09cf16fb6ed3f3632e5aec638d088d0b9bd0f5eb1"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/particle.js"
-hash = "c4ea29f4b7055282c9049d57a38661ba7f6782c47ab6b1ef75300fbc094cd5bd"
+hash = "faca1efb1d4e9fad01ad6081c5408f5d19795e57d46266d2d71e225c4dc8eb7e"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/pressure.js"
-hash = "b708966004f724968753029bfa55a797f77d9574a6167a3cb5dd47f1e12a6555"
+hash = "ad6d8c1bd15e7d049b5c0ab178f949eb2fe5b412173ccdc2b978fdba917085d1"
 
 [[files]]
 file = "kubejs/startup_scripts/matterworks/bootstrap.js"
@@ -86,11 +102,11 @@ hash = "575b75c4332bb3866f8b1332b8744eb4f99adf5468510bf2f52fde8ad40f8214"
 
 [[files]]
 file = "kubejs/startup_scripts/matterworks/fluids.js"
-hash = "9c14b8f0ddce1fd313a9d2bd35cde180d38204215ba2d01fb31ea2b82f40a78c"
+hash = "c5d6d6b013eb2abaa717b983f002741d0c7fe38d3ef303f6db5748349b5ce369"
 
 [[files]]
 file = "kubejs/startup_scripts/matterworks/items.js"
-hash = "d5ee58021e74afe07bd77ce4bb86d702ca30cd5a12b11bcdab7e595d68937a20"
+hash = "e1a7b0e47ce3240fd532f61ee59833a3a82a77a8dcf1f09247914c45e7477e4c"
 
 [[files]]
 file = "mods/advanced-peripherals.pw.toml"

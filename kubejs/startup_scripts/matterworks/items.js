@@ -36,3 +36,17 @@ StartupEvents.registry('item', event => {
     event.create('graphite')
         .displayName('Graphite')
 })
+
+StartupEvents.registry('item', event => {
+    event.create('psa_adsorbent')
+        .displayName('PSA Adsorbent Cartridge')
+
+    event.create('oxygen_loaded_psa_adsorbent')
+        .displayName('Oxygen-Loaded PSA Adsorbent')
+
+    event.create('accelerator_calibration_target')
+        .displayName('Accelerator Calibration Target')
+
+    event.create('activated_calibration_target')
+        .displayName('Activated Calibration Target')
+})

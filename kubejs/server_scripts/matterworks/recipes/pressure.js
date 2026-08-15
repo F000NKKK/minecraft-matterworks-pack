@@ -48,5 +48,31 @@ ServerEvents.recipes(event => {
     )
         .id('matterworks:pressure/compressed_air_engine')
 
-    console.info('[Matterworks] Pressure progression registered: Create rotation <-> PneumaticCraft pressure bridge gated')
+    /*
+     * The stock PneumaticCraft air compressor would otherwise bypass the
+     * Create -> pressure transition completely. It becomes the first
+     * independent pressure upgrade and consumes the mechanical compressor.
+     */
+
+    event.remove({ output: 'pneumaticcraft:air_compressor' })
+    event.shaped(
+        'pneumaticcraft:air_compressor',
+        [
+            'ITI',
+            'ERE',
+            'IFI'
+        ],
+        {
+            I: '#forge:ingots/compressed_iron',
+            T: 'pneumaticcraft:pressure_tube',
+            E: 'kubejs:electromechanical_control_unit',
+            R: 'compressedcreativity:rotational_compressor',
+            F: 'minecraft:furnace'
+        }
+    )
+        .id('matterworks:pressure/air_compressor_upgrade')
+
+    console.info(
+        '[Matterworks] Pressure progression registered: Create rotation -> pneumatic pressure -> independent compressor'
+    )
 })
