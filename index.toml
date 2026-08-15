@@ -90,7 +90,7 @@ hash = "22d75823d3fb12fba6e99fb09cf16fb6ed3f3632e5aec638d088d0b9bd0f5eb1"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/particle.js"
-hash = "6e49f6c22ebc22d823e52793f2ccbc98677506054e0fef2c0677ca80f565bcf7"
+hash = "f432779a6eb6d53e1d68b0247947b966bc0c185cd713bec19ead17709fc57593"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/pressure.js"
