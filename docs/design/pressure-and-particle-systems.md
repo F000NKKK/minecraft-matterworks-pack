@@ -1,116 +1,184 @@
 # Matterworks Pressure and Particle Systems
 
-Matterworks 0.5.1 introduces a compatibility spike for three systems which can become first-class engineering layers in the pack:
+Matterworks 0.5.1 promotes pressure engineering and particle physics from compatibility experiments into the unified progression graph.
 
-- PneumaticCraft: Repressurized;
-- Compressed Creativity;
-- NuclearCraft: Neoteric.
+The integration uses:
 
-The compatibility spike is deliberately separated from progression rewrites. The first gate is a clean runtime with the existing Matterworks stack. Only after that gate passes are recipes and progression allowed to depend on these mods.
+- PneumaticCraft: Repressurized for pressure networks and pressure/temperature processing;
+- Compressed Creativity as the Create-to-pressure bridge;
+- NuclearCraft: Neoteric for accelerator, beam, isotope and semiconductor physics.
 
-## Pinned compatibility-spike versions
+These mods provide physical infrastructure. They do not become independent progression trees that can bypass Matterworks metallurgy, chemistry, electrical engineering or resource processing.
 
-| Component | Version | Role in Matterworks |
+## Pinned versions
+
+| Component | Version | Matterworks role |
 | --- | --- | --- |
 | PneumaticCraft: Repressurized | 6.0.23 for MC 1.20.1 | pressure networks, compressors, pressure/temperature processing |
-| Compressed Creativity | 1.20.1-0.2.0 | Create rotation ↔ PneumaticCraft pressure bridge |
-| NuclearCraft: Neoteric | 1.20.1-1.2.34 | particle accelerators, isotope/nuclear processing, late-game experimental infrastructure |
+| Compressed Creativity | 1.20.1-0.2.0 | Create rotation -> PneumaticCraft pressure bridge |
+| NuclearCraft: Neoteric | 1.20.1-1.2.34 | particle accelerators, isotope production and late-game experimental infrastructure |
+| Create | 6.0.8 | mechanical infrastructure feeding the first pressure tier |
 
-Matterworks currently uses Create 6.0.8. Compressed Creativity 0.2.0 declares Create compatibility as `[6.0.4,6.1.0)`, so 6.0.8 satisfies its loader dependency range. Runtime compatibility still has to be validated because a version-range match is not proof that every integration path is bug-free.
+Compressed Creativity 0.2.0 declares Create compatibility as `[6.0.4,6.1.0)`, so Create 6.0.8 is inside its declared loader range.
 
 ## Pressure engineering
 
-Pressure becomes an engineering domain rather than another Forge Energy skin.
+Pressure is an engineering domain rather than another Forge Energy skin.
 
-Intended architecture:
+Implemented dependency structure:
 
 ```text
 Create rotation
-      ↓
-Rotational Compressor
-      ↓
+      |
+      v
+Compressed Creativity Rotational Compressor
+      |
+      v
 PneumaticCraft pressure network
-      ├─ pressure storage / transport
-      ├─ pressure chamber processing
-      ├─ temperature + pressure processing
-      └─ atmospheric / chemical process equipment
+      |
+      +--> pressure storage / transport
+      |
+      +--> Thermopneumatic Processing Plant
+               |
+               +--> atmospheric nitrogen separation
+               |
+               +--> later pressure/temperature chemistry
 ```
 
-Compressed Creativity is therefore not an independent progression tree. Its primary Matterworks role is to bridge the mechanical era into pressure engineering.
+The Rotational Compressor is the initial pressure source. The stock PneumaticCraft Air Compressor is not an early shortcut; in Matterworks it is an upgrade that requires the established pressure tier.
 
-The old 0.5.0 `kubejs:compressed_air` path is retained only as a temporary compatibility baseline during the spike. The rejected Create Press/Compacting representation has been removed. After the spike passes, atmospheric processing should be redesigned around real PneumaticCraft pressure rather than pretending that a Create machine is an air compressor.
+### Atmospheric nitrogen
 
-## Atmospheric processing target
-
-The desired long-term process is:
+The 0.5.1 atmospheric path uses real PneumaticCraft pressure:
 
 ```text
-Atmosphere
-    ↓
-mechanical compressor
-    ↓
-pressurised air network
-    ↓
-drying / purification
-    ↓
-pressure-swing or cryogenic separation
-    ├─ N2
-    ├─ O2
-    └─ Ar / trace stream
+atmospheric feed
+      +
+Molecular Sieve Charge
+      |
+      v
+Thermopneumatic PSA step
+      |
+      +--> 780 mB nitrogen
+      |
+      +--> oxygen-rich / argon / trace remainder vented at this tier
 ```
 
-The atmosphere itself is renewable. Cost comes from compressor work, pressure equipment, throughput, separation media, temperature control and later process-control requirements.
+`Molecular Sieve Charge` is a stackable consumable operating cost. It represents adsorbent usage without introducing a refillable cartridge loop before the pack has a reason to model regeneration equipment.
+
+The atmosphere remains renewable, but throughput is constrained by compressor work, pressure equipment and separation media.
 
 Water electrolysis remains a separate route:
 
 ```text
 H2O
- ↓ Electrolytic Separator
-H2 + O2
+ |
+ v
+Mekanism Electrolytic Separator
+ |
+ +--> H2
+ |
+ +--> O2
 ```
 
-Water does not replace atmospheric processing because it cannot supply nitrogen.
+Electrolysis does not replace atmospheric processing because it cannot provide nitrogen.
+
+A later cryogenic tier may recover oxygen, argon and trace components instead of venting the PSA remainder.
 
 ## Particle engineering
 
-NuclearCraft: Neoteric is not being added as a second self-contained nuclear progression tree. Matterworks will selectively use its physical infrastructure, especially particle accelerators and reaction equipment.
+NuclearCraft is used selectively for accelerator and reaction physics.
 
-Target dependency structure:
+Implemented dependency structure:
 
 ```text
-Mekanism / power infrastructure
-          +
-PneumaticCraft / vacuum-pressure engineering
-          +
-ChemLib / Alchemistry target materials
-          +
-AE2 material handling
-          +
-CC:Tweaked control
-          ↓
-NuclearCraft particle accelerator
-          ↓
-beam experiments / isotope production / transmutation
+Matterworks electrical infrastructure
+             |
+             v
+Particle Focusing Coil
+             |
+             v
+NuclearCraft accelerator casing / beam hardware
+             |
+             v
+linear accelerator + Target Chamber
+             |
+             v
+boron-ion implantation / isotope production
+             |
+             v
+advanced accelerator electronics
+             |
+             v
+ring accelerator
 ```
 
-Accelerator operation should eventually be an experimental control problem rather than a single deterministic crafting recipe.
+Matterworks gates construction of accelerator casing, ion-source ports and beam ports while leaving beam energy, focus, heat, particle transport and multiblock simulation to NuclearCraft.
 
-Potential controlled variables include:
+### Target Chamber resource policy
 
-- particle source;
-- beam energy;
-- beam current;
-- RF cavity state;
-- magnetic field / beam steering;
-- target material and isotope;
-- vacuum state;
-- radiation;
-- thermal load;
-- reaction products.
+NuclearCraft ships a broad Target Chamber reaction table. A subset of those reactions converts ordinary bulk resources directly into other ordinary resources.
+
+Matterworks removes 72 stock bulk-material transmutations that would bypass established chemistry, metallurgy or extraction. Examples include nickel -> iron, argon -> chlorine and several metal-to-metal reactions driven by proton, neutron, photon, electron, deuteron or alpha beams.
+
+The policy intentionally preserves reactions that are useful as particle or nuclear engineering rather than resource duplication:
+
+- ordinary feedstock -> isotope or radioisotope;
+- isotope/radioisotope feedstock -> another nuclear product;
+- spallation and antimatter-production paths;
+- radioactive/nuclear by-product production;
+- destructive particle reactions with no bulk-resource output;
+- semiconductor ion implantation.
+
+The accelerator therefore remains useful for products that are difficult or impossible to obtain by ordinary chemistry, while being intentionally unavailable as a generic bulk-resource converter.
+
+### Real pre-ring semiconductor dependency
+
+No synthetic calibration item is required to prove that the player has built a Target Chamber.
+
+NuclearCraft already provides a physically meaningful semiconductor chain that Matterworks deliberately retains:
+
+```text
+silicon wafer
+    +
+600-energy boron-ion beam
+    |
+    v
+silicon_p_doped
+    |
+    + hafnium dust
+    + basic processor
+    + 4 redstone
+    |
+    v
+NuclearCraft Assembler
+    |
+    v
+advanced_processor
+    |
+    v
+Matterworks ring_accelerator_controller recipe
+```
+
+The boron-ion Target Chamber recipe is ion implantation: the beam changes the electrical properties of the silicon wafer rather than acting as an arbitrary crafting key.
+
+Because the Matterworks ring-controller recipe retains `nuclearcraft:advanced_processor`, the Target Chamber is a real prerequisite for the ring tier. This dependency comes from a useful production material and remains meaningful outside the controller recipe.
+
+## Progression policy
+
+The pressure and particle systems follow these rules:
+
+1. PneumaticCraft recipes that bypass established Matterworks metallurgy, chemistry or electrical progression are gated or replaced.
+2. Compressed Creativity primarily bridges Create mechanical power into pressure engineering.
+3. NuclearCraft generic ore processing and machine progression must not replace the existing Matterworks resource-processing graph by default.
+4. Accelerator transmutation must not become a competitive source of normal bulk materials.
+5. Accelerator-only isotopes, semiconductor processing and nuclear products are valid reasons to build particle infrastructure.
+6. Particle engineering belongs after industrial chemistry and substantial power infrastructure.
+7. Advanced operation should increasingly require instrumentation and process control rather than only larger crafting recipes.
 
 ## CC:Tweaked integration target
 
-NuclearCraft already has computer integration in parts of the mod, but Matterworks should expose a stable pack-level API instead of coupling user programs to every underlying mod implementation detail.
+Accelerator operation should eventually become a control problem. Matterworks should expose a stable pack-level API rather than forcing automation programs to depend directly on every underlying mod implementation detail.
 
 Conceptual API:
 
@@ -128,33 +196,39 @@ if state.vacuum < 0.95 or state.temperature > 700 then
 end
 ```
 
-Matterworks Core can later implement this bridge if the native NuclearCraft peripheral surface is incomplete.
+Potential controlled variables include:
 
-## Progression policy
+- particle source;
+- target beam energy;
+- beam current;
+- RF cavity state;
+- magnetic field and beam steering;
+- target material/isotope;
+- vacuum state;
+- radiation;
+- thermal load;
+- reaction products.
 
-The three new systems are infrastructure providers, not three new independent mod trees.
+Matterworks Core can later provide this bridge if the native NuclearCraft computer surface is incomplete.
 
-Rules:
+## Runtime validation
 
-1. PneumaticCraft recipes that bypass established Matterworks metallurgy, chemistry or electrical progression will be gated or replaced.
-2. Compressed Creativity primarily bridges Create mechanical power into pressure engineering.
-3. NuclearCraft ore processing and generic machine progression must not replace the existing Matterworks resource-processing graph by default.
-4. Accelerator transmutation must remain far more expensive than ordinary mining and chemistry for normal bulk materials.
-5. Particle engineering belongs after industrial chemistry and substantial power infrastructure.
-6. CC:Tweaked should become increasingly important for safe, efficient and scalable operation of advanced plants.
+For the 0.5.1 integration, validate all of the following after a clean restart:
 
-## Compatibility gate
-
-Before any progression rewrite, perform a full client restart and verify:
-
-- Forge reaches the main menu;
-- a world loads successfully;
+- Forge reaches the main menu and a world loads;
+- KubeJS startup/server scripts load with zero failed Matterworks recipes;
 - Create 6.0.8 remains operational;
-- Rotational Compressor and Compressed Air Engine are present;
-- PneumaticCraft pressure tubes and compressors are present;
-- NuclearCraft accelerator blocks are present;
-- existing Mekanism machines still load;
-- existing KubeJS scripts produce no new errors;
-- no mixin, Flywheel/Create, rendering or registry conflicts appear in `latest.log`.
-
-Only after this gate passes should Matterworks replace the temporary atmospheric-capture recipe and start gating the new mods into the unified progression graph.
+- Rotational Compressor and Compressed Air Engine work;
+- PneumaticCraft pressure tubes, compressors and Thermopneumatic Processing Plant work;
+- Molecular Sieve Charge is consumed by the PSA nitrogen recipe;
+- the PSA recipe produces the expected 780 mB nitrogen stream;
+- NuclearCraft linear accelerator and Target Chamber form correctly;
+- Particle Focusing Coil recipes resolve correctly;
+- the boron-ion silicon-wafer -> p-doped-silicon Target Chamber recipe remains available;
+- the p-doped silicon path still produces `nuclearcraft:advanced_processor`;
+- `nuclearcraft:ring_accelerator_controller` has the Matterworks recipe;
+- blocked bulk Target Chamber routes such as nickel -> iron and argon -> chlorine are absent;
+- isotope/radioisotope Target Chamber routes remain available;
+- existing Mekanism machines and chemistry remain operational;
+- remaining NuclearCraft missing-fluid-tag diagnostics are reviewed separately;
+- no Create/Flywheel/mixin/registry failures appear in `latest.log`.
