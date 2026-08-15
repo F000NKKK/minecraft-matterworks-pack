@@ -1,6 +1,19 @@
 console.info('[Matterworks] Loading electrical component recipes')
 
 ServerEvents.recipes(event => {
+    /*
+     * Matterworks 0.4.1 material vocabulary.
+     *
+     * These are deliberately explicit even where an existing mod item
+     * represents the material form. The goal is to make later material
+     * substitutions (rubber, polymers, magnetic alloys, etc.) local and
+     * auditable instead of scattering magic IDs through recipes.
+     */
+    const copperConductor = 'createaddition:copper_wire'
+    const primitiveDielectric = 'minecraft:paper'
+    const primitiveImpregnant = 'minecraft:honeycomb'
+    const magneticCore = 'create:iron_sheet'
+
     const insulatedWire = 'kubejs:insulated_copper_wire'
     const incompleteInsulatedWire =
         'kubejs:incomplete_insulated_copper_wire'
@@ -14,20 +27,25 @@ ServerEvents.recipes(event => {
      * Stage 1: Copper conductor insulation
      * ---------------------------------------------------------
      *
-     * Early-game insulation uses waxed paper.
-     * Later this will be superseded by rubber/polymer insulation
-     * from the chemical industry.
+     * Early-game insulation is deliberately primitive:
+     * paper provides the dielectric layer and wax impregnation
+     * improves moisture resistance.
+     *
+     * It is good enough for the first low-power electrical era,
+     * but it is NOT the final Matterworks cable technology.
+     * Industrial chemistry will later replace it with rubber and
+     * polymer insulation.
      */
 
     event.recipes.create.sequenced_assembly(
         insulatedWire,
-        'createaddition:copper_wire',
+        copperConductor,
         [
             event.recipes.create.deploying(
                 incompleteInsulatedWire,
                 [
                     incompleteInsulatedWire,
-                    'minecraft:paper'
+                    primitiveDielectric
                 ]
             ),
 
@@ -35,7 +53,7 @@ ServerEvents.recipes(event => {
                 incompleteInsulatedWire,
                 [
                     incompleteInsulatedWire,
-                    'minecraft:honeycomb'
+                    primitiveImpregnant
                 ]
             ),
 
@@ -54,12 +72,18 @@ ServerEvents.recipes(event => {
      * Stage 2: Electromagnetic coil
      * ---------------------------------------------------------
      *
-     * Copper winding around an iron magnetic core.
+     * The core now requires processed sheet iron rather than an
+     * abstract iron rod. This is the first step toward a real
+     * magnetic-material system.
+     *
+     * In later tiers generic iron will stop being sufficient:
+     * soft magnetic iron, silicon steel and specialised magnetic
+     * alloys will have distinct operating envelopes.
      */
 
     event.recipes.create.sequenced_assembly(
         coil,
-        '#forge:rods/iron',
+        magneticCore,
         [
             event.recipes.create.deploying(
                 incompleteCoil,
@@ -84,7 +108,7 @@ ServerEvents.recipes(event => {
         ]
     )
         .transitionalItem(incompleteCoil)
-        .loops(2)
+        .loops(3)
 
 
     /*
@@ -142,10 +166,9 @@ ServerEvents.recipes(event => {
      * Primitive Capacitor
      * ---------------------------------------------------------
      *
-     * Early electrical storage/control component.
-     *
-     * This is intentionally mechanical to manufacture:
-     * copper electrodes + dielectric + wax impregnation.
+     * Copper electrodes + primitive dielectric + wax impregnation.
+     * This component intentionally belongs to the mechanical era:
+     * the first generator must be manufacturable before FE exists.
      */
 
     event.remove({
@@ -160,7 +183,7 @@ ServerEvents.recipes(event => {
                 'create:copper_sheet',
                 [
                     'create:copper_sheet',
-                    'minecraft:paper'
+                    primitiveDielectric
                 ]
             ),
 
@@ -168,7 +191,7 @@ ServerEvents.recipes(event => {
                 'create:copper_sheet',
                 [
                     'create:copper_sheet',
-                    'minecraft:honeycomb'
+                    primitiveImpregnant
                 ]
             ),
 
@@ -215,7 +238,7 @@ ServerEvents.recipes(event => {
         {
             S: '#forge:ingots/steel',
             C: 'createaddition:capacitor',
-            E: 'kubejs:electromagnetic_coil',
+            E: coil,
             P: 'create:precision_mechanism',
             B: 'mekanism:basic_control_circuit'
         }
@@ -223,5 +246,9 @@ ServerEvents.recipes(event => {
 
     console.info(
         '[Matterworks] Primitive capacitor and gated electric motor registered'
+    )
+
+    console.info(
+        '[Matterworks] Materials foundation: conductor, dielectric and magnetic core roles registered'
     )
 })
