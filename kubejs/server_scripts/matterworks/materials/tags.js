@@ -22,6 +22,30 @@ ServerEvents.tags('item', event => {
         'create:iron_sheet'
     )
 
+    // Carbon feedstocks are deliberately separated by origin.
+    // Charcoal is a renewable biogenic carbon source; coke is an
+    // industrial fossil-carbon reductant and must not be interchangeable
+    // with raw coal in advanced metallurgy.
+    event.add(
+        'matterworks:materials/carbon/feedstocks/fossil',
+        'minecraft:coal'
+    )
+
+    event.add(
+        'matterworks:materials/carbon/feedstocks/biogenic',
+        'minecraft:charcoal'
+    )
+
+    event.add(
+        'matterworks:materials/carbon/reductants/metallurgical',
+        'kubejs:coke'
+    )
+
+    event.add(
+        'matterworks:materials/carbon/allotropes/graphite',
+        'kubejs:graphite'
+    )
+
     // Finished electrical components. These tags are intentionally
     // capability-oriented: later tiers can add alternative components
     // without forcing every consuming recipe to know their concrete IDs.

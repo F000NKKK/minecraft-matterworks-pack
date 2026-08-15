@@ -5,12 +5,20 @@ file = "kubejs/README.md"
 hash = "c4bcb33fb1b27641f55c01f275c08c91af0394490e1b684f6514289b9e6cd947"
 
 [[files]]
+file = "kubejs/assets/kubejs/textures/item/coke.png"
+hash = "cb15d1f0c38b1a534189cf483a66a554547a01abd25c2b58afc58356ced18b01"
+
+[[files]]
 file = "kubejs/assets/kubejs/textures/item/electromagnetic_coil.png"
 hash = "67ddac171f60af6145cfeac99b9b798896264fa8391ea58268d1a2918c2ba1cd"
 
 [[files]]
 file = "kubejs/assets/kubejs/textures/item/electromechanical_control_unit.png"
 hash = "f185e2f6c23254613d4ad78a4b64b203821cd173e3b4f13672beb8215f0f7d3a"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/item/graphite.png"
+hash = "bc287ea618360d3828b7184629cbb04fd9101352f4c4031173b7a543fe1bc95b"
 
 [[files]]
 file = "kubejs/assets/kubejs/textures/item/incomplete_electromagnetic_coil.png"
@@ -34,11 +42,15 @@ hash = "d873d6dad2d89a95a24ce638317adf44640bd237a893ef60983571d03088cae8"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/materials/tags.js"
-hash = "946007dc278c37d66719e2e05f68b688c028b9686f1b4420576d3a665b7c4564"
+hash = "1c075e35e94f2caf4f23f87571ccbaa20cf54fe11773d6908d4a9beecd3a9b75"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/electrical.js"
 hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
+
+[[files]]
+file = "kubejs/server_scripts/matterworks/recipes/carbon.js"
+hash = "ca6259ff70c647703179695323eb0d342ddea1d3c1dd69418c46d745089b6940"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/electrical.js"
@@ -54,7 +66,7 @@ hash = "575b75c4332bb3866f8b1332b8744eb4f99adf5468510bf2f52fde8ad40f8214"
 
 [[files]]
 file = "kubejs/startup_scripts/matterworks/items.js"
-hash = "52179a59aa2cf75aab452367897e1bf2ba6eb8056c29e0fdbacd54b8e0f384ac"
+hash = "d5ee58021e74afe07bd77ce4bb86d702ca30cd5a12b11bcdab7e595d68937a20"
 
 [[files]]
 file = "mods/advanced-peripherals.pw.toml"
