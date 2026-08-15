@@ -1,0 +1,13 @@
+name = "KubeJS Alchemistry/Chemlib"
+filename = "kubejsalchem-1.20.1-1.1.2-R.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "232f87c216092d4e1239d97a78f5c072f73c3782"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6951930
+project-id = 1337764
