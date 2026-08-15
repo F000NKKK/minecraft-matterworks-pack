@@ -101,7 +101,7 @@ ServerEvents.recipes(event => {
         ],
         crossSection: 0.25,
         maxEnergy: 2200,
-        energyReleased: 100,
+        energyReleased: 100
     })
         .id('matterworks:particle/proton_beam_calibration')
 
