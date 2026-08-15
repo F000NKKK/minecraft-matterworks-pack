@@ -62,14 +62,16 @@ ServerEvents.tags('item', event => {
     /*
      * Cross-mod naming aliases
      *
-     * NuclearCraft publishes both aluminum/aluminium aliases for its own
-     * forms. ChemLib uses the US spelling. Add ChemLib to the British Forge
-     * aliases as well so recipes from either ecosystem remain symmetric.
+     * NuclearCraft uses both aluminum/aluminium spellings in generated
+     * recipe tags while ChemLib uses the US spelling. Alias the complete US
+     * Forge tags rather than individual ChemLib items so every present/future
+     * provider participates consistently.
      */
-    event.add('forge:ingots/aluminium', 'chemlib:aluminum_ingot')
-    event.add('forge:nuggets/aluminium', 'chemlib:aluminum_nugget')
-    event.add('forge:dusts/aluminium', 'chemlib:aluminum_dust')
-    event.add('forge:plates/aluminium', 'chemlib:aluminum_plate')
+    event.add('forge:ingots/aluminium', '#forge:ingots/aluminum')
+    event.add('forge:nuggets/aluminium', '#forge:nuggets/aluminum')
+    event.add('forge:dusts/aluminium', '#forge:dusts/aluminum')
+    event.add('forge:plates/aluminium', '#forge:plates/aluminum')
+    event.add('forge:storage_blocks/aluminium', '#forge:storage_blocks/aluminum')
 
     // Finished electrical components. These tags are intentionally
     // capability-oriented: later tiers can add alternative components
