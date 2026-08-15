@@ -1,0 +1,8 @@
+*.mrpack
+*.zip
+
+# Local/runtime files
+.minecraft/
+run/
+logs/
+crash-reports/
