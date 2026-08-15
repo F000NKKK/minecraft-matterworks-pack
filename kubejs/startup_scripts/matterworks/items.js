@@ -45,10 +45,4 @@ StartupEvents.registry('item', event => {
     event.create('particle_focusing_coil')
         .displayName('Particle Focusing Coil')
         .maxStackSize(64)
-
-    event.create('accelerator_calibration_target')
-        .displayName('Accelerator Calibration Target')
-
-    event.create('activated_calibration_target')
-        .displayName('Activated Calibration Target')
 })

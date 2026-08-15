@@ -9,9 +9,9 @@ ServerEvents.recipes(event => {
     /*
      * Particle Focusing Coil
      *
-     * This is the one Matterworks-owned accelerator component. It packages
+     * This is the Matterworks-owned accelerator component. It packages
      * precision windings, field control and electrical conditioning without
-     * replacing NuclearCraft's actual beam, magnet, RF and heat simulation.
+     * replacing NuclearCraft's beam, magnet, RF and heat simulation.
      */
     event.shaped(
         Item.of('kubejs:particle_focusing_coil', 2),
@@ -31,8 +31,7 @@ ServerEvents.recipes(event => {
     /*
      * Accelerator infrastructure is deliberately gated rather than replaced.
      * NuclearCraft keeps ownership of beam physics, heat, focus and particle
-     * transport while Matterworks owns when the player is allowed to enter
-     * particle engineering.
+     * transport while Matterworks owns the cross-mod engineering boundary.
      */
 
     event.remove({ output: 'nuclearcraft:accelerator_casing' })
@@ -86,82 +85,35 @@ ServerEvents.recipes(event => {
         .id('matterworks:particle/accelerator_beam_port')
 
     /*
-     * First Matterworks accelerator experiment.
+     * Ring accelerator
      *
-     * This is intentionally a calibration experiment instead of a bulk
-     * transmutation shortcut. The player must build and tune a real
-     * NuclearCraft beamline and target chamber before obtaining the activated
-     * target. Later progression can use the activated sample as proof that a
-     * stable, focused beam has been achieved.
+     * NuclearCraft registers the ring controller as
+     * `nuclearcraft:ring_accelerator_controller`.
+     *
+     * Keep NuclearCraft's own high-tier materials in the recipe and add the
+     * Matterworks focusing component. Useful Target Chamber reactions will be
+     * introduced as production/experimental recipes later; artificial
+     * calibration-token items are intentionally not part of progression.
      */
-
+    event.remove({ output: 'nuclearcraft:ring_accelerator_controller' })
     event.shaped(
-        'kubejs:accelerator_calibration_target',
+        'nuclearcraft:ring_accelerator_controller',
         [
-            'QCQ',
-            'CGC',
-            'QCQ'
+            'PFP',
+            'XAX',
+            'PCP'
         ],
         {
-            Q: 'minecraft:quartz',
-            C: 'minecraft:copper_ingot',
-            G: 'kubejs:graphite'
+            P: 'nuclearcraft:plate_elite',
+            F: 'kubejs:particle_focusing_coil',
+            X: '#forge:ingots/extreme',
+            A: 'nuclearcraft:advanced_processor',
+            C: 'nuclearcraft:accelerator_casing'
         }
     )
-        .id('matterworks:particle/calibration_target')
-
-    event.custom({
-        type: 'nuclearcraft:target_chamber',
-        input: [
-            {
-                item: 'kubejs:accelerator_calibration_target'
-            }
-        ],
-        inputParticles: [
-            {
-                particle: 'proton',
-                amount: 1000000,
-                meanEnergy: 1800,
-                focus: 0.9
-            }
-        ],
-        output: [
-            {
-                item: 'kubejs:activated_calibration_target'
-            }
-        ],
-        outputParticles: [
-            {
-                particle: 'photon',
-                amount: 1,
-                meanEnergy: 100,
-                focus: 0.5
-            }
-        ],
-        crossSection: 0.25,
-        maxEnergy: 2200,
-        energyReleased: 100
-    })
-        .id('matterworks:particle/proton_beam_calibration')
-
-    event.remove({ output: 'nuclearcraft:toroidal_accelerator_controller' })
-    event.shaped(
-        'nuclearcraft:toroidal_accelerator_controller',
-        [
-            'ACA',
-            'RER',
-            'ACA'
-        ],
-        {
-            A: 'nuclearcraft:accelerator_casing',
-            C: 'kubejs:activated_calibration_target',
-            R: 'nuclearcraft:basic_rf_amplifier',
-            E: 'kubejs:electromechanical_control_unit'
-        }
-    )
-        .id('matterworks:particle/toroidal_accelerator_controller')
+        .id('matterworks:particle/ring_accelerator_controller')
 
     console.info(
-        '[Matterworks] Particle progression registered: focusing hardware -> linear calibration -> toroidal accelerator'
+        '[Matterworks] Particle progression registered: focusing hardware -> linear/ring accelerator infrastructure'
     )
 })
