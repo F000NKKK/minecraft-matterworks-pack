@@ -46,6 +46,19 @@ ServerEvents.tags('item', event => {
         'kubejs:graphite'
     )
 
+    // Graphite becomes the first explicit electrochemical electrode
+    // material in the pack. Later chemistry can add alternative electrode
+    // materials without changing every machine recipe that consumes them.
+    event.add(
+        'matterworks:materials/electrodes/graphite',
+        'kubejs:graphite'
+    )
+
+    event.add(
+        'matterworks:materials/electrodes/primitive_electrolysis',
+        '#matterworks:materials/electrodes/graphite'
+    )
+
     // Finished electrical components. These tags are intentionally
     // capability-oriented: later tiers can add alternative components
     // without forcing every consuming recipe to know their concrete IDs.
