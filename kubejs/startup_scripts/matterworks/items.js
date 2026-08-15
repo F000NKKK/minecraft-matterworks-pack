@@ -38,11 +38,13 @@ StartupEvents.registry('item', event => {
 })
 
 StartupEvents.registry('item', event => {
-    event.create('psa_adsorbent')
-        .displayName('PSA Adsorbent Cartridge')
+    event.create('molecular_sieve_charge')
+        .displayName('Molecular Sieve Charge')
+        .maxStackSize(64)
 
-    event.create('oxygen_loaded_psa_adsorbent')
-        .displayName('Oxygen-Loaded PSA Adsorbent')
+    event.create('particle_focusing_coil')
+        .displayName('Particle Focusing Coil')
+        .maxStackSize(64)
 
     event.create('accelerator_calibration_target')
         .displayName('Accelerator Calibration Target')

@@ -7,6 +7,28 @@ ServerEvents.recipes(event => {
     }
 
     /*
+     * Particle Focusing Coil
+     *
+     * This is the one Matterworks-owned accelerator component. It packages
+     * precision windings, field control and electrical conditioning without
+     * replacing NuclearCraft's actual beam, magnet, RF and heat simulation.
+     */
+    event.shaped(
+        Item.of('kubejs:particle_focusing_coil', 2),
+        [
+            'CBC',
+            'BEB',
+            'CBC'
+        ],
+        {
+            C: 'create:copper_sheet',
+            B: 'create:brass_sheet',
+            E: 'kubejs:electromechanical_control_unit'
+        }
+    )
+        .id('matterworks:particle/focusing_coil')
+
+    /*
      * Accelerator infrastructure is deliberately gated rather than replaced.
      * NuclearCraft keeps ownership of beam physics, heat, focus and particle
      * transport while Matterworks owns when the player is allowed to enter
@@ -18,13 +40,13 @@ ServerEvents.recipes(event => {
         Item.of('nuclearcraft:accelerator_casing', 4),
         [
             'PCP',
-            'E E',
+            'F F',
             'PCP'
         ],
         {
             P: '#forge:plates/cobalt',
             C: 'kubejs:electromagnetic_coil',
-            E: 'kubejs:electromechanical_control_unit'
+            F: 'kubejs:particle_focusing_coil'
         }
     )
         .id('matterworks:particle/accelerator_casing')
@@ -33,18 +55,35 @@ ServerEvents.recipes(event => {
     event.shaped(
         'nuclearcraft:accelerator_ion_source_port',
         [
-            'LCL',
+            'LFL',
             'ETE',
-            'LCL'
+            'LFL'
         ],
         {
             L: 'nuclearcraft:laser_assembly',
-            C: 'kubejs:electromagnetic_coil',
+            F: 'kubejs:particle_focusing_coil',
             E: 'kubejs:electromechanical_control_unit',
             T: 'nuclearcraft:tungsten_filament'
         }
     )
         .id('matterworks:particle/accelerator_ion_source_port')
+
+    event.remove({ output: 'nuclearcraft:accelerator_beam_port' })
+    event.shaped(
+        Item.of('nuclearcraft:accelerator_beam_port', 2),
+        [
+            'SFS',
+            'BEB',
+            'SFS'
+        ],
+        {
+            S: '#forge:ingots/steel',
+            F: 'kubejs:particle_focusing_coil',
+            B: 'nuclearcraft:particle_beam',
+            E: 'kubejs:electromechanical_control_unit'
+        }
+    )
+        .id('matterworks:particle/accelerator_beam_port')
 
     /*
      * First Matterworks accelerator experiment.
@@ -105,13 +144,6 @@ ServerEvents.recipes(event => {
     })
         .id('matterworks:particle/proton_beam_calibration')
 
-    /*
-     * Ring accelerator progression.
-     *
-     * A toroidal accelerator is not required for the first calibration run.
-     * Its controller therefore becomes the reward boundary for proving that
-     * the player has already operated a stable linear beamline successfully.
-     */
     event.remove({ output: 'nuclearcraft:toroidal_accelerator_controller' })
     event.shaped(
         'nuclearcraft:toroidal_accelerator_controller',
@@ -130,6 +162,6 @@ ServerEvents.recipes(event => {
         .id('matterworks:particle/toroidal_accelerator_controller')
 
     console.info(
-        '[Matterworks] Particle progression registered: linear calibration -> toroidal accelerator'
+        '[Matterworks] Particle progression registered: focusing hardware -> linear calibration -> toroidal accelerator'
     )
 })

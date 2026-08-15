@@ -13,12 +13,20 @@ file = "kubejs/assets/kubejs/models/item/activated_calibration_target.json"
 hash = "e1abf9e494bfc39030d5057d2a2c2ef769f9044cd52f2abb03bd282a8b5fb9f3"
 
 [[files]]
-file = "kubejs/assets/kubejs/models/item/oxygen_loaded_psa_adsorbent.json"
-hash = "f5ef884b6d179df88936cce481c4b5ef226926de38cbf9633b8570c218fea38e"
+file = "kubejs/assets/kubejs/models/item/molecular_sieve_charge.json"
+hash = "6c4808c5e3262c9c3e368cf1b67e017b54d54a629f046b48509d21ad6c9cb557"
 
 [[files]]
-file = "kubejs/assets/kubejs/models/item/psa_adsorbent.json"
-hash = "a056955f8d3833480a584fa62d6cf09d99d706721649f3c082f42e828f125a0f"
+file = "kubejs/assets/kubejs/models/item/particle_focusing_coil.json"
+hash = "dd63c58cbddf938ae92c6d9ca9c41e0078ae3aa5b95d3964298bf1bc80cb345b"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/item/molecular_sieve_charge.png"
+hash = "b94907d6e9af397c1403253bce39837d7f8e900490cd056ec08197e9e6900312"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/item/particle_focusing_coil.png"
+hash = "89af859682989111e3d80da125532d273ea837c3b77eabef46a7978cf8768397"
 
 [[files]]
 file = "kubejs/assets/kubejs/textures/item/coke.png"
@@ -66,7 +74,7 @@ hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/atmosphere.js"
-hash = "1fa36b1dfa55eede22d201eb5f301e4a9647cda3fb1ee815c256a6284773ddc3"
+hash = "c98dca6aee6adbf907f89fb019edd4a415e8c4ec5d33e731fca15e60478aa0de"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/carbon.js"
@@ -87,10 +95,9 @@ hash = "3e06700d9a0be60ef8c26d48d41bbfeefbbc6f16582b203b1370c1d34401e73d"
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/nitrogen.js"
 hash = "22d75823d3fb12fba6e99fb09cf16fb6ed3f3632e5aec638d088d0b9bd0f5eb1"
-
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/particle.js"
-hash = "f432779a6eb6d53e1d68b0247947b966bc0c185cd713bec19ead17709fc57593"
+hash = "ee32b3c9433ba54332b3a9a3c5af700c71417a458bd1e0dc7db4ae6c3651b875"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/pressure.js"
@@ -106,7 +113,7 @@ hash = "c5d6d6b013eb2abaa717b983f002741d0c7fe38d3ef303f6db5748349b5ce369"
 
 [[files]]
 file = "kubejs/startup_scripts/matterworks/items.js"
-hash = "e1a7b0e47ce3240fd532f61ee59833a3a82a77a8dcf1f09247914c45e7477e4c"
+hash = "7a135d4d356750a4c4af07a1552652bc254e4adae9933c76e561bc35fb98b0ae"
 
 [[files]]
 file = "mods/advanced-peripherals.pw.toml"
@@ -177,7 +184,6 @@ metafile = true
 file = "mods/guideme.pw.toml"
 hash = "606e38058a2913795ecebcd9b407a453d8fc24cfd3409a9eb431ff56e10bcfe8"
 metafile = true
-
 [[files]]
 file = "mods/jade.pw.toml"
 hash = "a2277a000bcab08a8e0939dae7c8ef3b1db5327e2fa7bd37919e4e2f1b3c174d"

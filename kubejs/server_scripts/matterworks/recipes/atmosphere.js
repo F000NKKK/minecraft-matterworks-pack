@@ -7,52 +7,44 @@ ServerEvents.recipes(event => {
     }
 
     const nitrogen = 'chemlib:nitrogen_fluid'
-    const oxygen = 'chemlib:oxygen_fluid'
 
     /*
-     * Pressure / temperature swing adsorption abstraction.
+     * Consumable pressure-swing adsorption abstraction.
      *
      * The pressure network itself is the atmosphere feed. No bottled or
-     * virtual "compressed air" fluid exists anymore.
+     * virtual "compressed air" fluid exists.
      *
-     * Adsorption:
-     *   1000 mL pressure-network air equivalent
-     *     -> 780 mB N2
-     *     -> oxygen-loaded adsorbent
-     *     -> ~10 mB Ar / trace gases vented
+     * One molecular-sieve charge represents the adsorbent wear, drying media
+     * and replacement material consumed by a long automated production run.
+     * It is deliberately stackable and disposable: the player does not need
+     * to stop the plant to refill or repair individual cartridges.
      *
-     * Regeneration:
-     *   oxygen-loaded adsorbent + heat
-     *     -> 210 mB O2
-     *     -> regenerated adsorbent
-     *
-     * PneumaticCraft's Thermopneumatic Processing Plant consumes real air
-     * according to recipe pressure. At 4 bar the base cost is 200 mL; the
-     * 5x air-use multiplier makes one adsorption cycle consume 1000 mL.
+     * The nitrogen generator recovers the nitrogen fraction. Oxygen, argon
+     * and trace gases are vented as the oxygen-rich waste stream. Oxygen for
+     * chemistry continues to come from the established water-electrolysis
+     * route until a later cryogenic-separation tier is introduced.
      */
 
     event.shaped(
-        Item.of('kubejs:psa_adsorbent', 2),
+        Item.of('kubejs:molecular_sieve_charge', 4),
         [
-            'QIQ',
+            'QFQ',
             'ICI',
-            'QIQ'
+            'QFQ'
         ],
         {
             Q: '#forge:gems/quartz',
+            F: 'minecraft:paper',
             I: '#forge:ingots/compressed_iron',
             C: 'minecraft:charcoal'
         }
     )
-        .id('matterworks:chemistry/atmosphere/psa_adsorbent')
+        .id('matterworks:chemistry/atmosphere/molecular_sieve_charge')
 
     event.custom({
         type: 'pneumaticcraft:thermo_plant',
         item_input: {
-            item: 'kubejs:psa_adsorbent'
-        },
-        item_output: {
-            item: 'kubejs:oxygen_loaded_psa_adsorbent'
+            item: 'kubejs:molecular_sieve_charge'
         },
         fluid_output: {
             amount: 780,
@@ -66,30 +58,9 @@ ServerEvents.recipes(event => {
         speed: 0.5,
         exothermic: false
     })
-        .id('matterworks:chemistry/atmosphere/pressure_adsorption')
-
-    event.custom({
-        type: 'pneumaticcraft:thermo_plant',
-        item_input: {
-            item: 'kubejs:oxygen_loaded_psa_adsorbent'
-        },
-        item_output: {
-            item: 'kubejs:psa_adsorbent'
-        },
-        fluid_output: {
-            amount: 210,
-            fluid: oxygen
-        },
-        temperature: {
-            min_temp: 373,
-            max_temp: 423
-        },
-        speed: 0.35,
-        exothermic: false
-    })
-        .id('matterworks:chemistry/atmosphere/adsorbent_regeneration')
+        .id('matterworks:chemistry/atmosphere/pressure_swing_nitrogen')
 
     console.info(
-        '[Matterworks] Atmospheric processing registered: real pneumatic pressure -> N2/O2 separation'
+        '[Matterworks] Atmospheric processing registered: pneumatic PSA -> nitrogen with consumable molecular-sieve media'
     )
 })
