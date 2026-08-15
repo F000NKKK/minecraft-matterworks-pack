@@ -7,19 +7,22 @@ ServerEvents.recipes(event => {
 
     /*
      * ---------------------------------------------------------
-     * Atmospheric capture / compression
+     * Atmospheric compression
      * ---------------------------------------------------------
      *
-     * The atmosphere itself is intentionally renewable. The engineering
-     * cost is the continuously powered machinery required to capture and
-     * compress it, not a finite "air ore" item.
+     * Air is an implicit renewable process feed. Producing compressed air
+     * must nevertheless require actual compression work.
      *
-     * Create's filter acts as the reusable intake/filter medium. It is
-     * consumed by the recipe and returned unchanged, making it a process
-     * component rather than a feedstock.
+     * The first Matterworks implementation therefore uses Create Compacting:
+     * a Mechanical Press operating over a Basin acts as the primitive
+     * mechanical compressor. The reusable filter represents the intake/filter
+     * stage and is returned unchanged.
+     *
+     * A dedicated electrically driven compressor can supersede this route in
+     * a later tier without changing compressed air into a different substance.
      */
 
-    event.recipes.create.mixing(
+    event.recipes.create.compacting(
         [
             Fluid.of(compressedAir, 1000),
             'create:filter'
@@ -28,7 +31,7 @@ ServerEvents.recipes(event => {
             'create:filter'
         ]
     )
-        .id('matterworks:chemistry/atmosphere/capture_compressed_air')
+        .id('matterworks:chemistry/atmosphere/mechanical_air_compression')
 
     /*
      * ---------------------------------------------------------
@@ -61,6 +64,6 @@ ServerEvents.recipes(event => {
         .id('matterworks:chemistry/atmosphere/air_separation')
 
     console.info(
-        '[Matterworks] Atmospheric processing registered: air -> compressed air -> N2 + O2'
+        '[Matterworks] Atmospheric processing registered: mechanical compression -> compressed air -> N2 + O2'
     )
 })
