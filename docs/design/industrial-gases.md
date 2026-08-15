@@ -15,19 +15,25 @@ Matterworks avoids duplicating chemical species that already exist in ChemLib or
 
 This split is intentional. A future Matterworks Core chemical abstraction should make fluid/gas representations of one substance interoperable without duplicating the substance itself.
 
-## Atmospheric capture
+## Atmospheric compression
 
-Atmospheric gas is renewable. The cost should therefore come from machinery throughput and power, not from a finite air resource.
+Atmospheric gas is renewable. The cost should therefore come from compression work, machinery throughput and later electrical power, not from a finite air resource.
 
-Current abstraction:
+Current primitive route:
 
 ```text
 Atmosphere
-   ↓ mechanically powered intake
+   ↓ intake/filter
+Mechanical Press + Basin
+   ↓ compression work
 Compressed Air
 ```
 
-A reusable Create filter represents the intake/filter medium. The recipe returns the filter unchanged.
+The recipe uses Create Compacting rather than ordinary Mixing. The Mechanical Press/Basin pair therefore acts as the first mechanical compressor. A reusable Create filter represents the intake/filter stage and is returned unchanged.
+
+This is intentionally an early mechanical implementation. A dedicated electrically driven compressor can supersede it in a later tier without introducing a second compressed-air substance.
+
+`kubejs:compressed_air` is registered as a gaseous, non-placeable Forge fluid. Its bucket uses Forge's dynamic fluid-container model with `flip_gas: true`, so compressed air is represented by the standard upside-down gas bucket rather than an ordinary liquid bucket.
 
 ## Air separation
 
@@ -115,13 +121,13 @@ Electrolytic Core / Separator
         ↓
 Water → H2 + O2
         │
-        ├────────────────────────┐
-        │                        │
-Atmosphere → compressed air → N2 + O2
-                                 │
-                   N2 + H2 + catalyst
-                                 ↓
-                              Ammonia
+        ├────────────────────────────┐
+        │                            │
+Atmosphere → mechanical compression → compressed air → N2 + O2
+                                             │
+                               N2 + H2 + catalyst
+                                             ↓
+                                          Ammonia
 ```
 
 This is the first production chain in Matterworks where mechanical engineering, electrical engineering, carbon materials, fluid handling and chemistry are all required by one downstream product.
