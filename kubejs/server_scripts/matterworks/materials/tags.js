@@ -101,7 +101,6 @@ const matterworksExactFluidEquivalents = [
     'neon',
     'chlorine',
     'argon',
-    'radon',
     'carbon_dioxide',
     'carbon_monoxide',
     'ammonia',
@@ -125,7 +124,6 @@ const matterworksGaseousFluidEquivalents = [
     'neon',
     'chlorine',
     'argon',
-    'radon',
     'carbon_dioxide',
     'carbon_monoxide',
     'ammonia',
@@ -163,8 +161,9 @@ ServerEvents.tags('fluid', event => {
      * those tags as process interfaces, so add only verified same-substance
      * ordinary fluids here.
      *
-     * Do not put isotope, cryogenic, irradiated or solution-state fluids in
-     * this table. Phase/composition is progression-relevant in Matterworks.
+     * Do not put radioactive parent elements, isotopes, cryogenic,
+     * irradiated or solution-state fluids in this table. Phase/composition
+     * and nuclear state are progression-relevant in Matterworks.
      */
     matterworksExactFluidEquivalents.forEach(name => {
         event.add(`forge:${name}`, `chemlib:${name}_fluid`)
@@ -197,6 +196,6 @@ ServerEvents.tags('fluid', event => {
     event.add('forge:gases/ethylene', 'mekanism:ethene')
 
     console.info(
-        `[Matterworks] Chemistry fluid tags registered: ${matterworksExactFluidEquivalents.length} exact substances + ethene/ethylene alias; ChemLib water-tag pollution removed`
+        `[Matterworks] Chemistry fluid tags registered: ${matterworksExactFluidEquivalents.length} ordinary substances + ethene/ethylene alias; ChemLib water-tag pollution removed`
     )
 })
