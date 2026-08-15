@@ -154,8 +154,13 @@ hash = "882da059a6d7439b9cdf746813c61ce1e8e73c00a88e4e0cbe4412d4c312702a"
 metafile = true
 
 [[files]]
+file = "mods/compressedcreativity.pw.toml"
+hash = "d24b5867d8e0709118d2dab1507369498d1337dff7f56f2370e53fe03fa3db7f"
+metafile = true
+
+[[files]]
 file = "mods/create.pw.toml"
-hash = "9d7971a7af2ff4a96a0e5aede76f9cf8dc978da601e2754f79d6ec8631125bb9"
+hash = "fb5c251cf4997fa65ca043bab7c9ecbd02e108031584a3e26276b77d212de23c"
 metafile = true
 
 [[files]]
@@ -216,6 +221,11 @@ metafile = true
 [[files]]
 file = "mods/nuclearcraft-neoteric.pw.toml"
 hash = "497dfafe63cf92a67f1f0a0902048596e71fb202c62bf6d642c35869f598b6c4"
+metafile = true
+
+[[files]]
+file = "mods/pneumaticcraft-repressurized.pw.toml"
+hash = "905c406c53e9a9fc32f62833389282f9ccb1060d242385cc9e796a2aa4f24c67"
 metafile = true
 
 [[files]]
