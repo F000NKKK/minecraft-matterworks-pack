@@ -28,3 +28,11 @@ StartupEvents.registry('item', event => {
     )
         .displayName('Incomplete Electromagnetic Coil')
 })
+
+StartupEvents.registry('item', event => {
+    event.create('coke')
+        .displayName('Coke')
+
+    event.create('graphite')
+        .displayName('Graphite')
+})
