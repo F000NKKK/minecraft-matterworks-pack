@@ -5,14 +5,6 @@ file = "kubejs/README.md"
 hash = "c4bcb33fb1b27641f55c01f275c08c91af0394490e1b684f6514289b9e6cd947"
 
 [[files]]
-file = "kubejs/assets/kubejs/models/item/accelerator_calibration_target.json"
-hash = "29f4251480d201c923ab70cc2b0ff8ab184cca9170b4c3ec39c0acf92f9b56d5"
-
-[[files]]
-file = "kubejs/assets/kubejs/models/item/activated_calibration_target.json"
-hash = "e1abf9e494bfc39030d5057d2a2c2ef769f9044cd52f2abb03bd282a8b5fb9f3"
-
-[[files]]
 file = "kubejs/assets/kubejs/models/item/molecular_sieve_charge.json"
 hash = "6c4808c5e3262c9c3e368cf1b67e017b54d54a629f046b48509d21ad6c9cb557"
 
@@ -98,7 +90,7 @@ hash = "22d75823d3fb12fba6e99fb09cf16fb6ed3f3632e5aec638d088d0b9bd0f5eb1"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/particle.js"
-hash = "ee32b3c9433ba54332b3a9a3c5af700c71417a458bd1e0dc7db4ae6c3651b875"
+hash = "2ee93bc31ebefe4a2cba9f633c973e76518e608aabd975886267e26bfe2ea868"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/pressure.js"
@@ -114,7 +106,7 @@ hash = "c5d6d6b013eb2abaa717b983f002741d0c7fe38d3ef303f6db5748349b5ce369"
 
 [[files]]
 file = "kubejs/startup_scripts/matterworks/items.js"
-hash = "7a135d4d356750a4c4af07a1552652bc254e4adae9933c76e561bc35fb98b0ae"
+hash = "a69e4e619afc13438131a6f7b1f526f8bd0fb24dea9028f1baecd324c21ce14d"
 
 [[files]]
 file = "mods/advanced-peripherals.pw.toml"
