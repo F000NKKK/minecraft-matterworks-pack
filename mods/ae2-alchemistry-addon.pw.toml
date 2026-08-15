@@ -1,0 +1,13 @@
+name = "AE2 Alchemistry Addon"
+filename = "ae2alchemistryaddon-1.20.1-0.0.2.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "98faed2fb638b5f36350dfb0efc3aec3acb12ad3"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 5530184
+project-id = 1061632

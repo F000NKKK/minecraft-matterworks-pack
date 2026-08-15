@@ -1,0 +1,19 @@
+# Development
+/.git/
+/.venv/
+/.texture-backup/
+/tools/
+/docs/
+
+# Repository files
+/.gitignore
+/.gitattributes
+/README.md
+
+# Build artifacts
+/*.mrpack
+/*.zip
+
+# IDE
+/.idea/
+/.vscode/
