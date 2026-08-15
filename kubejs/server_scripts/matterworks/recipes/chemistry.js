@@ -227,3 +227,59 @@ ServerEvents.recipes(event => {
         '[Matterworks] Chemistry compatibility registered: NuclearCraft/Mekanism fluids -> ChemLib chemical units'
     )
 })
+
+ServerEvents.recipes(event => {
+    /*
+     * ---------------------------------------------------------
+     * Alchemistry transmutation boundary
+     * ---------------------------------------------------------
+     *
+     * Stock Alchemistry generates Fusion for essentially every valid pair of
+     * atomic numbers and Fission across the periodic table. Once NuclearCraft
+     * pure-element forms are connected through Forge tags, leaving the stock
+     * reactor controllers cheap would let atomic-number arithmetic bypass the
+     * accelerator/nuclear progression entirely (for example Ne + Pb -> U).
+     *
+     * Keep Alchemistry's transmutation graph, but make both reactor types a
+     * post-ring-accelerator technology. The real NuclearCraft ring controller
+     * is consumed as the field/RF-control subsystem; no artificial unlock
+     * token is introduced.
+     */
+    event.remove({ output: 'alchemistry:fission_chamber_controller' })
+    event.shaped(
+        'alchemistry:fission_chamber_controller',
+        [
+            'ECE',
+            'GAG',
+            'EDE'
+        ],
+        {
+            E: 'kubejs:electromechanical_control_unit',
+            C: 'alchemistry:reactor_casing',
+            G: 'minecraft:glass',
+            A: 'nuclearcraft:ring_accelerator_controller',
+            D: 'minecraft:glowstone_dust'
+        }
+    ).id('matterworks:chemistry/transmutation/fission_chamber_controller')
+
+    event.remove({ output: 'alchemistry:fusion_chamber_controller' })
+    event.shaped(
+        'alchemistry:fusion_chamber_controller',
+        [
+            'ECE',
+            'GAG',
+            'ENE'
+        ],
+        {
+            E: 'kubejs:electromechanical_control_unit',
+            C: 'alchemistry:reactor_casing',
+            G: 'minecraft:glass',
+            A: 'nuclearcraft:ring_accelerator_controller',
+            N: 'minecraft:nether_star'
+        }
+    ).id('matterworks:chemistry/transmutation/fusion_chamber_controller')
+
+    console.info(
+        '[Matterworks] Alchemistry Fusion/Fission gated behind NuclearCraft ring-accelerator control hardware'
+    )
+})
