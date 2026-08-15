@@ -73,6 +73,14 @@ file = "kubejs/server_scripts/matterworks/recipes/nitrogen.js"
 hash = "22d75823d3fb12fba6e99fb09cf16fb6ed3f3632e5aec638d088d0b9bd0f5eb1"
 
 [[files]]
+file = "kubejs/server_scripts/matterworks/recipes/particle.js"
+hash = "c4ea29f4b7055282c9049d57a38661ba7f6782c47ab6b1ef75300fbc094cd5bd"
+
+[[files]]
+file = "kubejs/server_scripts/matterworks/recipes/pressure.js"
+hash = "b708966004f724968753029bfa55a797f77d9574a6167a3cb5dd47f1e12a6555"
+
+[[files]]
 file = "kubejs/startup_scripts/matterworks/bootstrap.js"
 hash = "575b75c4332bb3866f8b1332b8744eb4f99adf5468510bf2f52fde8ad40f8214"
 
