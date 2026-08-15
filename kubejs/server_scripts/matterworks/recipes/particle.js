@@ -105,7 +105,31 @@ ServerEvents.recipes(event => {
     })
         .id('matterworks:particle/proton_beam_calibration')
 
+    /*
+     * Ring accelerator progression.
+     *
+     * A toroidal accelerator is not required for the first calibration run.
+     * Its controller therefore becomes the reward boundary for proving that
+     * the player has already operated a stable linear beamline successfully.
+     */
+    event.remove({ output: 'nuclearcraft:toroidal_accelerator_controller' })
+    event.shaped(
+        'nuclearcraft:toroidal_accelerator_controller',
+        [
+            'ACA',
+            'RER',
+            'ACA'
+        ],
+        {
+            A: 'nuclearcraft:accelerator_casing',
+            C: 'kubejs:activated_calibration_target',
+            R: 'nuclearcraft:basic_rf_amplifier',
+            E: 'kubejs:electromechanical_control_unit'
+        }
+    )
+        .id('matterworks:particle/toroidal_accelerator_controller')
+
     console.info(
-        '[Matterworks] Particle progression registered: accelerator gated and first beam-calibration experiment installed'
+        '[Matterworks] Particle progression registered: linear calibration -> toroidal accelerator'
     )
 })
