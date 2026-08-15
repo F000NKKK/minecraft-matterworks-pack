@@ -115,3 +115,115 @@ ServerEvents.recipes(event => {
         '[Matterworks] Electrolysis foundation registered: graphite cell -> H2/O2; brine sodium shortcut disabled'
     )
 })
+
+const matterworksNuclearCraftAtomizerFluids = [
+    'hydrogen',
+    'helium',
+    'nitrogen',
+    'oxygen',
+    'fluorine',
+    'neon',
+    'chlorine',
+    'argon',
+    'radon',
+    'carbon_dioxide',
+    'carbon_monoxide',
+    'ammonia',
+    'nitric_oxide',
+    'nitrogen_dioxide',
+    'sulfur_dioxide',
+    'sulfur_trioxide',
+    'ethanol',
+    'mercury',
+    'hydrochloric_acid',
+    'nitric_acid',
+    'sulfuric_acid'
+]
+
+const matterworksMekanismAtomizerFluids = [
+    'hydrogen',
+    'oxygen',
+    'chlorine',
+    'sulfur_dioxide',
+    'sulfur_trioxide',
+    'sulfuric_acid'
+]
+
+ServerEvents.recipes(event => {
+    /*
+     * Alchemistry's Atomizer consumes a concrete fluid ID rather than a
+     * fluid tag. Stock recipes therefore accept ChemLib fluids only.
+     *
+     * Alchemistry generates every liquid/gas chemical conversion with the
+     * same interface: 500 mB fluid -> 8 ChemLib chemical units. Mirror that
+     * interface for verified equivalent NuclearCraft process fluids.
+     */
+    matterworksNuclearCraftAtomizerFluids.forEach(name => {
+        event.custom({
+            type: 'alchemistry:atomizer',
+            group: 'matterworks:atomizer_compat',
+            input: {
+                amount: 500,
+                fluid: `nuclearcraft:${name}`
+            },
+            result: {
+                count: 8,
+                item: `chemlib:${name}`
+            }
+        }).id(`matterworks:chemistry/compat/atomizer/nuclearcraft_${name}`)
+    })
+
+    event.custom({
+        type: 'alchemistry:atomizer',
+        group: 'matterworks:atomizer_compat',
+        input: {
+            amount: 500,
+            fluid: 'nuclearcraft:ethene'
+        },
+        result: {
+            count: 8,
+            item: 'chemlib:ethylene'
+        }
+    }).id('matterworks:chemistry/compat/atomizer/nuclearcraft_ethene')
+
+    /*
+     * Mekanism's stock Rotary Condensentrator already uses forge:<name>
+     * fluid tags for its fluid -> gas direction. The tags registered by
+     * materials/tags.js therefore let ChemLib and NuclearCraft fluids enter
+     * Mekanism without duplicate rotary recipes.
+     *
+     * Gas -> fluid produces Mekanism's concrete fluid, so add the reverse
+     * Atomizer edge here for the overlapping ordinary chemicals.
+     */
+    matterworksMekanismAtomizerFluids.forEach(name => {
+        event.custom({
+            type: 'alchemistry:atomizer',
+            group: 'matterworks:atomizer_compat',
+            input: {
+                amount: 500,
+                fluid: `mekanism:${name}`
+            },
+            result: {
+                count: 8,
+                item: `chemlib:${name}`
+            }
+        }).id(`matterworks:chemistry/compat/atomizer/mekanism_${name}`)
+    })
+
+    event.custom({
+        type: 'alchemistry:atomizer',
+        group: 'matterworks:atomizer_compat',
+        input: {
+            amount: 500,
+            fluid: 'mekanism:ethene'
+        },
+        result: {
+            count: 8,
+            item: 'chemlib:ethylene'
+        }
+    }).id('matterworks:chemistry/compat/atomizer/mekanism_ethene')
+
+    console.info(
+        '[Matterworks] Chemistry compatibility registered: NuclearCraft/Mekanism fluids -> ChemLib chemical units'
+    )
+})
