@@ -19,14 +19,18 @@ ServerEvents.tags('item', event => {
      * Wheat flour
      *
      * NuclearCraft's Manufactory produces nuclearcraft:flour from wheat seeds.
-     * Create publishes its wheat flour through the common Forge food-material
-     * boundaries forge:flour and forge:flour/wheat.
+     * Create publishes create:wheat_flour through forge:flour and
+     * forge:flour/wheat. PneumaticCraft publishes pneumaticcraft:wheat_flour
+     * through the older forge:dusts/flour convention.
      *
-     * Add only the missing tag membership. Do not create a 1:1 inventory
-     * conversion: each mod's milling/manufactory yield remains authoritative.
+     * Bridge the tag namespaces so all three providers interoperate without
+     * replacing their concrete items or changing any milling/manufactory yield.
      */
     event.add('forge:flour', 'nuclearcraft:flour')
+    event.add('forge:flour', 'pneumaticcraft:wheat_flour')
     event.add('forge:flour/wheat', 'nuclearcraft:flour')
+    event.add('forge:flour/wheat', 'pneumaticcraft:wheat_flour')
+    event.add('forge:dusts/flour', '#forge:flour/wheat')
 
     // Matterworks role tag for recipes that specifically require wheat flour
     // while remaining independent of the concrete provider item.
@@ -35,5 +39,5 @@ ServerEvents.tags('item', event => {
         '#forge:flour/wheat'
     )
 
-    console.info('[Matterworks] Material-matrix compatibility registered: NuclearCraft wheat flour -> Forge flour tags')
+    console.info('[Matterworks] Material-matrix compatibility registered: Create/NuclearCraft/PneumaticCraft wheat flour tags unified')
 })
