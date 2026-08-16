@@ -59,6 +59,32 @@ ServerEvents.tags('item', event => {
         '#matterworks:materials/electrodes/graphite'
     )
 
+    /*
+     * Cross-mod naming aliases
+     *
+     * NuclearCraft uses both aluminum/aluminium spellings in generated
+     * recipe tags while ChemLib uses the US spelling. Alias the complete US
+     * Forge tags rather than individual ChemLib items so every present/future
+     * provider participates consistently.
+     */
+    event.add('forge:ingots/aluminium', '#forge:ingots/aluminum')
+    event.add('forge:nuggets/aluminium', '#forge:nuggets/aluminum')
+    event.add('forge:dusts/aluminium', '#forge:dusts/aluminum')
+    event.add('forge:plates/aluminium', '#forge:plates/aluminum')
+    event.add('forge:storage_blocks/aluminium', '#forge:storage_blocks/aluminum')
+
+    /*
+     * Manganese oxide identity correction
+     *
+     * ChemLib calls MnO2 "manganese_oxide", while NuclearCraft distinguishes
+     * manganese_oxide (MnO) from manganese_dioxide (MnO2) and oxidizes the
+     * former into the latter. ChemLib therefore contributes its dust to the
+     * NuclearCraft dioxide tag, never to the monoxide tag generated from its
+     * registry name.
+     */
+    event.remove('forge:dusts/manganese_oxide', 'chemlib:manganese_oxide_dust')
+    event.add('forge:dusts/manganese_dioxide', 'chemlib:manganese_oxide_dust')
+
     // Finished electrical components. These tags are intentionally
     // capability-oriented: later tiers can add alternative components
     // without forcing every consuming recipe to know their concrete IDs.
@@ -78,4 +104,112 @@ ServerEvents.tags('item', event => {
     )
 
     console.info('[Matterworks] Material role tags registered')
+})
+
+const matterworksExactFluidEquivalents = [
+    'hydrogen',
+    'helium',
+    'nitrogen',
+    'oxygen',
+    'fluorine',
+    'neon',
+    'chlorine',
+    'argon',
+    'carbon_dioxide',
+    'carbon_monoxide',
+    'ammonia',
+    'nitric_oxide',
+    'nitrogen_dioxide',
+    'sulfur_dioxide',
+    'sulfur_trioxide',
+    'ethanol',
+    'mercury',
+    'hydrochloric_acid',
+    'nitric_acid',
+    'sulfuric_acid'
+]
+
+const matterworksGaseousFluidEquivalents = [
+    'hydrogen',
+    'helium',
+    'nitrogen',
+    'oxygen',
+    'fluorine',
+    'neon',
+    'chlorine',
+    'argon',
+    'carbon_dioxide',
+    'carbon_monoxide',
+    'ammonia',
+    'nitric_oxide',
+    'nitrogen_dioxide',
+    'sulfur_dioxide',
+    'sulfur_trioxide'
+]
+
+const matterworksMekanismGasFluidEquivalents = [
+    'hydrogen',
+    'oxygen',
+    'chlorine',
+    'sulfur_dioxide',
+    'sulfur_trioxide'
+]
+
+ServerEvents.tags('fluid', event => {
+    /*
+     * ChemLib 1.20.1 adds every registered chemical fluid — including acids,
+     * solvents and gases — to minecraft:water. That makes unrelated chemicals
+     * eligible for any recipe that consumes the vanilla water tag.
+     *
+     * Remove the entire ChemLib namespace from minecraft:water. ChemLib/
+     * Alchemistry special-case actual H2O to minecraft:water and do not
+     * register a chemlib:water_fluid, so no real water representation is lost.
+     *
+     * KubeJS tag filters use @namespace for registry-wide namespace matching.
+     */
+    event.remove('minecraft:water', '@chemlib')
+
+    /*
+     * ChemLib registers concrete chemical fluids but does not publish
+     * per-substance forge:<name> fluid tags. NuclearCraft and Mekanism use
+     * those tags as process interfaces, so add only verified same-substance
+     * ordinary fluids here.
+     *
+     * Do not put radioactive parent elements, isotopes, cryogenic,
+     * irradiated or solution-state fluids in this table. Phase/composition
+     * and nuclear state are progression-relevant in Matterworks.
+     */
+    matterworksExactFluidEquivalents.forEach(name => {
+        event.add(`forge:${name}`, `chemlib:${name}_fluid`)
+    })
+
+    /*
+     * C2H4 naming: NuclearCraft/Mekanism use "ethene"; ChemLib uses
+     * "ethylene". Both Forge spellings deliberately resolve the same
+     * ordinary process fluid.
+     */
+    event.add('forge:ethene', 'chemlib:ethylene_fluid')
+    event.add('forge:ethylene', 'chemlib:ethylene_fluid')
+    event.add('forge:ethylene', 'nuclearcraft:ethene')
+    event.add('forge:ethylene', 'mekanism:ethene')
+
+    matterworksGaseousFluidEquivalents.forEach(name => {
+        event.add(`forge:gases/${name}`, `chemlib:${name}_fluid`)
+        event.add(`forge:gases/${name}`, `nuclearcraft:${name}`)
+    })
+
+    matterworksMekanismGasFluidEquivalents.forEach(name => {
+        event.add(`forge:gases/${name}`, `mekanism:${name}`)
+    })
+
+    event.add('forge:gases/ethene', 'chemlib:ethylene_fluid')
+    event.add('forge:gases/ethene', 'nuclearcraft:ethene')
+    event.add('forge:gases/ethene', 'mekanism:ethene')
+    event.add('forge:gases/ethylene', 'chemlib:ethylene_fluid')
+    event.add('forge:gases/ethylene', 'nuclearcraft:ethene')
+    event.add('forge:gases/ethylene', 'mekanism:ethene')
+
+    console.info(
+        `[Matterworks] Chemistry fluid tags registered: ${matterworksExactFluidEquivalents.length} ordinary substances + ethene/ethylene alias; ChemLib water-tag pollution removed`
+    )
 })

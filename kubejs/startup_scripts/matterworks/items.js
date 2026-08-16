@@ -36,3 +36,13 @@ StartupEvents.registry('item', event => {
     event.create('graphite')
         .displayName('Graphite')
 })
+
+StartupEvents.registry('item', event => {
+    event.create('molecular_sieve_charge')
+        .displayName('Molecular Sieve Charge')
+        .maxStackSize(64)
+
+    event.create('particle_focusing_coil')
+        .displayName('Particle Focusing Coil')
+        .maxStackSize(64)
+})

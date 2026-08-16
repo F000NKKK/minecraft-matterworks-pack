@@ -5,6 +5,14 @@ file = "kubejs/README.md"
 hash = "c4bcb33fb1b27641f55c01f275c08c91af0394490e1b684f6514289b9e6cd947"
 
 [[files]]
+file = "kubejs/assets/kubejs/models/item/molecular_sieve_charge.json"
+hash = "6c4808c5e3262c9c3e368cf1b67e017b54d54a629f046b48509d21ad6c9cb557"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/particle_focusing_coil.json"
+hash = "dd63c58cbddf938ae92c6d9ca9c41e0078ae3aa5b95d3964298bf1bc80cb345b"
+
+[[files]]
 file = "kubejs/assets/kubejs/textures/item/coke.png"
 hash = "cb15d1f0c38b1a534189cf483a66a554547a01abd25c2b58afc58356ced18b01"
 
@@ -37,12 +45,60 @@ file = "kubejs/assets/kubejs/textures/item/insulated_copper_wire.png"
 hash = "0f898eb2e8cd4b31da238da738f7671f0c4ff8b6c697e66d7c2a02655ce6c184"
 
 [[files]]
+file = "kubejs/assets/kubejs/textures/item/molecular_sieve_charge.png"
+hash = "b94907d6e9af397c1403253bce39837d7f8e900490cd056ec08197e9e6900312"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/item/particle_focusing_coil.png"
+hash = "89af859682989111e3d80da125532d273ea837c3b77eabef46a7978cf8768397"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/gems/silicon.json"
+hash = "0c1140cfbf1335f2f4ffb06e18213bc3ddf66ff22f1c9ddfd544a8fa0b885623"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/boron.json"
+hash = "6488a4aa681af21297837236a1eaa36fa8a0fc4a666b9ea71b3081a957763def"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/cobalt.json"
+hash = "f2b2c6c47f66e665599900046e9a7eb016ff2a044807351f0c0c3a92f61dd0b5"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/lead.json"
+hash = "3e437e34103521b4f699eebf9c264ab6066d70e2e1dccd0be1023e2c6f75a45b"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/lithium.json"
+hash = "3bdd2996b18228e3d0031ba1c6808f17b2b36e7c4cdc6e9b89b57c1b4ab2f81e"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/magnesium.json"
+hash = "39ac4d4d2a24dd6b566084f84468c18ed78c2d8e5f0a07f66afe0b5428e5d9e1"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/platinum.json"
+hash = "751d32b261e99162498c700d54507a49746d7b30ed8e0a2ba67cb3c6f4435efa"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/silver.json"
+hash = "94403ec4b3b222ce0ee54e15ef65b84f36f43be71c723c049b5a842258495a56"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/tin.json"
+hash = "01a20564387a7e73e02c92cb69c594a6509f1bf6a8ea28bf1a6ec317f444e26c"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/zinc.json"
+hash = "612e3de5fb78797d71dd5d5b4fb224b951c2b5a16b86e0bc0a0c3f647bdd66a4"
+
+[[files]]
 file = "kubejs/server_scripts/matterworks/bootstrap.js"
 hash = "d873d6dad2d89a95a24ce638317adf44640bd237a893ef60983571d03088cae8"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/materials/tags.js"
-hash = "2ae7532d610296f645a75bddcd77ed3d1d091c214f8f758eb5bf199409faad6d"
+hash = "9dbb51bd9f04daa1cda87a5da1843ca18f68fddc5746a288ef351f0947b8080d"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/electrical.js"
@@ -50,7 +106,7 @@ hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/atmosphere.js"
-hash = "f3215fe6b397f844df622e2c218d1fa0bc126013763f85b8bb3ed6b80191b985"
+hash = "c98dca6aee6adbf907f89fb019edd4a415e8c4ec5d33e731fca15e60478aa0de"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/carbon.js"
@@ -58,11 +114,15 @@ hash = "ca6259ff70c647703179695323eb0d342ddea1d3c1dd69418c46d745089b6940"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/chemistry.js"
-hash = "9adeeb2623c89d5b491d3770b5bf05a128515d73b593e2af8884bf91fb654ac8"
+hash = "2640ab41446dc4156bc89484ae31c33511bccc6dc4acc5c6cbd2c3a5d98bf49a"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/electrical.js"
 hash = "4287e476a834b9efee24c1efda7253224e1c8d71061b85cd486298efa6dbed72"
+
+[[files]]
+file = "kubejs/server_scripts/matterworks/recipes/material_unification.js"
+hash = "2946662d835a3a39a5c2937d9afaa2cc5970300d6dc0e0334c2a07384d36fd9c"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/mekanism.js"
@@ -73,16 +133,28 @@ file = "kubejs/server_scripts/matterworks/recipes/nitrogen.js"
 hash = "22d75823d3fb12fba6e99fb09cf16fb6ed3f3632e5aec638d088d0b9bd0f5eb1"
 
 [[files]]
+file = "kubejs/server_scripts/matterworks/recipes/particle.js"
+hash = "d3d95bd66886facd61ddf99beb7ae5d9231bf443c8642782d97ac06620c7d3f4"
+
+[[files]]
+file = "kubejs/server_scripts/matterworks/recipes/pressure.js"
+hash = "ad6d8c1bd15e7d049b5c0ab178f949eb2fe5b412173ccdc2b978fdba917085d1"
+
+[[files]]
+file = "kubejs/server_scripts/matterworks/recipes/solid_compat.js"
+hash = "0676a53569592d23eb4c5e7cb96979dffa1adbd2c65c8bbb2af0edeadbdb1763"
+
+[[files]]
 file = "kubejs/startup_scripts/matterworks/bootstrap.js"
 hash = "575b75c4332bb3866f8b1332b8744eb4f99adf5468510bf2f52fde8ad40f8214"
 
 [[files]]
 file = "kubejs/startup_scripts/matterworks/fluids.js"
-hash = "9c14b8f0ddce1fd313a9d2bd35cde180d38204215ba2d01fb31ea2b82f40a78c"
+hash = "c5d6d6b013eb2abaa717b983f002741d0c7fe38d3ef303f6db5748349b5ce369"
 
 [[files]]
 file = "kubejs/startup_scripts/matterworks/items.js"
-hash = "d5ee58021e74afe07bd77ce4bb86d702ca30cd5a12b11bcdab7e595d68937a20"
+hash = "a69e4e619afc13438131a6f7b1f526f8bd0fb24dea9028f1baecd324c21ce14d"
 
 [[files]]
 file = "mods/advanced-peripherals.pw.toml"
@@ -130,8 +202,13 @@ hash = "882da059a6d7439b9cdf746813c61ce1e8e73c00a88e4e0cbe4412d4c312702a"
 metafile = true
 
 [[files]]
+file = "mods/compressedcreativity.pw.toml"
+hash = "d24b5867d8e0709118d2dab1507369498d1337dff7f56f2370e53fe03fa3db7f"
+metafile = true
+
+[[files]]
 file = "mods/create.pw.toml"
-hash = "9d7971a7af2ff4a96a0e5aede76f9cf8dc978da601e2754f79d6ec8631125bb9"
+hash = "fb5c251cf4997fa65ca043bab7c9ecbd02e108031584a3e26276b77d212de23c"
 metafile = true
 
 [[files]]
@@ -187,6 +264,16 @@ metafile = true
 [[files]]
 file = "mods/modernfix.pw.toml"
 hash = "a3912a137d65e863b454a129e3ee25e89abe6a2475fc6e025e29e1adb060ccd7"
+metafile = true
+
+[[files]]
+file = "mods/nuclearcraft-neoteric.pw.toml"
+hash = "497dfafe63cf92a67f1f0a0902048596e71fb202c62bf6d642c35869f598b6c4"
+metafile = true
+
+[[files]]
+file = "mods/pneumaticcraft-repressurized.pw.toml"
+hash = "905c406c53e9a9fc32f62833389282f9ccb1060d242385cc9e796a2aa4f24c67"
 metafile = true
 
 [[files]]

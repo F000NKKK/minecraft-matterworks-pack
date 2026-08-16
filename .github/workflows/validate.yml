@@ -1,0 +1,25 @@
+name: Validate Matterworks pack
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Static pack validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate Packwiz index and KubeJS invariants
+        run: python3 .github/scripts/validate-pack.py

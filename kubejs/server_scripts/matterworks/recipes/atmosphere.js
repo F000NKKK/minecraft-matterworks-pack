@@ -1,66 +1,66 @@
 console.info('[Matterworks] Loading atmospheric processing recipes')
 
 ServerEvents.recipes(event => {
-    const compressedAir = 'kubejs:compressed_air'
+    if (!Platform.isLoaded('pneumaticcraft')) {
+        console.warn('[Matterworks] Atmospheric processing skipped: PneumaticCraft not loaded')
+        return
+    }
+
     const nitrogen = 'chemlib:nitrogen_fluid'
-    const oxygen = 'chemlib:oxygen_fluid'
 
     /*
-     * ---------------------------------------------------------
-     * Atmospheric capture / compression
-     * ---------------------------------------------------------
+     * Consumable pressure-swing adsorption abstraction.
      *
-     * The atmosphere itself is intentionally renewable. The engineering
-     * cost is the continuously powered machinery required to capture and
-     * compress it, not a finite "air ore" item.
+     * The pressure network itself is the atmosphere feed. No bottled or
+     * virtual "compressed air" fluid exists.
      *
-     * Create's filter acts as the reusable intake/filter medium. It is
-     * consumed by the recipe and returned unchanged, making it a process
-     * component rather than a feedstock.
+     * One molecular-sieve charge represents the adsorbent wear, drying media
+     * and replacement material consumed by a long automated production run.
+     * It is deliberately stackable and disposable: the player does not need
+     * to stop the plant to refill or repair individual cartridges.
+     *
+     * The nitrogen generator recovers the nitrogen fraction. Oxygen, argon
+     * and trace gases are vented as the oxygen-rich waste stream. Oxygen for
+     * chemistry continues to come from the established water-electrolysis
+     * route until a later cryogenic-separation tier is introduced.
      */
 
-    event.recipes.create.mixing(
+    event.shaped(
+        Item.of('kubejs:molecular_sieve_charge', 4),
         [
-            Fluid.of(compressedAir, 1000),
-            'create:filter'
+            'QFQ',
+            'ICI',
+            'QFQ'
         ],
-        [
-            'create:filter'
-        ]
+        {
+            Q: '#forge:gems/quartz',
+            F: 'minecraft:paper',
+            I: '#forge:ingots/compressed_iron',
+            C: 'minecraft:charcoal'
+        }
     )
-        .id('matterworks:chemistry/atmosphere/capture_compressed_air')
+        .id('matterworks:chemistry/atmosphere/molecular_sieve_charge')
 
-    /*
-     * ---------------------------------------------------------
-     * Pressure-swing adsorption abstraction
-     * ---------------------------------------------------------
-     *
-     * 1000 mB compressed air is separated approximately according to dry
-     * atmospheric composition:
-     *
-     *   ~78 % nitrogen
-     *   ~21 % oxygen
-     *   ~ 1 % argon / trace gases (not recovered in this stage)
-     *
-     * Quartz currently represents a reusable silica-rich adsorption bed.
-     * Matterworks Core will eventually replace this recipe abstraction with
-     * pressure, bed saturation, cycle timing and purity constraints.
-     */
-
-    event.recipes.create.mixing(
-        [
-            Fluid.of(nitrogen, 780),
-            Fluid.of(oxygen, 210),
-            'minecraft:quartz'
-        ],
-        [
-            Fluid.of(compressedAir, 1000),
-            'minecraft:quartz'
-        ]
-    )
-        .id('matterworks:chemistry/atmosphere/air_separation')
+    event.custom({
+        type: 'pneumaticcraft:thermo_plant',
+        item_input: {
+            item: 'kubejs:molecular_sieve_charge'
+        },
+        fluid_output: {
+            amount: 780,
+            fluid: nitrogen
+        },
+        pressure: 4.0,
+        temperature: {
+            max_temp: 330
+        },
+        air_use_multiplier: 5.0,
+        speed: 0.5,
+        exothermic: false
+    })
+        .id('matterworks:chemistry/atmosphere/pressure_swing_nitrogen')
 
     console.info(
-        '[Matterworks] Atmospheric processing registered: air -> compressed air -> N2 + O2'
+        '[Matterworks] Atmospheric processing registered: pneumatic PSA -> nitrogen with consumable molecular-sieve media'
     )
 })
