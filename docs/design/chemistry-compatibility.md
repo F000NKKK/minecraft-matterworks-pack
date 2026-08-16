@@ -152,11 +152,25 @@ These are still subject to state policy. `hydrogen_chloride` is not aliased to a
 
 ## Solid material compatibility
 
-Forge tags are the canonical input boundary for ordinary solid materials, but tags alone are not sufficient for every Alchemistry serializer.
+Forge tags are the canonical machine boundary for ordinary solid materials. Matterworks does not replace a stock Alchemistry Dissolver recipe when the stock recipe already consumes the correct Forge tag.
 
-NuclearCraft exposes many pure elements as its own ore, raw-material, dust, ingot, nugget, plate, storage-block or gem forms. Matterworks owns explicit Dissolver bridges for the verified overlap with ChemLib so the concrete provider does not matter.
+For NuclearCraft pure-element forms, compatibility is split into three mechanisms:
 
-The stock Alchemistry bulk-equivalent yields are preserved:
+1. **Stock Alchemistry Dissolver recipes** remain authoritative for ore, dust, ingot, nugget, plate and storage-block forms that already consume Forge tags.
+2. **Matterworks datapack recipes** fill only verified gaps in Alchemistry's generated table:
+   - `forge:raw_materials/boron`
+   - `forge:raw_materials/silver`
+   - `forge:raw_materials/lead`
+   - `forge:raw_materials/tin`
+   - `forge:raw_materials/zinc`
+   - `forge:raw_materials/magnesium`
+   - `forge:raw_materials/lithium`
+   - `forge:raw_materials/cobalt`
+   - `forge:raw_materials/platinum`
+   - `forge:gems/silicon`
+3. **One-way inventory canonicalization** converts duplicate NuclearCraft concrete bulk forms into the ChemLib-owned equivalent so JEI exposes an explicit normalization path without creating recipe loops.
+
+The stock-equivalent Dissolver yields are preserved:
 
 | Form | ChemLib element units |
 | --- | ---: |
@@ -169,35 +183,52 @@ The stock Alchemistry bulk-equivalent yields are preserved:
 | storage block | 144 |
 | gem | 16 |
 
-The current compatibility table covers 127 NuclearCraft pure-element form combinations. This includes forms that stock Alchemistry does not generate, notably NuclearCraft raw materials and `forge:gems/silicon`.
+Ores and raw materials are deliberately excluded from shapeless canonicalization. They must enter an ore-processing or Dissolver path rather than being collapsed directly into a finished bulk form.
+
+For elements where ChemLib owns the same manufactured form, NuclearCraft converts directly to that form. Where ChemLib only exposes a dust representation, one ingot/plate/gem-equivalent converts to one dust, nine nuggets convert to one dust, and one storage block converts to nine dusts. The direction is always NuclearCraft -> ChemLib.
 
 Matterworks also normalizes the `aluminum` / `aluminium` spelling boundary so both Forge spellings resolve ordinary aluminum forms.
 
-The pure-element table deliberately excludes:
+The solid compatibility table deliberately excludes:
 
-- uranium, thorium, polonium and radium parent-material forms;
+- uranium, thorium, polonium and radium parent-material forms from ordinary decomposition;
 - isotopes;
 - irradiated materials;
 - alloys;
-- compounds;
-- graphite and other progression-significant allotropes;
-- sulfur, whose stock Alchemistry Dissolver model has special probabilistic behavior.
+- NuclearCraft-only process compounds;
+- graphite and other progression-significant allotropes.
+
+Sulfur retains Alchemistry's stock special Dissolver behavior. Provider-side sulfur dust may canonicalize to the ChemLib concrete dust, but Matterworks does not replace its Dissolver serializer or probabilistic output model.
+
+### Mekanism and Create bulk canonicalization
+
+`material_unification.js` applies the same one-way rule to verified duplicate pure-material forms from other providers.
+
+Current explicit coverage includes:
+
+- Mekanism osmium, tin and lead dust/ingot/nugget/block forms;
+- Mekanism iron, copper, gold, lithium and sulfur dust forms;
+- Create zinc ingot/nugget/block;
+- Create copper, iron and gold sheet -> ChemLib plate;
+- nine Create copper nuggets -> one ChemLib copper dust.
+
+Ore, raw-material, Mekanism shard/crystal/clump/dirty-dust stages, Create crushed ores, alloys and engineered Create Crafts & Additions wire/rod/spool states remain outside inventory canonicalization.
 
 ### Shared compound dusts
 
-ChemLib and NuclearCraft independently register some ordinary compounds under the same Forge dust tag. However, Alchemistry's generated compound-dust Dissolver recipes consume concrete `chemlib:*_dust` item IDs instead of the Forge tag. A shared tag therefore does **not** by itself make the NuclearCraft dust valid Dissolver feedstock.
+ChemLib and NuclearCraft independently register several ordinary compound dusts. Alchemistry's generated compound-dust Dissolver recipes consume concrete `chemlib:*_dust` inputs rather than Forge tags, so a shared tag alone does not make the NuclearCraft item usable by the stock recipe.
 
-Matterworks replaces only the verified ordinary-overlap recipes with tag-driven equivalents while retaining Alchemistry's stock `1 dust -> 8 compound units` bulk model.
+Matterworks therefore does **not** replace the Alchemistry Dissolver serializer. Instead it provides a one-way NuclearCraft -> ChemLib dust canonicalization for the verified identity set, after which the original Alchemistry recipe remains the single decomposition authority.
 
-Current shared compound dust bridges are:
+Current shared compound canonicalizations are:
 
-- sodium hydroxide — `forge:dusts/sodium_hydroxide`;
-- potassium hydroxide — `forge:dusts/potassium_hydroxide`;
-- calcium sulfate — `forge:dusts/calcium_sulfate`;
-- barium nitrate — `forge:dusts/barium_nitrate`;
-- manganese dioxide — `forge:dusts/manganese_dioxide`, with the ChemLib naming correction described below.
+- `nuclearcraft:sodium_hydroxide_dust` -> `chemlib:sodium_hydroxide_dust`;
+- `nuclearcraft:potassium_hydroxide_dust` -> `chemlib:potassium_hydroxide_dust`;
+- `nuclearcraft:calcium_sulfate_dust` -> `chemlib:calcium_sulfate_dust`;
+- `nuclearcraft:barium_nitrate_dust` -> `chemlib:barium_nitrate_dust`;
+- `nuclearcraft:manganese_dioxide_dust` -> `chemlib:manganese_oxide_dust`.
 
-No shapeless inventory conversion recipes are added. The machine/tag boundary is the compatibility mechanism.
+These conversions are intentionally one-way and do not create alternate Dissolver outputs.
 
 ### Manganese oxide naming collision
 
@@ -211,9 +242,9 @@ Consequently:
 - NuclearCraft `manganese_dioxide` is the equivalent of ChemLib `manganese_oxide` (MnO2);
 - `chemlib:manganese_oxide_dust` is removed from `forge:dusts/manganese_oxide`;
 - `chemlib:manganese_oxide_dust` is added to `forge:dusts/manganese_dioxide`;
-- the Alchemistry ChemLib manganese-oxide dust Dissolver bridge consumes `forge:dusts/manganese_dioxide`.
+- only `nuclearcraft:manganese_dioxide_dust` canonicalizes to `chemlib:manganese_oxide_dust`.
 
-This prevents an already-oxidized ChemLib MnO2 dust from satisfying NuclearCraft recipes that specifically require MnO.
+The original Alchemistry ChemLib dust recipe then performs decomposition. This prevents an already-oxidized ChemLib MnO2 dust from satisfying NuclearCraft recipes that specifically require MnO.
 
 ### NuclearCraft-only process compounds
 
@@ -367,11 +398,14 @@ After a clean restart verify:
 - ethene/ethylene aliases do not create duplicate or cyclic machine recipes;
 - cryogenic fluids, isotopes, heavy water and irradiated fluids remain outside ordinary tags;
 - `hydrogen_chloride` is not treated as `hydrochloric_acid`;
-- NuclearCraft ordinary pure-element ores/raw materials/dusts/ingots/nuggets/plates/blocks covered by `solid_compat.js` dissolve to the stock-equivalent ChemLib element amount;
-- `nuclearcraft:silicon_gem` dissolves through `forge:gems/silicon`;
+- NuclearCraft ordinary ore/dust/ingot/nugget/plate/storage-block forms continue to use stock Alchemistry Forge-tag Dissolver recipes and preserve stock yields;
+- the nine Matterworks `forge:raw_materials/*` gap recipes dissolve to 16 matching ChemLib element units;
+- `nuclearcraft:silicon_gem` dissolves through the Matterworks `forge:gems/silicon` gap recipe to 16 `chemlib:silicon`;
+- one-way NuclearCraft bulk canonicalization is JEI-visible, does not accept ores/raw materials and has no ChemLib -> NuclearCraft reverse recipe;
+- Mekanism/Create canonicalization only covers verified ordinary finished forms and does not collapse ore-processing intermediates;
 - NuclearCraft osmium/platinum satisfy the Alchemistry reactor-casing recipe and NuclearCraft yttrium/tungsten satisfy the fission/fusion core recipes through Forge tags;
-- NuclearCraft sodium hydroxide, potassium hydroxide, calcium sulfate and barium nitrate dusts dissolve to 8 corresponding ChemLib compound units;
-- `nuclearcraft:manganese_dioxide_dust` dissolves to 8 `chemlib:manganese_oxide` (MnO2) units;
+- NuclearCraft sodium hydroxide, potassium hydroxide, calcium sulfate and barium nitrate dusts canonicalize to the matching ChemLib dust and then use the stock Alchemistry compound-dust Dissolver recipe;
+- `nuclearcraft:manganese_dioxide_dust` canonicalizes to `chemlib:manganese_oxide_dust` (MnO2) before stock Alchemistry decomposition;
 - `chemlib:manganese_oxide_dust` is absent from `forge:dusts/manganese_oxide` and present in `forge:dusts/manganese_dioxide`;
 - NuclearCraft manganese-oxide + oxygen -> manganese-dioxide remains a meaningful process and is not short-circuited by tag aliasing;
 - sulfur retains its stock special Alchemistry Dissolver behavior;
