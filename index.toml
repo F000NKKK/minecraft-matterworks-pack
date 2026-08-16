@@ -58,7 +58,7 @@ hash = "d873d6dad2d89a95a24ce638317adf44640bd237a893ef60983571d03088cae8"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/materials/tags.js"
-hash = "66c53d1e8f32c3f6e1dfaa957359344c0d5a78d56b0717b8802f1ed3e05becc7"
+hash = "9dbb51bd9f04daa1cda87a5da1843ca18f68fddc5746a288ef351f0947b8080d"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/electrical.js"
@@ -98,7 +98,7 @@ hash = "ad6d8c1bd15e7d049b5c0ab178f949eb2fe5b412173ccdc2b978fdba917085d1"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/solid_compat.js"
-hash = "a56447ee00d33cdaa83777c52cab1d68123692f93a491e6d7fb9c9c152301c53"
+hash = "befaf61a95fe9301935b42c8bef7186d663a05e9d550abd71322d60eba3329c4"
 
 [[files]]
 file = "kubejs/startup_scripts/matterworks/bootstrap.js"
