@@ -78,13 +78,69 @@ const matterworksNuclearElementForms = {
 }
 
 /*
+ * ChemLib registers plate + dust for every natural solid metal and additionally
+ * registers ingot/nugget/metal-block for metals that are not delegated to a
+ * vanilla item. Iron, copper and gold are the delegated exceptions.
+ *
+ * This list is deliberately explicit so adding a new NuclearCraft material can
+ * never silently fabricate a ChemLib registry id that does not exist.
+ */
+const matterworksChemLibMetalElements = [
+    'silver', 'lead', 'tin', 'zinc', 'magnesium', 'lithium', 'cobalt', 'platinum',
+    'calcium', 'chromium', 'erbium', 'hafnium', 'iridium', 'niobium', 'osmium',
+    'potassium', 'sodium', 'strontium', 'titanium', 'tungsten', 'yttrium',
+    'ytterbium', 'terbium', 'samarium', 'palladium', 'copper', 'iron', 'gold',
+    'zirconium', 'manganese', 'beryllium', 'aluminum', 'molybdenum', 'neodymium',
+    'barium', 'bismuth', 'thallium', 'gadolinium'
+]
+
+const matterworksChemLibDelegatedBaseMetals = ['iron', 'copper', 'gold']
+
+const matterworksNuclearItemSuffix = {
+    dusts: 'dust',
+    ingots: 'ingot',
+    nuggets: 'nugget',
+    plates: 'plate',
+    storage_blocks: 'block',
+    gems: 'gem'
+}
+
+function matterworksHasChemLibSameForm(element, form) {
+    if (form === 'dusts') {
+        return true
+    }
+
+    if (form === 'plates') {
+        return matterworksChemLibMetalElements.includes(element)
+    }
+
+    if (form === 'ingots' || form === 'nuggets' || form === 'storage_blocks') {
+        return matterworksChemLibMetalElements.includes(element)
+            && !matterworksChemLibDelegatedBaseMetals.includes(element)
+    }
+
+    return false
+}
+
+function matterworksChemLibSameFormItem(element, form) {
+    if (form === 'storage_blocks') {
+        return `chemlib:${element}_metal_block`
+    }
+
+    return `chemlib:${element}_${matterworksNuclearItemSuffix[form]}`
+}
+
+function matterworksNuclearFormItem(element, form) {
+    return `nuclearcraft:${element}_${matterworksNuclearItemSuffix[form]}`
+}
+
+/*
  * Ordinary compounds which are independently registered by ChemLib and
  * NuclearCraft but represent the same bulk chemical dust.
  *
  * Alchemistry's generated compound-dust Dissolver recipes consume a concrete
  * ChemLib item instead of the corresponding Forge tag. Replace only these
- * verified overlaps so either provider can be used without inventory-level
- * conversion recipes.
+ * verified overlaps so either provider can be used.
  *
  * ChemLib's "manganese_oxide" is MnO2 (its Dissolver yields Mn + 2 O), while
  * NuclearCraft distinguishes manganese_oxide (MnO) and manganese_dioxide
@@ -141,6 +197,78 @@ ServerEvents.recipes(event => {
         })
     })
 
+    /*
+     * JEI-visible inventory unification.
+     *
+     * Forge tags make machine ingredients interoperable, but they do not turn
+     * NuclearCraft's concrete duplicate items into ChemLib's concrete items.
+     * Add one-way, lossless crafting recipes from NuclearCraft to the canonical
+     * ChemLib representation. This avoids two-way recipe loops while making the
+     * conversion explicit and discoverable in JEI.
+     *
+     * Ores and raw_materials are intentionally excluded: crafting them directly
+     * into refined ChemLib material would bypass ore processing progression.
+     */
+    let canonicalCrafts = 0
+
+    Object.entries(matterworksNuclearElementForms).forEach(([element, forms]) => {
+        forms.forEach(form => {
+            if (!(form in matterworksNuclearItemSuffix)) {
+                return
+            }
+
+            const nuclearItem = matterworksNuclearFormItem(element, form)
+
+            if (matterworksHasChemLibSameForm(element, form)) {
+                event.shapeless(
+                    matterworksChemLibSameFormItem(element, form),
+                    [nuclearItem]
+                ).id(`matterworks:chemistry/unify/${element}/${form}`)
+
+                canonicalCrafts++
+                return
+            }
+
+            // ChemLib only exposes dust for solid metalloids/nonmetals such as
+            // boron, silicon, germanium, arsenic and iodine. Manufactured forms
+            // with the same 16-unit mass can therefore normalize to one dust.
+            if (form === 'ingots' || form === 'plates' || form === 'gems') {
+                event.shapeless(
+                    `chemlib:${element}_dust`,
+                    [nuclearItem]
+                ).id(`matterworks:chemistry/unify/${element}/${form}_to_dust`)
+
+                canonicalCrafts++
+                return
+            }
+
+            // Nine refined nuggets are one ingot-equivalent (16 chemical
+            // units), so a material without a ChemLib nugget can still be
+            // normalized without fractional output.
+            if (form === 'nuggets') {
+                event.shaped(
+                    `chemlib:${element}_dust`,
+                    ['NNN', 'NNN', 'NNN'],
+                    { N: nuclearItem }
+                ).id(`matterworks:chemistry/unify/${element}/nuggets_to_dust`)
+
+                canonicalCrafts++
+                return
+            }
+
+            // A refined storage block is nine ingot-equivalents. Only use this
+            // fallback when ChemLib has no same-form metal block.
+            if (form === 'storage_blocks') {
+                event.shapeless(
+                    `9x chemlib:${element}_dust`,
+                    [nuclearItem]
+                ).id(`matterworks:chemistry/unify/${element}/block_to_dust`)
+
+                canonicalCrafts++
+            }
+        })
+    })
+
     let compoundDusts = 0
 
     matterworksSharedCompoundDusts.forEach(material => {
@@ -172,14 +300,21 @@ ServerEvents.recipes(event => {
             }
         }).id(`matterworks:chemistry/compat/dissolver/compound_dust/${material.forge}`)
 
+        // Also expose direct item unification in JEI; this is one-way to the
+        // ChemLib canonical representation and therefore cannot form a loop.
+        event.shapeless(
+            `chemlib:${material.chemlib}_dust`,
+            [`nuclearcraft:${material.forge}_dust`]
+        ).id(`matterworks:chemistry/unify/compound/${material.forge}_dust`)
+
         compoundDusts++
+        canonicalCrafts++
     })
 
     /*
      * A few Alchemistry machine recipes consume concrete ChemLib ingots
      * instead of Forge tags. Patch those exact inputs so NuclearCraft (or any
-     * other correctly-tagged provider) can supply the same pure metal without
-     * inventory-level conversion recipes.
+     * other correctly-tagged provider) can supply the same pure metal.
      */
     event.replaceInput(
         { id: 'alchemistry:reactor_casing' },
@@ -203,6 +338,6 @@ ServerEvents.recipes(event => {
     )
 
     console.info(
-        `[Matterworks] Solid chemistry compatibility registered: ${registered} pure-element Dissolver bridges + ${compoundDusts} shared compound dust bridges + 4 concrete Alchemistry inputs normalized`
+        `[Matterworks] Solid chemistry compatibility registered: ${registered} pure-element Dissolver bridges + ${compoundDusts} shared compound dust bridges + ${canonicalCrafts} JEI-visible canonicalization crafts + 4 concrete Alchemistry inputs normalized`
     )
 })
