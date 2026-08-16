@@ -3,7 +3,7 @@
   "group": "alchemistry:dissolver",
   "input": {
     "ingredient": {
-      "item": "nuclearcraft:fluorite_dust"
+      "tag": "forge:dusts/fluorite"
     },
     "count": 3
   },
