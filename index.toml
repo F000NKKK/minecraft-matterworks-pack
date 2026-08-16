@@ -53,6 +53,10 @@ file = "kubejs/assets/kubejs/textures/item/particle_focusing_coil.png"
 hash = "89af859682989111e3d80da125532d273ea837c3b77eabef46a7978cf8768397"
 
 [[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/gems/silicon.json"
+hash = "0c1140cfbf1335f2f4ffb06e18213bc3ddf66ff22f1c9ddfd544a8fa0b885623"
+
+[[files]]
 file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/boron.json"
 hash = "6488a4aa681af21297837236a1eaa36fa8a0fc4a666b9ea71b3081a957763def"
 
@@ -71,6 +75,10 @@ hash = "3bdd2996b18228e3d0031ba1c6808f17b2b36e7c4cdc6e9b89b57c1b4ab2f81e"
 [[files]]
 file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/magnesium.json"
 hash = "39ac4d4d2a24dd6b566084f84468c18ed78c2d8e5f0a07f66afe0b5428e5d9e1"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/platinum.json"
+hash = "751d32b261e99162498c700d54507a49746d7b30ed8e0a2ba67cb3c6f4435efa"
 
 [[files]]
 file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/silver.json"
