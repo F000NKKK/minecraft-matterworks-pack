@@ -245,6 +245,10 @@ file = "kubejs/server_scripts/matterworks/bootstrap.js"
 hash = "d873d6dad2d89a95a24ce638317adf44640bd237a893ef60983571d03088cae8"
 
 [[files]]
+file = "kubejs/server_scripts/matterworks/materials/composition.js"
+hash = "14a66b08b9f083a51907043025a2b8cb05980de684b840e0e48d1d93cf21976a"
+
+[[files]]
 file = "kubejs/server_scripts/matterworks/materials/material_matrix.js"
 hash = "f0d3243a03c882904469b9751397315b353e24519cc67eb8d31b9e1508d8ecb7"
 
@@ -267,6 +271,10 @@ hash = "ca6259ff70c647703179695323eb0d342ddea1d3c1dd69418c46d745089b6940"
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/chemistry.js"
 hash = "2640ab41446dc4156bc89484ae31c33511bccc6dc4acc5c6cbd2c3a5d98bf49a"
+
+[[files]]
+file = "kubejs/server_scripts/matterworks/recipes/composition_audit.js"
+hash = "3e64cfb1c3deb6f868fa5b8eaf817fb2200681ef06566e4dd1129db10abcb330"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/electrical.js"
