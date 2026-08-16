@@ -98,7 +98,7 @@ hash = "ad6d8c1bd15e7d049b5c0ab178f949eb2fe5b412173ccdc2b978fdba917085d1"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/solid_compat.js"
-hash = "befaf61a95fe9301935b42c8bef7186d663a05e9d550abd71322d60eba3329c4"
+hash = "59c8a209658b53d2ceaff96f1e69c5e4b21657031cdf1107cd59722cba7d5836"
 
 [[files]]
 file = "kubejs/startup_scripts/matterworks/bootstrap.js"
@@ -144,7 +144,7 @@ metafile = true
 
 [[files]]
 file = "mods/architectury-api.pw.toml"
-hash = "5e9edd1fd2395f14a0c8a4acbdbdd61e1047be1f0033deb3140d2ce0d093e9d8"
+hash = "5e9edd1fd2395f14c8a4acbdbdd61e1047be1f0033deb3140d2ce0d093e9d8"
 metafile = true
 
 [[files]]
