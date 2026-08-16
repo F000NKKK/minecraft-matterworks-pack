@@ -98,7 +98,7 @@ hash = "d873d6dad2d89a95a24ce638317adf44640bd237a893ef60983571d03088cae8"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/materials/material_matrix.js"
-hash = "39af2ab5f0e2ea041b76543fb97948893b951930ed181d15507dc4b5e6735fcb"
+hash = "f0d3243a03c882904469b9751397315b353e24519cc67eb8d31b9e1508d8ecb7"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/materials/tags.js"
