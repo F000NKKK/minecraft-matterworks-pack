@@ -197,6 +197,50 @@ file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/zinc.j
 hash = "612e3de5fb78797d71dd5d5b4fb224b951c2b5a16b86e0bc0a0c3f647bdd66a4"
 
 [[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/coal-iron.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/iron-chromium.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/iron-manganese-oxide.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/iron-manganese.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/iron-oxide-carbon.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/iron-silicon.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/silver-copper.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/tungsten-carbon.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/tungsten-copper.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/xenorium-298.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/patchouli_book.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
 file = "kubejs/server_scripts/matterworks/bootstrap.js"
 hash = "d873d6dad2d89a95a24ce638317adf44640bd237a893ef60983571d03088cae8"
 
