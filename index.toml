@@ -97,6 +97,10 @@ file = "kubejs/server_scripts/matterworks/bootstrap.js"
 hash = "d873d6dad2d89a95a24ce638317adf44640bd237a893ef60983571d03088cae8"
 
 [[files]]
+file = "kubejs/server_scripts/matterworks/materials/material_matrix.js"
+hash = "39af2ab5f0e2ea041b76543fb97948893b951930ed181d15507dc4b5e6735fcb"
+
+[[files]]
 file = "kubejs/server_scripts/matterworks/materials/tags.js"
 hash = "9dbb51bd9f04daa1cda87a5da1843ca18f68fddc5746a288ef351f0947b8080d"
 
