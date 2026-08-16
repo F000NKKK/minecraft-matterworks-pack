@@ -58,7 +58,7 @@ hash = "d873d6dad2d89a95a24ce638317adf44640bd237a893ef60983571d03088cae8"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/materials/tags.js"
-hash = "165609d8ba3496acf5da57102021737afa83cc88403747ef69cb9c858f133154"
+hash = "66c53d1e8f32c3f6e1dfaa957359344c0d5a78d56b0717b8802f1ed3e05becc7"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/electrical.js"
