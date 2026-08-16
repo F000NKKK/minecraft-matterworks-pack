@@ -97,6 +97,10 @@ file = "kubejs/server_scripts/matterworks/recipes/pressure.js"
 hash = "ad6d8c1bd15e7d049b5c0ab178f949eb2fe5b412173ccdc2b978fdba917085d1"
 
 [[files]]
+file = "kubejs/server_scripts/matterworks/recipes/solid_compat.js"
+hash = "a56447ee00d33cdaa83777c52cab1d68123692f93a491e6d7fb9c9c152301c53"
+
+[[files]]
 file = "kubejs/startup_scripts/matterworks/bootstrap.js"
 hash = "575b75c4332bb3866f8b1332b8744eb4f99adf5468510bf2f52fde8ad40f8214"
 
