@@ -73,6 +73,18 @@ ServerEvents.tags('item', event => {
     event.add('forge:plates/aluminium', '#forge:plates/aluminum')
     event.add('forge:storage_blocks/aluminium', '#forge:storage_blocks/aluminum')
 
+    /*
+     * Manganese oxide identity correction
+     *
+     * ChemLib calls MnO2 "manganese_oxide", while NuclearCraft distinguishes
+     * manganese_oxide (MnO) from manganese_dioxide (MnO2) and oxidizes the
+     * former into the latter. ChemLib therefore contributes its dust to the
+     * NuclearCraft dioxide tag, never to the monoxide tag generated from its
+     * registry name.
+     */
+    event.remove('forge:dusts/manganese_oxide', 'chemlib:manganese_oxide_dust')
+    event.add('forge:dusts/manganese_dioxide', 'chemlib:manganese_oxide_dust')
+
     // Finished electrical components. These tags are intentionally
     // capability-oriented: later tiers can add alternative components
     // without forcing every consuming recipe to know their concrete IDs.
