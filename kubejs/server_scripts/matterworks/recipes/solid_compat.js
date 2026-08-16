@@ -77,6 +77,28 @@ const matterworksNuclearElementForms = {
     silicon: ['gems']
 }
 
+/*
+ * Ordinary compounds which are independently registered by ChemLib and
+ * NuclearCraft but represent the same bulk chemical dust.
+ *
+ * Alchemistry's generated compound-dust Dissolver recipes consume a concrete
+ * ChemLib item instead of the corresponding Forge tag. Replace only these
+ * verified overlaps so either provider can be used without inventory-level
+ * conversion recipes.
+ *
+ * ChemLib's "manganese_oxide" is MnO2 (its Dissolver yields Mn + 2 O), while
+ * NuclearCraft distinguishes manganese_oxide (MnO) and manganese_dioxide
+ * (MnO2). tags.js sanitizes that naming collision, so the ChemLib recipe must
+ * use forge:dusts/manganese_dioxide here.
+ */
+const matterworksSharedCompoundDusts = [
+    { chemlib: 'calcium_sulfate', forge: 'calcium_sulfate' },
+    { chemlib: 'sodium_hydroxide', forge: 'sodium_hydroxide' },
+    { chemlib: 'potassium_hydroxide', forge: 'potassium_hydroxide' },
+    { chemlib: 'barium_nitrate', forge: 'barium_nitrate' },
+    { chemlib: 'manganese_oxide', forge: 'manganese_dioxide' }
+]
+
 ServerEvents.recipes(event => {
     let registered = 0
 
@@ -119,6 +141,40 @@ ServerEvents.recipes(event => {
         })
     })
 
+    let compoundDusts = 0
+
+    matterworksSharedCompoundDusts.forEach(material => {
+        event.remove({ id: `alchemistry:dissolver/${material.chemlib}_dust` })
+
+        event.custom({
+            type: 'alchemistry:dissolver',
+            group: 'matterworks:dissolver_compat',
+            input: {
+                count: 1,
+                ingredient: {
+                    tag: `forge:dusts/${material.forge}`
+                }
+            },
+            output: {
+                groups: [
+                    {
+                        probability: 100.0,
+                        results: [
+                            {
+                                count: 8,
+                                item: `chemlib:${material.chemlib}`
+                            }
+                        ]
+                    }
+                ],
+                rolls: 1,
+                weighted: false
+            }
+        }).id(`matterworks:chemistry/compat/dissolver/compound_dust/${material.forge}`)
+
+        compoundDusts++
+    })
+
     /*
      * A few Alchemistry machine recipes consume concrete ChemLib ingots
      * instead of Forge tags. Patch those exact inputs so NuclearCraft (or any
@@ -147,6 +203,6 @@ ServerEvents.recipes(event => {
     )
 
     console.info(
-        `[Matterworks] Solid chemistry compatibility registered: ${registered} pure-element Dissolver bridges + 4 concrete Alchemistry inputs normalized`
+        `[Matterworks] Solid chemistry compatibility registered: ${registered} pure-element Dissolver bridges + ${compoundDusts} shared compound dust bridges + 4 concrete Alchemistry inputs normalized`
     )
 })
