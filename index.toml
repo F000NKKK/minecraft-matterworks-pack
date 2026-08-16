@@ -173,22 +173,6 @@ file = "kubejs/data/matterworks/recipes/chemistry/dissolver/nuclear_refined/thor
 hash = "77ae680819c0dc054672cb1cc47d79304f244dee0e04574fe922075ceae164e4"
 
 [[files]]
-file = "kubejs/data/matterworks/recipes/chemistry/dissolver/nuclear_refined/uranium_dust.json"
-hash = "24502c08982db7a92cb5907dda5bf922a5702fd0421bbaf178711612142e26a7"
-
-[[files]]
-file = "kubejs/data/matterworks/recipes/chemistry/dissolver/nuclear_refined/uranium_ingot.json"
-hash = "e23d689cf25700fb07dab3ad4b13db06f593b2543c0a8450f8930acf895163ca"
-
-[[files]]
-file = "kubejs/data/matterworks/recipes/chemistry/dissolver/nuclear_refined/uranium_nuggets.json"
-hash = "9ce7681b87d253140d549ccfdf5dda62fe7de24646429a193ae34124e20d0469"
-
-[[files]]
-file = "kubejs/data/matterworks/recipes/chemistry/dissolver/nuclear_refined/uranium_plate.json"
-hash = "b4368444239e35e1ccbc2465899258a3d6a9b666862d7b22bfa913ff48f0acef"
-
-[[files]]
 file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/boron.json"
 hash = "6488a4aa681af21297837236a1eaa36fa8a0fc4a666b9ea71b3081a957763def"
 
