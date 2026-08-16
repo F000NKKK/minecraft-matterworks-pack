@@ -30,7 +30,7 @@ const quarantinedNuclearCraftMoltenRecipes = [
 ]
 
 ServerEvents.recipes(event => {
-    quarantinedNuclearCraftMoltenRecipes.forEach(id => event.remove({ id }))
+    quarantinedNuclearCraftMoltenRecipes.forEach(id => event.remove({ id: id }))
 
     console.info(
         `[Matterworks] Quarantined ${quarantinedNuclearCraftMoltenRecipes.length} NuclearCraft molten-metallurgy recipes pending corrected process routes`
