@@ -53,6 +53,38 @@ file = "kubejs/assets/kubejs/textures/item/particle_focusing_coil.png"
 hash = "89af859682989111e3d80da125532d273ea837c3b77eabef46a7978cf8768397"
 
 [[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/boron.json"
+hash = "6488a4aa681af21297837236a1eaa36fa8a0fc4a666b9ea71b3081a957763def"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/cobalt.json"
+hash = "f2b2c6c47f66e665599900046e9a7eb016ff2a044807351f0c0c3a92f61dd0b5"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/lead.json"
+hash = "3e437e34103521b4f699eebf9c264ab6066d70e2e1dccd0be1023e2c6f75a45b"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/lithium.json"
+hash = "3bdd2996b18228e3d0031ba1c6808f17b2b36e7c4cdc6e9b89b57c1b4ab2f81e"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/magnesium.json"
+hash = "39ac4d4d2a24dd6b566084f84468c18ed78c2d8e5f0a07f66afe0b5428e5d9e1"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/silver.json"
+hash = "94403ec4b3b222ce0ee54e15ef65b84f36f43be71c723c049b5a842258495a56"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/tin.json"
+hash = "01a20564387a7e73e02c92cb69c594a6509f1bf6a8ea28bf1a6ec317f444e26c"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/zinc.json"
+hash = "612e3de5fb78797d71dd5d5b4fb224b951c2b5a16b86e0bc0a0c3f647bdd66a4"
+
+[[files]]
 file = "kubejs/server_scripts/matterworks/bootstrap.js"
 hash = "d873d6dad2d89a95a24ce638317adf44640bd237a893ef60983571d03088cae8"
 
@@ -81,6 +113,10 @@ file = "kubejs/server_scripts/matterworks/recipes/electrical.js"
 hash = "4287e476a834b9efee24c1efda7253224e1c8d71061b85cd486298efa6dbed72"
 
 [[files]]
+file = "kubejs/server_scripts/matterworks/recipes/material_unification.js"
+hash = "2946662d835a3a39a5c2937d9afaa2cc5970300d6dc0e0334c2a07384d36fd9c"
+
+[[files]]
 file = "kubejs/server_scripts/matterworks/recipes/mekanism.js"
 hash = "3e06700d9a0be60ef8c26d48d41bbfeefbbc6f16582b203b1370c1d34401e73d"
 
@@ -98,7 +134,7 @@ hash = "ad6d8c1bd15e7d049b5c0ab178f949eb2fe5b412173ccdc2b978fdba917085d1"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/solid_compat.js"
-hash = "59c8a209658b53d2ceaff96f1e69c5e4b21657031cdf1107cd59722cba7d5836"
+hash = "0676a53569592d23eb4c5e7cb96979dffa1adbd2c65c8bbb2af0edeadbdb1763"
 
 [[files]]
 file = "kubejs/startup_scripts/matterworks/bootstrap.js"
