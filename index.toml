@@ -133,6 +133,10 @@ file = "kubejs/server_scripts/matterworks/recipes/mekanism.js"
 hash = "3e06700d9a0be60ef8c26d48d41bbfeefbbc6f16582b203b1370c1d34401e73d"
 
 [[files]]
+file = "kubejs/server_scripts/matterworks/recipes/metallurgy.js"
+hash = "a5d2b820ae46b5e61b9c9da12d27abdf9131df4afaace56026801b07d914d211"
+
+[[files]]
 file = "kubejs/server_scripts/matterworks/recipes/nitrogen.js"
 hash = "22d75823d3fb12fba6e99fb09cf16fb6ed3f3632e5aec638d088d0b9bd0f5eb1"
 
