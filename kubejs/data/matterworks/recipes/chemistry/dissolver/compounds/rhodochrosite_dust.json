@@ -1,0 +1,33 @@
+{
+  "type": "alchemistry:dissolver",
+  "group": "alchemistry:dissolver",
+  "input": {
+    "ingredient": {
+      "item": "nuclearcraft:rhodochrosite_dust"
+    },
+    "count": 5
+  },
+  "output": {
+    "rolls": 1,
+    "weighted": false,
+    "groups": [
+      {
+        "probability": 100.0,
+        "results": [
+          {
+            "item": "chemlib:manganese",
+            "count": 16
+          },
+          {
+            "item": "chemlib:carbon",
+            "count": 16
+          },
+          {
+            "item": "chemlib:oxygen",
+            "count": 48
+          }
+        ]
+      }
+    ]
+  }
+}

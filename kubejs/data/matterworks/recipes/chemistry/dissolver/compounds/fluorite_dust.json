@@ -1,0 +1,29 @@
+{
+  "type": "alchemistry:dissolver",
+  "group": "alchemistry:dissolver",
+  "input": {
+    "ingredient": {
+      "tag": "forge:dusts/fluorite"
+    },
+    "count": 3
+  },
+  "output": {
+    "rolls": 1,
+    "weighted": false,
+    "groups": [
+      {
+        "probability": 100.0,
+        "results": [
+          {
+            "item": "chemlib:calcium",
+            "count": 16
+          },
+          {
+            "item": "chemlib:fluorine",
+            "count": 32
+          }
+        ]
+      }
+    ]
+  }
+}

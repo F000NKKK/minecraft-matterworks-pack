@@ -53,6 +53,110 @@ file = "kubejs/assets/kubejs/textures/item/particle_focusing_coil.png"
 hash = "89af859682989111e3d80da125532d273ea837c3b77eabef46a7978cf8768397"
 
 [[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/alloys/brass_ingot.json"
+hash = "6118d7e9701eb46cab71b562b80f8979190049f9d446d2623222b11399a7d125"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/alloys/bronze_dust.json"
+hash = "8286f2d65afb4cb8700b42b85a064215da44efd6e025994b646fb6fd8e2c1396"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/alloys/carbon_manganese_dust.json"
+hash = "796c4f6b9941155da518be31a3963299a05476eba19ee43f212fc0f1656494c5"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/alloys/electrum_dust.json"
+hash = "0e9a78f91891513583ad335bdad4cc55a50dc9ba45de3ae2a3ebcac01619608b"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/alloys/lead_platinum_dust.json"
+hash = "dcd8c922639f9b81aa1981000b9d92138b870b7939290838b8e53be8a5c1d088"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/alloys/osmiridium_ingot.json"
+hash = "244523bc8196c85b7ed8cf363ad1f25c7cbda148203624834921a288f1b8d959"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/alloys/shibuichi_dust.json"
+hash = "73ae5369643f740bb36c90fd53f3d7e12e430c74cb947eca148dfbb4f27e320a"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/alloys/tin_silver_dust.json"
+hash = "2905647c8a95bf87b7b4efd2aea33051f7dd23e1e343203765f351d4d5d42a53"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/alloys/zircaloy_dust.json"
+hash = "53a5294153c0d14d61ea72eb971b6521e01360f337dbb161885d7b13fd60921c"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/carbon/graphite_dust.json"
+hash = "81457148722f91fc4423227e632acf349fa8940117606373a29efb235ccf1e20"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/carbon/hard_carbon_dust.json"
+hash = "e179ed2a9f6699472aab791e8653bca7fefb727db6df654d331ea6620fab34ba"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/carbon/pyrolitic_carbon_dust.json"
+hash = "c5761ac7ce9696be5a494f259cfeed616eedd3b6d1a062cbe195a45324ff93a4"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/compounds/boron_arsenide_dust.json"
+hash = "b0e8279c957838cf463fcc9f38a3c9ed003a3ec9c96fc47eddcf18d7d9e5da99"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/compounds/boron_nitride_dust.json"
+hash = "cd22b7a4d0a62154e238c8ec8ca8d55d5923ec174d1d96a5212dfdd22b4af814"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/compounds/carobbiite_dust.json"
+hash = "6fb58100b1c10793cd719de00ab3cecabd9414f6326e031ed7e49a94a6c8782a"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/compounds/fluorite_dust.json"
+hash = "8019c9872760a6b174780fdc0c448483791eff9ea2cca36f4c2d729227976572"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/compounds/lithium_manganese_dioxide_dust.json"
+hash = "e45c98f8ebd83d55bfa984e7d87a7bb09edb0b2b5be5315c0b218ace6e4d2ff9"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/compounds/magnesium_diboride_ingot.json"
+hash = "a3cbb78908c9555cd6494d79a9bbfd715dd8d99ad6d856986820688ce64d852b"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/compounds/manganese_oxide_dust.json"
+hash = "831ec675fdd9d0a15fafaf327fc592a7c02a692ed2ea3b5ed4f0c89ea516322f"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/compounds/potassium_fluoride_dust.json"
+hash = "5fe53da21ea4cbbc0d26a61b822890c592bff4c48f2c2b460561d6f749f6c0d4"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/compounds/potassium_iodide_dust.json"
+hash = "80583772b330135d749f7f8ff4718ed6a251720b585e4957c23da77598bcbf5c"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/compounds/rhodochrosite_dust.json"
+hash = "1cc5229bcc2cd510644c89ca934c9a956542d7219ec604f039a0890087536712"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/compounds/silicon_carbide_dust.json"
+hash = "708cf5279afb7f725d07741d61f2d360b714d49443d0f45d3df9e18570787f52"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/compounds/sodium_fluoride_dust.json"
+hash = "ae11c26aa700540349b6e3dc9c480e6f6f0d78a7229a737121ae414d2cea4ca3"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/compounds/tungsten_carbide_ingot.json"
+hash = "e58b97ceeb184ae6f7e0882bec77dcebd1e41627c175a6c22e9f14ee1d2e5ad3"
+
+[[files]]
+file = "kubejs/data/matterworks/recipes/chemistry/dissolver/compounds/villiaumite_dust.json"
+hash = "a0cd66159c00b5345adee5cd2e1a68085f4a96f90d2d7ea24bc54e2e602fb483"
+
+[[files]]
 file = "kubejs/data/matterworks/recipes/chemistry/dissolver/gems/silicon.json"
 hash = "0c1140cfbf1335f2f4ffb06e18213bc3ddf66ff22f1c9ddfd544a8fa0b885623"
 
@@ -93,8 +197,56 @@ file = "kubejs/data/matterworks/recipes/chemistry/dissolver/raw_materials/zinc.j
 hash = "612e3de5fb78797d71dd5d5b4fb224b951c2b5a16b86e0bc0a0c3f647bdd66a4"
 
 [[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/coal-iron.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/iron-chromium.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/iron-manganese-oxide.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/iron-manganese.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/iron-oxide-carbon.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/iron-silicon.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/silver-copper.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/tungsten-carbon.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/tungsten-copper.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/xenorium-298.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/patchouli_book.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
 file = "kubejs/server_scripts/matterworks/bootstrap.js"
 hash = "d873d6dad2d89a95a24ce638317adf44640bd237a893ef60983571d03088cae8"
+
+[[files]]
+file = "kubejs/server_scripts/matterworks/materials/material_matrix.js"
+hash = "f0d3243a03c882904469b9751397315b353e24519cc67eb8d31b9e1508d8ecb7"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/materials/tags.js"
@@ -127,6 +279,10 @@ hash = "2946662d835a3a39a5c2937d9afaa2cc5970300d6dc0e0334c2a07384d36fd9c"
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/mekanism.js"
 hash = "3e06700d9a0be60ef8c26d48d41bbfeefbbc6f16582b203b1370c1d34401e73d"
+
+[[files]]
+file = "kubejs/server_scripts/matterworks/recipes/metallurgy.js"
+hash = "f4a79ed604c39adec1962b8a22f8378fe4f41776c4df1827c410e0908c93c177"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/nitrogen.js"
