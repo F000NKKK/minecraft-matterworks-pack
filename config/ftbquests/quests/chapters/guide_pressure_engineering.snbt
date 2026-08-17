@@ -1,0 +1,61 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "square"
+	filename: "guide_pressure_engineering"
+	group: "1100000000000002"
+	icon: "compressedcreativity:rotational_compressor"
+	id: "1120000000000007"
+	order_index: 170
+	quest_links: []
+	quests: [
+		{
+			id: "2270000000000001"
+			title: "Pressure Bootstrap"
+			description: ["PneumaticCraft begins with a small compressed-iron bootstrap before a pressure network exists. Matterworks preserves that bootstrap, but sustained pneumatic production belongs to engineered machinery rather than repeated primitive processing."]
+			x: 0.0d
+			y: 0.0d
+			shape: "gear"
+			size: 1.2d
+			tasks: [{ id: "3270000000000001", item: "compressedcreativity:compressed_iron_casing", type: "item" }]
+			rewards: [{ id: "6270000000000001", type: "xp", xp: 25 }]
+		}
+		{
+			dependencies: ["2270000000000001"]
+			hide_dependency_lines: false
+			hide_details_until_startable: true
+			id: "2270000000000002"
+			title: "Rotation to Pressure"
+			description: ["Compressed Creativity is the controlled bridge from Create kinetic power to compressed air. The Main Program requires this Rotational Compressor before PneumaticCraft receives an independent compressor path."]
+			x: 2.5d
+			y: -1.0d
+			tasks: [{ id: "3270000000000002", item: "compressedcreativity:rotational_compressor", type: "item" }]
+			rewards: [{ id: "6270000000000002", type: "xp", xp: 40 }]
+		}
+		{
+			dependencies: ["2270000000000002"]
+			hide_dependency_lines: false
+			hide_details_until_startable: true
+			id: "2270000000000003"
+			title: "Independent Air Production"
+			description: ["The Matterworks Air Compressor recipe consumes the mechanical pressure bridge. Once built, PneumaticCraft can maintain its own pressure network without bypassing the engineering sequence that introduced pressure."]
+			x: 5.0d
+			y: -1.0d
+			shape: "diamond"
+			tasks: [{ id: "3270000000000003", item: "pneumaticcraft:air_compressor", type: "item" }]
+			rewards: [{ id: "6270000000000003", type: "xp", xp: 50 }]
+		}
+		{
+			dependencies: ["2270000000000002"]
+			hide_dependency_lines: false
+			hide_details_until_startable: true
+			id: "2270000000000004"
+			title: "Pressure to Rotation"
+			description: ["The Compressed Air Engine provides the reverse conversion: pressure back into Create rotation. This is useful integration infrastructure, but guide completion does not grant the Main Program pressure-engineering capability."]
+			x: 5.0d
+			y: 1.0d
+			tasks: [{ id: "3270000000000004", item: "compressedcreativity:compressed_air_engine", type: "item" }]
+			rewards: [{ id: "6270000000000004", type: "xp", xp: 40 }]
+		}
+	]
+	title: "Guide - Pressure Engineering"
+}
