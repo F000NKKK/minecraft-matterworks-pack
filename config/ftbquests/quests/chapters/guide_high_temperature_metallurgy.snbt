@@ -1,0 +1,48 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "square"
+	filename: "guide_high_temperature_metallurgy"
+	group: "1100000000000002"
+	icon: "minecraft:blast_furnace"
+	id: "1120000000000009"
+	order_index: 190
+	quest_links: []
+	quests: [
+		{
+			id: "4190000000000001"
+			title: "Thermal Metallurgy Is a Process"
+			description: ["A material formula does not describe temperature history, atmosphere, melt handling, phase control or heat treatment. Matterworks therefore treats advanced alloys as process-owned materials instead of generic Combiner outputs."]
+			x: 0.0d
+			y: 0.0d
+			shape: "gear"
+			size: 1.2d
+			tasks: [{ id: "5190000000000001", item: "minecraft:blast_furnace", type: "item" }]
+			rewards: [{ id: "6290000000000001", type: "xp", xp: 25 }]
+		}
+		{
+			dependencies: ["4190000000000001"]
+			hide_dependency_lines: false
+			id: "4190000000000002"
+			title: "Molten Routes Are Quarantined"
+			description: ["Several NuclearCraft Chemical Reactor recipes reference molten material tags that are absent in the pinned pack. Matterworks removes those routes instead of inventing placeholder fluids. Some upstream pairings are also chemically incomplete, so supplying the missing tags would create progression bypasses rather than fix them."]
+			x: 2.5d
+			y: 0.0d
+			shape: "diamond"
+			tasks: [{ id: "5190000000000002", item: "kubejs:graphite", type: "item" }]
+			rewards: [{ id: "6290000000000002", type: "xp", xp: 35 }]
+		}
+		{
+			dependencies: ["4190000000000002"]
+			hide_dependency_lines: false
+			id: "4190000000000003"
+			title: "Separate Metallurgical Families"
+			description: ["Steel grades, stainless alloys, superconductors, refractory alloys, ceramic composites and high-pressure carbon are separate process families. They will be promoted from the backlog only when Matterworks has a physically meaningful machine route and a matching Main Program milestone for that family."]
+			x: 5.0d
+			y: 0.0d
+			shape: "hexagon"
+			tasks: [{ id: "5190000000000003", item: "mekanism:advanced_control_circuit", type: "item" }]
+			rewards: [{ id: "6290000000000003", type: "xp", xp: 50 }]
+		}
+	]
+	title: "Guide - High-Temperature Metallurgy"
+}
