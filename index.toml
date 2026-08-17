@@ -26,7 +26,7 @@ hash = "5601a56883c3db5ad127c915094554829ff51417f1fb6b9769e07da7fd38c374"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_nuclearcraft.snbt"
-hash = "1240a66cd91b352f4e72e0909f3f09e0709fb748ae662893897c8900cb1ee3dc"
+hash = "87e9f914f844912161eb5b42192874417a4d43de2749d93f8192be258a034b30"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_1_mechanical_industry.snbt"
