@@ -85,7 +85,7 @@
 			y: 0.0d
 			shape: "diamond"
 			size: 1.2d
-			tasks: [{ id: "3120000000000006", item: "alchemistry:chemical_combiner", type: "item" }]
+			tasks: [{ id: "3120000000000006", item: "alchemistry:combiner", type: "item" }]
 			rewards: [{ id: "6120000000000006", type: "xp", xp: 200 }]
 		}
 		{
