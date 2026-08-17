@@ -31,6 +31,32 @@
 			tasks: [{ id: "5130000000000002", item: "alchemistry:combiner", type: "item" }]
 			rewards: [{ id: "6230000000000002", type: "xp", xp: 50 }]
 		}
+		{
+			dependencies: ["4130000000000002"]
+			hide_dependency_lines: false
+			hide_details_until_startable: true
+			id: "4130000000000003"
+			title: "Atomic Fission Is a Separate Tier"
+			description: ["The Fission Chamber Controller performs generic atomic decomposition. Matterworks replaces its stock entry recipe and requires NuclearCraft ring-accelerator control hardware, so this machine belongs to the late atomic-engineering program rather than ordinary chemistry."]
+			x: 5.0d
+			y: -1.0d
+			shape: "diamond"
+			tasks: [{ id: "5130000000000003", item: "alchemistry:fission_chamber_controller", type: "item" }]
+			rewards: [{ id: "6230000000000003", type: "xp", xp: 75 }]
+		}
+		{
+			dependencies: ["4130000000000003"]
+			hide_dependency_lines: false
+			hide_details_until_startable: true
+			id: "4130000000000004"
+			title: "Fusion Constructs Elements"
+			description: ["The Fusion Chamber Controller is the final generic element-construction tier. It is deliberately distinct from the Combiner and Fission Chamber, and it still cannot recreate provenance-sensitive isotopes, reactor fuel, depleted fuel, irradiated materials or nuclear waste."]
+			x: 7.5d
+			y: 0.0d
+			shape: "hexagon"
+			tasks: [{ id: "5130000000000004", item: "alchemistry:fusion_chamber_controller", type: "item" }]
+			rewards: [{ id: "6230000000000004", type: "xp", xp: 100 }]
+		}
 	]
 	title: "Guide - Alchemistry / ChemLib"
 }
