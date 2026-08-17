@@ -34,7 +34,7 @@ hash = "218fa9de484bb048f15b426a6de257467858a053cb8cd0af10066cea431092c2"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_2_chemical_analysis.snbt"
-hash = "ef2ae9a25c04ebdaded9bc9a0847abedf7f73bbd5fea0bcc58f3245aaf6f423c"
+hash = "7bd4d76de91e76032d20f720a2853bb2afd263c5cc8af1d2e70712c77063c449"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_3_process_industry.snbt"
