@@ -1,4 +1,6 @@
 {
+	default_hide_dependency_lines: false
+	default_quest_shape: "circle"
 	filename: "phase_3_process_industry"
 	group: "A100000000000001"
 	icon: "mekanism:metallurgic_infuser"
@@ -8,48 +10,68 @@
 	quests: [
 		{
 			dependencies: ["B120000000000004"]
+			hide_details_until_startable: true
 			id: "B130000000000001"
 			title: "Controlled Metallurgy"
 			description: ["Build the Matterworks-gated Metallurgic Infuser. This establishes controlled electromechanical metallurgy rather than a free Mekanism entry point."]
 			x: 0.0d
 			y: 0.0d
+			shape: "gear"
+			size: 1.35d
 			tasks: [{ id: "C130000000000001", item: "mekanism:metallurgic_infuser", type: "item" }]
+			rewards: [{ id: "F130000000000001", type: "xp", xp: 250 }]
 		}
 		{
 			dependencies: ["B130000000000001"]
+			hide_details_until_startable: true
 			id: "B130000000000002"
 			title: "Electrochemical Core"
 			description: ["Construct the graphite-electrode electrochemical core used by Matterworks process chemistry."]
-			x: 2.0d
-			y: -1.0d
+			x: 2.5d
+			y: -1.5d
+			shape: "square"
 			tasks: [{ id: "C130000000000002", item: "mekanism:electrolytic_core", type: "item" }]
+			rewards: [{ id: "F130000000000002", type: "xp", xp: 150 }]
 		}
 		{
 			dependencies: ["B130000000000002"]
+			hide_details_until_startable: true
 			id: "B130000000000003"
 			title: "Industrial Electrolysis"
 			description: ["Build an Electrolytic Separator. The plant can now produce and handle process gases instead of treating chemistry as inventory crafting."]
-			x: 4.0d
-			y: -1.0d
+			x: 5.0d
+			y: -1.5d
+			shape: "square"
 			tasks: [{ id: "C130000000000003", item: "mekanism:electrolytic_separator", type: "item" }]
+			rewards: [{ id: "F130000000000003", type: "xp", xp: 200 }]
 		}
 		{
 			dependencies: ["B130000000000001"]
+			hide_details_until_startable: true
 			id: "B130000000000004"
 			title: "Engineered Carbon"
 			description: ["Produce graphite through the industrial carbon route. This milestone owns synthesis knowledge for engineered carbon forms, while their process provenance remains meaningful."]
-			x: 2.0d
-			y: 1.0d
+			x: 2.5d
+			y: 1.5d
+			shape: "square"
 			tasks: [{ id: "C130000000000004", item: "kubejs:graphite", type: "item" }]
+			rewards: [{ id: "F130000000000004", type: "xp", xp: 150 }]
 		}
 		{
 			dependencies: ["B130000000000003", "B130000000000004"]
+			hide_details_until_startable: true
 			id: "B130000000000005"
 			title: "Process Industry Established"
 			description: ["Complete the first integrated electrical, metallurgical and electrochemical production layer. Later synthesis research is attached to concrete process milestones from this point onward."]
-			x: 6.0d
+			x: 7.5d
 			y: 0.0d
+			shape: "diamond"
+			size: 1.35d
 			tasks: [{ id: "C130000000000005", item: "mekanism:basic_chemical_tank", type: "item" }]
+			rewards: [
+				{ id: "F130000000000005", type: "xp", xp: 400 }
+				{ id: "F130000000000006", item: { count: 4, id: "mekanism:alloy_infused" }, type: "item" }
+			]
 		}
 	]
 	title: "Phase 3 - Electrotechnics and Process Industry"
