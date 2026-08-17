@@ -1,5 +1,59 @@
 console.info('[Matterworks] Loading quest-owned research registry')
 
+const MatterworksBacklogFamilies = Object.freeze({
+    high_temperature_metallurgy: Object.freeze({
+        targetPhase: 'phase_3',
+        title: 'High-Temperature Metallurgy',
+        materials: Object.freeze([
+            'tough_alloy',
+            'thermoconducting_alloy',
+            'extreme_alloy',
+            'hsla_steel',
+            'stainless_steel',
+            'super_alloy',
+            'sic_sic_cmc',
+            'c_mn_blend'
+        ])
+    }),
+    specialty_chemistry: Object.freeze({
+        targetPhase: 'phase_3',
+        title: 'Specialty Industrial Chemistry',
+        materials: Object.freeze([
+            'borax',
+            'baratol',
+            'etching_acid'
+        ])
+    }),
+    petrochemistry: Object.freeze({
+        targetPhase: 'phase_3',
+        title: 'Petrochemical Processing',
+        materials: Object.freeze([
+            'crude_oil',
+            'lpg',
+            'gasoline',
+            'kerosene',
+            'diesel',
+            'lubricant'
+        ])
+    }),
+    renewable_organics: Object.freeze({
+        targetPhase: 'phase_3',
+        title: 'Renewable Organic Processing',
+        materials: Object.freeze([
+            'vegetable_oil',
+            'biodiesel',
+            'yeast_culture'
+        ])
+    }),
+    exotic_process_materials: Object.freeze({
+        targetPhase: 'phase_4',
+        title: 'Exotic Process Materials',
+        materials: Object.freeze([
+            'memory_essence'
+        ])
+    })
+})
+
 const MatterworksResearch = Object.freeze({
     phases: Object.freeze([
         { id: 'phase_1', stage: 'matterworks:phase/mechanical_industry', ownerQuest: '2110000000000004', title: 'Mechanical Industry' },
@@ -128,6 +182,8 @@ const MatterworksResearch = Object.freeze({
         }
     }),
 
+    backlogFamilies: MatterworksBacklogFamilies,
+
     provenanceOnly: Object.freeze([
         'yellowcake',
         'uranium_oxide',
@@ -139,29 +195,10 @@ const MatterworksResearch = Object.freeze({
         'nuclear_waste'
     ]),
 
-    unresolved: Object.freeze([
-        'tough_alloy',
-        'thermoconducting_alloy',
-        'extreme_alloy',
-        'hsla_steel',
-        'stainless_steel',
-        'super_alloy',
-        'sic_sic_cmc',
-        'c_mn_blend',
-        'borax',
-        'baratol',
-        'crude_oil',
-        'lpg',
-        'gasoline',
-        'kerosene',
-        'diesel',
-        'lubricant',
-        'vegetable_oil',
-        'biodiesel',
-        'yeast_culture',
-        'etching_acid',
-        'memory_essence'
-    ])
+    unresolved: Object.freeze(
+        Object.values(MatterworksBacklogFamilies)
+            .flatMap(family => family.materials)
+    )
 })
 
 global.MatterworksResearch = MatterworksResearch
@@ -169,5 +206,6 @@ global.MatterworksResearch = MatterworksResearch
 console.info(
     `[Matterworks] Research registry loaded: ${MatterworksResearch.phases.length} phases, ` +
     `${Object.keys(MatterworksResearch.capabilities).length} capabilities, ` +
-    `${Object.keys(MatterworksResearch.synthesisFamilies).length} synthesis families`
+    `${Object.keys(MatterworksResearch.synthesisFamilies).length} synthesis families, ` +
+    `${Object.keys(MatterworksResearch.backlogFamilies).length} process backlog families`
 )
