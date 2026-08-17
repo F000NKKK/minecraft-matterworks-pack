@@ -5,6 +5,33 @@
 	id: "A120000000000004"
 	order_index: 140
 	quest_links: []
-	quests: []
+	quests: [
+		{
+			id: "B240000000000001"
+			title: "NuclearCraft Processing"
+			description: ["NuclearCraft supplies the pack's nuclear-material processing and reactor physics. This guide explains the mod; completing it does not grant Matterworks nuclear research permissions."]
+			x: 0.0d
+			y: 0.0d
+			tasks: [{ id: "C240000000000001", item: "nuclearcraft:manufactur", type: "item" }]
+		}
+		{
+			dependencies: ["B240000000000001"]
+			id: "B240000000000002"
+			title: "Fission Reactors"
+			description: ["The fission reactor is a physical process system. Matterworks requires the Main Program to prove the reactor/fuel-cycle capability before later atomic chemistry is unlocked."]
+			x: 2.0d
+			y: -1.0d
+			tasks: [{ id: "C240000000000002", item: "nuclearcraft:fission_reactor_controller", type: "item" }]
+		}
+		{
+			dependencies: ["B240000000000002"]
+			id: "B240000000000003"
+			title: "Particle Accelerators"
+			description: ["Accelerators create controlled nuclear and isotope transformations. Matterworks removes bulk-transmutation shortcuts that would replace extraction or chemistry, while preserving the accelerator as a real research system."]
+			x: 4.0d
+			y: 0.0d
+			tasks: [{ id: "C240000000000003", item: "nuclearcraft:accelerator_casing", type: "item" }]
+		}
+	]
 	title: "Guide - NuclearCraft: Neoteric"
 }
