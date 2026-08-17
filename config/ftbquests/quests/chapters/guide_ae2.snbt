@@ -1,4 +1,6 @@
 {
+	default_hide_dependency_lines: false
+	default_quest_shape: "square"
 	filename: "guide_ae2"
 	group: "A100000000000002"
 	icon: "ae2:certus_quartz_crystal"
@@ -12,25 +14,33 @@
 			description: ["Applied Energistics 2 provides digital storage and logistics. This guide teaches the network model; the Main Program decides when networked industry becomes a progression capability."]
 			x: 0.0d
 			y: 0.0d
+			shape: "gear"
+			size: 1.2d
 			tasks: [{ id: "C250000000000001", item: "ae2:certus_quartz_crystal", type: "item" }]
+			rewards: [{ id: "F250000000000001", type: "xp", xp: 25 }]
 		}
 		{
 			dependencies: ["B250000000000001"]
+			hide_details_until_startable: true
 			id: "B250000000000002"
 			title: "Channel Control"
 			description: ["Controllers organize larger ME networks and their channel topology. Treat them as infrastructure, not as a standalone research unlock."]
-			x: 2.0d
-			y: 0.0d
+			x: 2.5d
+			y: -1.0d
 			tasks: [{ id: "C250000000000002", item: "ae2:controller", type: "item" }]
+			rewards: [{ id: "F250000000000002", type: "xp", xp: 50 }]
 		}
 		{
 			dependencies: ["B250000000000002"]
+			hide_details_until_startable: true
 			id: "B250000000000003"
 			title: "Networked Crafting"
 			description: ["Crafting terminals expose production through the ME network. Matterworks later combines this digital logistics layer with programmable process control."]
-			x: 4.0d
+			x: 5.0d
 			y: 0.0d
+			shape: "diamond"
 			tasks: [{ id: "C250000000000003", item: "ae2:crafting_terminal", type: "item" }]
+			rewards: [{ id: "F250000000000003", type: "xp", xp: 75 }]
 		}
 	]
 	title: "Guide - Applied Energistics 2"
