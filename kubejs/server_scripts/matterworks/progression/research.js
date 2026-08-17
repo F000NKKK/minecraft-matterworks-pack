@@ -54,6 +54,13 @@ const MatterworksBacklogFamilies = Object.freeze({
     })
 })
 
+const MatterworksUnresolved = Object.freeze(
+    Object.values(MatterworksBacklogFamilies).reduce((materials, family) => {
+        family.materials.forEach(material => materials.push(material))
+        return materials
+    }, [])
+)
+
 const MatterworksResearch = Object.freeze({
     phases: Object.freeze([
         { id: 'phase_1', stage: 'matterworks:phase/mechanical_industry', ownerQuest: '2110000000000004', title: 'Mechanical Industry' },
@@ -196,10 +203,7 @@ const MatterworksResearch = Object.freeze({
         'nuclear_waste'
     ]),
 
-    unresolved: Object.freeze(
-        Object.values(MatterworksBacklogFamilies)
-            .flatMap(family => family.materials)
-    )
+    unresolved: MatterworksUnresolved
 })
 
 global.MatterworksResearch = MatterworksResearch
