@@ -45,6 +45,22 @@
 			rewards: [{ id: "6270000000000003", type: "xp", xp: 50 }]
 		}
 		{
+			dependencies: ["2270000000000003"]
+			hide_dependency_lines: false
+			hide_details_until_startable: true
+			id: "2270000000000005"
+			title: "Pressure-Swing Separation"
+			description: ["Matterworks uses PneumaticCraft pressure directly as atmospheric feed. A Thermopneumatic Processing Plant operating under pressure consumes molecular-sieve charges and recovers the nitrogen fraction; oxygen and trace gases are deliberately not granted for free by the same early process."]
+			x: 7.5d
+			y: -1.0d
+			shape: "gear"
+			tasks: [
+				{ id: "3270000000000005", item: "pneumaticcraft:thermopneumatic_processing_plant", type: "item" }
+				{ id: "3270000000000006", item: "kubejs:molecular_sieve_charge", count: 4, type: "item" }
+			]
+			rewards: [{ id: "6270000000000005", type: "xp", xp: 50 }]
+		}
+		{
 			dependencies: ["2270000000000002"]
 			hide_dependency_lines: false
 			hide_details_until_startable: true
