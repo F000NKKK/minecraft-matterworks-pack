@@ -83,11 +83,14 @@ const moltenMetallurgyQuarantine = Object.freeze([
 global.MatterworksMoltenMetallurgyQuarantine = moltenMetallurgyQuarantine
 
 ServerEvents.recipes(event => {
-    moltenMetallurgyQuarantine.forEach(entry => event.remove({ id: entry.id }))
+    const familyNames = new Set()
 
-    const families = [...new Set(moltenMetallurgyQuarantine.map(entry => entry.family))]
+    moltenMetallurgyQuarantine.forEach(entry => {
+        event.remove({ id: entry.id })
+        familyNames.add(entry.family)
+    })
 
     console.info(
-        `[Matterworks] Quarantined ${moltenMetallurgyQuarantine.length} NuclearCraft molten-metallurgy recipes across ${families.length} process families pending validated routes`
+        `[Matterworks] Quarantined ${moltenMetallurgyQuarantine.length} NuclearCraft molten-metallurgy recipes across ${familyNames.size} process families pending validated routes`
     )
 })
