@@ -73,7 +73,8 @@ const MatterworksResearch = Object.freeze({
         'nuclearcraft',
         'applied_energistics_2',
         'cc_tweaked',
-        'pressure_engineering'
+        'pressure_engineering',
+        'high_temperature_metallurgy'
     ]),
 
     capabilities: Object.freeze({
