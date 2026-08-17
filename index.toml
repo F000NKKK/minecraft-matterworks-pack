@@ -330,7 +330,7 @@ hash = "c9c70ded60c36fe36d7041ac08c6a7ae6066f0d1f15ed4134d5e2d9a0cd3d17e"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research_audit.js"
-hash = "1ba06854c5f7997d8c2c8b177c6276a5b3b6e5a9fdf716924f49c4e42536a7ef"
+hash = "d575e267f76227534f1c236e75f426d98d9ef8f6c39da879b4e675b36d9ee6aa"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/atmosphere.js"
