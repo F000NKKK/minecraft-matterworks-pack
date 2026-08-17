@@ -5,6 +5,24 @@
 	id: "A120000000000001"
 	order_index: 110
 	quest_links: []
-	quests: []
+	quests: [
+		{
+			id: "D110000000000001"
+			title: "Create in Matterworks"
+			description: ["Create is the mechanical engineering layer of Matterworks. This guide explains its machines; progression unlocks live in the Main Program instead."]
+			x: 0.0d
+			y: 0.0d
+			tasks: [{ id: "E110000000000001", item: "create:wrench", type: "item" }]
+		}
+		{
+			dependencies: ["D110000000000001"]
+			id: "D110000000000002"
+			title: "Processing Machines"
+			description: ["Presses, basins, mixers, deployers and sequenced assembly form reusable process lines. Matterworks recipes frequently require several of these operations rather than one crafting step."]
+			x: 2.0d
+			y: 0.0d
+			tasks: [{ id: "E110000000000002", item: "create:mechanical_press", type: "item" }]
+		}
+	]
 	title: "Guide - Create"
 }
