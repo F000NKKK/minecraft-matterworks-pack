@@ -5,6 +5,24 @@
 	id: "A120000000000003"
 	order_index: 130
 	quest_links: []
-	quests: []
+	quests: [
+		{
+			id: "D130000000000001"
+			title: "Chemical Analysis"
+			description: ["The Dissolver answers what a material contains. In Matterworks, decomposition and synthesis are intentionally separate capabilities."]
+			x: 0.0d
+			y: 0.0d
+			tasks: [{ id: "E130000000000001", item: "alchemistry:dissolver", type: "item" }]
+		}
+		{
+			dependencies: ["D130000000000001"]
+			id: "D130000000000002"
+			title: "The Combiner Is Not Omnipotent"
+			description: ["The Combiner is a synthesis platform. A recipe is permitted only after the Main Program proves the technology that makes that material manufacturable. Nuclear provenance-sensitive states are never recreated by generic combination."]
+			x: 2.0d
+			y: 0.0d
+			tasks: [{ id: "E130000000000002", item: "alchemistry:combiner", type: "item" }]
+		}
+	]
 	title: "Guide - Alchemistry / ChemLib"
 }
