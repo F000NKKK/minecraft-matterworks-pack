@@ -2,63 +2,63 @@ hash-format = "sha256"
 
 [[files]]
 file = "config/ftbquests/quests/chapter_groups.snbt"
-hash = "594e780743d7dd24f1065c0cb9846331a6fc2e93cc3c93e6a14b3a899a42279e"
+hash = "c55d580e9e958693174302eb854ec1068358a235cdd537cfda843f5cc693d6d2"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_ae2.snbt"
-hash = "33a24865d715f978812a17b544015f7a0b6e3a793a7a100b161120e415f2593b"
+hash = "bfd3cf87152de1e6917d70bbda6aef0c6044e1afbd9c72b077b439080305d75e"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_alchemistry_chemlib.snbt"
-hash = "c723c8fc2b37e2970dff9635d1573087968fff2f7055534f1c3019ad4523c242"
+hash = "8b4d7bc4a36cfdc29bebf5c1656c6d85099ffc8ff46460a7cd0f51cbedd2e2d2"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_cc_tweaked.snbt"
-hash = "8aa7769ab58de7717b7b76810be6b6f63373533754d6a00e61f422b59d4df10c"
+hash = "d76628f1b59fc521284599ee65146634bfbb2572679c88ecb27ed77a2059474a"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_create.snbt"
-hash = "8dfda46ee188ad6afcbabaf43966a0cf83817581eec6062bc6276ebd6dee0cbc"
+hash = "57438974697942e0bdf7cba3c4d8e9d0c5789f3aed65052621f8107da8bee376"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_mekanism.snbt"
-hash = "8fef96542f13abd5b0ef8e851f08032c48db42b01dd12ffc3cd199c2bdcd4f50"
+hash = "d8d8349fb4410cb18ac66015c2c6db825ca4773ae5624bbcf9cb64989f96d4ed"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_nuclearcraft.snbt"
-hash = "510f36e05b87ebb9bb26091a7a0a008c8604ca7ef1fe3c2b7530bdafe431e4a3"
+hash = "9c94204178b8912d909b15d2ad78cf72433ca04e84a9fafe6910a5bd23368943"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_1_mechanical_industry.snbt"
-hash = "489ed3ed416da98d4791f0bb6523184c8b14ff03444aa13f02f8e906e646fe65"
+hash = "11489380a578d4a23a3e599046786b749c72cf341d7014c00277050311f0e899"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_2_chemical_analysis.snbt"
-hash = "b4382e4865f26fd2cc8d99efcd720e61d160cb06bcb1aa9f6c6f8a72f90de80f"
+hash = "efb847176ea26872f054e3e6c45e5a85345fffd55149eee516c9d3cc734f996a"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_3_process_industry.snbt"
-hash = "b7a5808ec81f941b018f4583308aa279f6f2676c92b20a3181aa33e3a5cdf903"
+hash = "3a51172fb23f195324e61a701aa64613d9360e3f6659fbb7ac627193e472c85c"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_4_digital_industry.snbt"
-hash = "377aa44a105373d47156ad36118c8ac9e94127d648dcdef50ecadcd89ae0b29d"
+hash = "709b77a42656ab6d534fece8c827805a8eb12ebe0fdf657edeb0553b74f94a7c"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_5_nuclear_engineering.snbt"
-hash = "1918072fd17eb0c8f451c660c9ade719d64ae4981854965f2976d64170f2fddc"
+hash = "382fc4099f1cd11fbe9aa79dc869178cd9045ce21d643c68b9fb465b7e56b16d"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_6_nuclear_research.snbt"
-hash = "21f6a71a05e13b9932b3fd0f647f442206867757041c10bbcedd34d1c675381d"
+hash = "28e7e1739569d31868d9a1f826f292f46ba5b1c731610802d6160cdae260973e"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_7_atomic_engineering.snbt"
-hash = "5c74a481f7e3d0577c0149f3389b227c4e858758c6b9958762fb44262f52dad5"
+hash = "61b81bbf30196aa7b37471ac320319c1371305757ddae39c1ffc06941a44be22"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_8_fusion_engineering.snbt"
-hash = "f95a7a30f1c61c0f6182bd4715a670a96cd2a98568b0b8fefad0fe0f38a4c52c"
+hash = "18713a3c7b1958cd7cd4d40d1c4108fafd99f427777eaaeedabeff6b895f3ba0"
 
 [[files]]
 file = "config/ftbquests/quests/data.snbt"
@@ -326,7 +326,7 @@ hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research.js"
-hash = "695afa73eb8dab332f1b559455aa4af9c8dbc76e4d047fcc1bb3676bf106bf5b"
+hash = "c9e5e49c9f709043dc7faa976bb1be96cd9b7ac822be0e84f1db046b44b8e7e4"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research_audit.js"
