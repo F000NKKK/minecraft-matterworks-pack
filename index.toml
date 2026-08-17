@@ -386,6 +386,21 @@ hash = "5bd0506bc0be25116b234f2b5af9447f60d82ae1cb6c5be4e12d8841f6c2501c"
 metafile = true
 
 [[files]]
+file = "mods/ftb-library-forge.pw.toml"
+hash = "efa75ee4aae90dea11316b6e61aecaf9433eeb3d0821f78b4eca41acbbd73e8f"
+metafile = true
+
+[[files]]
+file = "mods/ftb-quests-forge.pw.toml"
+hash = "7b2cc450f553b82439ae9422b8c2b4406dae1af3c48f7ce791a3576acff1d122"
+metafile = true
+
+[[files]]
+file = "mods/ftb-teams-forge.pw.toml"
+hash = "efda76423b21f9bfab4ad8d0411f0b06a199ab7e3e12ca16dc0586c1828b8f07"
+metafile = true
+
+[[files]]
 file = "mods/guideme.pw.toml"
 hash = "606e38058a2913795ecebcd9b407a453d8fc24cfd3409a9eb431ff56e10bcfe8"
 metafile = true
