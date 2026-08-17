@@ -1,0 +1,36 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "square"
+	filename: "guide_alchemistry_chemlib"
+	group: "1100000000000002"
+	icon: "alchemistry:combiner"
+	id: "1120000000000003"
+	order_index: 130
+	quest_links: []
+	quests: [
+		{
+			id: "4130000000000001"
+			title: "Chemical Analysis"
+			description: ["The Dissolver answers what a material contains. In Matterworks, decomposition and synthesis are intentionally separate capabilities."]
+			x: 0.0d
+			y: 0.0d
+			shape: "gear"
+			size: 1.2d
+			tasks: [{ id: "5130000000000001", item: "alchemistry:dissolver", type: "item" }]
+			rewards: [{ id: "6230000000000001", type: "xp", xp: 25 }]
+		}
+		{
+			dependencies: ["4130000000000001"]
+			hide_dependency_lines: false
+			hide_details_until_startable: true
+			id: "4130000000000002"
+			title: "The Combiner Is Not Omnipotent"
+			description: ["The Combiner is a synthesis platform. A recipe is permitted only after the Main Program proves the technology that makes that material manufacturable. Nuclear provenance-sensitive states are never recreated by generic combination."]
+			x: 2.5d
+			y: 0.0d
+			tasks: [{ id: "5130000000000002", item: "alchemistry:combiner", type: "item" }]
+			rewards: [{ id: "6230000000000002", type: "xp", xp: 50 }]
+		}
+	]
+	title: "Guide - Alchemistry / ChemLib"
+}

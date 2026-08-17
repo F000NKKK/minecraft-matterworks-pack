@@ -1,0 +1,37 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "square"
+	filename: "guide_cc_tweaked"
+	group: "1100000000000002"
+	icon: "computercraft:computer_normal"
+	id: "1120000000000006"
+	order_index: 160
+	quest_links: []
+	quests: [
+		{
+			id: "2260000000000001"
+			title: "Programmable Computers"
+			description: ["CC:Tweaked is Matterworks' programmable control layer. This guide introduces computers and Lua-facing automation without granting any Main Program research by itself."]
+			x: 0.0d
+			y: 0.0d
+			shape: "gear"
+			size: 1.2d
+			tasks: [{ id: "3260000000000001", item: "computercraft:computer_normal", type: "item" }]
+			rewards: [{ id: "6260000000000001", type: "xp", xp: 25 }]
+		}
+		{
+			dependencies: ["2260000000000001"]
+			hide_dependency_lines: false
+			hide_details_until_startable: true
+			id: "2260000000000002"
+			title: "Advanced Control"
+			description: ["Advanced computers are suitable supervisors for complex plants. Later Matterworks phases may require measured state, interlocks and program logic rather than simple item possession."]
+			x: 2.5d
+			y: 0.0d
+			shape: "diamond"
+			tasks: [{ id: "3260000000000002", item: "computercraft:computer_advanced", type: "item" }]
+			rewards: [{ id: "6260000000000002", type: "xp", xp: 75 }]
+		}
+	]
+	title: "Guide - CC:Tweaked"
+}

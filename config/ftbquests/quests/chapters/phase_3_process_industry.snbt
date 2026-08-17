@@ -1,0 +1,84 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "circle"
+	filename: "phase_3_process_industry"
+	group: "1100000000000001"
+	hide_quest_details_until_startable: true
+	hide_quest_until_deps_complete: true
+	icon: "mekanism:metallurgic_infuser"
+	id: "1110000000000003"
+	images: [
+		{ x: 3.5d, y: 0.0d, width: 10.0d, height: 5.5d, image: "minecraft:textures/block/smooth_stone.png", alpha: 24, order: -20 }
+		{ x: 3.5d, y: 0.0d, width: 8.0d, height: 4.0d, image: "minecraft:textures/block/redstone_block.png", alpha: 12, order: -19 }
+	]
+	order_index: 30
+	quest_links: []
+	quests: [
+		{
+			dependencies: ["2120000000000004"]
+			hide_dependency_lines: false
+			id: "2130000000000001"
+			title: "Controlled Metallurgy"
+			description: ["Build the Matterworks-gated Metallurgic Infuser. This establishes controlled electromechanical metallurgy rather than a free Mekanism entry point."]
+			x: 0.0d
+			y: 0.0d
+			shape: "gear"
+			size: 1.35d
+			tasks: [{ id: "3130000000000001", item: "mekanism:metallurgic_infuser", type: "item" }]
+			rewards: [{ id: "6130000000000001", type: "xp", xp: 250 }]
+		}
+		{
+			dependencies: ["2130000000000001"]
+			hide_dependency_lines: false
+			id: "2130000000000002"
+			title: "Electrochemical Core"
+			description: ["Construct the graphite-electrode electrochemical core used by Matterworks process chemistry."]
+			x: 2.5d
+			y: -1.5d
+			shape: "square"
+			tasks: [{ id: "3130000000000002", item: "mekanism:electrolytic_core", type: "item" }]
+			rewards: [{ id: "6130000000000002", type: "xp", xp: 150 }]
+		}
+		{
+			dependencies: ["2130000000000002"]
+			hide_dependency_lines: false
+			id: "2130000000000003"
+			title: "Industrial Electrolysis"
+			description: ["Build an Electrolytic Separator. The plant can now produce and handle process gases instead of treating chemistry as inventory crafting."]
+			x: 5.0d
+			y: -1.5d
+			shape: "square"
+			tasks: [{ id: "3130000000000003", item: "mekanism:electrolytic_separator", type: "item" }]
+			rewards: [{ id: "6130000000000003", type: "xp", xp: 200 }]
+		}
+		{
+			dependencies: ["2130000000000001"]
+			hide_dependency_lines: false
+			id: "2130000000000004"
+			title: "Engineered Carbon"
+			description: ["Produce graphite through the industrial carbon route. This milestone owns synthesis knowledge for engineered carbon forms, while their process provenance remains meaningful."]
+			x: 2.5d
+			y: 1.5d
+			shape: "square"
+			tasks: [{ id: "3130000000000004", item: "kubejs:graphite", type: "item" }]
+			rewards: [{ id: "6130000000000004", type: "xp", xp: 150 }]
+		}
+		{
+			dependencies: ["2130000000000003", "2130000000000004"]
+			hide_dependency_lines: false
+			id: "2130000000000005"
+			title: "Process Industry Established"
+			description: ["Complete the first integrated electrical, metallurgical and electrochemical production layer. Later synthesis research is attached to concrete process milestones from this point onward."]
+			x: 7.5d
+			y: 0.0d
+			shape: "diamond"
+			size: 1.35d
+			tasks: [{ id: "3130000000000005", item: "mekanism:basic_chemical_tank", type: "item" }]
+			rewards: [
+				{ id: "6130000000000005", type: "xp", xp: 400 }
+				{ id: "6130000000000006", item: "mekanism:alloy_infused", count: 4, type: "item" }
+			]
+		}
+	]
+	title: "Phase 3 - Electrotechnics and Process Industry"
+}

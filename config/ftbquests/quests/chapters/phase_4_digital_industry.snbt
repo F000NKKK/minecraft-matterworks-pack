@@ -1,0 +1,60 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "circle"
+	filename: "phase_4_digital_industry"
+	group: "1100000000000001"
+	hide_quest_details_until_startable: true
+	hide_quest_until_deps_complete: true
+	icon: "ae2:controller"
+	id: "1110000000000004"
+	images: [
+		{ x: 2.5d, y: 0.0d, width: 8.0d, height: 5.0d, image: "minecraft:textures/block/black_concrete.png", alpha: 24, order: -20 }
+		{ x: 2.5d, y: 0.0d, width: 6.5d, height: 3.5d, image: "minecraft:textures/block/light_blue_stained_glass.png", alpha: 16, order: -19 }
+	]
+	order_index: 40
+	quest_links: []
+	quests: [
+		{
+			dependencies: ["2130000000000005"]
+			hide_dependency_lines: false
+			id: "2140000000000001"
+			title: "Networked Industry"
+			description: ["Establish an Applied Energistics controller. Matterworks now treats logistics as plant infrastructure rather than a collection of independent inventories."]
+			x: 0.0d
+			y: 0.0d
+			shape: "gear"
+			size: 1.35d
+			tasks: [{ id: "3140000000000001", item: "ae2:controller", type: "item" }]
+			rewards: [{ id: "6140000000000001", type: "xp", xp: 300 }]
+		}
+		{
+			dependencies: ["2140000000000001"]
+			hide_dependency_lines: false
+			id: "2140000000000002"
+			title: "Programmable Control"
+			description: ["Introduce a programmable computer into the factory. Later high-energy processes may require measured state and control logic instead of merely placing a machine block."]
+			x: 2.5d
+			y: 1.5d
+			shape: "square"
+			tasks: [{ id: "3140000000000002", item: "computercraft:computer_advanced", type: "item" }]
+			rewards: [{ id: "6140000000000002", type: "xp", xp: 200 }]
+		}
+		{
+			dependencies: ["2140000000000001", "2140000000000002"]
+			hide_dependency_lines: false
+			id: "2140000000000003"
+			title: "Digital Process Control"
+			description: ["Combine networked logistics and programmable supervision. This closes the digital-industry phase and establishes the control capability required by later nuclear research."]
+			x: 5.0d
+			y: 0.0d
+			shape: "diamond"
+			size: 1.35d
+			tasks: [{ id: "3140000000000003", item: "ae2:crafting_terminal", type: "item" }]
+			rewards: [
+				{ id: "6140000000000003", type: "xp", xp: 450 }
+				{ id: "6140000000000004", item: "minecraft:ender_pearl", count: 8, type: "item" }
+			]
+		}
+	]
+	title: "Phase 4 - Digital Industry"
+}

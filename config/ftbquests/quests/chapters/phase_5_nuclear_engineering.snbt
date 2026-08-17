@@ -1,0 +1,61 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "circle"
+	filename: "phase_5_nuclear_engineering"
+	group: "1100000000000001"
+	hide_quest_details_until_startable: true
+	hide_quest_until_deps_complete: true
+	icon: "nuclearcraft:fission_reactor_controller"
+	id: "1110000000000005"
+	images: [
+		{ x: 3.0d, y: 0.0d, width: 9.0d, height: 5.5d, image: "minecraft:textures/block/deepslate_tiles.png", alpha: 30, order: -20 }
+		{ x: 3.0d, y: 0.0d, width: 7.0d, height: 4.0d, image: "minecraft:textures/block/lime_concrete.png", alpha: 10, order: -19 }
+	]
+	order_index: 50
+	quest_links: []
+	quests: [
+		{
+			dependencies: ["2140000000000003"]
+			hide_dependency_lines: false
+			id: "2150000000000001"
+			title: "Nuclear Engineering Program"
+			description: ["Enter the NuclearCraft program only after process industry and digital control exist. From this point nuclear materials are tracked as process states, not interchangeable elemental inventory."]
+			x: 0.0d
+			y: 0.0d
+			shape: "gear"
+			size: 1.4d
+			tasks: [{ id: "3150000000000001", item: "nuclearcraft:manufactory", type: "item" }]
+			rewards: [{ id: "6150000000000001", type: "xp", xp: 500 }]
+		}
+		{
+			dependencies: ["2150000000000001"]
+			hide_dependency_lines: false
+			id: "2150000000000002"
+			title: "Fission Infrastructure"
+			description: ["Construct the NuclearCraft fission reactor controller. Owning the controller is only the infrastructure milestone; fuel preparation, irradiation and reprocessing remain separate capabilities."]
+			x: 3.0d
+			y: -1.0d
+			shape: "diamond"
+			size: 1.25d
+			tasks: [{ id: "3150000000000002", item: "nuclearcraft:fission_reactor_controller", type: "item" }]
+			rewards: [{ id: "6150000000000002", type: "xp", xp: 750 }]
+		}
+		{
+			dependencies: ["2150000000000002"]
+			hide_dependency_lines: false
+			id: "2150000000000003"
+			title: "Fuel Cycle Authority"
+			description: ["Establish a controlled fission program. This stable research milestone owns nuclear fuel-cycle knowledge; runtime validation will be tightened to a verified spent/depleted or reprocessing output once the installed NuclearCraft registry audit supplies the exact product IDs."]
+			x: 6.0d
+			y: 0.0d
+			shape: "hexagon"
+			size: 1.45d
+			tasks: [{ id: "3150000000000003", item: "nuclearcraft:isotope_separator", type: "item" }]
+			rewards: [
+				{ id: "6150000000000003", type: "xp", xp: 1000 }
+				{ id: "6150000000000004", item: "nuclearcraft:lead_ingot", count: 8, type: "item" }
+			]
+		}
+	]
+	title: "Phase 5 - Nuclear Engineering"
+}

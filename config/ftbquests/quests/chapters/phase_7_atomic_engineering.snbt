@@ -1,0 +1,58 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "circle"
+	filename: "phase_7_atomic_engineering"
+	group: "1100000000000001"
+	hide_quest_details_until_startable: true
+	hide_quest_until_deps_complete: true
+	icon: "alchemistry:fission_core"
+	id: "1110000000000007"
+	images: [
+		{ x: 3.0d, y: 0.0d, width: 9.0d, height: 5.0d, image: "minecraft:textures/block/tuff.png", alpha: 26, order: -20 }
+		{ x: 3.0d, y: 0.0d, width: 7.0d, height: 3.4d, image: "minecraft:textures/block/yellow_concrete.png", alpha: 10, order: -19 }
+	]
+	order_index: 70
+	quest_links: []
+	quests: [
+		{
+			dependencies: ["2160000000000005"]
+			hide_dependency_lines: false
+			id: "2170000000000001"
+			title: "Atomic Reactor Structure"
+			description: ["Only after the NuclearCraft accelerator program may Alchemistry's atomic engineering branch begin. Construct the reactor structure without weakening nuclear provenance rules."]
+			x: 0.0d
+			y: 0.0d
+			shape: "gear"
+			size: 1.35d
+			tasks: [{ id: "3170000000000001", item: "alchemistry:reactor_casing", type: "item" }]
+			rewards: [{ id: "6170000000000001", type: "xp", xp: 750 }]
+		}
+		{
+			dependencies: ["2170000000000001"]
+			hide_dependency_lines: false
+			id: "2170000000000002"
+			title: "Controlled Atomic Fission"
+			description: ["Construct the Alchemistry Fission Core. This is a terminal research capability, not a replacement for NuclearCraft enrichment, irradiation or fuel-state processing."]
+			x: 3.0d
+			y: 0.0d
+			shape: "diamond"
+			size: 1.3d
+			tasks: [{ id: "3170000000000002", item: "alchemistry:fission_core", type: "item" }]
+			rewards: [{ id: "6170000000000002", type: "xp", xp: 1250 }]
+		}
+		{
+			dependencies: ["2170000000000002"]
+			hide_dependency_lines: false
+			id: "2170000000000003"
+			title: "Atomic Synthesis Authority"
+			description: ["Complete the atomic-engineering program. Parent-element synthesis knowledge may be granted here, while isotope-specific and irradiated states remain process-owned and cannot be reconstructed by generic chemistry."]
+			x: 6.0d
+			y: 0.0d
+			shape: "hexagon"
+			size: 1.5d
+			tasks: [{ id: "3170000000000003", item: "alchemistry:fission_core", type: "item" }]
+			rewards: [{ id: "6170000000000003", type: "xp", xp: 1750 }]
+		}
+	]
+	title: "Phase 7 - Atomic Engineering"
+}

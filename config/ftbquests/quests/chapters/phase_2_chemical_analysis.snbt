@@ -1,0 +1,72 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "circle"
+	filename: "phase_2_chemical_analysis"
+	group: "1100000000000001"
+	hide_quest_details_until_startable: true
+	hide_quest_until_deps_complete: true
+	icon: "alchemistry:dissolver"
+	id: "1110000000000002"
+	images: [
+		{ x: 2.5d, y: 0.0d, width: 8.0d, height: 5.0d, image: "minecraft:textures/block/calcite.png", alpha: 25, order: -20 }
+		{ x: 2.5d, y: 0.0d, width: 6.5d, height: 3.5d, image: "minecraft:textures/block/amethyst_block.png", alpha: 16, order: -19 }
+	]
+	order_index: 20
+	quest_links: []
+	quests: [
+		{
+			dependencies: ["2110000000000004"]
+			hide_dependency_lines: false
+			id: "2120000000000001"
+			title: "Analytical Chemistry"
+			description: ["Build a Dissolver and establish chemical analysis. From this point Matterworks can reason about what ordinary materials are made of; analysis still does not imply synthesis knowledge."]
+			x: 0.0d
+			y: 0.0d
+			shape: "gear"
+			size: 1.35d
+			tasks: [{ id: "3120000000000001", item: "alchemistry:dissolver", type: "item" }]
+			rewards: [{ id: "6120000000000001", type: "xp", xp: 200 }]
+		}
+		{
+			dependencies: ["2120000000000001"]
+			hide_dependency_lines: false
+			id: "2120000000000002"
+			title: "Carbon Characterisation"
+			description: ["Characterise an engineered carbon material. Graphite is chemically carbon, but its useful physical form still comes from a real process."]
+			x: 2.5d
+			y: -1.5d
+			shape: "square"
+			tasks: [{ id: "3120000000000002", item: "kubejs:graphite", type: "item" }]
+			rewards: [{ id: "6120000000000002", type: "xp", xp: 125 }]
+		}
+		{
+			dependencies: ["2120000000000001"]
+			hide_dependency_lines: false
+			id: "2120000000000003"
+			title: "Analyse an Alloy"
+			description: ["Obtain and analyse a representative engineered alloy. Knowing its constituent elements is the prerequisite for later controlled synthesis research."]
+			x: 2.5d
+			y: 1.5d
+			shape: "square"
+			tasks: [{ id: "3120000000000003", item: "create:brass_ingot", type: "item" }]
+			rewards: [{ id: "6120000000000003", type: "xp", xp: 125 }]
+		}
+		{
+			dependencies: ["2120000000000002", "2120000000000003"]
+			hide_dependency_lines: false
+			id: "2120000000000004"
+			title: "Material Reconstruction"
+			description: ["Build a Combiner. The machine is only a synthesis platform: Matterworks unlocks actual material families separately as their manufacturing knowledge is proven."]
+			x: 5.0d
+			y: 0.0d
+			shape: "diamond"
+			size: 1.25d
+			tasks: [{ id: "3120000000000004", item: "alchemistry:combiner", type: "item" }]
+			rewards: [
+				{ id: "6120000000000004", type: "xp", xp: 300 }
+				{ id: "6120000000000005", item: "minecraft:quartz", count: 8, type: "item" }
+			]
+		}
+	]
+	title: "Phase 2 - Chemical Analysis"
+}
