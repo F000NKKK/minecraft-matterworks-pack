@@ -5,6 +5,33 @@
 	id: "A120000000000005"
 	order_index: 150
 	quest_links: []
-	quests: []
+	quests: [
+		{
+			id: "B250000000000001"
+			title: "ME Networks"
+			description: ["Applied Energistics 2 provides digital storage and logistics. This guide teaches the network model; the Main Program decides when networked industry becomes a progression capability."]
+			x: 0.0d
+			y: 0.0d
+			tasks: [{ id: "C250000000000001", item: "ae2:certus_quartz_crystal", type: "item" }]
+		}
+		{
+			dependencies: ["B250000000000001"]
+			id: "B250000000000002"
+			title: "Channel Control"
+			description: ["Controllers organize larger ME networks and their channel topology. Treat them as infrastructure, not as a standalone research unlock."]
+			x: 2.0d
+			y: 0.0d
+			tasks: [{ id: "C250000000000002", item: "ae2:controller", type: "item" }]
+		}
+		{
+			dependencies: ["B250000000000002"]
+			id: "B250000000000003"
+			title: "Networked Crafting"
+			description: ["Crafting terminals expose production through the ME network. Matterworks later combines this digital logistics layer with programmable process control."]
+			x: 4.0d
+			y: 0.0d
+			tasks: [{ id: "C250000000000003", item: "ae2:crafting_terminal", type: "item" }]
+		}
+	]
 	title: "Guide - Applied Energistics 2"
 }
