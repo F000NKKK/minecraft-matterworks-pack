@@ -5,6 +5,34 @@
 	id: "A110000000000007"
 	order_index: 70
 	quest_links: []
-	quests: []
+	quests: [
+		{
+			dependencies: ["B160000000000005"]
+			id: "B170000000000001"
+			title: "Atomic Reactor Structure"
+			description: ["Only after the NuclearCraft accelerator program may Alchemistry's atomic engineering branch begin. Construct the reactor structure without weakening nuclear provenance rules."]
+			x: 0.0d
+			y: 0.0d
+			tasks: [{ id: "C170000000000001", item: "alchemistry:reactor_casing", type: "item" }]
+		}
+		{
+			dependencies: ["B170000000000001"]
+			id: "B170000000000002"
+			title: "Controlled Atomic Fission"
+			description: ["Construct the Alchemistry Fission Core. This is a terminal research capability, not a replacement for NuclearCraft enrichment, irradiation or fuel-state processing."]
+			x: 2.0d
+			y: 0.0d
+			tasks: [{ id: "C170000000000002", item: "alchemistry:fission_core", type: "item" }]
+		}
+		{
+			dependencies: ["B170000000000002"]
+			id: "B170000000000003"
+			title: "Atomic Synthesis Authority"
+			description: ["Complete the atomic-engineering program. Parent-element synthesis knowledge may be granted here, while isotope-specific and irradiated states remain process-owned and cannot be reconstructed by generic chemistry."]
+			x: 4.0d
+			y: 0.0d
+			tasks: [{ id: "C170000000000003", item: "alchemistry:fission_core", type: "item" }]
+		}
+	]
 	title: "Phase 7 - Atomic Engineering"
 }
