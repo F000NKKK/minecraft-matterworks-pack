@@ -15,7 +15,7 @@
 	quest_links: []
 	quests: [
 		{
-			dependencies: ["2140000000000003"]
+			dependencies: ["2140000000000008"]
 			hide_dependency_lines: false
 			id: "2150000000000001"
 			title: "Nuclear Engineering Program"
