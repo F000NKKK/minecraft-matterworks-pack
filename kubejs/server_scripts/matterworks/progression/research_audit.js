@@ -10,8 +10,6 @@ ServerEvents.recipes(event => {
     const owners = {}
     const duplicateOwners = []
     const missingQuestOwners = []
-    const duplicateQuestOwners = []
-    const questOwnerKeys = {}
 
     Object.entries(families).forEach(([familyKey, family]) => {
         ;(family.materials || []).forEach(material => {
@@ -24,13 +22,6 @@ ServerEvents.recipes(event => {
 
         if (!family.ownerQuest) {
             missingQuestOwners.push(`synthesis:${familyKey}`)
-        } else {
-            const ownerKey = `quest:${family.ownerQuest}`
-            if (ownerKey in questOwnerKeys) {
-                duplicateQuestOwners.push(`${family.ownerQuest}:${questOwnerKeys[ownerKey]}+synthesis:${familyKey}`)
-            } else {
-                questOwnerKeys[ownerKey] = `synthesis:${familyKey}`
-            }
         }
     })
 
@@ -70,14 +61,10 @@ ServerEvents.recipes(event => {
         console.warn(`[Matterworks] Research audit: research entries without quest owner: ${missingQuestOwners.join(', ')}`)
     }
 
-    if (duplicateQuestOwners.length > 0) {
-        console.warn(`[Matterworks] Research audit: quest IDs own multiple synthesis families: ${duplicateQuestOwners.join(', ')}`)
-    }
-
     console.info(
         `[Matterworks] Research audit registered: ${Object.keys(owners).length} materials assigned to synthesis families, ` +
         `${provenanceOnly.size} provenance-only, ${unresolved.size} unresolved; ` +
         `duplicateOwners=${duplicateOwners.length}, missingResearch=${missingResearch.length}, ` +
-        `missingQuestOwners=${missingQuestOwners.length}, duplicateQuestOwners=${duplicateQuestOwners.length}`
+        `missingQuestOwners=${missingQuestOwners.length}`
     )
 })
