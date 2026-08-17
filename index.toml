@@ -334,7 +334,7 @@ hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research.js"
-hash = "bc3213bcfeb903b00b16d8291c06740ee1507ddfe50cfdcd8a7d5d25dbac3bd3"
+hash = "c387fc30f85e29826e9844b9df53797f63d97fbaf8320eee31f58da38df925a5"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research_audit.js"
