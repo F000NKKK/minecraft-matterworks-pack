@@ -22,6 +22,11 @@ const MatterworksResearch = Object.freeze({
     ]),
 
     capabilities: Object.freeze({
+        electromechanical_power_conversion: {
+            stage: 'matterworks:capability/electromechanical_power_conversion',
+            phase: 'phase_3',
+            ownerQuest: '2130000000000008'
+        },
         digital_control: {
             stage: 'matterworks:capability/digital_control',
             phase: 'phase_4',
