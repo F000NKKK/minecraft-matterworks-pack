@@ -3,8 +3,8 @@ console.info('[Matterworks] Loading quest-owned research registry')
 const MatterworksResearch = Object.freeze({
     phases: Object.freeze([
         { id: 'phase_1', stage: 'matterworks:phase/mechanical_industry', ownerQuest: '2110000000000004', title: 'Mechanical Industry' },
-        { id: 'phase_2', stage: 'matterworks:phase/chemical_analysis', ownerQuest: '2120000000000004', title: 'Chemical Analysis' },
-        { id: 'phase_3', stage: 'matterworks:phase/process_industry', ownerQuest: '2130000000000005', title: 'Electrotechnics and Process Industry' },
+        { id: 'phase_2', stage: 'matterworks:phase/chemical_analysis', ownerQuest: '2120000000000007', title: 'Chemical Analysis' },
+        { id: 'phase_3', stage: 'matterworks:phase/process_industry', ownerQuest: '2130000000000007', title: 'Electrotechnics and Process Industry' },
         { id: 'phase_4', stage: 'matterworks:phase/digital_industry', ownerQuest: '2140000000000008', title: 'Digital Industry' },
         { id: 'phase_5', stage: 'matterworks:phase/nuclear_engineering', ownerQuest: '2150000000000003', title: 'Nuclear Engineering' },
         { id: 'phase_6', stage: 'matterworks:phase/nuclear_research', ownerQuest: '2160000000000005', title: 'Nuclear Research' },
