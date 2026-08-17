@@ -10,7 +10,7 @@ hash = "bfd3cf87152de1e6917d70bbda6aef0c6044e1afbd9c72b077b439080305d75e"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_alchemistry_chemlib.snbt"
-hash = "8b4d7bc4a36cfdc29bebf5c1656c6d85099ffc8ff46460a7cd0f51cbedd2e2d2"
+hash = "bb40132bb87a89a19104cbc8603f95e89c390d9a4506c44a458539709fdf3800"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_cc_tweaked.snbt"
@@ -54,11 +54,11 @@ hash = "e9a1d54657330c47ba0ba04baa1692694e383e0806791840eab4add365c92197"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_7_atomic_engineering.snbt"
-hash = "1f5c8765e91e33e0ac788b51e201d8f63c560a69db0a9bcc01633fced0dea01d"
+hash = "63b6d66faba0bc859aecea2e3a0dfb5da0b94ebb268e65e427591bc2920072fb"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_8_fusion_engineering.snbt"
-hash = "d3580d8e1b4329f4fb87f6fcf364c886562b63ffca72a513af3db8f357854dbe"
+hash = "df743985a0b7ac41becad3dedcb829a3814762d066a4e110cf13570229150423"
 
 [[files]]
 file = "config/ftbquests/quests/data.snbt"
@@ -326,7 +326,7 @@ hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research.js"
-hash = "faa2e374884459d185538370accc8aee3a29cc9789c431c09a18831e25799cf8"
+hash = "c9c70ded60c36fe36d7041ac08c6a7ae6066f0d1f15ed4134d5e2d9a0cd3d17e"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research_audit.js"
