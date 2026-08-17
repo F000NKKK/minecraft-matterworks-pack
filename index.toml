@@ -326,11 +326,11 @@ hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research.js"
-hash = "f0c5202a414edbdae1f8e53b33853dbc7e1f57068aa575cbc35df405689a593e"
+hash = "695afa73eb8dab332f1b559455aa4af9c8dbc76e4d047fcc1bb3676bf106bf5b"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research_audit.js"
-hash = "7c4be058f96ba719dd87d2aecedbda6dafb7f613c1218356205fe8d5395978cb"
+hash = "1ba06854c5f7997d8c2c8b177c6276a5b3b6e5a9fdf716924f49c4e42536a7ef"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/atmosphere.js"
