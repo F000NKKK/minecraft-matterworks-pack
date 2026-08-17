@@ -8,8 +8,8 @@
 	icon: "alchemistry:dissolver"
 	id: "1110000000000002"
 	images: [
-		{ x: 2.5d, y: 0.0d, width: 8.0d, height: 5.0d, image: "minecraft:textures/block/calcite.png", alpha: 25, order: -20 }
-		{ x: 2.5d, y: 0.0d, width: 6.5d, height: 3.5d, image: "minecraft:textures/block/amethyst_block.png", alpha: 16, order: -19 }
+		{ x: 3.75d, y: 0.0d, width: 11.0d, height: 6.5d, image: "minecraft:textures/block/calcite.png", alpha: 25, order: -20 }
+		{ x: 3.75d, y: 0.0d, width: 9.0d, height: 5.0d, image: "minecraft:textures/block/amethyst_block.png", alpha: 16, order: -19 }
 	]
 	order_index: 20
 	quest_links: []
@@ -19,52 +19,89 @@
 			hide_dependency_lines: false
 			id: "2120000000000001"
 			title: "Analytical Chemistry"
-			description: ["Build a Dissolver and establish chemical analysis. From this point Matterworks can reason about what ordinary materials are made of; analysis still does not imply synthesis knowledge."]
+			description: ["Build a Dissolver and establish repeatable material analysis. Matterworks can now inspect ordinary matter, but decomposition knowledge does not yet grant reconstruction capability."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.35d
 			tasks: [{ id: "3120000000000001", item: "alchemistry:dissolver", type: "item" }]
-			rewards: [{ id: "6120000000000001", type: "xp", xp: 200 }]
+			rewards: [{ id: "6120000000000001", type: "xp", xp: 175 }]
 		}
 		{
 			dependencies: ["2120000000000001"]
 			hide_dependency_lines: false
 			id: "2120000000000002"
-			title: "Carbon Characterisation"
-			description: ["Characterise an engineered carbon material. Graphite is chemically carbon, but its useful physical form still comes from a real process."]
+			title: "Elemental Reference"
+			description: ["Isolate a simple elemental reference sample. Pure-element handling is the baseline needed before comparing compounds, alloys and engineered material forms."]
 			x: 2.5d
-			y: -1.5d
+			y: -2.25d
 			shape: "square"
-			tasks: [{ id: "3120000000000002", item: "kubejs:graphite", type: "item" }]
-			rewards: [{ id: "6120000000000002", type: "xp", xp: 125 }]
+			tasks: [{ id: "3120000000000002", item: "chemlib:iron", type: "item" }]
+			rewards: [{ id: "6120000000000002", type: "xp", xp: 100 }]
 		}
 		{
 			dependencies: ["2120000000000001"]
 			hide_dependency_lines: false
 			id: "2120000000000003"
-			title: "Analyse an Alloy"
-			description: ["Obtain and analyse a representative engineered alloy. Knowing its constituent elements is the prerequisite for later controlled synthesis research."]
+			title: "Compound Identification"
+			description: ["Obtain a representative chemical compound and treat composition as a measured relationship between elements rather than an item-name lookup."]
 			x: 2.5d
-			y: 1.5d
+			y: -0.75d
 			shape: "square"
-			tasks: [{ id: "3120000000000003", item: "create:brass_ingot", type: "item" }]
-			rewards: [{ id: "6120000000000003", type: "xp", xp: 125 }]
+			tasks: [{ id: "3120000000000003", item: "chemlib:silicon_dioxide", type: "item" }]
+			rewards: [{ id: "6120000000000003", type: "xp", xp: 100 }]
 		}
 		{
-			dependencies: ["2120000000000002", "2120000000000003"]
+			dependencies: ["2120000000000001"]
 			hide_dependency_lines: false
 			id: "2120000000000004"
-			title: "Material Reconstruction"
-			description: ["Build a Combiner. The machine is only a synthesis platform: Matterworks unlocks actual material families separately as their manufacturing knowledge is proven."]
+			title: "Alloy Characterisation"
+			description: ["Analyse an engineered alloy. Knowing its constituent elements is useful, but it does not erase the physical manufacturing route that gives the alloy its industrial meaning."]
+			x: 2.5d
+			y: 0.75d
+			shape: "square"
+			tasks: [{ id: "3120000000000004", item: "create:brass_ingot", type: "item" }]
+			rewards: [{ id: "6120000000000004", type: "xp", xp: 125 }]
+		}
+		{
+			dependencies: ["2120000000000001"]
+			hide_dependency_lines: false
+			id: "2120000000000005"
+			title: "Engineered Carbon Analysis"
+			description: ["Characterise graphite as an engineered carbon form. Composition alone says carbon; process provenance explains why graphite is not interchangeable with every other carbon material."]
+			x: 2.5d
+			y: 2.25d
+			shape: "square"
+			tasks: [{ id: "3120000000000005", item: "kubejs:graphite", type: "item" }]
+			rewards: [{ id: "6120000000000005", type: "xp", xp: 125 }]
+		}
+		{
+			dependencies: ["2120000000000002", "2120000000000003", "2120000000000004", "2120000000000005"]
+			hide_dependency_lines: false
+			id: "2120000000000006"
+			title: "Composition Model"
+			description: ["Complete a representative analysis set spanning elements, compounds, alloys and manufactured forms. Matterworks now has enough context to distinguish composition knowledge from process ownership."]
 			x: 5.0d
 			y: 0.0d
 			shape: "diamond"
-			size: 1.25d
-			tasks: [{ id: "3120000000000004", item: "alchemistry:combiner", type: "item" }]
+			size: 1.2d
+			tasks: [{ id: "3120000000000006", item: "alchemistry:chemical_combiner", type: "item" }]
+			rewards: [{ id: "6120000000000006", type: "xp", xp: 200 }]
+		}
+		{
+			dependencies: ["2120000000000006"]
+			hide_dependency_lines: false
+			id: "2120000000000007"
+			title: "Material Reconstruction"
+			description: ["Build a Combiner and establish a controlled reconstruction platform. Synthesis permissions remain family-specific: a reconstruction machine is not a universal license to bypass manufacturing progression."]
+			x: 7.5d
+			y: 0.0d
+			shape: "gear"
+			size: 1.35d
+			tasks: [{ id: "3120000000000007", item: "alchemistry:combiner", type: "item" }]
 			rewards: [
-				{ id: "6120000000000004", type: "xp", xp: 300 }
-				{ id: "6120000000000005", item: "minecraft:quartz", count: 8, type: "item" }
+				{ id: "6120000000000007", type: "xp", xp: 275 }
+				{ id: "6120000000000008", item: "minecraft:quartz", count: 4, type: "item" }
 			]
 		}
 	]
