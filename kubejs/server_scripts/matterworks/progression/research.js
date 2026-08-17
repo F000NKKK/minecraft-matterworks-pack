@@ -33,6 +33,11 @@ const MatterworksResearch = Object.freeze({
             phase: 'phase_3',
             ownerQuest: '2130000000000010'
         },
+        polymer_engineering: {
+            stage: 'matterworks:capability/polymer_engineering',
+            phase: 'phase_3',
+            ownerQuest: '2130000000000011'
+        },
         digital_control: {
             stage: 'matterworks:capability/digital_control',
             phase: 'phase_4',
@@ -112,7 +117,7 @@ const MatterworksResearch = Object.freeze({
         polymers: {
             stage: 'matterworks:synthesis/polymers',
             phase: 'phase_3',
-            ownerQuest: '2130000000000007',
+            ownerQuest: '2130000000000011',
             materials: ['pneumaticcraft_plastic', 'mekanism_hdpe']
         },
         nuclear_parent_elements: {
