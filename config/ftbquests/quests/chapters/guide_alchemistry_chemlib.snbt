@@ -35,6 +35,19 @@
 			dependencies: ["4130000000000002"]
 			hide_dependency_lines: false
 			hide_details_until_startable: true
+			id: "4130000000000005"
+			title: "Composition Is Not Process Ownership"
+			description: ["Matterworks classifies materials by policy. DIRECT materials may be represented by ordinary composition chemistry after their research owner is established. PROCESS materials such as HDPE require an industrial route. MANUFACTURED and MIXTURE materials preserve even more of their production history, so knowing their ingredients is not enough to synthesize the finished material."]
+			x: 5.0d
+			y: 1.5d
+			shape: "square"
+			tasks: [{ id: "5130000000000005", item: "mekanism:hdpe_pellet", type: "item" }]
+			rewards: [{ id: "6230000000000005", type: "xp", xp: 50 }]
+		}
+		{
+			dependencies: ["4130000000000002"]
+			hide_dependency_lines: false
+			hide_details_until_startable: true
 			id: "4130000000000003"
 			title: "Atomic Fission Is a Separate Tier"
 			description: ["The Fission Chamber Controller performs generic atomic decomposition. Matterworks replaces its stock entry recipe and requires NuclearCraft ring-accelerator control hardware, so this machine belongs to the late atomic-engineering program rather than ordinary chemistry."]
