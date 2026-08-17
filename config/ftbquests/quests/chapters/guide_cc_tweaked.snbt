@@ -32,6 +32,19 @@
 			tasks: [{ id: "3260000000000002", item: "computercraft:computer_advanced", type: "item" }]
 			rewards: [{ id: "6260000000000002", type: "xp", xp: 75 }]
 		}
+		{
+			dependencies: ["2260000000000002"]
+			hide_dependency_lines: false
+			hide_details_until_startable: true
+			id: "2260000000000003"
+			title: "ME Network Supervision"
+			description: ["Advanced Peripherals' ME Bridge exposes Applied Energistics inventory and crafting state to CC:Tweaked. In Matterworks this is the first concrete network-to-program boundary: a supervisor can inspect logistics state and request work instead of existing as an isolated computer block."]
+			x: 5.0d
+			y: 0.0d
+			shape: "gear"
+			tasks: [{ id: "3260000000000003", item: "advancedperipherals:me_bridge", type: "item" }]
+			rewards: [{ id: "6260000000000003", type: "xp", xp: 75 }]
+		}
 	]
 	title: "Guide - CC:Tweaked"
 }
