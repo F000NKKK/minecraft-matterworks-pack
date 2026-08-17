@@ -5,6 +5,24 @@
 	id: "A120000000000002"
 	order_index: 120
 	quest_links: []
-	quests: []
+	quests: [
+		{
+			id: "D120000000000001"
+			title: "Mekanism in Matterworks"
+			description: ["Mekanism provides electrical and chemical process equipment. Matterworks changes several entry recipes and removes shortcuts, so use this guide for machine behaviour and the Main Program for unlock requirements."]
+			x: 0.0d
+			y: 0.0d
+			tasks: [{ id: "E120000000000001", item: "mekanism:configurator", type: "item" }]
+		}
+		{
+			dependencies: ["D120000000000001"]
+			id: "D120000000000002"
+			title: "Chemical Machines"
+			description: ["Mekanism gases and chemical machines are process infrastructure, not universal material shortcuts. Their outputs become prerequisites for later Matterworks synthesis research."]
+			x: 2.0d
+			y: 0.0d
+			tasks: [{ id: "E120000000000002", item: "mekanism:basic_chemical_tank", type: "item" }]
+		}
+	]
 	title: "Guide - Mekanism"
 }
