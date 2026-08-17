@@ -5,11 +5,11 @@ const MatterworksResearch = Object.freeze({
         { id: 'phase_1', stage: 'matterworks:phase/mechanical_industry', ownerQuest: 'B110000000000004', title: 'Mechanical Industry' },
         { id: 'phase_2', stage: 'matterworks:phase/chemical_analysis', ownerQuest: 'B120000000000004', title: 'Chemical Analysis' },
         { id: 'phase_3', stage: 'matterworks:phase/process_industry', ownerQuest: 'B130000000000005', title: 'Electrotechnics and Process Industry' },
-        { id: 'phase_4', stage: 'matterworks:phase/digital_industry', ownerQuest: null, title: 'Digital Industry' },
-        { id: 'phase_5', stage: 'matterworks:phase/nuclear_engineering', ownerQuest: null, title: 'Nuclear Engineering' },
-        { id: 'phase_6', stage: 'matterworks:phase/nuclear_research', ownerQuest: null, title: 'Nuclear Research' },
-        { id: 'phase_7', stage: 'matterworks:phase/atomic_engineering', ownerQuest: null, title: 'Atomic Engineering' },
-        { id: 'phase_8', stage: 'matterworks:phase/fusion_engineering', ownerQuest: null, title: 'Fusion Engineering' }
+        { id: 'phase_4', stage: 'matterworks:phase/digital_industry', ownerQuest: 'B140000000000003', title: 'Digital Industry' },
+        { id: 'phase_5', stage: 'matterworks:phase/nuclear_engineering', ownerQuest: 'B150000000000003', title: 'Nuclear Engineering' },
+        { id: 'phase_6', stage: 'matterworks:phase/nuclear_research', ownerQuest: 'B160000000000005', title: 'Nuclear Research' },
+        { id: 'phase_7', stage: 'matterworks:phase/atomic_engineering', ownerQuest: 'B170000000000003', title: 'Atomic Engineering' },
+        { id: 'phase_8', stage: 'matterworks:phase/fusion_engineering', ownerQuest: 'B180000000000003', title: 'Fusion Engineering' }
     ]),
 
     guides: Object.freeze([
@@ -20,6 +20,34 @@ const MatterworksResearch = Object.freeze({
         'applied_energistics_2',
         'cc_tweaked'
     ]),
+
+    capabilities: Object.freeze({
+        digital_control: {
+            stage: 'matterworks:capability/digital_control',
+            phase: 'phase_4',
+            ownerQuest: 'B140000000000003'
+        },
+        nuclear_fuel_cycle: {
+            stage: 'matterworks:capability/nuclear_fuel_cycle',
+            phase: 'phase_5',
+            ownerQuest: 'B150000000000003'
+        },
+        accelerator_research: {
+            stage: 'matterworks:capability/accelerator_research',
+            phase: 'phase_6',
+            ownerQuest: 'B160000000000005'
+        },
+        atomic_fission: {
+            stage: 'matterworks:capability/atomic_fission',
+            phase: 'phase_7',
+            ownerQuest: 'B170000000000003'
+        },
+        fusion_engineering: {
+            stage: 'matterworks:capability/fusion_engineering',
+            phase: 'phase_8',
+            ownerQuest: 'B180000000000003'
+        }
+    }),
 
     synthesisFamilies: Object.freeze({
         basic_alloys: {
@@ -61,25 +89,25 @@ const MatterworksResearch = Object.freeze({
         pressure_materials: {
             stage: 'matterworks:synthesis/pressure_materials',
             phase: 'phase_3',
-            ownerQuest: null,
+            ownerQuest: 'B130000000000005',
             materials: ['compressed_iron']
         },
         organophosphorus: {
             stage: 'matterworks:synthesis/organophosphorus',
             phase: 'phase_5',
-            ownerQuest: null,
+            ownerQuest: 'B150000000000003',
             materials: ['tributyl_phosphate']
         },
         polymers: {
             stage: 'matterworks:synthesis/polymers',
             phase: 'phase_3',
-            ownerQuest: null,
+            ownerQuest: 'B130000000000005',
             materials: ['pneumaticcraft_plastic', 'mekanism_hdpe']
         },
         nuclear_parent_elements: {
             stage: 'matterworks:synthesis/nuclear_parent_elements',
             phase: 'phase_7',
-            ownerQuest: null,
+            ownerQuest: 'B170000000000003',
             materials: ['uranium', 'thorium', 'polonium', 'radium']
         }
     }),
@@ -124,5 +152,6 @@ global.MatterworksResearch = MatterworksResearch
 
 console.info(
     `[Matterworks] Research registry loaded: ${MatterworksResearch.phases.length} phases, ` +
+    `${Object.keys(MatterworksResearch.capabilities).length} capabilities, ` +
     `${Object.keys(MatterworksResearch.synthesisFamilies).length} synthesis families`
 )
