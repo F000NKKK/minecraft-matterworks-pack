@@ -32,6 +32,7 @@ const MatterworksResearch = Object.freeze({
         pressure_engineering: { stage: 'matterworks:capability/pressure_engineering', phase: 'phase_3', ownerQuest: '2130000000000010' },
         atmospheric_separation: { stage: 'matterworks:capability/atmospheric_separation', phase: 'phase_3', ownerQuest: '2130000000000012' },
         polymer_engineering: { stage: 'matterworks:capability/polymer_engineering', phase: 'phase_3', ownerQuest: '2130000000000011' },
+        network_supervision: { stage: 'matterworks:capability/network_supervision', phase: 'phase_4', ownerQuest: '2140000000000007' },
         digital_control: { stage: 'matterworks:capability/digital_control', phase: 'phase_4', ownerQuest: '2140000000000008' },
         nuclear_fuel_cycle: { stage: 'matterworks:capability/nuclear_fuel_cycle', phase: 'phase_5', ownerQuest: '2150000000000003' },
         accelerator_research: { stage: 'matterworks:capability/accelerator_research', phase: 'phase_6', ownerQuest: '2160000000000005' },
