@@ -18,7 +18,8 @@ const MatterworksResearch = Object.freeze({
         'alchemistry_chemlib',
         'nuclearcraft',
         'applied_energistics_2',
-        'cc_tweaked'
+        'cc_tweaked',
+        'pressure_engineering'
     ]),
 
     capabilities: Object.freeze({
