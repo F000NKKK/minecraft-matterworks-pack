@@ -2,33 +2,34 @@
 	default_hide_dependency_lines: false
 	default_quest_shape: "square"
 	filename: "guide_create"
-	group: "A100000000000002"
+	group: "1100000000000002"
 	icon: "create:wrench"
-	id: "A120000000000001"
+	id: "1120000000000001"
 	order_index: 110
 	quest_links: []
 	quests: [
 		{
-			id: "D110000000000001"
+			id: "4110000000000001"
 			title: "Create in Matterworks"
 			description: ["Create is the mechanical engineering layer of Matterworks. This guide explains its machines; progression unlocks live in the Main Program instead."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.2d
-			tasks: [{ id: "E110000000000001", item: "create:wrench", type: "item" }]
-			rewards: [{ id: "F210000000000001", type: "xp", xp: 25 }]
+			tasks: [{ id: "5110000000000001", item: "create:wrench", type: "item" }]
+			rewards: [{ id: "6210000000000001", type: "xp", xp: 25 }]
 		}
 		{
-			dependencies: ["D110000000000001"]
+			dependencies: ["4110000000000001"]
+			hide_dependency_lines: false
 			hide_details_until_startable: true
-			id: "D110000000000002"
+			id: "4110000000000002"
 			title: "Processing Machines"
 			description: ["Presses, basins, mixers, deployers and sequenced assembly form reusable process lines. Matterworks recipes frequently require several of these operations rather than one crafting step."]
 			x: 2.5d
 			y: 0.0d
-			tasks: [{ id: "E110000000000002", item: "create:mechanical_press", type: "item" }]
-			rewards: [{ id: "F210000000000002", type: "xp", xp: 50 }]
+			tasks: [{ id: "5110000000000002", item: "create:mechanical_press", type: "item" }]
+			rewards: [{ id: "6210000000000002", type: "xp", xp: 50 }]
 		}
 	]
 	title: "Guide - Create"
