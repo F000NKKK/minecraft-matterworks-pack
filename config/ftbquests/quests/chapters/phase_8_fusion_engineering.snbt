@@ -5,7 +5,7 @@
 	group: "1100000000000001"
 	hide_quest_details_until_startable: true
 	hide_quest_until_deps_complete: true
-	icon: "alchemistry:fusion_core"
+	icon: "alchemistry:fusion_chamber_controller"
 	id: "1110000000000008"
 	images: [
 		{ x: 4.0d, y: 0.0d, width: 11.5d, height: 6.5d, image: "minecraft:textures/block/crying_obsidian.png", alpha: 28, order: -20 }
@@ -32,12 +32,12 @@
 			hide_dependency_lines: false
 			id: "2180000000000002"
 			title: "Controlled Fusion"
-			description: ["Construct the Alchemistry Fusion Core. This is the generic element-construction machine and is intentionally downstream of the complete NuclearCraft reactor and accelerator program plus atomic-fission research."]
+			description: ["Construct the Alchemistry Fusion Chamber Controller. Its Matterworks recipe consumes NuclearCraft ring-accelerator control hardware and a Nether Star, placing generic element construction behind both accelerator and atomic-fission research."]
 			x: 3.0d
 			y: 0.0d
 			shape: "diamond"
 			size: 1.35d
-			tasks: [{ id: "3180000000000002", item: "alchemistry:fusion_core", type: "item" }]
+			tasks: [{ id: "3180000000000002", item: "alchemistry:fusion_chamber_controller", type: "item" }]
 			rewards: [{ id: "6180000000000002", type: "xp", xp: 1500 }]
 		}
 		{
@@ -45,11 +45,11 @@
 			hide_dependency_lines: false
 			id: "2180000000000004"
 			title: "Element Construction Discipline"
-			description: ["Establish fusion as a deliberate construction capability rather than a universal chemistry bypass. Generic parent-element construction belongs here; isotope-specific, irradiated, fuel and waste states remain excluded from reconstruction."]
+			description: ["Establish the fusion chamber as a deliberate construction capability rather than a universal chemistry bypass. Generic parent-element construction belongs here; isotope-specific, irradiated, fuel and waste states remain excluded from reconstruction."]
 			x: 5.5d
 			y: 0.0d
 			shape: "square"
-			tasks: [{ id: "3180000000000004", item: "alchemistry:fusion_core", type: "item" }]
+			tasks: [{ id: "3180000000000004", item: "alchemistry:fusion_chamber_controller", type: "item" }]
 			rewards: [{ id: "6180000000000004", type: "xp", xp: 1200 }]
 		}
 		{
@@ -62,7 +62,7 @@
 			y: 0.0d
 			shape: "hexagon"
 			size: 1.6d
-			tasks: [{ id: "3180000000000003", item: "alchemistry:fusion_core", type: "item" }]
+			tasks: [{ id: "3180000000000003", item: "alchemistry:fusion_chamber_controller", type: "item" }]
 			rewards: [{ id: "6180000000000003", type: "xp", xp: 2200 }]
 		}
 	]
