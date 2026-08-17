@@ -8,8 +8,8 @@
 	icon: "mekanism:metallurgic_infuser"
 	id: "1110000000000003"
 	images: [
-		{ x: 5.5d, y: 0.0d, width: 15.5d, height: 8.0d, image: "minecraft:textures/block/smooth_stone.png", alpha: 24, order: -20 }
-		{ x: 5.5d, y: 0.0d, width: 12.5d, height: 6.0d, image: "minecraft:textures/block/redstone_block.png", alpha: 12, order: -19 }
+		{ x: 6.0d, y: 0.0d, width: 17.0d, height: 8.5d, image: "minecraft:textures/block/smooth_stone.png", alpha: 24, order: -20 }
+		{ x: 6.0d, y: 0.0d, width: 14.0d, height: 6.5d, image: "minecraft:textures/block/redstone_block.png", alpha: 12, order: -19 }
 	]
 	order_index: 30
 	quest_links: []
@@ -70,11 +70,23 @@
 			title: "Industrial Electrolysis"
 			description: ["Build an Electrolytic Separator. The plant can now split feedstocks into controlled gas products; this is a process milestone, not an inventory shortcut."]
 			x: 7.5d
-			y: -1.75d
+			y: -2.0d
 			shape: "gear"
 			size: 1.2d
 			tasks: [{ id: "3130000000000005", item: "mekanism:electrolytic_separator", type: "item" }]
 			rewards: [{ id: "6130000000000005", type: "xp", xp: 225 }]
+		}
+		{
+			dependencies: ["2130000000000005"]
+			hide_dependency_lines: false
+			id: "2130000000000011"
+			title: "Polymer Engineering"
+			description: ["Produce HDPE pellets through Mekanism's gas and reaction chemistry. Matterworks treats polymers as process materials: knowing their elemental makeup is not a license to reconstruct industrial plastic directly in the Combiner."]
+			x: 10.0d
+			y: -2.0d
+			shape: "square"
+			tasks: [{ id: "3130000000000011", item: "mekanism:hdpe_pellet", count: 8, type: "item" }]
+			rewards: [{ id: "6130000000000012", type: "xp", xp: 250 }]
 		}
 		{
 			dependencies: ["2130000000000002"]
@@ -95,7 +107,7 @@
 			title: "Electromechanical Power Conversion"
 			description: ["Build the Matterworks-gated Electric Motor. Phase 1 proved kinetic-to-electrical generation; this milestone establishes the reverse FE-to-kinetic conversion only after controlled steelmaking and Mekanism control electronics exist."]
 			x: 7.5d
-			y: 1.75d
+			y: 1.5d
 			shape: "square"
 			tasks: [{ id: "3130000000000008", item: "createaddition:electric_motor", type: "item" }]
 			rewards: [{ id: "6130000000000009", type: "xp", xp: 225 }]
@@ -126,18 +138,18 @@
 			rewards: [{ id: "6130000000000011", type: "xp", xp: 250 }]
 		}
 		{
-			dependencies: ["2130000000000005", "2130000000000006", "2130000000000008", "2130000000000010"]
+			dependencies: ["2130000000000011", "2130000000000006", "2130000000000008", "2130000000000010"]
 			hide_dependency_lines: false
 			id: "2130000000000007"
 			title: "Process Industry Established"
-			description: ["Complete the first integrated electrical, metallurgical, gas-handling, electrochemical, pneumatic and bidirectional power-conversion layer. Later chemistry and synthesis gates can now depend on demonstrated industrial capability rather than isolated possession checks."]
-			x: 11.0d
+			description: ["Complete the first integrated electrical, metallurgical, gas-handling, electrochemical, polymer, pneumatic and bidirectional power-conversion layer. Later chemistry and synthesis gates can now depend on demonstrated industrial capability rather than isolated possession checks."]
+			x: 12.5d
 			y: 0.0d
 			shape: "diamond"
 			size: 1.4d
 			tasks: [{ id: "3130000000000007", item: "mekanism:advanced_control_circuit", type: "item" }]
 			rewards: [
-				{ id: "6130000000000007", type: "xp", xp: 425 }
+				{ id: "6130000000000007", type: "xp", xp: 450 }
 				{ id: "6130000000000008", item: "minecraft:redstone", count: 12, type: "item" }
 			]
 		}
