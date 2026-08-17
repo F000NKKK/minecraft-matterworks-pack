@@ -5,6 +5,34 @@
 	id: "A110000000000005"
 	order_index: 50
 	quest_links: []
-	quests: []
+	quests: [
+		{
+			dependencies: ["B140000000000003"]
+			id: "B150000000000001"
+			title: "Nuclear Engineering Program"
+			description: ["Enter the NuclearCraft program only after process industry and digital control exist. From this point nuclear materials are tracked as process states, not interchangeable elemental inventory."]
+			x: 0.0d
+			y: 0.0d
+			tasks: [{ id: "C150000000000001", item: "kubejs:graphite", type: "item" }]
+		}
+		{
+			dependencies: ["B150000000000001"]
+			id: "B150000000000002"
+			title: "Fission Infrastructure"
+			description: ["Construct the NuclearCraft fission reactor controller. Owning the controller is only the infrastructure milestone; fuel preparation, irradiation and reprocessing remain separate capabilities."]
+			x: 2.0d
+			y: 0.0d
+			tasks: [{ id: "C150000000000002", item: "nuclearcraft:fission_reactor_controller", type: "item" }]
+		}
+		{
+			dependencies: ["B150000000000002"]
+			id: "B150000000000003"
+			title: "Fuel Cycle Authority"
+			description: ["Establish a controlled fission program. This stable research milestone owns nuclear fuel-cycle knowledge; runtime validation will be tightened to a verified spent/depleted or reprocessing output once the installed NuclearCraft registry audit supplies the exact product IDs."]
+			x: 4.0d
+			y: 0.0d
+			tasks: [{ id: "C150000000000003", item: "nuclearcraft:fission_reactor_controller", type: "item" }]
+		}
+	]
 	title: "Phase 5 - Nuclear Engineering"
 }
