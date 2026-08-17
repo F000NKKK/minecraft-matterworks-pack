@@ -25,7 +25,7 @@
 			hide_details_until_startable: true
 			id: "2240000000000002"
 			title: "Fission Reactors"
-			description: ["The fission reactor is a physical process system. Matterworks requires the Main Program to prove the reactor/fuel-cycle capability before later atomic chemistry is unlocked."]
+			description: ["The fission reactor is a physical process system. Matterworks requires the Main Program to establish isotope preparation and reactor infrastructure before later atomic chemistry is unlocked."]
 			x: 2.5d
 			y: -1.0d
 			shape: "diamond"
@@ -38,11 +38,11 @@
 			hide_details_until_startable: true
 			id: "2240000000000003"
 			title: "Particle Accelerators"
-			description: ["Accelerators create controlled nuclear and isotope transformations. Matterworks removes bulk-transmutation shortcuts that would replace extraction or chemistry, while preserving the accelerator as a real research system."]
+			description: ["Accelerators create controlled nuclear and isotope transformations. Matterworks gates the complete accelerator program through focusing coils, beam interfaces and a ring accelerator controller while removing bulk-transmutation shortcuts that would replace extraction or chemistry."]
 			x: 5.0d
 			y: 0.0d
 			shape: "diamond"
-			tasks: [{ id: "3240000000000003", item: "nuclearcraft:accelerator_casing", type: "item" }]
+			tasks: [{ id: "3240000000000003", item: "nuclearcraft:ring_accelerator_controller", type: "item" }]
 			rewards: [{ id: "6240000000000003", type: "xp", xp: 75 }]
 		}
 	]
