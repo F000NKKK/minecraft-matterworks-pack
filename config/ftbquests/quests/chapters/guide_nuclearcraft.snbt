@@ -1,7 +1,9 @@
 {
+	default_hide_dependency_lines: false
+	default_quest_shape: "square"
 	filename: "guide_nuclearcraft"
 	group: "A100000000000002"
-	icon: "nuclearcraft:manufactur"
+	icon: "nuclearcraft:manufactory"
 	id: "A120000000000004"
 	order_index: 140
 	quest_links: []
@@ -12,25 +14,34 @@
 			description: ["NuclearCraft supplies the pack's nuclear-material processing and reactor physics. This guide explains the mod; completing it does not grant Matterworks nuclear research permissions."]
 			x: 0.0d
 			y: 0.0d
-			tasks: [{ id: "C240000000000001", item: "nuclearcraft:manufactur", type: "item" }]
+			shape: "gear"
+			size: 1.2d
+			tasks: [{ id: "C240000000000001", item: "nuclearcraft:manufactory", type: "item" }]
+			rewards: [{ id: "F240000000000001", type: "xp", xp: 25 }]
 		}
 		{
 			dependencies: ["B240000000000001"]
+			hide_details_until_startable: true
 			id: "B240000000000002"
 			title: "Fission Reactors"
 			description: ["The fission reactor is a physical process system. Matterworks requires the Main Program to prove the reactor/fuel-cycle capability before later atomic chemistry is unlocked."]
-			x: 2.0d
+			x: 2.5d
 			y: -1.0d
+			shape: "diamond"
 			tasks: [{ id: "C240000000000002", item: "nuclearcraft:fission_reactor_controller", type: "item" }]
+			rewards: [{ id: "F240000000000002", type: "xp", xp: 50 }]
 		}
 		{
 			dependencies: ["B240000000000002"]
+			hide_details_until_startable: true
 			id: "B240000000000003"
 			title: "Particle Accelerators"
 			description: ["Accelerators create controlled nuclear and isotope transformations. Matterworks removes bulk-transmutation shortcuts that would replace extraction or chemistry, while preserving the accelerator as a real research system."]
-			x: 4.0d
+			x: 5.0d
 			y: 0.0d
+			shape: "diamond"
 			tasks: [{ id: "C240000000000003", item: "nuclearcraft:accelerator_casing", type: "item" }]
+			rewards: [{ id: "F240000000000003", type: "xp", xp: 75 }]
 		}
 	]
 	title: "Guide - NuclearCraft: Neoteric"
