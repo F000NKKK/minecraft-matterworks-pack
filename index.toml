@@ -21,6 +21,10 @@ file = "config/ftbquests/quests/chapters/guide_create.snbt"
 hash = "57438974697942e0bdf7cba3c4d8e9d0c5789f3aed65052621f8107da8bee376"
 
 [[files]]
+file = "config/ftbquests/quests/chapters/guide_high_temperature_metallurgy.snbt"
+hash = "d050b47f8735afdec3b91225de59654cd5bee1b4c1c8785c1ff1ec10617292e8"
+
+[[files]]
 file = "config/ftbquests/quests/chapters/guide_mekanism.snbt"
 hash = "d8d8349fb4410cb18ac66015c2c6db825ca4773ae5624bbcf9cb64989f96d4ed"
 
@@ -330,11 +334,11 @@ hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research.js"
-hash = "592c0c2881598b5b6318226d8fdf045be16cfddefd1d363f8e42f7c698d17b7a"
+hash = "bc3213bcfeb903b00b16d8291c06740ee1507ddfe50cfdcd8a7d5d25dbac3bd3"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research_audit.js"
-hash = "d575e267f76227534f1c236e75f426d98d9ef8f6c39da879b4e675b36d9ee6aa"
+hash = "5dc78465bb40cdff485a8c7d8eaccef40fc0b38f4be2d155e395d68d3e220cc1"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/atmosphere.js"
