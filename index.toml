@@ -6,7 +6,7 @@ hash = "594e780743d7dd24f1065c0cb9846331a6fc2e93cc3c93e6a14b3a899a42279e"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_ae2.snbt"
-hash = "292573dfc5de0e5f7bf132cdb77957ff7e58f2689c335dd86caa866484658c0f"
+hash = "5eb7f28b1d275143008f904f5b5f963f4ee7803110a70cdeb1c2fd1079460e06"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_alchemistry_chemlib.snbt"
@@ -14,7 +14,7 @@ hash = "1eaff3e662937482239f69de1af2e181477b8136dfb312391cb019559abe2677"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_cc_tweaked.snbt"
-hash = "8544dea54c63a1ba589d77fb0c499ddf4d24d5e5589240bdbfdf3360d84b0b00"
+hash = "769172ad7f431c5bc1432ea60704dca66a407cdd28ed2a01a777e63a035fb606"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_create.snbt"
