@@ -2,52 +2,58 @@
 	default_hide_dependency_lines: false
 	default_quest_shape: "circle"
 	filename: "phase_8_fusion_engineering"
-	group: "A100000000000001"
+	group: "1100000000000001"
+	hide_quest_details_until_startable: true
+	hide_quest_until_deps_complete: true
 	icon: "alchemistry:fusion_core"
-	id: "A110000000000008"
+	id: "1110000000000008"
+	images: [
+		{ x: 3.0d, y: 0.0d, width: 9.5d, height: 5.5d, image: "minecraft:textures/block/crying_obsidian.png", alpha: 28, order: -20 }
+		{ x: 3.0d, y: 0.0d, width: 7.5d, height: 3.8d, image: "minecraft:textures/block/magenta_stained_glass.png", alpha: 14, order: -19 }
+	]
 	order_index: 80
 	quest_links: []
 	quests: [
 		{
-			dependencies: ["B170000000000003"]
-			hide_details_until_startable: true
-			id: "B180000000000001"
+			dependencies: ["2170000000000003"]
+			hide_dependency_lines: false
+			id: "2180000000000001"
 			title: "Fusion Reactor Structure"
 			description: ["Extend the atomic program into fusion only after controlled fission research is complete. The shared reactor casing is infrastructure; it is not itself proof of fusion knowledge."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.35d
-			tasks: [{ id: "C180000000000001", item: "alchemistry:reactor_casing", type: "item" }]
-			rewards: [{ id: "F180000000000001", type: "xp", xp: 1000 }]
+			tasks: [{ id: "3180000000000001", item: "alchemistry:reactor_casing", type: "item" }]
+			rewards: [{ id: "6180000000000001", type: "xp", xp: 1000 }]
 		}
 		{
-			dependencies: ["B180000000000001"]
-			hide_details_until_startable: true
-			id: "B180000000000002"
+			dependencies: ["2180000000000001"]
+			hide_dependency_lines: false
+			id: "2180000000000002"
 			title: "Controlled Fusion"
 			description: ["Construct the Alchemistry Fusion Core. Matterworks treats this as the highest-order generic element-construction capability, downstream of the complete nuclear and accelerator program."]
 			x: 3.0d
 			y: 0.0d
 			shape: "diamond"
 			size: 1.35d
-			tasks: [{ id: "C180000000000002", item: "alchemistry:fusion_core", type: "item" }]
-			rewards: [{ id: "F180000000000002", type: "xp", xp: 1750 }]
+			tasks: [{ id: "3180000000000002", item: "alchemistry:fusion_core", type: "item" }]
+			rewards: [{ id: "6180000000000002", type: "xp", xp: 1750 }]
 		}
 		{
-			dependencies: ["B180000000000002"]
-			hide_details_until_startable: true
-			id: "B180000000000003"
+			dependencies: ["2180000000000002"]
+			hide_dependency_lines: false
+			id: "2180000000000003"
 			title: "Fusion Engineering Established"
 			description: ["Complete the fusion program. Generic elemental synthesis may reach its final research tier here, but provenance-sensitive nuclear states still require their real physical process routes."]
 			x: 6.0d
 			y: 0.0d
 			shape: "hexagon"
 			size: 1.6d
-			tasks: [{ id: "C180000000000003", item: "alchemistry:fusion_core", type: "item" }]
+			tasks: [{ id: "3180000000000003", item: "alchemistry:fusion_core", type: "item" }]
 			rewards: [
-				{ id: "F180000000000003", type: "xp", xp: 2500 }
-				{ id: "F180000000000004", item: { count: 1, id: "minecraft:nether_star" }, type: "item" }
+				{ id: "6180000000000003", type: "xp", xp: 2500 }
+				{ id: "6180000000000004", item: "minecraft:nether_star", count: 1, type: "item" }
 			]
 		}
 	]
