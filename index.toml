@@ -10,7 +10,7 @@ hash = "bfd3cf87152de1e6917d70bbda6aef0c6044e1afbd9c72b077b439080305d75e"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_alchemistry_chemlib.snbt"
-hash = "bb40132bb87a89a19104cbc8603f95e89c390d9a4506c44a458539709fdf3800"
+hash = "58157e00a537366a224cef6b2ae54b0c3704a1d293a020234ee23b06343a8b7f"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_cc_tweaked.snbt"
@@ -42,7 +42,7 @@ hash = "7bd4d76de91e76032d20f720a2853bb2afd263c5cc8af1d2e70712c77063c449"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_3_process_industry.snbt"
-hash = "96322839fa3a886308e567eda5bda9f43d520cf96fc1c93a7ad3ad8fc2a8a36a"
+hash = "90111d30e26915b021299e9aab95428bc169857fa5a2c77d73ad43309e649408"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_4_digital_industry.snbt"
@@ -330,7 +330,7 @@ hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research.js"
-hash = "87a3742a7464bacc4bf39128addedafc415b9f7b73c2daabcaef98c120dd506d"
+hash = "592c0c2881598b5b6318226d8fdf045be16cfddefd1d363f8e42f7c698d17b7a"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research_audit.js"
