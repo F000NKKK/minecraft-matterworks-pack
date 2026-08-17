@@ -27,6 +27,11 @@ const MatterworksResearch = Object.freeze({
             phase: 'phase_3',
             ownerQuest: '2130000000000008'
         },
+        pressure_engineering: {
+            stage: 'matterworks:capability/pressure_engineering',
+            phase: 'phase_3',
+            ownerQuest: '2130000000000010'
+        },
         digital_control: {
             stage: 'matterworks:capability/digital_control',
             phase: 'phase_4',
@@ -94,7 +99,7 @@ const MatterworksResearch = Object.freeze({
         pressure_materials: {
             stage: 'matterworks:synthesis/pressure_materials',
             phase: 'phase_3',
-            ownerQuest: '2130000000000007',
+            ownerQuest: '2130000000000010',
             materials: ['compressed_iron']
         },
         organophosphorus: {
