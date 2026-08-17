@@ -366,7 +366,7 @@ hash = "3e06700d9a0be60ef8c26d48d41bbfeefbbc6f16582b203b1370c1d34401e73d"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/metallurgy.js"
-hash = "f4a79ed604c39adec1962b8a22f8378fe4f41776c4df1827c410e0908c93c177"
+hash = "88ebf0924414f476db1583356daafd05c93af95a25fe27f47020981c4102c858"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/nitrogen.js"
