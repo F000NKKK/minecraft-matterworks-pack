@@ -5,7 +5,7 @@
 	group: "1100000000000001"
 	hide_quest_details_until_startable: true
 	hide_quest_until_deps_complete: true
-	icon: "alchemistry:fission_core"
+	icon: "alchemistry:fission_chamber_controller"
 	id: "1110000000000007"
 	images: [
 		{ x: 3.75d, y: 0.0d, width: 11.0d, height: 6.0d, image: "minecraft:textures/block/tuff.png", alpha: 26, order: -20 }
@@ -32,12 +32,12 @@
 			hide_dependency_lines: false
 			id: "2170000000000002"
 			title: "Controlled Atomic Fission"
-			description: ["Construct the Alchemistry Fission Core. This establishes controlled generic atomic decomposition, but it does not grant arbitrary reconstruction of nuclear parent elements and does not replace NuclearCraft enrichment or fuel-state processing."]
+			description: ["Construct the Alchemistry Fission Chamber Controller. Matterworks replaces its stock entry recipe with one that consumes NuclearCraft ring-accelerator control hardware, making generic atomic decomposition explicitly downstream of accelerator engineering."]
 			x: 3.0d
 			y: 0.0d
 			shape: "diamond"
 			size: 1.3d
-			tasks: [{ id: "3170000000000002", item: "alchemistry:fission_core", type: "item" }]
+			tasks: [{ id: "3170000000000002", item: "alchemistry:fission_chamber_controller", type: "item" }]
 			rewards: [{ id: "6170000000000002", type: "xp", xp: 1100 }]
 		}
 		{
@@ -45,11 +45,11 @@
 			hide_dependency_lines: false
 			id: "2170000000000004"
 			title: "Atomic Decomposition Discipline"
-			description: ["Integrate the fission core into the research program as a controlled decomposition capability. Matterworks explicitly separates this capability from fusion-based element construction so the two machines cannot collapse into one generic transmutation tier."]
+			description: ["Integrate the fission chamber into the research program as a controlled decomposition capability. Matterworks explicitly separates atomic decomposition from fusion-based element construction so the two reactor technologies cannot collapse into one generic transmutation tier."]
 			x: 5.0d
 			y: 0.0d
 			shape: "square"
-			tasks: [{ id: "3170000000000004", item: "alchemistry:fission_core", type: "item" }]
+			tasks: [{ id: "3170000000000004", item: "alchemistry:fission_chamber_controller", type: "item" }]
 			rewards: [{ id: "6170000000000004", type: "xp", xp: 700 }]
 		}
 		{
@@ -62,7 +62,7 @@
 			y: 0.0d
 			shape: "hexagon"
 			size: 1.5d
-			tasks: [{ id: "3170000000000003", item: "alchemistry:fission_core", type: "item" }]
+			tasks: [{ id: "3170000000000003", item: "alchemistry:fission_chamber_controller", type: "item" }]
 			rewards: [{ id: "6170000000000003", type: "xp", xp: 1500 }]
 		}
 	]
