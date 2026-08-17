@@ -8,8 +8,8 @@
 	icon: "mekanism:metallurgic_infuser"
 	id: "1110000000000003"
 	images: [
-		{ x: 5.0d, y: 0.0d, width: 14.0d, height: 7.0d, image: "minecraft:textures/block/smooth_stone.png", alpha: 24, order: -20 }
-		{ x: 5.0d, y: 0.0d, width: 11.0d, height: 5.0d, image: "minecraft:textures/block/redstone_block.png", alpha: 12, order: -19 }
+		{ x: 5.5d, y: 0.0d, width: 15.5d, height: 8.0d, image: "minecraft:textures/block/smooth_stone.png", alpha: 24, order: -20 }
+		{ x: 5.5d, y: 0.0d, width: 12.5d, height: 6.0d, image: "minecraft:textures/block/redstone_block.png", alpha: 12, order: -19 }
 	]
 	order_index: 30
 	quest_links: []
@@ -101,19 +101,44 @@
 			rewards: [{ id: "6130000000000009", type: "xp", xp: 225 }]
 		}
 		{
-			dependencies: ["2130000000000005", "2130000000000006", "2130000000000008"]
+			dependencies: ["2130000000000001"]
+			hide_dependency_lines: false
+			id: "2130000000000009"
+			title: "Rotational Pneumatics"
+			description: ["Bridge Create rotation into pneumatic pressure with the Matterworks-gated Rotational Compressor. Initial compressed iron remains a bootstrap material; sustained pressure generation must now become an engineered plant capability."]
+			x: 5.0d
+			y: 3.5d
+			shape: "square"
+			tasks: [{ id: "3130000000000009", item: "compressedcreativity:rotational_compressor", type: "item" }]
+			rewards: [{ id: "6130000000000010", type: "xp", xp: 175 }]
+		}
+		{
+			dependencies: ["2130000000000009"]
+			hide_dependency_lines: false
+			id: "2130000000000010"
+			title: "Independent Pneumatic Pressure"
+			description: ["Build the rewritten PneumaticCraft Air Compressor. Its Matterworks recipe consumes the rotational compressor, making independent compressed-air production an upgrade from the mechanical pressure bridge rather than a bypass around it."]
+			x: 7.5d
+			y: 3.5d
+			shape: "gear"
+			size: 1.2d
+			tasks: [{ id: "3130000000000010", item: "pneumaticcraft:air_compressor", type: "item" }]
+			rewards: [{ id: "6130000000000011", type: "xp", xp: 250 }]
+		}
+		{
+			dependencies: ["2130000000000005", "2130000000000006", "2130000000000008", "2130000000000010"]
 			hide_dependency_lines: false
 			id: "2130000000000007"
 			title: "Process Industry Established"
-			description: ["Complete the first integrated electrical, metallurgical, gas-handling, electrochemical and bidirectional power-conversion layer. Later chemistry and synthesis gates can now depend on demonstrated industrial capability rather than isolated possession checks."]
-			x: 10.5d
+			description: ["Complete the first integrated electrical, metallurgical, gas-handling, electrochemical, pneumatic and bidirectional power-conversion layer. Later chemistry and synthesis gates can now depend on demonstrated industrial capability rather than isolated possession checks."]
+			x: 11.0d
 			y: 0.0d
 			shape: "diamond"
-			size: 1.35d
+			size: 1.4d
 			tasks: [{ id: "3130000000000007", item: "mekanism:advanced_control_circuit", type: "item" }]
 			rewards: [
-				{ id: "6130000000000007", type: "xp", xp: 375 }
-				{ id: "6130000000000008", item: "minecraft:redstone", count: 16, type: "item" }
+				{ id: "6130000000000007", type: "xp", xp: 425 }
+				{ id: "6130000000000008", item: "minecraft:redstone", count: 12, type: "item" }
 			]
 		}
 	]
