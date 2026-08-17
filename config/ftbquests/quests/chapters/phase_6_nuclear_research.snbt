@@ -2,73 +2,79 @@
 	default_hide_dependency_lines: false
 	default_quest_shape: "circle"
 	filename: "phase_6_nuclear_research"
-	group: "A100000000000001"
+	group: "1100000000000001"
+	hide_quest_details_until_startable: true
+	hide_quest_until_deps_complete: true
 	icon: "nuclearcraft:accelerator_casing"
-	id: "A110000000000006"
+	id: "1110000000000006"
+	images: [
+		{ x: 3.5d, y: 0.0d, width: 10.0d, height: 6.0d, image: "minecraft:textures/block/obsidian.png", alpha: 28, order: -20 }
+		{ x: 3.5d, y: 0.0d, width: 8.0d, height: 4.2d, image: "minecraft:textures/block/purple_stained_glass.png", alpha: 14, order: -19 }
+	]
 	order_index: 60
 	quest_links: []
 	quests: [
 		{
-			dependencies: ["B150000000000003"]
-			hide_details_until_startable: true
-			id: "B160000000000001"
+			dependencies: ["2150000000000003"]
+			hide_dependency_lines: false
+			id: "2160000000000001"
 			title: "Field Engineering"
 			description: ["Manufacture Matterworks particle-focusing coils. Accelerator research is intentionally downstream of the fission program and cross-mod electrical engineering."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.35d
-			tasks: [{ id: "C160000000000001", item: "kubejs:particle_focusing_coil", type: "item" }]
-			rewards: [{ id: "F160000000000001", type: "xp", xp: 500 }]
+			tasks: [{ id: "3160000000000001", item: "kubejs:particle_focusing_coil", type: "item" }]
+			rewards: [{ id: "6160000000000001", type: "xp", xp: 500 }]
 		}
 		{
-			dependencies: ["B160000000000001"]
-			hide_details_until_startable: true
-			id: "B160000000000002"
+			dependencies: ["2160000000000001"]
+			hide_dependency_lines: false
+			id: "2160000000000002"
 			title: "Accelerator Structure"
 			description: ["Build the accelerator casing modified by Matterworks. NuclearCraft remains responsible for beam physics while the pack owns the engineering prerequisite boundary."]
 			x: 2.5d
 			y: 0.0d
 			shape: "square"
-			tasks: [{ id: "C160000000000002", item: "nuclearcraft:accelerator_casing", type: "item" }]
-			rewards: [{ id: "F160000000000002", type: "xp", xp: 500 }]
+			tasks: [{ id: "3160000000000002", item: "nuclearcraft:accelerator_casing", type: "item" }]
+			rewards: [{ id: "6160000000000002", type: "xp", xp: 500 }]
 		}
 		{
-			dependencies: ["B160000000000002"]
-			hide_details_until_startable: true
-			id: "B160000000000003"
+			dependencies: ["2160000000000002"]
+			hide_dependency_lines: false
+			id: "2160000000000003"
 			title: "Ion Source"
 			description: ["Construct the ion-source interface. This proves that the program has progressed beyond reactor engineering into controlled particle production."]
 			x: 5.0d
 			y: -1.5d
 			shape: "square"
-			tasks: [{ id: "C160000000000003", item: "nuclearcraft:accelerator_ion_source_port", type: "item" }]
-			rewards: [{ id: "F160000000000003", type: "xp", xp: 600 }]
+			tasks: [{ id: "3160000000000003", item: "nuclearcraft:accelerator_ion_source_port", type: "item" }]
+			rewards: [{ id: "6160000000000003", type: "xp", xp: 600 }]
 		}
 		{
-			dependencies: ["B160000000000002"]
-			hide_details_until_startable: true
-			id: "B160000000000004"
+			dependencies: ["2160000000000002"]
+			hide_dependency_lines: false
+			id: "2160000000000004"
 			title: "Beam Transport"
 			description: ["Construct the beam port needed to transport a controlled particle beam into downstream experiments."]
 			x: 5.0d
 			y: 1.5d
 			shape: "square"
-			tasks: [{ id: "C160000000000004", item: "nuclearcraft:accelerator_beam_port", type: "item" }]
-			rewards: [{ id: "F160000000000004", type: "xp", xp: 600 }]
+			tasks: [{ id: "3160000000000004", item: "nuclearcraft:accelerator_beam_port", type: "item" }]
+			rewards: [{ id: "6160000000000004", type: "xp", xp: 600 }]
 		}
 		{
-			dependencies: ["B160000000000003", "B160000000000004"]
-			hide_details_until_startable: true
-			id: "B160000000000005"
+			dependencies: ["2160000000000003", "2160000000000004"]
+			hide_dependency_lines: false
+			id: "2160000000000005"
 			title: "Accelerator Research Established"
 			description: ["The accelerator program is now an established research capability. Generic bulk transmutation shortcuts remain removed; only controlled nuclear/isotope research may cross this boundary."]
 			x: 7.5d
 			y: 0.0d
 			shape: "hexagon"
 			size: 1.45d
-			tasks: [{ id: "C160000000000005", item: "nuclearcraft:accelerator_port", type: "item" }]
-			rewards: [{ id: "F160000000000005", type: "xp", xp: 1250 }]
+			tasks: [{ id: "3160000000000005", item: "nuclearcraft:accelerator_port", type: "item" }]
+			rewards: [{ id: "6160000000000005", type: "xp", xp: 1250 }]
 		}
 	]
 	title: "Phase 6 - Nuclear Research"
