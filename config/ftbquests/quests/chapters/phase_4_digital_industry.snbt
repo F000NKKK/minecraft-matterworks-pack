@@ -1,4 +1,6 @@
 {
+	default_hide_dependency_lines: false
+	default_quest_shape: "circle"
 	filename: "phase_4_digital_industry"
 	group: "A100000000000001"
 	icon: "ae2:controller"
@@ -8,30 +10,44 @@
 	quests: [
 		{
 			dependencies: ["B130000000000005"]
+			hide_details_until_startable: true
 			id: "B140000000000001"
 			title: "Networked Industry"
 			description: ["Establish an Applied Energistics controller. Matterworks now treats logistics as plant infrastructure rather than a collection of independent inventories."]
 			x: 0.0d
 			y: 0.0d
+			shape: "gear"
+			size: 1.35d
 			tasks: [{ id: "C140000000000001", item: "ae2:controller", type: "item" }]
+			rewards: [{ id: "F140000000000001", type: "xp", xp: 300 }]
 		}
 		{
 			dependencies: ["B140000000000001"]
+			hide_details_until_startable: true
 			id: "B140000000000002"
 			title: "Programmable Control"
 			description: ["Introduce a programmable computer into the factory. Later high-energy processes may require measured state and control logic instead of merely placing a machine block."]
-			x: 2.0d
-			y: 0.0d
+			x: 2.5d
+			y: 1.5d
+			shape: "square"
 			tasks: [{ id: "C140000000000002", item: "computercraft:computer_advanced", type: "item" }]
+			rewards: [{ id: "F140000000000002", type: "xp", xp: 200 }]
 		}
 		{
 			dependencies: ["B140000000000001", "B140000000000002"]
+			hide_details_until_startable: true
 			id: "B140000000000003"
 			title: "Digital Process Control"
 			description: ["Combine networked logistics and programmable supervision. This closes the digital-industry phase and establishes the control capability required by later nuclear research."]
-			x: 4.0d
+			x: 5.0d
 			y: 0.0d
+			shape: "diamond"
+			size: 1.35d
 			tasks: [{ id: "C140000000000003", item: "ae2:crafting_terminal", type: "item" }]
+			rewards: [
+				{ id: "F140000000000003", type: "xp", xp: 450 }
+				{ id: "F140000000000004", item: { count: 8, id: "minecraft:ender_pearl" }, type: "item" }
+			]
 		}
 	]
 	title: "Phase 4 - Digital Industry"
