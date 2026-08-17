@@ -8,75 +8,100 @@
 	icon: "mekanism:metallurgic_infuser"
 	id: "1110000000000003"
 	images: [
-		{ x: 3.5d, y: 0.0d, width: 10.0d, height: 5.5d, image: "minecraft:textures/block/smooth_stone.png", alpha: 24, order: -20 }
-		{ x: 3.5d, y: 0.0d, width: 8.0d, height: 4.0d, image: "minecraft:textures/block/redstone_block.png", alpha: 12, order: -19 }
+		{ x: 4.5d, y: 0.0d, width: 13.0d, height: 7.0d, image: "minecraft:textures/block/smooth_stone.png", alpha: 24, order: -20 }
+		{ x: 4.5d, y: 0.0d, width: 10.0d, height: 5.0d, image: "minecraft:textures/block/redstone_block.png", alpha: 12, order: -19 }
 	]
 	order_index: 30
 	quest_links: []
 	quests: [
 		{
-			dependencies: ["2120000000000004"]
+			dependencies: ["2120000000000007"]
 			hide_dependency_lines: false
 			id: "2130000000000001"
 			title: "Controlled Metallurgy"
-			description: ["Build the Matterworks-gated Metallurgic Infuser. This establishes controlled electromechanical metallurgy rather than a free Mekanism entry point."]
+			description: ["Build the Matterworks-gated Metallurgic Infuser. This is the first controlled electrical metallurgy platform and remains rooted in the mechanical production line that created its control hardware."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.35d
 			tasks: [{ id: "3130000000000001", item: "mekanism:metallurgic_infuser", type: "item" }]
-			rewards: [{ id: "6130000000000001", type: "xp", xp: 250 }]
+			rewards: [{ id: "6130000000000001", type: "xp", xp: 225 }]
 		}
 		{
 			dependencies: ["2130000000000001"]
 			hide_dependency_lines: false
 			id: "2130000000000002"
-			title: "Electrochemical Core"
-			description: ["Construct the graphite-electrode electrochemical core used by Matterworks process chemistry."]
+			title: "Infused Materials"
+			description: ["Produce infused alloy through the controlled metallurgical route. This proves the plant can execute repeatable material infusion instead of merely owning the machine block."]
 			x: 2.5d
-			y: -1.5d
+			y: 1.75d
 			shape: "square"
-			tasks: [{ id: "3130000000000002", item: "mekanism:electrolytic_core", type: "item" }]
-			rewards: [{ id: "6130000000000002", type: "xp", xp: 150 }]
-		}
-		{
-			dependencies: ["2130000000000002"]
-			hide_dependency_lines: false
-			id: "2130000000000003"
-			title: "Industrial Electrolysis"
-			description: ["Build an Electrolytic Separator. The plant can now produce and handle process gases instead of treating chemistry as inventory crafting."]
-			x: 5.0d
-			y: -1.5d
-			shape: "square"
-			tasks: [{ id: "3130000000000003", item: "mekanism:electrolytic_separator", type: "item" }]
-			rewards: [{ id: "6130000000000003", type: "xp", xp: 200 }]
+			tasks: [{ id: "3130000000000002", item: "mekanism:alloy_infused", count: 4, type: "item" }]
+			rewards: [{ id: "6130000000000002", type: "xp", xp: 125 }]
 		}
 		{
 			dependencies: ["2130000000000001"]
 			hide_dependency_lines: false
-			id: "2130000000000004"
-			title: "Engineered Carbon"
-			description: ["Produce graphite through the industrial carbon route. This milestone owns synthesis knowledge for engineered carbon forms, while their process provenance remains meaningful."]
+			id: "2130000000000003"
+			title: "Gas Containment"
+			description: ["Build chemical storage before generating industrial process gases. Gas production without dedicated containment is not an acceptable process capability."]
 			x: 2.5d
-			y: 1.5d
+			y: -1.75d
 			shape: "square"
-			tasks: [{ id: "3130000000000004", item: "kubejs:graphite", type: "item" }]
-			rewards: [{ id: "6130000000000004", type: "xp", xp: 150 }]
+			tasks: [{ id: "3130000000000003", item: "mekanism:basic_chemical_tank", type: "item" }]
+			rewards: [{ id: "6130000000000003", type: "xp", xp: 125 }]
 		}
 		{
-			dependencies: ["2130000000000003", "2130000000000004"]
+			dependencies: ["2130000000000002", "2130000000000003"]
+			hide_dependency_lines: false
+			id: "2130000000000004"
+			title: "Electrochemical Core"
+			description: ["Construct the graphite-electrode electrochemical core. The core joins engineered carbon, primitive electrical components and infused materials into a real electrolysis cell stack."]
+			x: 5.0d
+			y: -1.75d
+			shape: "square"
+			tasks: [{ id: "3130000000000004", item: "mekanism:electrolytic_core", type: "item" }]
+			rewards: [{ id: "6130000000000004", type: "xp", xp: 175 }]
+		}
+		{
+			dependencies: ["2130000000000004"]
 			hide_dependency_lines: false
 			id: "2130000000000005"
-			title: "Process Industry Established"
-			description: ["Complete the first integrated electrical, metallurgical and electrochemical production layer. Later synthesis research is attached to concrete process milestones from this point onward."]
+			title: "Industrial Electrolysis"
+			description: ["Build an Electrolytic Separator. The plant can now split feedstocks into controlled gas products; this is a process milestone, not an inventory shortcut."]
 			x: 7.5d
+			y: -1.75d
+			shape: "gear"
+			size: 1.2d
+			tasks: [{ id: "3130000000000005", item: "mekanism:electrolytic_separator", type: "item" }]
+			rewards: [{ id: "6130000000000005", type: "xp", xp: 225 }]
+		}
+		{
+			dependencies: ["2130000000000002"]
+			hide_dependency_lines: false
+			id: "2130000000000006"
+			title: "Engineered Carbon Production"
+			description: ["Produce graphite through the industrial carbon route and preserve its process provenance. Matterworks may understand graphite as carbon without allowing arbitrary carbon synthesis to replace manufacturing."]
+			x: 5.0d
+			y: 1.75d
+			shape: "square"
+			tasks: [{ id: "3130000000000006", item: "kubejs:graphite", count: 4, type: "item" }]
+			rewards: [{ id: "6130000000000006", type: "xp", xp: 150 }]
+		}
+		{
+			dependencies: ["2130000000000005", "2130000000000006"]
+			hide_dependency_lines: false
+			id: "2130000000000007"
+			title: "Process Industry Established"
+			description: ["Complete the first integrated electrical, metallurgical, gas-handling and electrochemical production layer. Later chemistry and synthesis gates can now depend on demonstrated industrial capability rather than isolated possession checks."]
+			x: 10.0d
 			y: 0.0d
 			shape: "diamond"
 			size: 1.35d
-			tasks: [{ id: "3130000000000005", item: "mekanism:basic_chemical_tank", type: "item" }]
+			tasks: [{ id: "3130000000000007", item: "mekanism:advanced_control_circuit", type: "item" }]
 			rewards: [
-				{ id: "6130000000000005", type: "xp", xp: 400 }
-				{ id: "6130000000000006", item: "mekanism:alloy_infused", count: 4, type: "item" }
+				{ id: "6130000000000007", type: "xp", xp: 375 }
+				{ id: "6130000000000008", item: "minecraft:redstone", count: 16, type: "item" }
 			]
 		}
 	]
