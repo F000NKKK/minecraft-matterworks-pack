@@ -270,7 +270,7 @@ hash = "ca6259ff70c647703179695323eb0d342ddea1d3c1dd69418c46d745089b6940"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/chemistry.js"
-hash = "2640ab41446dc4156bc89484ae31c33511bccc6dc4acc5c6cbd2c3a5d98bf49a"
+hash = "5abfe646122f9eeb4e7b35a7d4ec5cd2ca3e6f3d0e8cd193f1233b7cdc733e54"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/composition_audit.js"
