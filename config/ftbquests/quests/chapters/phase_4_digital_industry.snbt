@@ -5,6 +5,34 @@
 	id: "A110000000000004"
 	order_index: 40
 	quest_links: []
-	quests: []
+	quests: [
+		{
+			dependencies: ["B130000000000005"]
+			id: "B140000000000001"
+			title: "Networked Industry"
+			description: ["Establish an Applied Energistics controller. Matterworks now treats logistics as plant infrastructure rather than a collection of independent inventories."]
+			x: 0.0d
+			y: 0.0d
+			tasks: [{ id: "C140000000000001", item: "ae2:controller", type: "item" }]
+		}
+		{
+			dependencies: ["B140000000000001"]
+			id: "B140000000000002"
+			title: "Programmable Control"
+			description: ["Introduce a programmable computer into the factory. Later high-energy processes may require measured state and control logic instead of merely placing a machine block."]
+			x: 2.0d
+			y: 0.0d
+			tasks: [{ id: "C140000000000002", item: "computercraft:computer_advanced", type: "item" }]
+		}
+		{
+			dependencies: ["B140000000000001", "B140000000000002"]
+			id: "B140000000000003"
+			title: "Digital Process Control"
+			description: ["Combine networked logistics and programmable supervision. This closes the digital-industry phase and establishes the control capability required by later nuclear research."]
+			x: 4.0d
+			y: 0.0d
+			tasks: [{ id: "C140000000000003", item: "ae2:crafting_terminal", type: "item" }]
+		}
+	]
 	title: "Phase 4 - Digital Industry"
 }
