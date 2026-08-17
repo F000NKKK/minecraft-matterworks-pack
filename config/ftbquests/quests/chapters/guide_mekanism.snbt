@@ -2,33 +2,34 @@
 	default_hide_dependency_lines: false
 	default_quest_shape: "square"
 	filename: "guide_mekanism"
-	group: "A100000000000002"
+	group: "1100000000000002"
 	icon: "mekanism:configurator"
-	id: "A120000000000002"
+	id: "1120000000000002"
 	order_index: 120
 	quest_links: []
 	quests: [
 		{
-			id: "D120000000000001"
+			id: "4120000000000001"
 			title: "Mekanism in Matterworks"
 			description: ["Mekanism provides electrical and chemical process equipment. Matterworks changes several entry recipes and removes shortcuts, so use this guide for machine behaviour and the Main Program for unlock requirements."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.2d
-			tasks: [{ id: "E120000000000001", item: "mekanism:configurator", type: "item" }]
-			rewards: [{ id: "F220000000000001", type: "xp", xp: 25 }]
+			tasks: [{ id: "5120000000000001", item: "mekanism:configurator", type: "item" }]
+			rewards: [{ id: "6220000000000001", type: "xp", xp: 25 }]
 		}
 		{
-			dependencies: ["D120000000000001"]
+			dependencies: ["4120000000000001"]
+			hide_dependency_lines: false
 			hide_details_until_startable: true
-			id: "D120000000000002"
+			id: "4120000000000002"
 			title: "Chemical Machines"
 			description: ["Mekanism gases and chemical machines are process infrastructure, not universal material shortcuts. Their outputs become prerequisites for later Matterworks synthesis research."]
 			x: 2.5d
 			y: 0.0d
-			tasks: [{ id: "E120000000000002", item: "mekanism:basic_chemical_tank", type: "item" }]
-			rewards: [{ id: "F220000000000002", type: "xp", xp: 50 }]
+			tasks: [{ id: "5120000000000002", item: "mekanism:basic_chemical_tank", type: "item" }]
+			rewards: [{ id: "6220000000000002", type: "xp", xp: 50 }]
 		}
 	]
 	title: "Guide - Mekanism"
