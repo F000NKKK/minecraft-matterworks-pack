@@ -1,4 +1,6 @@
 {
+	default_hide_dependency_lines: false
+	default_quest_shape: "circle"
 	filename: "phase_8_fusion_engineering"
 	group: "A100000000000001"
 	icon: "alchemistry:fusion_core"
@@ -8,30 +10,45 @@
 	quests: [
 		{
 			dependencies: ["B170000000000003"]
+			hide_details_until_startable: true
 			id: "B180000000000001"
 			title: "Fusion Reactor Structure"
 			description: ["Extend the atomic program into fusion only after controlled fission research is complete. The shared reactor casing is infrastructure; it is not itself proof of fusion knowledge."]
 			x: 0.0d
 			y: 0.0d
+			shape: "gear"
+			size: 1.35d
 			tasks: [{ id: "C180000000000001", item: "alchemistry:reactor_casing", type: "item" }]
+			rewards: [{ id: "F180000000000001", type: "xp", xp: 1000 }]
 		}
 		{
 			dependencies: ["B180000000000001"]
+			hide_details_until_startable: true
 			id: "B180000000000002"
 			title: "Controlled Fusion"
 			description: ["Construct the Alchemistry Fusion Core. Matterworks treats this as the highest-order generic element-construction capability, downstream of the complete nuclear and accelerator program."]
-			x: 2.0d
+			x: 3.0d
 			y: 0.0d
+			shape: "diamond"
+			size: 1.35d
 			tasks: [{ id: "C180000000000002", item: "alchemistry:fusion_core", type: "item" }]
+			rewards: [{ id: "F180000000000002", type: "xp", xp: 1750 }]
 		}
 		{
 			dependencies: ["B180000000000002"]
+			hide_details_until_startable: true
 			id: "B180000000000003"
 			title: "Fusion Engineering Established"
 			description: ["Complete the fusion program. Generic elemental synthesis may reach its final research tier here, but provenance-sensitive nuclear states still require their real physical process routes."]
-			x: 4.0d
+			x: 6.0d
 			y: 0.0d
+			shape: "hexagon"
+			size: 1.6d
 			tasks: [{ id: "C180000000000003", item: "alchemistry:fusion_core", type: "item" }]
+			rewards: [
+				{ id: "F180000000000003", type: "xp", xp: 2500 }
+				{ id: "F180000000000004", item: { count: 1, id: "minecraft:nether_star" }, type: "item" }
+			]
 		}
 	]
 	title: "Phase 8 - Fusion Engineering"
