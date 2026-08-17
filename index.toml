@@ -30,7 +30,7 @@ hash = "9c94204178b8912d909b15d2ad78cf72433ca04e84a9fafe6910a5bd23368943"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_1_mechanical_industry.snbt"
-hash = "11489380a578d4a23a3e599046786b749c72cf341d7014c00277050311f0e899"
+hash = "218fa9de484bb048f15b426a6de257467858a053cb8cd0af10066cea431092c2"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_2_chemical_analysis.snbt"
