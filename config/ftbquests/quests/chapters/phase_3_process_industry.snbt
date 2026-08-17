@@ -1,0 +1,10 @@
+{
+	filename: "phase_3_process_industry"
+	group: "A100000000000001"
+	icon: "mekanism:metallurgic_infuser"
+	id: "A110000000000003"
+	order_index: 30
+	quest_links: []
+	quests: []
+	title: "Phase 3 - Electrotechnics and Process Industry"
+}

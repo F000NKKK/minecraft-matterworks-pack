@@ -1,0 +1,10 @@
+{
+	filename: "guide_cc_tweaked"
+	group: "A100000000000002"
+	icon: "computercraft:computer_normal"
+	id: "A120000000000006"
+	order_index: 160
+	quest_links: []
+	quests: []
+	title: "Guide - CC:Tweaked"
+}

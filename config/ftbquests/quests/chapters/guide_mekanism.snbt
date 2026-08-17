@@ -1,0 +1,10 @@
+{
+	filename: "guide_mekanism"
+	group: "A100000000000002"
+	icon: "mekanism:configurator"
+	id: "A120000000000002"
+	order_index: 120
+	quest_links: []
+	quests: []
+	title: "Guide - Mekanism"
+}

@@ -1,0 +1,10 @@
+{
+	filename: "guide_ae2"
+	group: "A100000000000002"
+	icon: "ae2:certus_quartz_crystal"
+	id: "A120000000000005"
+	order_index: 150
+	quest_links: []
+	quests: []
+	title: "Guide - Applied Energistics 2"
+}

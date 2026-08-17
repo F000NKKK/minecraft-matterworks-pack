@@ -1,0 +1,10 @@
+{
+	filename: "phase_6_nuclear_research"
+	group: "A100000000000001"
+	icon: "nuclearcraft:accelerator_casing"
+	id: "A110000000000006"
+	order_index: 60
+	quest_links: []
+	quests: []
+	title: "Phase 6 - Nuclear Research"
+}

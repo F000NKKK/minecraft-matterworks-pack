@@ -1,0 +1,10 @@
+{
+	filename: "phase_5_nuclear_engineering"
+	group: "A100000000000001"
+	icon: "nuclearcraft:fission_reactor_controller"
+	id: "A110000000000005"
+	order_index: 50
+	quest_links: []
+	quests: []
+	title: "Phase 5 - Nuclear Engineering"
+}

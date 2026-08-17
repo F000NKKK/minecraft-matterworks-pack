@@ -1,0 +1,10 @@
+{
+	filename: "guide_nuclearcraft"
+	group: "A100000000000002"
+	icon: "nuclearcraft:manufactur"
+	id: "A120000000000004"
+	order_index: 140
+	quest_links: []
+	quests: []
+	title: "Guide - NuclearCraft: Neoteric"
+}

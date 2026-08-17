@@ -1,0 +1,10 @@
+{
+	filename: "phase_8_fusion_engineering"
+	group: "A100000000000001"
+	icon: "alchemistry:fusion_core"
+	id: "A110000000000008"
+	order_index: 80
+	quest_links: []
+	quests: []
+	title: "Phase 8 - Fusion Engineering"
+}

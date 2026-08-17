@@ -1,0 +1,10 @@
+{
+	filename: "phase_4_digital_industry"
+	group: "A100000000000001"
+	icon: "ae2:controller"
+	id: "A110000000000004"
+	order_index: 40
+	quest_links: []
+	quests: []
+	title: "Phase 4 - Digital Industry"
+}

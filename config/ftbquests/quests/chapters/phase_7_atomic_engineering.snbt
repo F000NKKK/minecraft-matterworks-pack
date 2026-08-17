@@ -1,0 +1,10 @@
+{
+	filename: "phase_7_atomic_engineering"
+	group: "A100000000000001"
+	icon: "alchemistry:fission_core"
+	id: "A110000000000007"
+	order_index: 70
+	quest_links: []
+	quests: []
+	title: "Phase 7 - Atomic Engineering"
+}

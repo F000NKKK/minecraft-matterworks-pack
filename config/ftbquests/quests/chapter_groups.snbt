@@ -1,0 +1,6 @@
+{
+	chapter_groups: [
+		{ id: "A100000000000001", title: "Matterworks - Main Program" }
+		{ id: "A100000000000002", title: "Mod Guides" }
+	]
+}

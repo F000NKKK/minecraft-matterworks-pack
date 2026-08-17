@@ -1,0 +1,10 @@
+{
+	filename: "guide_alchemistry_chemlib"
+	group: "A100000000000002"
+	icon: "alchemistry:combiner"
+	id: "A120000000000003"
+	order_index: 130
+	quest_links: []
+	quests: []
+	title: "Guide - Alchemistry / ChemLib"
+}

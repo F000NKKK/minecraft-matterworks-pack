@@ -1,0 +1,10 @@
+{
+	filename: "phase_2_chemical_analysis"
+	group: "A100000000000001"
+	icon: "alchemistry:dissolver"
+	id: "A110000000000002"
+	order_index: 20
+	quest_links: []
+	quests: []
+	title: "Phase 2 - Chemical Analysis"
+}

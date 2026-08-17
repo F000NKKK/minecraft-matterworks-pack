@@ -1,0 +1,10 @@
+{
+	filename: "guide_create"
+	group: "A100000000000002"
+	icon: "create:wrench"
+	id: "A120000000000001"
+	order_index: 110
+	quest_links: []
+	quests: []
+	title: "Guide - Create"
+}
