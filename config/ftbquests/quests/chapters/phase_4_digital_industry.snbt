@@ -88,16 +88,16 @@
 			rewards: [{ id: "6140000000000006", type: "xp", xp: 225 }]
 		}
 		{
-			dependencies: ["2140000000000005"]
+			dependencies: ["2140000000000003", "2140000000000005"]
 			hide_dependency_lines: false
 			id: "2140000000000007"
 			title: "Machine Supervision"
-			description: ["Deploy an advanced peripheral-capable computer as the supervision endpoint for later controlled processes. The exact plant program is yours; the progression gate is the capability to observe and act on process state."]
+			description: ["Connect programmable control to the Applied Energistics plant through an Advanced Peripherals ME Bridge. This milestone proves that the supervisor can observe logistics state and request network work instead of merely existing as a second standalone computer."]
 			x: 7.5d
 			y: 1.25d
 			shape: "square"
-			tasks: [{ id: "3140000000000007", item: "computercraft:computer_advanced", type: "item" }]
-			rewards: [{ id: "6140000000000007", type: "xp", xp: 175 }]
+			tasks: [{ id: "3140000000000007", item: "advancedperipherals:me_bridge", type: "item" }]
+			rewards: [{ id: "6140000000000007", type: "xp", xp: 225 }]
 		}
 		{
 			dependencies: ["2140000000000006", "2140000000000007"]
@@ -111,8 +111,8 @@
 			size: 1.35d
 			tasks: [{ id: "3140000000000008", item: "ae2:molecular_assembler", type: "item" }]
 			rewards: [
-				{ id: "6140000000000008", type: "xp", xp: 425 }
-				{ id: "6140000000000009", item: "minecraft:ender_pearl", count: 4, type: "item" }
+				{ id: "6140000000000008", type: "xp", xp: 450 }
+				{ id: "6140000000000009", item: "minecraft:ender_pearl", count: 3, type: "item" }
 			]
 		}
 	]
