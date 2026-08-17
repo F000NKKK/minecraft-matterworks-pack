@@ -2,61 +2,67 @@
 	default_hide_dependency_lines: false
 	default_quest_shape: "circle"
 	filename: "phase_1_mechanical_industry"
-	group: "A100000000000001"
+	group: "1100000000000001"
+	hide_quest_details_until_startable: true
+	hide_quest_until_deps_complete: true
 	icon: "create:precision_mechanism"
-	id: "A110000000000001"
+	id: "1110000000000001"
+	images: [
+		{ x: 2.5d, y: 0.0d, width: 8.0d, height: 5.0d, image: "minecraft:textures/block/andesite.png", alpha: 28, order: -20 }
+		{ x: 2.5d, y: 0.0d, width: 6.5d, height: 3.5d, image: "minecraft:textures/block/copper_block.png", alpha: 18, order: -19 }
+	]
 	order_index: 10
 	quest_links: []
 	quests: [
 		{
-			id: "B110000000000001"
+			id: "2110000000000001"
 			title: "Precision Manufacturing"
 			description: ["Establish repeatable Create precision manufacturing. This is the mechanical foundation for later electromechanical and chemical equipment."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.35d
-			tasks: [{ id: "C110000000000001", item: "create:precision_mechanism", type: "item" }]
-			rewards: [{ id: "F110000000000001", type: "xp", xp: 100 }]
+			tasks: [{ id: "3110000000000001", item: "create:precision_mechanism", type: "item" }]
+			rewards: [{ id: "6110000000000001", type: "xp", xp: 100 }]
 		}
 		{
-			dependencies: ["B110000000000001"]
-			hide_details_until_startable: true
-			id: "B110000000000002"
+			dependencies: ["2110000000000001"]
+			hide_dependency_lines: false
+			id: "2110000000000002"
 			title: "Industrial Carbon"
 			description: ["Produce coke through the Matterworks carbon route. Raw coal is no longer a valid substitute for an industrial carbon-processing line."]
 			x: 2.5d
 			y: -1.5d
 			shape: "square"
-			tasks: [{ id: "C110000000000002", item: "kubejs:coke", type: "item" }]
-			rewards: [{ id: "F110000000000002", type: "xp", xp: 125 }]
+			tasks: [{ id: "3110000000000002", item: "kubejs:coke", type: "item" }]
+			rewards: [{ id: "6110000000000002", type: "xp", xp: 125 }]
 		}
 		{
-			dependencies: ["B110000000000001"]
-			hide_details_until_startable: true
-			id: "B110000000000003"
+			dependencies: ["2110000000000001"]
+			hide_dependency_lines: false
+			id: "2110000000000003"
 			title: "Electromechanical Control"
 			description: ["Assemble the first Matterworks control unit. It is the bridge between mechanical automation and the electrical/process era."]
 			x: 2.5d
 			y: 1.5d
 			shape: "square"
-			tasks: [{ id: "C110000000000003", item: "kubejs:electromechanical_control_unit", type: "item" }]
-			rewards: [{ id: "F110000000000003", type: "xp", xp: 125 }]
+			tasks: [{ id: "3110000000000003", item: "kubejs:electromechanical_control_unit", type: "item" }]
+			rewards: [{ id: "6110000000000003", type: "xp", xp: 125 }]
 		}
 		{
-			dependencies: ["B110000000000002", "B110000000000003"]
-			hide_details_until_startable: true
-			id: "B110000000000004"
+			dependencies: ["2110000000000002", "2110000000000003"]
+			hide_dependency_lines: false
+			id: "2110000000000004"
 			title: "Generate Electricity Mechanically"
 			description: ["Build the Matterworks alternator path. Completing this proves that the factory can convert mechanical work into controlled electrical power."]
 			x: 5.0d
 			y: 0.0d
 			shape: "diamond"
 			size: 1.25d
-			tasks: [{ id: "C110000000000004", item: "createaddition:alternator", type: "item" }]
+			tasks: [{ id: "3110000000000004", item: "createaddition:alternator", type: "item" }]
 			rewards: [
-				{ id: "F110000000000004", type: "xp", xp: 250 }
-				{ id: "F110000000000005", item: { count: 4, id: "minecraft:redstone" }, type: "item" }
+				{ id: "6110000000000004", type: "xp", xp: 250 }
+				{ id: "6110000000000005", item: "minecraft:redstone", count: 4, type: "item" }
 			]
 		}
 	]
