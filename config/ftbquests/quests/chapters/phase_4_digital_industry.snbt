@@ -8,51 +8,111 @@
 	icon: "ae2:controller"
 	id: "1110000000000004"
 	images: [
-		{ x: 2.5d, y: 0.0d, width: 8.0d, height: 5.0d, image: "minecraft:textures/block/black_concrete.png", alpha: 24, order: -20 }
-		{ x: 2.5d, y: 0.0d, width: 6.5d, height: 3.5d, image: "minecraft:textures/block/light_blue_stained_glass.png", alpha: 16, order: -19 }
+		{ x: 4.0d, y: 0.0d, width: 12.0d, height: 6.5d, image: "minecraft:textures/block/black_concrete.png", alpha: 24, order: -20 }
+		{ x: 4.0d, y: 0.0d, width: 9.5d, height: 4.5d, image: "minecraft:textures/block/light_blue_stained_glass.png", alpha: 16, order: -19 }
 	]
 	order_index: 40
 	quest_links: []
 	quests: [
 		{
-			dependencies: ["2130000000000005"]
+			dependencies: ["2130000000000007"]
 			hide_dependency_lines: false
 			id: "2140000000000001"
-			title: "Networked Industry"
-			description: ["Establish an Applied Energistics controller. Matterworks now treats logistics as plant infrastructure rather than a collection of independent inventories."]
+			title: "Network Foundation"
+			description: ["Establish the first Applied Energistics network components. Digital industry begins with reliable storage, power and addressing before it becomes a factory-wide control layer."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
-			size: 1.35d
-			tasks: [{ id: "3140000000000001", item: "ae2:controller", type: "item" }]
-			rewards: [{ id: "6140000000000001", type: "xp", xp: 300 }]
+			size: 1.3d
+			tasks: [{ id: "3140000000000001", item: "ae2:energy_acceptor", type: "item" }]
+			rewards: [{ id: "6140000000000001", type: "xp", xp: 175 }]
 		}
 		{
 			dependencies: ["2140000000000001"]
 			hide_dependency_lines: false
 			id: "2140000000000002"
-			title: "Programmable Control"
-			description: ["Introduce a programmable computer into the factory. Later high-energy processes may require measured state and control logic instead of merely placing a machine block."]
+			title: "Digital Storage"
+			description: ["Build an ME Drive and move plant inventory into an addressable storage fabric. Storage capacity alone is not automation, but it is the substrate later logistics depends on."]
 			x: 2.5d
-			y: 1.5d
+			y: -1.75d
 			shape: "square"
-			tasks: [{ id: "3140000000000002", item: "computercraft:computer_advanced", type: "item" }]
-			rewards: [{ id: "6140000000000002", type: "xp", xp: 200 }]
+			tasks: [{ id: "3140000000000002", item: "ae2:drive", type: "item" }]
+			rewards: [{ id: "6140000000000002", type: "xp", xp: 150 }]
 		}
 		{
-			dependencies: ["2140000000000001", "2140000000000002"]
+			dependencies: ["2140000000000001"]
 			hide_dependency_lines: false
 			id: "2140000000000003"
-			title: "Digital Process Control"
-			description: ["Combine networked logistics and programmable supervision. This closes the digital-industry phase and establishes the control capability required by later nuclear research."]
+			title: "Networked Industry"
+			description: ["Establish an ME Controller. Matterworks now treats logistics as shared plant infrastructure instead of a collection of independent inventories."]
+			x: 2.5d
+			y: 1.75d
+			shape: "square"
+			tasks: [{ id: "3140000000000003", item: "ae2:controller", type: "item" }]
+			rewards: [{ id: "6140000000000003", type: "xp", xp: 225 }]
+		}
+		{
+			dependencies: ["2140000000000002", "2140000000000003"]
+			hide_dependency_lines: false
+			id: "2140000000000004"
+			title: "Operator Interface"
+			description: ["Build a Crafting Terminal and expose the storage fabric through a controlled operator interface. This is the point where the network becomes a usable industrial service."]
 			x: 5.0d
+			y: -1.75d
+			shape: "square"
+			tasks: [{ id: "3140000000000004", item: "ae2:crafting_terminal", type: "item" }]
+			rewards: [{ id: "6140000000000004", type: "xp", xp: 150 }]
+		}
+		{
+			dependencies: ["2140000000000003"]
+			hide_dependency_lines: false
+			id: "2140000000000005"
+			title: "Programmable Control"
+			description: ["Introduce an advanced programmable computer into the factory. High-energy and safety-critical processes may now require measured state, interlocks and control logic rather than passive machine ownership."]
+			x: 5.0d
+			y: 1.75d
+			shape: "square"
+			tasks: [{ id: "3140000000000005", item: "computercraft:computer_advanced", type: "item" }]
+			rewards: [{ id: "6140000000000005", type: "xp", xp: 200 }]
+		}
+		{
+			dependencies: ["2140000000000004", "2140000000000005"]
+			hide_dependency_lines: false
+			id: "2140000000000006"
+			title: "Automated Fabrication"
+			description: ["Build an ME Pattern Provider and establish machine-addressable production requests. The network can now coordinate manufacturing instead of merely storing its output."]
+			x: 7.5d
+			y: -0.75d
+			shape: "square"
+			tasks: [{ id: "3140000000000006", item: "ae2:pattern_provider", type: "item" }]
+			rewards: [{ id: "6140000000000006", type: "xp", xp: 225 }]
+		}
+		{
+			dependencies: ["2140000000000005"]
+			hide_dependency_lines: false
+			id: "2140000000000007"
+			title: "Machine Supervision"
+			description: ["Deploy an advanced peripheral-capable computer as the supervision endpoint for later controlled processes. The exact plant program is yours; the progression gate is the capability to observe and act on process state."]
+			x: 7.5d
+			y: 1.25d
+			shape: "square"
+			tasks: [{ id: "3140000000000007", item: "computercraft:computer_advanced", type: "item" }]
+			rewards: [{ id: "6140000000000007", type: "xp", xp: 175 }]
+		}
+		{
+			dependencies: ["2140000000000006", "2140000000000007"]
+			hide_dependency_lines: false
+			id: "2140000000000008"
+			title: "Digital Process Control"
+			description: ["Combine networked logistics, automated fabrication and programmable supervision. This closes the digital-industry phase and establishes the control capability required by later nuclear and high-energy research."]
+			x: 10.0d
 			y: 0.0d
 			shape: "diamond"
 			size: 1.35d
-			tasks: [{ id: "3140000000000003", item: "ae2:crafting_terminal", type: "item" }]
+			tasks: [{ id: "3140000000000008", item: "ae2:molecular_assembler", type: "item" }]
 			rewards: [
-				{ id: "6140000000000003", type: "xp", xp: 450 }
-				{ id: "6140000000000004", item: "minecraft:ender_pearl", count: 8, type: "item" }
+				{ id: "6140000000000008", type: "xp", xp: 425 }
+				{ id: "6140000000000009", item: "minecraft:ender_pearl", count: 4, type: "item" }
 			]
 		}
 	]
