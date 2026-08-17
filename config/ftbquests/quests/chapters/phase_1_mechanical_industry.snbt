@@ -5,6 +5,42 @@
 	id: "A110000000000001"
 	order_index: 10
 	quest_links: []
-	quests: []
+	quests: [
+		{
+			id: "B110000000000001"
+			title: "Precision Manufacturing"
+			description: ["Establish repeatable Create precision manufacturing. This is the mechanical foundation for later electromechanical and chemical equipment."]
+			x: 0.0d
+			y: 0.0d
+			tasks: [{ id: "C110000000000001", item: "create:precision_mechanism", type: "item" }]
+		}
+		{
+			dependencies: ["B110000000000001"]
+			id: "B110000000000002"
+			title: "Industrial Carbon"
+			description: ["Produce coke through the Matterworks carbon route. Raw coal is no longer a valid substitute for an industrial carbon-processing line."]
+			x: 2.0d
+			y: -1.0d
+			tasks: [{ id: "C110000000000002", item: "kubejs:coke", type: "item" }]
+		}
+		{
+			dependencies: ["B110000000000001"]
+			id: "B110000000000003"
+			title: "Electromechanical Control"
+			description: ["Assemble the first Matterworks control unit. It is the bridge between mechanical automation and the electrical/process era."]
+			x: 2.0d
+			y: 1.0d
+			tasks: [{ id: "C110000000000003", item: "kubejs:electromechanical_control_unit", type: "item" }]
+		}
+		{
+			dependencies: ["B110000000000002", "B110000000000003"]
+			id: "B110000000000004"
+			title: "Generate Electricity Mechanically"
+			description: ["Build the Matterworks alternator path. Completing this proves that the factory can convert mechanical work into controlled electrical power."]
+			x: 4.0d
+			y: 0.0d
+			tasks: [{ id: "C110000000000004", item: "createaddition:alternator", type: "item" }]
+		}
+	]
 	title: "Phase 1 - Mechanical Industry"
 }
