@@ -4,9 +4,10 @@ console.info('[Matterworks] Loading material composition registry')
  * Matterworks 0.5.3 composition registry.
  *
  * Identity, composition and process ownership are deliberately separate.
- * A material may have a known formula while still being forbidden from direct
- * Dissolver decomposition because treatment, grade, geometry or nuclear
- * provenance is technologically meaningful.
+ * A known formula never implies that a material may be dissolved directly.
+ * Nuclear parents, isotopes, fuels, irradiated states and nuclear process
+ * intermediates stay behind the complete Create -> Mekanism -> NuclearCraft
+ * technical-program boundary.
  */
 
 const MatterworksComposition = Object.freeze({
@@ -57,10 +58,18 @@ const MatterworksComposition = Object.freeze({
     super_alloy: { policy: 'MIXTURE' },
     sic_sic_cmc: { policy: 'MANUFACTURED', formula: { silicon: 1, carbon: 1 } },
     compressed_iron: { policy: 'PROCESS', formula: { iron: 1 } },
-    yellowcake: { policy: 'PROCESS' },
+
+    yellowcake: { policy: 'NUCLEAR', note: 'uranium concentrate; nuclear-program owned' },
+    uranium_oxide: { policy: 'NUCLEAR' },
+    uranium_hexafluoride: { policy: 'NUCLEAR' },
+    irradiated_borax: { policy: 'NUCLEAR' },
+    nuclear_isotopes: { policy: 'NUCLEAR', note: 'isotope number is part of identity' },
+    reactor_fuel: { policy: 'NUCLEAR', note: 'composition/enrichment is part of identity' },
+    depleted_fuel: { policy: 'NUCLEAR', note: 'burnup/depletion is part of identity' },
+    nuclear_waste: { policy: 'NUCLEAR', note: 'waste provenance/composition is preserved' },
+
     c_mn_blend: { policy: 'MIXTURE' },
     borax: { policy: 'PROCESS' },
-    irradiated_borax: { policy: 'NUCLEAR' },
     baratol: { policy: 'MIXTURE' },
     tributyl_phosphate: { policy: 'PROCESS', formula: { carbon: 12, hydrogen: 27, oxygen: 4, phosphorus: 1 } },
 
