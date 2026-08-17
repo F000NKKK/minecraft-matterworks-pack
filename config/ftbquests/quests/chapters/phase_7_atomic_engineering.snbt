@@ -8,8 +8,8 @@
 	icon: "alchemistry:fission_core"
 	id: "1110000000000007"
 	images: [
-		{ x: 3.0d, y: 0.0d, width: 9.0d, height: 5.0d, image: "minecraft:textures/block/tuff.png", alpha: 26, order: -20 }
-		{ x: 3.0d, y: 0.0d, width: 7.0d, height: 3.4d, image: "minecraft:textures/block/yellow_concrete.png", alpha: 10, order: -19 }
+		{ x: 3.75d, y: 0.0d, width: 11.0d, height: 6.0d, image: "minecraft:textures/block/tuff.png", alpha: 26, order: -20 }
+		{ x: 3.75d, y: 0.0d, width: 8.5d, height: 4.0d, image: "minecraft:textures/block/yellow_concrete.png", alpha: 10, order: -19 }
 	]
 	order_index: 70
 	quest_links: []
@@ -19,39 +19,51 @@
 			hide_dependency_lines: false
 			id: "2170000000000001"
 			title: "Atomic Reactor Structure"
-			description: ["Only after the NuclearCraft accelerator program may Alchemistry's atomic engineering branch begin. Construct the reactor structure without weakening nuclear provenance rules."]
+			description: ["Only after the NuclearCraft accelerator program may Alchemistry atomic engineering begin. Construct the reactor structure without weakening the provenance rules already established for fuels, isotopes and irradiated states."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.35d
 			tasks: [{ id: "3170000000000001", item: "alchemistry:reactor_casing", type: "item" }]
-			rewards: [{ id: "6170000000000001", type: "xp", xp: 750 }]
+			rewards: [{ id: "6170000000000001", type: "xp", xp: 650 }]
 		}
 		{
 			dependencies: ["2170000000000001"]
 			hide_dependency_lines: false
 			id: "2170000000000002"
 			title: "Controlled Atomic Fission"
-			description: ["Construct the Alchemistry Fission Core. This is a terminal research capability, not a replacement for NuclearCraft enrichment, irradiation or fuel-state processing."]
+			description: ["Construct the Alchemistry Fission Core. This establishes controlled generic atomic decomposition, but it does not grant arbitrary reconstruction of nuclear parent elements and does not replace NuclearCraft enrichment or fuel-state processing."]
 			x: 3.0d
 			y: 0.0d
 			shape: "diamond"
 			size: 1.3d
 			tasks: [{ id: "3170000000000002", item: "alchemistry:fission_core", type: "item" }]
-			rewards: [{ id: "6170000000000002", type: "xp", xp: 1250 }]
+			rewards: [{ id: "6170000000000002", type: "xp", xp: 1100 }]
 		}
 		{
 			dependencies: ["2170000000000002"]
 			hide_dependency_lines: false
+			id: "2170000000000004"
+			title: "Atomic Decomposition Discipline"
+			description: ["Integrate the fission core into the research program as a controlled decomposition capability. Matterworks explicitly separates this capability from fusion-based element construction so the two machines cannot collapse into one generic transmutation tier."]
+			x: 5.0d
+			y: 0.0d
+			shape: "square"
+			tasks: [{ id: "3170000000000004", item: "alchemistry:fission_core", type: "item" }]
+			rewards: [{ id: "6170000000000004", type: "xp", xp: 700 }]
+		}
+		{
+			dependencies: ["2170000000000004"]
+			hide_dependency_lines: false
 			id: "2170000000000003"
-			title: "Atomic Synthesis Authority"
-			description: ["Complete the atomic-engineering program. Parent-element synthesis knowledge may be granted here, while isotope-specific and irradiated states remain process-owned and cannot be reconstructed by generic chemistry."]
-			x: 6.0d
+			title: "Atomic Fission Established"
+			description: ["Complete the atomic-fission program. Generic atomic decomposition is now an established research capability; isotope-specific and irradiated nuclear states remain process-owned, and parent-element construction remains locked behind fusion engineering."]
+			x: 7.5d
 			y: 0.0d
 			shape: "hexagon"
 			size: 1.5d
 			tasks: [{ id: "3170000000000003", item: "alchemistry:fission_core", type: "item" }]
-			rewards: [{ id: "6170000000000003", type: "xp", xp: 1750 }]
+			rewards: [{ id: "6170000000000003", type: "xp", xp: 1500 }]
 		}
 	]
 	title: "Phase 7 - Atomic Engineering"
