@@ -5,6 +5,7 @@ ServerEvents.recipes(event => {
     const research = global.MatterworksResearch || {}
     const families = research.synthesisFamilies || {}
     const capabilities = research.capabilities || {}
+    const backlogFamilies = research.backlogFamilies || {}
     const phases = research.phases || []
     const provenanceOnly = new Set(research.provenanceOnly || [])
     const unresolved = new Set(research.unresolved || [])
@@ -19,6 +20,10 @@ ServerEvents.recipes(event => {
     const unknownPhaseRefs = []
     const stages = {}
     const duplicateStages = []
+    const backlogOwners = {}
+    const duplicateBacklogOwners = []
+    const backlogOutsideUnresolved = []
+    const unresolvedWithoutBacklog = []
 
     function registerQuestOwner(kind, key, ownerQuest) {
         if (!ownerQuest) {
@@ -87,13 +92,34 @@ ServerEvents.recipes(event => {
         registerStage('capability', capabilityKey, capability.stage)
     })
 
+    Object.entries(backlogFamilies).forEach(([familyKey, family]) => {
+        if (!phaseIds.has(family.targetPhase)) {
+            unknownPhaseRefs.push(`backlog:${familyKey}:${family.targetPhase}`)
+        }
+
+        ;(family.materials || []).forEach(material => {
+            if (material in backlogOwners) {
+                duplicateBacklogOwners.push(`${material}:${backlogOwners[material]}+${familyKey}`)
+            } else {
+                backlogOwners[material] = familyKey
+            }
+
+            if (!unresolved.has(material)) {
+                backlogOutsideUnresolved.push(`${familyKey}:${material}`)
+            }
+        })
+    })
+
+    unresolved.forEach(material => {
+        if (!(material in backlogOwners)) {
+            unresolvedWithoutBacklog.push(material)
+        }
+    })
+
     Object.entries(questOwners).forEach(([questId, entries]) => {
         const phaseEntries = entries.filter(entry => entry.startsWith('phase:'))
         const capabilityEntries = entries.filter(entry => entry.startsWith('capability:'))
 
-        // A final phase quest may intentionally own one phase plus one or more
-        // synthesis families and one capability. Multiple phases or multiple
-        // distinct capabilities sharing one quest is suspicious.
         if (phaseEntries.length > 1 || capabilityEntries.length > 1) {
             duplicateQuestOwners.push(`${questId}:${entries.join('+')}`)
         }
@@ -116,35 +142,36 @@ ServerEvents.recipes(event => {
     if (duplicateOwners.length > 0) {
         console.warn(`[Matterworks] Research audit: duplicate synthesis owners: ${duplicateOwners.join(', ')}`)
     }
-
     if (duplicateQuestOwners.length > 0) {
         console.warn(`[Matterworks] Research audit: suspicious duplicate quest ownership: ${duplicateQuestOwners.join(', ')}`)
     }
-
     if (duplicatePhaseIds.length > 0) {
         console.warn(`[Matterworks] Research audit: duplicate phase ids: ${duplicatePhaseIds.join(', ')}`)
     }
-
     if (unknownPhaseRefs.length > 0) {
         console.warn(`[Matterworks] Research audit: unknown phase references: ${unknownPhaseRefs.join(', ')}`)
     }
-
     if (duplicateStages.length > 0) {
         console.warn(`[Matterworks] Research audit: duplicate research stages: ${duplicateStages.join(', ')}`)
     }
-
     if (malformedQuestOwners.length > 0) {
         console.warn(`[Matterworks] Research audit: malformed quest owner ids: ${malformedQuestOwners.join(', ')}`)
     }
-
+    if (duplicateBacklogOwners.length > 0) {
+        console.warn(`[Matterworks] Research audit: duplicate process backlog owners: ${duplicateBacklogOwners.join(', ')}`)
+    }
+    if (backlogOutsideUnresolved.length > 0) {
+        console.warn(`[Matterworks] Research audit: backlog materials not marked unresolved: ${backlogOutsideUnresolved.join(', ')}`)
+    }
+    if (unresolvedWithoutBacklog.length > 0) {
+        console.warn(`[Matterworks] Research audit: unresolved materials without process backlog family: ${unresolvedWithoutBacklog.join(', ')}`)
+    }
     if (missingPolicy.length > 0) {
         console.warn(`[Matterworks] Research audit: composition entries without policy: ${missingPolicy.join(', ')}`)
     }
-
     if (missingResearch.length > 0) {
         console.warn(`[Matterworks] Research audit: materials without synthesis/provenance disposition: ${missingResearch.join(', ')}`)
     }
-
     if (missingQuestOwners.length > 0) {
         console.warn(`[Matterworks] Research audit: research entries without quest owner: ${missingQuestOwners.join(', ')}`)
     }
@@ -152,9 +179,11 @@ ServerEvents.recipes(event => {
     console.info(
         `[Matterworks] Research audit registered: ${Object.keys(owners).length} materials assigned to synthesis families, ` +
         `${Object.keys(capabilities).length} capabilities, ${phaseIds.size} phases, ` +
+        `${Object.keys(backlogFamilies).length} backlog families / ${Object.keys(backlogOwners).length} backlog materials, ` +
         `${provenanceOnly.size} provenance-only, ${unresolved.size} unresolved; ` +
         `duplicateOwners=${duplicateOwners.length}, duplicateQuestOwners=${duplicateQuestOwners.length}, ` +
         `duplicateStages=${duplicateStages.length}, unknownPhaseRefs=${unknownPhaseRefs.length}, ` +
+        `duplicateBacklogOwners=${duplicateBacklogOwners.length}, unresolvedWithoutBacklog=${unresolvedWithoutBacklog.length}, ` +
         `malformedQuestOwners=${malformedQuestOwners.length}, missingResearch=${missingResearch.length}, ` +
         `missingQuestOwners=${missingQuestOwners.length}`
     )
