@@ -1,4 +1,6 @@
 {
+	default_hide_dependency_lines: false
+	default_quest_shape: "circle"
 	filename: "phase_5_nuclear_engineering"
 	group: "A100000000000001"
 	icon: "nuclearcraft:fission_reactor_controller"
@@ -8,30 +10,45 @@
 	quests: [
 		{
 			dependencies: ["B140000000000003"]
+			hide_details_until_startable: true
 			id: "B150000000000001"
 			title: "Nuclear Engineering Program"
 			description: ["Enter the NuclearCraft program only after process industry and digital control exist. From this point nuclear materials are tracked as process states, not interchangeable elemental inventory."]
 			x: 0.0d
 			y: 0.0d
-			tasks: [{ id: "C150000000000001", item: "kubejs:graphite", type: "item" }]
+			shape: "gear"
+			size: 1.4d
+			tasks: [{ id: "C150000000000001", item: "nuclearcraft:manufactory", type: "item" }]
+			rewards: [{ id: "F150000000000001", type: "xp", xp: 500 }]
 		}
 		{
 			dependencies: ["B150000000000001"]
+			hide_details_until_startable: true
 			id: "B150000000000002"
 			title: "Fission Infrastructure"
 			description: ["Construct the NuclearCraft fission reactor controller. Owning the controller is only the infrastructure milestone; fuel preparation, irradiation and reprocessing remain separate capabilities."]
-			x: 2.0d
-			y: 0.0d
+			x: 3.0d
+			y: -1.0d
+			shape: "diamond"
+			size: 1.25d
 			tasks: [{ id: "C150000000000002", item: "nuclearcraft:fission_reactor_controller", type: "item" }]
+			rewards: [{ id: "F150000000000002", type: "xp", xp: 750 }]
 		}
 		{
 			dependencies: ["B150000000000002"]
+			hide_details_until_startable: true
 			id: "B150000000000003"
 			title: "Fuel Cycle Authority"
 			description: ["Establish a controlled fission program. This stable research milestone owns nuclear fuel-cycle knowledge; runtime validation will be tightened to a verified spent/depleted or reprocessing output once the installed NuclearCraft registry audit supplies the exact product IDs."]
-			x: 4.0d
+			x: 6.0d
 			y: 0.0d
-			tasks: [{ id: "C150000000000003", item: "nuclearcraft:fission_reactor_controller", type: "item" }]
+			shape: "hexagon"
+			size: 1.45d
+			tasks: [{ id: "C150000000000003", item: "nuclearcraft:isotope_separator", type: "item" }]
+			rewards: [
+				{ id: "F150000000000003", type: "xp", xp: 1000 }
+				{ id: "F150000000000004", item: { count: 8, id: "nuclearcraft:lead_ingot" }, type: "item" }
+			]
 		}
 	]
 	title: "Phase 5 - Nuclear Engineering"
