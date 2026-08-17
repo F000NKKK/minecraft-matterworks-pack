@@ -5,6 +5,34 @@
 	id: "A110000000000008"
 	order_index: 80
 	quest_links: []
-	quests: []
+	quests: [
+		{
+			dependencies: ["B170000000000003"]
+			id: "B180000000000001"
+			title: "Fusion Reactor Structure"
+			description: ["Extend the atomic program into fusion only after controlled fission research is complete. The shared reactor casing is infrastructure; it is not itself proof of fusion knowledge."]
+			x: 0.0d
+			y: 0.0d
+			tasks: [{ id: "C180000000000001", item: "alchemistry:reactor_casing", type: "item" }]
+		}
+		{
+			dependencies: ["B180000000000001"]
+			id: "B180000000000002"
+			title: "Controlled Fusion"
+			description: ["Construct the Alchemistry Fusion Core. Matterworks treats this as the highest-order generic element-construction capability, downstream of the complete nuclear and accelerator program."]
+			x: 2.0d
+			y: 0.0d
+			tasks: [{ id: "C180000000000002", item: "alchemistry:fusion_core", type: "item" }]
+		}
+		{
+			dependencies: ["B180000000000002"]
+			id: "B180000000000003"
+			title: "Fusion Engineering Established"
+			description: ["Complete the fusion program. Generic elemental synthesis may reach its final research tier here, but provenance-sensitive nuclear states still require their real physical process routes."]
+			x: 4.0d
+			y: 0.0d
+			tasks: [{ id: "C180000000000003", item: "alchemistry:fusion_core", type: "item" }]
+		}
+	]
 	title: "Phase 8 - Fusion Engineering"
 }
