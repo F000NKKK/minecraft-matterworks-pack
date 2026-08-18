@@ -10,8 +10,8 @@
 	quests: [
 		{
 			id: "2260000000000001"
-			title: "Programmable Computers"
-			description: ["CC:Tweaked is Matterworks' programmable control layer. This guide introduces computers and Lua-facing automation without granting any Main Program research by itself."]
+			title: "Your First Controller"
+			description: ["Build a normal computer and use the Lua prompt before automating anything. Learn the basic loop: read state, decide, act. `redstone.getInput(side)` reads a signal and `redstone.setOutput(side, value)` changes one. A useful plant controller is just this loop applied to real process state."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
@@ -22,29 +22,48 @@
 		{
 			dependencies: ["2260000000000001"]
 			hide_dependency_lines: false
-			hide_details_until_startable: true
 			id: "2260000000000002"
-			title: "Advanced Control"
-			description: ["Advanced computers are suitable supervisors for complex plants. Later Matterworks phases may require measured state, interlocks and program logic rather than simple item possession."]
+			title: "Discover Peripherals"
+			description: ["Wired Modems let one computer reach peripherals without placing the computer directly beside every machine. In Lua, start with `peripheral.getNames()` and `peripheral.getType(name)`; then use `peripheral.wrap(name)` to obtain the device API."]
 			x: 2.5d
-			y: 0.0d
-			shape: "diamond"
-			tasks: [{ id: "3260000000000002", item: "computercraft:computer_advanced", type: "item" }]
-			rewards: [{ id: "6260000000000002", type: "xp", xp: 75 }]
+			y: -1.25d
+			tasks: [{ id: "3260000000000002", item: "computercraft:wired_modem", count: 2, type: "item" }]
+			rewards: [{ id: "6260000000000002", type: "xp", xp: 40 }]
 		}
 		{
 			dependencies: ["2260000000000002"]
 			hide_dependency_lines: false
-			hide_details_until_startable: true
 			id: "2260000000000003"
-			title: "ME Network Supervision"
-			description: ["Advanced Peripherals' ME Bridge exposes Applied Energistics inventory and crafting state to CC:Tweaked. In Matterworks this is the first concrete network-to-program boundary: a supervisor can inspect logistics state and request work instead of existing as an isolated computer block."]
+			title: "Build a Plant Network"
+			description: ["Networking Cable joins wired modems into one peripheral network. Give attached peripherals stable names and treat those names as your control contract; automation becomes much easier to maintain when programs do not depend on physical adjacency."]
 			x: 5.0d
+			y: -1.25d
+			tasks: [{ id: "3260000000000003", item: "computercraft:cable", count: 8, type: "item" }]
+			rewards: [{ id: "6260000000000003", type: "xp", xp: 50 }]
+		}
+		{
+			dependencies: ["2260000000000001"]
+			hide_dependency_lines: false
+			id: "2260000000000004"
+			title: "Expose Process State"
+			description: ["A monitor is useful for operator-visible state: pressure, energy, alarms, machine mode or production rate. Do not make the UI the control logic; let the program maintain state and render only the information an operator needs to diagnose the plant."]
+			x: 2.5d
+			y: 1.25d
+			tasks: [{ id: "3260000000000004", item: "computercraft:monitor_normal", count: 2, type: "item" }]
+			rewards: [{ id: "6260000000000004", type: "xp", xp: 40 }]
+		}
+		{
+			dependencies: ["2260000000000003", "2260000000000004"]
+			hide_dependency_lines: false
+			id: "2260000000000005"
+			title: "Event-Driven Control"
+			description: ["CC:Tweaked programs should normally wait for events instead of busy-looping. `os.pullEvent()` lets one controller react to timers, redstone changes and peripheral events. Use timers for polling slow process state and reserve immediate reactions for alarms and interlocks."]
+			x: 7.5d
 			y: 0.0d
-			shape: "gear"
-			tasks: [{ id: "3260000000000003", item: "advancedperipherals:me_bridge", type: "item" }]
-			rewards: [{ id: "6260000000000003", type: "xp", xp: 75 }]
+			shape: "diamond"
+			tasks: [{ id: "3260000000000005", item: "computercraft:redstone_relay", type: "item" }]
+			rewards: [{ id: "6260000000000005", type: "xp", xp: 75 }]
 		}
 	]
-	title: "Guide - CC:Tweaked"
+	title: "Guide - CC:Tweaked Process Control"
 }
