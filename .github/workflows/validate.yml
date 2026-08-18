@@ -22,4 +22,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Validate Packwiz index and KubeJS invariants
-        run: python3 .github/scripts/validate-pack.py
+        run: |
+          sha256sum \
+            config/ftbquests/quests/chapters/age_1_industrial.snbt \
+            config/ftbquests/quests/chapters/guide_create.snbt \
+            kubejs/server_scripts/matterworks/progression/research.js \
+            kubejs/server_scripts/matterworks/recipes/advantage_equipment.js \
+            index.toml
+          python3 .github/scripts/validate-pack.py
