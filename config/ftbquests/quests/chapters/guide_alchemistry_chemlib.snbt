@@ -3,7 +3,7 @@
 	default_quest_shape: "square"
 	filename: "guide_alchemistry_chemlib"
 	group: "1100000000000002"
-	icon: "chemlib:periodic_table"
+	icon: "alchemistry:dissolver"
 	id: "1120000000000003"
 	order_index: 130
 	quest_links: []
