@@ -3,73 +3,67 @@
 	default_quest_shape: "square"
 	filename: "guide_alchemistry_chemlib"
 	group: "1100000000000002"
-	icon: "alchemistry:combiner"
+	icon: "chemlib:periodic_table"
 	id: "1120000000000003"
 	order_index: 130
 	quest_links: []
 	quests: [
 		{
 			id: "4130000000000001"
-			title: "Chemical Analysis"
-			description: ["The Dissolver answers what a material contains. In Matterworks, decomposition and synthesis are intentionally separate capabilities."]
+			title: "Read Chemical Identity"
+			description: ["ChemLib represents elements and compounds as chemical identities rather than interchangeable crafting ingredients. Use JEI and the periodic-table tools to read formulas before attempting any synthesis. Matterworks progression assumes you understand what a formula says and, equally importantly, what it does not say about manufacturing history."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.2d
-			tasks: [{ id: "5130000000000001", item: "alchemistry:dissolver", type: "item" }]
+			tasks: [{ id: "5130000000000001", type: "checkmark" }]
 			rewards: [{ id: "6230000000000001", type: "xp", xp: 25 }]
 		}
 		{
 			dependencies: ["4130000000000001"]
 			hide_dependency_lines: false
-			hide_details_until_startable: true
 			id: "4130000000000002"
-			title: "The Combiner Is Not Omnipotent"
-			description: ["The Combiner is a synthesis platform. A recipe is permitted only after the Main Program proves the technology that makes that material manufacturable. Nuclear provenance-sensitive states are never recreated by generic combination."]
+			title: "Elements vs Compounds"
+			description: ["An element has one atomic identity; a compound has a fixed relationship between multiple elements. When a recipe produces a compound, preserve its stoichiometry instead of treating the ingredient list as an unordered bag of elements."]
 			x: 2.5d
-			y: 0.0d
-			tasks: [{ id: "5130000000000002", item: "alchemistry:combiner", type: "item" }]
-			rewards: [{ id: "6230000000000002", type: "xp", xp: 50 }]
+			y: -1.25d
+			tasks: [{ id: "5130000000000002", type: "checkmark" }]
+			rewards: [{ id: "6230000000000002", type: "xp", xp: 35 }]
 		}
 		{
 			dependencies: ["4130000000000002"]
 			hide_dependency_lines: false
-			hide_details_until_startable: true
-			id: "4130000000000005"
-			title: "Composition Is Not Process Ownership"
-			description: ["Matterworks classifies materials by policy. DIRECT materials may be represented by ordinary composition chemistry after their research owner is established. PROCESS materials such as HDPE require an industrial route. MANUFACTURED and MIXTURE materials preserve even more of their production history, so knowing their ingredients is not enough to synthesize the finished material."]
-			x: 5.0d
-			y: 1.5d
-			shape: "square"
-			tasks: [{ id: "5130000000000005", item: "mekanism:hdpe_pellet", type: "item" }]
-			rewards: [{ id: "6230000000000005", type: "xp", xp: 50 }]
-		}
-		{
-			dependencies: ["4130000000000002"]
-			hide_dependency_lines: false
-			hide_details_until_startable: true
 			id: "4130000000000003"
-			title: "Atomic Fission Is a Separate Tier"
-			description: ["The Fission Chamber Controller performs generic atomic decomposition. Matterworks replaces its stock entry recipe and requires NuclearCraft ring-accelerator control hardware, so this machine belongs to the late atomic-engineering program rather than ordinary chemistry."]
+			title: "Analysis and Reconstruction Are Different"
+			description: ["Decomposition answers 'what is this made of?'; reconstruction answers 'may this composition be assembled into this material?'. Matterworks deliberately separates those questions. Analysis can reveal a composition long before the corresponding industrial process is unlocked."]
 			x: 5.0d
-			y: -1.0d
-			shape: "diamond"
-			tasks: [{ id: "5130000000000003", item: "alchemistry:fission_chamber_controller", type: "item" }]
-			rewards: [{ id: "6230000000000003", type: "xp", xp: 75 }]
+			y: -1.25d
+			tasks: [{ id: "5130000000000003", type: "checkmark" }]
+			rewards: [{ id: "6230000000000003", type: "xp", xp: 45 }]
 		}
 		{
 			dependencies: ["4130000000000003"]
 			hide_dependency_lines: false
-			hide_details_until_startable: true
 			id: "4130000000000004"
-			title: "Fusion Constructs Elements"
-			description: ["The Fusion Chamber Controller is the final generic element-construction tier. It is deliberately distinct from the Combiner and Fission Chamber, and it still cannot recreate provenance-sensitive isotopes, reactor fuel, depleted fuel, irradiated materials or nuclear waste."]
+			title: "Matterworks Material Policies"
+			description: ["DIRECT means composition can represent the material once its research family is owned. PROCESS means a physical route matters. MANUFACTURED means structure or fabrication history matters. MIXTURE means a single molecular formula is not an adequate identity. NUCLEAR additionally preserves isotope, enrichment, irradiation and fuel-cycle provenance."]
+			x: 5.0d
+			y: 1.25d
+			tasks: [{ id: "5130000000000004", type: "checkmark" }]
+			rewards: [{ id: "6230000000000004", type: "xp", xp: 55 }]
+		}
+		{
+			dependencies: ["4130000000000004"]
+			hide_dependency_lines: false
+			id: "4130000000000005"
+			title: "Atomic Operations Are Late Research"
+			description: ["Breaking or constructing atomic nuclei is not ordinary chemistry. Fission and fusion chambers therefore belong to Phases 7 and 8 after NuclearCraft accelerator research. The guide explains the boundary here; the Main Program is where those machines are actually built."]
 			x: 7.5d
 			y: 0.0d
-			shape: "hexagon"
-			tasks: [{ id: "5130000000000004", item: "alchemistry:fusion_chamber_controller", type: "item" }]
-			rewards: [{ id: "6230000000000004", type: "xp", xp: 100 }]
+			shape: "diamond"
+			tasks: [{ id: "5130000000000005", type: "checkmark" }]
+			rewards: [{ id: "6230000000000005", type: "xp", xp: 75 }]
 		}
 	]
-	title: "Guide - Alchemistry / ChemLib"
+	title: "Guide - Chemical Reasoning"
 }
