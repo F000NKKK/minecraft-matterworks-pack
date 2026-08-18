@@ -50,6 +50,7 @@ const MatterworksResearch = Object.freeze({
         industrial_inorganics: ageOwned({ stage: 'matterworks:synthesis/industrial_inorganics', age: 'industrial_age', ownerQuest: '2130000000000005', materials: ['rhodochrosite', 'manganese_oxide', 'manganese_dioxide', 'calcium_sulfate', 'sodium_hydroxide', 'potassium_hydroxide', 'barium_nitrate'] }),
         engineered_carbon: ageOwned({ stage: 'matterworks:synthesis/engineered_carbon', age: 'industrial_age', ownerQuest: '2130000000000006', materials: ['graphite', 'pyrolytic_carbon', 'hard_carbon'] }),
         controlled_steelmaking: ageOwned({ stage: 'matterworks:synthesis/controlled_steelmaking', age: 'industrial_age', ownerQuest: '2130000000000002', materials: ['steel', 'ferroboron', 'zirconium_molybdenum', 'nichrome', 'niobium_tin', 'niobium_titanium'] }),
+        nuclear_structural_alloys: ageOwned({ stage: 'matterworks:synthesis/nuclear_structural_alloys', age: 'atomic_age', ownerQuest: '2150000000000003', materials: ['zircaloy'] }),
         pressure_materials: ageOwned({ stage: 'matterworks:synthesis/pressure_materials', age: 'industrial_age', ownerQuest: '2130000000000010', materials: ['compressed_iron'] }),
         organophosphorus: ageOwned({ stage: 'matterworks:synthesis/organophosphorus', age: 'atomic_age', ownerQuest: '2150000000000003', materials: ['tributyl_phosphate'] }),
         polymers: ageOwned({ stage: 'matterworks:synthesis/polymers', age: 'industrial_age', ownerQuest: '2130000000000011', materials: ['pneumaticcraft_plastic', 'mekanism_hdpe'] }),
