@@ -6,7 +6,7 @@ ServerEvents.recipes(event => {
     const families = research.synthesisFamilies || {}
     const capabilities = research.capabilities || {}
     const backlogFamilies = research.backlogFamilies || {}
-    const phases = research.phases || []
+    const ages = research.ages || research.phases || []
     const provenanceOnly = new Set(research.provenanceOnly || [])
     const unresolved = new Set(research.unresolved || [])
     const owners = {}
@@ -15,9 +15,9 @@ ServerEvents.recipes(event => {
     const malformedQuestOwners = []
     const duplicateQuestOwners = []
     const questOwners = {}
-    const phaseIds = new Set()
-    const duplicatePhaseIds = []
-    const unknownPhaseRefs = []
+    const ageIds = new Set()
+    const duplicateAgeIds = []
+    const unknownAgeRefs = []
     const stages = {}
     const duplicateStages = []
     const backlogOwners = {}
@@ -55,15 +55,19 @@ ServerEvents.recipes(event => {
         stages[stage] = `${kind}:${key}`
     }
 
-    phases.forEach(phase => {
-        if (phaseIds.has(phase.id)) {
-            duplicatePhaseIds.push(phase.id)
+    function resolveAge(entry) {
+        return entry && (entry.age || entry.phase)
+    }
+
+    ages.forEach(age => {
+        if (ageIds.has(age.id)) {
+            duplicateAgeIds.push(age.id)
         } else {
-            phaseIds.add(phase.id)
+            ageIds.add(age.id)
         }
 
-        registerQuestOwner('phase', phase.id, phase.ownerQuest)
-        registerStage('phase', phase.id, phase.stage)
+        registerQuestOwner('age', age.id, age.ownerQuest)
+        registerStage('age', age.id, age.stage)
     })
 
     Object.entries(families).forEach(([familyKey, family]) => {
@@ -75,8 +79,9 @@ ServerEvents.recipes(event => {
             }
         })
 
-        if (!phaseIds.has(family.phase)) {
-            unknownPhaseRefs.push(`synthesis:${familyKey}:${family.phase}`)
+        const age = resolveAge(family)
+        if (!ageIds.has(age)) {
+            unknownAgeRefs.push(`synthesis:${familyKey}:${age}`)
         }
 
         registerQuestOwner('synthesis', familyKey, family.ownerQuest)
@@ -84,8 +89,9 @@ ServerEvents.recipes(event => {
     })
 
     Object.entries(capabilities).forEach(([capabilityKey, capability]) => {
-        if (!phaseIds.has(capability.phase)) {
-            unknownPhaseRefs.push(`capability:${capabilityKey}:${capability.phase}`)
+        const age = resolveAge(capability)
+        if (!ageIds.has(age)) {
+            unknownAgeRefs.push(`capability:${capabilityKey}:${age}`)
         }
 
         registerQuestOwner('capability', capabilityKey, capability.ownerQuest)
@@ -93,8 +99,9 @@ ServerEvents.recipes(event => {
     })
 
     Object.entries(backlogFamilies).forEach(([familyKey, family]) => {
-        if (!phaseIds.has(family.targetPhase)) {
-            unknownPhaseRefs.push(`backlog:${familyKey}:${family.targetPhase}`)
+        const age = family.targetAge || family.targetPhase
+        if (!ageIds.has(age)) {
+            unknownAgeRefs.push(`backlog:${familyKey}:${age}`)
         }
 
         ;(family.materials || []).forEach(material => {
@@ -117,10 +124,10 @@ ServerEvents.recipes(event => {
     })
 
     Object.entries(questOwners).forEach(([questId, entries]) => {
-        const phaseEntries = entries.filter(entry => entry.startsWith('phase:'))
+        const ageEntries = entries.filter(entry => entry.startsWith('age:'))
         const capabilityEntries = entries.filter(entry => entry.startsWith('capability:'))
 
-        if (phaseEntries.length > 1 || capabilityEntries.length > 1) {
+        if (ageEntries.length > 1 || capabilityEntries.length > 1) {
             duplicateQuestOwners.push(`${questId}:${entries.join('+')}`)
         }
     })
@@ -145,11 +152,11 @@ ServerEvents.recipes(event => {
     if (duplicateQuestOwners.length > 0) {
         console.warn(`[Matterworks] Research audit: suspicious duplicate quest ownership: ${duplicateQuestOwners.join(', ')}`)
     }
-    if (duplicatePhaseIds.length > 0) {
-        console.warn(`[Matterworks] Research audit: duplicate phase ids: ${duplicatePhaseIds.join(', ')}`)
+    if (duplicateAgeIds.length > 0) {
+        console.warn(`[Matterworks] Research audit: duplicate age ids: ${duplicateAgeIds.join(', ')}`)
     }
-    if (unknownPhaseRefs.length > 0) {
-        console.warn(`[Matterworks] Research audit: unknown phase references: ${unknownPhaseRefs.join(', ')}`)
+    if (unknownAgeRefs.length > 0) {
+        console.warn(`[Matterworks] Research audit: unknown age references: ${unknownAgeRefs.join(', ')}`)
     }
     if (duplicateStages.length > 0) {
         console.warn(`[Matterworks] Research audit: duplicate research stages: ${duplicateStages.join(', ')}`)
@@ -178,11 +185,11 @@ ServerEvents.recipes(event => {
 
     console.info(
         `[Matterworks] Research audit registered: ${Object.keys(owners).length} materials assigned to synthesis families, ` +
-        `${Object.keys(capabilities).length} capabilities, ${phaseIds.size} phases, ` +
+        `${Object.keys(capabilities).length} capabilities, ${ageIds.size} ages, ` +
         `${Object.keys(backlogFamilies).length} backlog families / ${Object.keys(backlogOwners).length} backlog materials, ` +
         `${provenanceOnly.size} provenance-only, ${unresolved.size} unresolved; ` +
         `duplicateOwners=${duplicateOwners.length}, duplicateQuestOwners=${duplicateQuestOwners.length}, ` +
-        `duplicateStages=${duplicateStages.length}, unknownPhaseRefs=${unknownPhaseRefs.length}, ` +
+        `duplicateStages=${duplicateStages.length}, unknownAgeRefs=${unknownAgeRefs.length}, ` +
         `duplicateBacklogOwners=${duplicateBacklogOwners.length}, unresolvedWithoutBacklog=${unresolvedWithoutBacklog.length}, ` +
         `malformedQuestOwners=${malformedQuestOwners.length}, missingResearch=${missingResearch.length}, ` +
         `missingQuestOwners=${missingQuestOwners.length}`
