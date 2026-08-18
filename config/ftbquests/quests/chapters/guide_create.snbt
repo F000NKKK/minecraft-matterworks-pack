@@ -9,10 +9,26 @@
 	quest_links: []
 	quests: [
 		{
+			id: "4110000000000002"
+			title: "Generate Rotation with Water"
+			description: ["Start by creating a real source of rotational power. Build both Water Wheel sizes and compare their footprints. A transmission network is easier to understand when it begins from a visible source of rotation rather than from disconnected gearing."]
+			x: 0.0d
+			y: 0.0d
+			shape: "gear"
+			size: 1.2d
+			tasks: [
+				{ id: "5110000000000001", item: "create:water_wheel", type: "item" }
+				{ id: "5110000000000010", item: "create:large_water_wheel", type: "item" }
+			]
+			rewards: [{ id: "6210000000000002", type: "xp", xp: 40 }]
+		}
+		{
+			dependencies: ["4110000000000002"]
+			hide_dependency_lines: false
 			id: "4110000000000001"
 			title: "Transmit Rotation"
-			description: ["Create is built around rotational networks. Start with shafts and cogwheels: shafts carry rotation along an axis, cogwheels transfer it, and differently sized cogwheels change RPM. Learn the transmission vocabulary before adding a permanent power source."]
-			x: 0.0d
+			description: ["Now route the generated rotation with shafts and cogwheels. Shafts carry rotation along an axis, cogwheels transfer it, and differently sized cogwheels change RPM. Build the transmission vocabulary around the working water-powered source."]
+			x: 2.75d
 			y: 0.0d
 			shape: "gear"
 			size: 1.2d
@@ -26,25 +42,9 @@
 		{
 			dependencies: ["4110000000000001"]
 			hide_dependency_lines: false
-			id: "4110000000000002"
-			title: "Generate Rotation with Water"
-			description: ["Now add continuous generation. Build both Water Wheel sizes and compare them in the same transmission network. The normal and Large Water Wheel are not decorative variants: they give you two practical generator footprints to design around before later power sources appear."]
-			x: 2.75d
-			y: 0.0d
-			shape: "gear"
-			size: 1.2d
-			tasks: [
-				{ id: "5110000000000001", item: "create:water_wheel", type: "item" }
-				{ id: "5110000000000010", item: "create:large_water_wheel", type: "item" }
-			]
-			rewards: [{ id: "6210000000000002", type: "xp", xp: 40 }]
-		}
-		{
-			dependencies: ["4110000000000002"]
-			hide_dependency_lines: false
 			id: "4110000000000003"
 			title: "Measure the Network"
-			description: ["Do not diagnose Create by guessing. A Speedometer shows RPM and a Stressometer shows how much rotational capacity is being consumed. Install both on the water-powered network and observe what changes when gearing or load changes."]
+			description: ["Do not diagnose Create by guessing. A Speedometer shows RPM and a Stressometer shows how much rotational capacity is being consumed. Install both on the water-powered transmission network and observe what changes when gearing or load changes."]
 			x: 5.5d
 			y: 0.0d
 			tasks: [
