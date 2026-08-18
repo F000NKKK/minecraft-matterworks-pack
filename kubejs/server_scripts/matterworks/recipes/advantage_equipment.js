@@ -1,75 +1,164 @@
+console.info('[Matterworks] Loading advantage-equipment progression recipes')
+
 ServerEvents.recipes(event => {
     /*
-     * Matterworks advantage-equipment policy
+     * Advantage equipment policy
      *
-     * Mobility and survival assistance are tiered rather than universally
-     * pushed into Prestige Engineering. Basic powered equipment belongs to the
-     * process-industry era, while near-creative equipment remains Phase 9.
+     * Industrial Age: useful field support is allowed once the plant can
+     * manufacture the actual electrical, gas and reaction hardware behind it.
+     *
+     * Atomic Age: reinforced mobility and radiological equipment may remove
+     * much more survival friction, so their stock upgrade recipes are replaced
+     * with cross-discipline recipes that consume digital/nuclear-era hardware.
+     *
+     * Fusion Age: MekaSuit, Meka-Tool, Atomic Disassembler and near-creative
+     * modules are handled separately by endgame_equipment.js.
      */
 
-    const midTierOutputs = [
+    const rewrittenOutputs = [
         'mekanism:free_runners',
+        'mekanism:scuba_mask',
+        'mekanism:scuba_tank',
         'mekanism:jetpack',
-        'mekanism:scuba_mask'
+        'mekanism:hdpe_elytra',
+        'mekanism:free_runners_armored',
+        'mekanism:jetpack_armored'
     ]
 
-    midTierOutputs.forEach(output => event.remove({ output: output }))
+    rewrittenOutputs.forEach(output => event.remove({ output }))
 
-    // Powered fall/movement assistance requires an established electrical
-    // metallurgy line and actual stored-energy hardware.
+    // Industrial Age — powered movement without armour-level protection.
     event.shaped(
         'mekanism:free_runners',
         [
-            'EAE',
-            'ICI',
-            'S S'
+            'E E',
+            'AWA',
+            'CSC'
         ],
         {
             E: 'mekanism:energy_tablet',
             A: 'mekanism:alloy_infused',
-            I: 'kubejs:insulated_copper_wire',
+            W: 'kubejs:insulated_copper_wire',
             C: 'mekanism:basic_control_circuit',
             S: '#forge:ingots/steel'
         }
-    ).id('matterworks:equipment/free_runners')
+    )
+        .id('matterworks:equipment/free_runners')
 
-    // Flight-like vertical mobility is deliberately later than Free Runners:
-    // the player must already understand gas containment and controlled
-    // reaction/electrochemical infrastructure.
-    event.shaped(
-        'mekanism:jetpack',
-        [
-            'TCT',
-            'EPE',
-            'SWS'
-        ],
-        {
-            T: 'mekanism:basic_chemical_tank',
-            C: 'mekanism:advanced_control_circuit',
-            E: 'mekanism:energy_tablet',
-            P: 'mekanism:pressurized_reaction_chamber',
-            S: '#forge:ingots/steel',
-            W: 'kubejs:electromagnetic_coil'
-        }
-    ).id('matterworks:equipment/jetpack')
-
-    // Underwater breathing is useful but not a prestige capability. It still
-    // requires a mature gas-handling stack instead of an early steel recipe.
+    // Industrial Age — breathing is a complete gas-handling system, not just a mask.
     event.shaped(
         'mekanism:scuba_mask',
         [
-            'GTG',
-            'ICI',
-            'S S'
+            'GCG',
+            'SWS',
+            'G G'
         ],
         {
             G: '#forge:glass',
-            T: 'mekanism:basic_chemical_tank',
-            I: 'kubejs:insulated_copper_wire',
             C: 'mekanism:basic_control_circuit',
+            S: '#forge:ingots/steel',
+            W: 'kubejs:insulated_copper_wire'
+        }
+    )
+        .id('matterworks:equipment/scuba_mask')
+
+    event.shaped(
+        'mekanism:scuba_tank',
+        [
+            'ACA',
+            'TWT',
+            'SSS'
+        ],
+        {
+            A: 'mekanism:alloy_infused',
+            C: 'mekanism:advanced_control_circuit',
+            T: 'mekanism:basic_chemical_tank',
+            W: 'kubejs:electromagnetic_coil',
             S: '#forge:ingots/steel'
         }
-    ).id('matterworks:equipment/scuba_mask')
+    )
+        .id('matterworks:equipment/scuba_tank')
 
-    console.info(`[Matterworks] Advantage equipment policy registered: ${midTierOutputs.length} mid-tier mobility/survival outputs rewritten`)
+    // Industrial Age — powered flight only after pressurised reaction chemistry.
+    event.shaped(
+        'mekanism:jetpack',
+        [
+            'SCS',
+            'ETE',
+            'WPW'
+        ],
+        {
+            S: '#forge:ingots/steel',
+            C: 'mekanism:advanced_control_circuit',
+            E: 'mekanism:energy_tablet',
+            T: 'mekanism:basic_chemical_tank',
+            W: 'kubejs:electromagnetic_coil',
+            P: 'mekanism:pressurized_reaction_chamber'
+        }
+    )
+        .id('matterworks:equipment/jetpack')
+
+    /*
+     * Atomic Age — reinforced/gliding equipment.
+     *
+     * HDPE Elytra remains below powered armored flight: the End-sourced Elytra
+     * is retained, but its reinforcement now also consumes AE2 engineering
+     * processors to tie the upgrade to digitally controlled manufacturing.
+     */
+    event.shaped(
+        'mekanism:hdpe_elytra',
+        [
+            'AHA',
+            'HEH',
+            'P P'
+        ],
+        {
+            A: 'mekanism:alloy_atomic',
+            H: 'mekanism:hdpe_sheet',
+            E: 'minecraft:elytra',
+            P: 'ae2:engineering_processor'
+        }
+    )
+        .id('matterworks:equipment/hdpe_elytra')
+
+    // Armored Free Runners require an actual fission-structure component.
+    event.shaped(
+        'mekanism:free_runners_armored',
+        [
+            'RAR',
+            'QFQ',
+            ' C '
+        ],
+        {
+            R: 'mekanism:alloy_reinforced',
+            A: 'mekanism:alloy_atomic',
+            Q: '#forge:gems/diamond',
+            F: 'mekanism:free_runners',
+            C: 'nuclearcraft:fission_reactor_casing'
+        }
+    )
+        .id('matterworks:equipment/free_runners_armored')
+
+    // Armored Jetpack is later still: the fuel-handling branch must be real.
+    event.shaped(
+        'mekanism:jetpack_armored',
+        [
+            'RAR',
+            'QJQ',
+            'CPC'
+        ],
+        {
+            R: 'mekanism:alloy_reinforced',
+            A: 'mekanism:alloy_atomic',
+            Q: '#forge:gems/diamond',
+            J: 'mekanism:jetpack',
+            C: 'nuclearcraft:fission_reactor_casing',
+            P: 'nuclearcraft:fission_reactor_port'
+        }
+    )
+        .id('matterworks:equipment/jetpack_armored')
+
+    console.info(
+        `[Matterworks] Advantage equipment progression registered: ${rewrittenOutputs.length} stock outputs rewritten across Industrial/Atomic tiers`
+    )
 })
