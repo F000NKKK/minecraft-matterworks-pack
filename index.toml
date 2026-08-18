@@ -442,7 +442,7 @@ hash = "4287e476a834b9efee24c1efda7253224e1c8d71061b85cd486298efa6dbed72"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/endgame_equipment.js"
-hash = "62f939b0edb88100d5da237ad518c1e365b6475ad172e76bd8746c48bc8e9e9b"
+hash = "ab0efcae3b3ee7517bb0c3a5bb485aa02ee7ac310049223a02cde0a8a49b1f6a"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/material_unification.js"
