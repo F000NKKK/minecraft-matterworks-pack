@@ -69,6 +69,10 @@ file = "config/ftbquests/quests/chapters/phase_8_fusion_engineering.snbt"
 hash = "910f6877d482b4f24aea2dc577ea76d71ad2e8adef63276e3e11140de0bb5e18"
 
 [[files]]
+file = "config/ftbquests/quests/chapters/phase_9_prestige_engineering.snbt"
+hash = "238f231085ba47a0e9e79be25702da5d5f31602a4238ebb11281b2508f01804a"
+
+[[files]]
 file = "config/ftbquests/quests/data.snbt"
 hash = "c6a0e1403e505448ef9120e72e7903043d856d6fa714c764910a1c5fda33bfac"
 
@@ -334,7 +338,7 @@ hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research.js"
-hash = "b6ed96c71966999681e6cbb39abcecd51a959621f70c6c0c0ee9d22446182273"
+hash = "95967fb1c41367626ec0a2e68cb64b897f119e283a52f3b2eeb36a090b768957"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research_audit.js"
@@ -359,6 +363,10 @@ hash = "3e64cfb1c3deb6f868fa5b8eaf817fb2200681ef06566e4dd1129db10abcb330"
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/electrical.js"
 hash = "4287e476a834b9efee24c1efda7253224e1c8d71061b85cd486298efa6dbed72"
+
+[[files]]
+file = "kubejs/server_scripts/matterworks/recipes/endgame_equipment.js"
+hash = "62f939b0edb88100d5da237ad518c1e365b6475ad172e76bd8746c48bc8e9e9b"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/material_unification.js"
@@ -398,7 +406,7 @@ hash = "c5d6d6b013eb2abaa717b983f002741d0c7fe38d3ef303f6db5748349b5ce369"
 
 [[files]]
 file = "kubejs/startup_scripts/matterworks/items.js"
-hash = "a69e4e619afc13438131a6f7b1f526f8bd0fb24dea9028f1baecd324c21ce14d"
+hash = "1e6669d6f18ed469f6eac022507158d3f4ca521e0e2482ec4358fc60ccc0eabb"
 
 [[files]]
 file = "mods/advanced-peripherals.pw.toml"
