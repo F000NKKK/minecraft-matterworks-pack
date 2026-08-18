@@ -8,8 +8,8 @@
 	icon: "mekanism:metallurgic_infuser"
 	id: "1110000000000003"
 	images: [
-		{ x: 10.0d, y: 1.5d, width: 24.0d, height: 12.0d, image: "minecraft:textures/block/smooth_stone.png", alpha: 24, order: -20 }
-		{ x: 10.0d, y: 1.5d, width: 21.0d, height: 9.5d, image: "minecraft:textures/block/redstone_block.png", alpha: 12, order: -19 }
+		{ x: 13.0d, y: 1.5d, width: 30.0d, height: 12.0d, image: "minecraft:textures/block/smooth_stone.png", alpha: 24, order: -20 }
+		{ x: 13.0d, y: 1.5d, width: 27.0d, height: 9.5d, image: "minecraft:textures/block/redstone_block.png", alpha: 12, order: -19 }
 	]
 	order_index: 30
 	quest_links: []
@@ -92,7 +92,7 @@
 			hide_dependency_lines: false
 			id: "2130000000000005"
 			title: "Industrial Electrolysis"
-			description: ["Build an Electrolytic Separator around the electrochemical core. The separator adds dedicated gas tanks and control circuitry, completing a usable water-electrolysis system rather than merely proving that the core exists."]
+			description: ["Build an Electrolytic Separator around the electrochemical core. The separator adds dedicated gas tanks and control circuitry, completing a usable water-electrolysis system that supplies the hydrogen and oxygen required by later reaction chemistry."]
 			x: 15.0d
 			y: -2.0d
 			shape: "gear"
@@ -103,14 +103,38 @@
 		{
 			dependencies: ["2130000000000005"]
 			hide_dependency_lines: false
-			id: "2130000000000011"
-			title: "Polymer Engineering"
-			description: ["Produce HDPE pellets through Mekanism's gas and reaction chemistry. Matterworks treats polymers as process materials: knowing their elemental makeup is not a license to reconstruct industrial plastic directly in the Combiner."]
+			id: "2130000000000014"
+			title: "Reaction Chemistry"
+			description: ["Build a Pressurized Reaction Chamber. Unlike the separator, the PRC combines an item feed, a fluid feed and a chemical feed in one controlled process vessel. This is the machine that turns electrolysis products into a real polymer process chain."]
 			x: 18.0d
 			y: -2.0d
+			shape: "gear"
+			tasks: [{ id: "3130000000000015", item: "mekanism:pressurized_reaction_chamber", type: "item" }]
+			rewards: [{ id: "6130000000000015", type: "xp", xp: 225 }]
+		}
+		{
+			dependencies: ["2130000000000014"]
+			hide_dependency_lines: false
+			id: "2130000000000015"
+			title: "Polymer Feedstock"
+			description: ["Run the first PRC stage with water, hydrogen and biofuel to obtain substrate while producing ethene. The substrate is not an arbitrary intermediate: it is consumed together with ethene and oxygen in the next reaction stage."]
+			x: 21.0d
+			y: -2.0d
 			shape: "square"
+			tasks: [{ id: "3130000000000016", item: "mekanism:substrate", count: 4, type: "item" }]
+			rewards: [{ id: "6130000000000016", type: "xp", xp: 200 }]
+		}
+		{
+			dependencies: ["2130000000000015"]
+			hide_dependency_lines: false
+			id: "2130000000000011"
+			title: "Polymer Engineering"
+			description: ["Use substrate, ethene and oxygen in the second PRC stage to produce HDPE pellets. The complete route now demonstrates feedstock preparation, gas production and controlled polymerization instead of reducing polymers to a single possession check."]
+			x: 24.0d
+			y: -2.0d
+			shape: "diamond"
 			tasks: [{ id: "3130000000000011", item: "mekanism:hdpe_pellet", count: 8, type: "item" }]
-			rewards: [{ id: "6130000000000012", type: "xp", xp: 250 }]
+			rewards: [{ id: "6130000000000012", type: "xp", xp: 300 }]
 		}
 		{
 			dependencies: ["2130000000000002"]
@@ -169,14 +193,14 @@
 			hide_dependency_lines: false
 			id: "2130000000000007"
 			title: "Process Industry Established"
-			description: ["Complete the first integrated electrical, metallurgical, gas-handling, electrochemical, polymer, pneumatic, atmospheric-separation and bidirectional power-conversion layer. Later chemistry and synthesis gates can now depend on demonstrated industrial capability rather than isolated possession checks."]
-			x: 21.0d
+			description: ["Complete the first integrated electrical, metallurgical, gas-handling, electrochemical, reaction-chemistry, polymer, pneumatic, atmospheric-separation and bidirectional power-conversion layer. Later chemistry and synthesis gates can now depend on demonstrated industrial capability rather than isolated possession checks."]
+			x: 27.0d
 			y: 2.5d
 			shape: "hexagon"
 			size: 1.5d
 			tasks: [{ id: "3130000000000007", item: "mekanism:advanced_control_circuit", type: "item" }]
 			rewards: [
-				{ id: "6130000000000007", type: "xp", xp: 475 }
+				{ id: "6130000000000007", type: "xp", xp: 500 }
 				{ id: "6130000000000008", item: "minecraft:redstone", count: 12, type: "item" }
 			]
 		}
