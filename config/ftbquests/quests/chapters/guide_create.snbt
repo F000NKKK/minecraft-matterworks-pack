@@ -10,27 +10,70 @@
 	quests: [
 		{
 			id: "4110000000000001"
-			title: "Create in Matterworks"
-			description: ["Create is the mechanical engineering layer of Matterworks. This guide explains its machines; progression unlocks live in the Main Program instead."]
+			title: "Generate Rotation"
+			description: ["Create machines consume rotational power expressed as speed and stress capacity. Start with a Water Wheel so you have a continuous source to experiment with. A machine can be connected and still fail if the network is overstressed."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.2d
-			tasks: [{ id: "5110000000000001", item: "create:wrench", type: "item" }]
+			tasks: [{ id: "5110000000000001", item: "create:water_wheel", type: "item" }]
 			rewards: [{ id: "6210000000000001", type: "xp", xp: 25 }]
 		}
 		{
 			dependencies: ["4110000000000001"]
 			hide_dependency_lines: false
-			hide_details_until_startable: true
 			id: "4110000000000002"
-			title: "Processing Machines"
-			description: ["Presses, basins, mixers, deployers and sequenced assembly form reusable process lines. Matterworks recipes frequently require several of these operations rather than one crafting step."]
+			title: "Transmit and Change Speed"
+			description: ["Shafts transmit rotation. Cogwheels can transfer rotation between axes, and differently sized cogwheels change RPM. Build a small transmission instead of attaching every machine directly to the power source."]
 			x: 2.5d
+			y: -1.25d
+			tasks: [
+				{ id: "5110000000000002", item: "create:shaft", count: 8, type: "item" }
+				{ id: "5110000000000003", item: "create:cogwheel", count: 4, type: "item" }
+				{ id: "5110000000000004", item: "create:large_cogwheel", count: 2, type: "item" }
+			]
+			rewards: [{ id: "6210000000000002", type: "xp", xp: 40 }]
+		}
+		{
+			dependencies: ["4110000000000002"]
+			hide_dependency_lines: false
+			id: "4110000000000003"
+			title: "Measure the Network"
+			description: ["Do not diagnose Create by guessing. A Speedometer shows RPM and a Stressometer shows how much rotational capacity is being consumed. Use them when a line stops after adding another machine."]
+			x: 5.0d
+			y: -1.25d
+			tasks: [
+				{ id: "5110000000000005", item: "create:speedometer", type: "item" }
+				{ id: "5110000000000006", item: "create:stressometer", type: "item" }
+			]
+			rewards: [{ id: "6210000000000003", type: "xp", xp: 50 }]
+		}
+		{
+			dependencies: ["4110000000000002"]
+			hide_dependency_lines: false
+			id: "4110000000000004"
+			title: "Basin Processing"
+			description: ["A Basin is a process vessel; a Mechanical Mixer performs operations above it. Many Matterworks recipes are machine processes rather than crafting-grid recipes, so learn to read JEI for the required Create operation and conditions."]
+			x: 5.0d
+			y: 1.25d
+			tasks: [
+				{ id: "5110000000000007", item: "create:basin", type: "item" }
+				{ id: "5110000000000008", item: "create:mechanical_mixer", type: "item" }
+			]
+			rewards: [{ id: "6210000000000004", type: "xp", xp: 50 }]
+		}
+		{
+			dependencies: ["4110000000000003", "4110000000000004"]
+			hide_dependency_lines: false
+			id: "4110000000000005"
+			title: "Automated Assembly"
+			description: ["A Deployer applies items or actions to moving workpieces and is central to sequenced assembly. Matterworks uses sequenced manufacturing for components that should require an actual production line instead of one-step crafting."]
+			x: 7.5d
 			y: 0.0d
-			tasks: [{ id: "5110000000000002", item: "create:mechanical_press", type: "item" }]
-			rewards: [{ id: "6210000000000002", type: "xp", xp: 50 }]
+			shape: "diamond"
+			tasks: [{ id: "5110000000000009", item: "create:deployer", type: "item" }]
+			rewards: [{ id: "6210000000000005", type: "xp", xp: 75 }]
 		}
 	]
-	title: "Guide - Create"
+	title: "Guide - Create Fundamentals"
 }
