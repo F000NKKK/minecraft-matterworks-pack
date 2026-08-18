@@ -8,8 +8,8 @@
 	icon: "alchemistry:dissolver"
 	id: "1110000000000002"
 	images: [
-		{ x: 3.75d, y: 0.0d, width: 11.0d, height: 6.5d, image: "minecraft:textures/block/calcite.png", alpha: 25, order: -20 }
-		{ x: 3.75d, y: 0.0d, width: 9.0d, height: 5.0d, image: "minecraft:textures/block/amethyst_block.png", alpha: 16, order: -19 }
+		{ x: 4.0d, y: 0.0d, width: 12.0d, height: 6.0d, image: "minecraft:textures/block/calcite.png", alpha: 25, order: -20 }
+		{ x: 4.0d, y: 0.0d, width: 9.5d, height: 4.5d, image: "minecraft:textures/block/amethyst_block.png", alpha: 16, order: -19 }
 	]
 	order_index: 20
 	quest_links: []
@@ -19,7 +19,7 @@
 			hide_dependency_lines: false
 			id: "2120000000000001"
 			title: "Analytical Chemistry"
-			description: ["Build a Dissolver and establish repeatable material analysis. Matterworks can now inspect ordinary matter, but decomposition knowledge does not yet grant reconstruction capability."]
+			description: ["Build a Dissolver. Phase 2 begins with analysis, not synthesis: first learn to turn ordinary materials into measurable chemical constituents."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
@@ -31,78 +31,66 @@
 			dependencies: ["2120000000000001"]
 			hide_dependency_lines: false
 			id: "2120000000000002"
-			title: "Elemental Reference"
-			description: ["Isolate a simple elemental reference sample. Pure-element handling is the baseline needed before comparing compounds, alloys and engineered material forms."]
+			title: "Elemental Sample"
+			description: ["Recover an elemental iron sample. This establishes the simplest analytical case: one material identity mapping to one chemical element."]
 			x: 2.5d
-			y: -2.25d
+			y: -1.75d
 			shape: "square"
 			tasks: [{ id: "3120000000000002", item: "chemlib:iron", type: "item" }]
 			rewards: [{ id: "6120000000000002", type: "xp", xp: 100 }]
 		}
 		{
-			dependencies: ["2120000000000001"]
+			dependencies: ["2120000000000002"]
 			hide_dependency_lines: false
 			id: "2120000000000003"
-			title: "Compound Identification"
-			description: ["Obtain a representative chemical compound and treat composition as a measured relationship between elements rather than an item-name lookup."]
-			x: 2.5d
-			y: -0.75d
+			title: "Compound Analysis"
+			description: ["Recover silicon dioxide as a compound sample. A compound is defined by a fixed elemental relationship, so analysis must preserve both identity and stoichiometry."]
+			x: 4.5d
+			y: -1.75d
 			shape: "square"
 			tasks: [{ id: "3120000000000003", item: "chemlib:silicon_dioxide", type: "item" }]
 			rewards: [{ id: "6120000000000003", type: "xp", xp: 100 }]
 		}
 		{
-			dependencies: ["2120000000000001"]
+			dependencies: ["2120000000000003"]
 			hide_dependency_lines: false
 			id: "2120000000000004"
 			title: "Alloy Characterisation"
-			description: ["Analyse an engineered alloy. Knowing its constituent elements is useful, but it does not erase the physical manufacturing route that gives the alloy its industrial meaning."]
-			x: 2.5d
-			y: 0.75d
+			description: ["Analyse brass and recover its copper and zinc constituents. This is the first deliberate distinction between chemical composition and the industrial process that created the alloy."]
+			x: 6.5d
+			y: -0.75d
 			shape: "square"
-			tasks: [{ id: "3120000000000004", item: "create:brass_ingot", type: "item" }]
-			rewards: [{ id: "6120000000000004", type: "xp", xp: 125 }]
+			tasks: [
+				{ id: "3120000000000004", item: "chemlib:copper", type: "item" }
+				{ id: "3120000000000008", item: "chemlib:zinc", type: "item" }
+			]
+			rewards: [{ id: "6120000000000004", type: "xp", xp: 150 }]
 		}
 		{
-			dependencies: ["2120000000000001"]
-			hide_dependency_lines: false
-			id: "2120000000000005"
-			title: "Engineered Carbon Analysis"
-			description: ["Characterise graphite as an engineered carbon form. Composition alone says carbon; process provenance explains why graphite is not interchangeable with every other carbon material."]
-			x: 2.5d
-			y: 2.25d
-			shape: "square"
-			tasks: [{ id: "3120000000000005", item: "kubejs:graphite", type: "item" }]
-			rewards: [{ id: "6120000000000005", type: "xp", xp: 125 }]
-		}
-		{
-			dependencies: ["2120000000000002", "2120000000000003", "2120000000000004", "2120000000000005"]
+			dependencies: ["2120000000000004"]
 			hide_dependency_lines: false
 			id: "2120000000000006"
 			title: "Composition Model"
-			description: ["Complete a representative analysis set spanning elements, compounds, alloys and manufactured forms. Matterworks now has enough context to distinguish composition knowledge from process ownership."]
-			x: 5.0d
-			y: 0.0d
+			description: ["You have now analysed an element, a compound and an alloy. The important rule is established: knowing what something contains is not automatically permission to manufacture it by the easiest available machine."]
+			x: 6.5d
+			y: 1.25d
 			shape: "diamond"
 			size: 1.2d
-			tasks: [{ id: "3120000000000006", item: "alchemistry:combiner", type: "item" }]
-			rewards: [{ id: "6120000000000006", type: "xp", xp: 200 }]
+			tasks: [{ id: "3120000000000006", item: "create:brass_ingot", type: "item" }]
+			rewards: [{ id: "6120000000000006", type: "xp", xp: 175 }]
 		}
 		{
 			dependencies: ["2120000000000006"]
 			hide_dependency_lines: false
 			id: "2120000000000007"
-			title: "Material Reconstruction"
-			description: ["Build a Combiner and establish a controlled reconstruction platform. Synthesis permissions remain family-specific: a reconstruction machine is not a universal license to bypass manufacturing progression."]
-			x: 7.5d
+			title: "Controlled Reconstruction"
+			description: ["Only after completing the analytical curriculum do you build the Combiner. It reconstructs permitted material families; PROCESS, MANUFACTURED, MIXTURE and provenance-sensitive materials still belong to their physical production routes."]
+			x: 9.0d
 			y: 0.0d
 			shape: "gear"
-			size: 1.35d
+			size: 1.4d
 			tasks: [{ id: "3120000000000007", item: "alchemistry:combiner", type: "item" }]
-			rewards: [
-				{ id: "6120000000000007", type: "xp", xp: 275 }
-				{ id: "6120000000000008", item: "minecraft:quartz", count: 4, type: "item" }
-			]
+			rewards: [{ id: "6120000000000007", type: "xp", xp: 300 }]
 		}
 	]
 	title: "Phase 2 - Chemical Analysis"
