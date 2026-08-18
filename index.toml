@@ -469,6 +469,10 @@ file = "kubejs/server_scripts/matterworks/recipes/particle.js"
 hash = "d3d95bd66886facd61ddf99beb7ae5d9231bf443c8642782d97ac06620c7d3f4"
 
 [[files]]
+file = "kubejs/server_scripts/matterworks/recipes/pneumatic_advantage_equipment.js"
+hash = "6ab9c5767f49d7b1ad91293849a2f11683e44a541de64977c33313ec447d6ee3"
+
+[[files]]
 file = "kubejs/server_scripts/matterworks/recipes/pressure.js"
 hash = "ad6d8c1bd15e7d049b5c0ab178f949eb2fe5b412173ccdc2b978fdba917085d1"
 
