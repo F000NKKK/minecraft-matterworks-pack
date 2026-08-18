@@ -38,7 +38,7 @@ hash = "b3f182ce63857b74ba1aa98dd84a4fafd9742ea22720fc79467741273f1e9810"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_mekanism.snbt"
-hash = "0786604cdf7e57c35411ac85e232422ddf68bdaccc13cffe9d2ed753baf31dac"
+hash = "786b96434ec2e9f765e23f7aeacc5958852d9f9b2096aa8d95da631b96d4e380"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_nuclearcraft.snbt"
