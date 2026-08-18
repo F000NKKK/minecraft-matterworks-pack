@@ -1,0 +1,65 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "square"
+	filename: "field_equipment"
+	group: "1100000000000001"
+	hide_quest_details_until_startable: true
+	icon: "mekanism:free_runners"
+	id: "1110000000000010"
+	images: [
+		{ x: 4.0d, y: 0.0d, width: 11.0d, height: 7.0d, image: "minecraft:textures/block/iron_block.png", alpha: 18, order: -20 }
+	]
+	order_index: 35
+	quest_links: []
+	quests: [
+		{
+			dependencies: ["2130000000000002"]
+			id: "2200000000000001"
+			title: "Powered Mobility"
+			description: ["Build Free Runners after controlled metallurgy is established. They are useful field equipment, not endgame armour: the rewritten recipe requires stored-energy hardware, insulated wiring, infused alloy and steel rather than appearing from the earliest Mekanism components."]
+			x: 0.0d
+			y: -1.5d
+			shape: "gear"
+			size: 1.25d
+			tasks: [{ id: "3200000000000001", item: "mekanism:free_runners", type: "item" }]
+			rewards: [{ id: "6200000000000001", type: "xp", xp: 200 }]
+		}
+		{
+			dependencies: ["2130000000000003"]
+			id: "2200000000000002"
+			title: "Breathing Equipment"
+			description: ["Build a Scuba Mask after chemical containment is available. Underwater survival assistance belongs to the gas-handling era and now consumes a chemical tank and real electrical/control components."]
+			x: 0.0d
+			y: 1.5d
+			shape: "gear"
+			size: 1.25d
+			tasks: [{ id: "3200000000000002", item: "mekanism:scuba_mask", type: "item" }]
+			rewards: [{ id: "6200000000000002", type: "xp", xp: 200 }]
+		}
+		{
+			dependencies: ["2200000000000001", "2200000000000002", "2130000000000014"]
+			id: "2200000000000003"
+			title: "Powered Flight"
+			description: ["Build the Jetpack only after reaction chemistry exists. Vertical mobility is a substantial advantage, so the Matterworks recipe combines chemical containment, reaction hardware, stored energy and electromagnetic components instead of the stock early steel-and-tin route."]
+			x: 4.0d
+			y: 0.0d
+			shape: "diamond"
+			size: 1.4d
+			tasks: [{ id: "3200000000000003", item: "mekanism:jetpack", type: "item" }]
+			rewards: [{ id: "6200000000000003", type: "xp", xp: 350 }]
+		}
+		{
+			dependencies: ["2200000000000003", "2190000000000007"]
+			id: "2200000000000004"
+			title: "Field Equipment Superseded"
+			description: ["The ordinary field-equipment ladder ends when Prestige Engineering provides the MekaSuit and gravitational module. The earlier equipment remains useful stepping-stone technology rather than an alternate route around the final armour program."]
+			x: 8.0d
+			y: 0.0d
+			shape: "hexagon"
+			size: 1.35d
+			tasks: [{ id: "3200000000000004", item: "mekanism:module_gravitational_modulating_unit", type: "item" }]
+			rewards: [{ id: "6200000000000004", type: "xp", xp: 500 }]
+		}
+	]
+	title: "Field Equipment"
+}
