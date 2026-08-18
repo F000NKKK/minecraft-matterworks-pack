@@ -68,16 +68,13 @@
 			dependencies: ["2150000000000004"]
 			hide_dependency_lines: false
 			id: "2150000000000003"
-			title: "Fuel Cycle Authority"
-			description: ["Complete the first nuclear-engineering program by demonstrating both enrichment infrastructure and reactor-control infrastructure. This milestone owns the NuclearCraft fuel-cycle research boundary; depleted fuel, irradiated states and waste remain physical-process products and are never generic synthesis outputs."]
+			title: "Fuel Handling"
+			description: ["Add a Fission Reactor Port. The reactor now has an explicit fuel and product interface, completing the minimum physical chain from material preparation through isotope separation, structure, control and fuel handling."]
 			x: 8.0d
 			y: 0.0d
 			shape: "hexagon"
 			size: 1.5d
-			tasks: [
-				{ id: "3150000000000003", item: "nuclearcraft:fission_reactor_casing", count: 24, type: "item" }
-				{ id: "3150000000000006", item: "nuclearcraft:isotope_separator", type: "item" }
-			]
+			tasks: [{ id: "3150000000000003", item: "nuclearcraft:fission_reactor_port", type: "item" }]
 			rewards: [{ id: "6150000000000003", type: "xp", xp: 900 }]
 		}
 	]
