@@ -353,6 +353,22 @@ file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/xenorium-298.json"
 hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
 
 [[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/xenorium_298_ni-xenorium_298_ni-fuel_xenorium_xen_298_ni.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/xenorium_298_ox-xenorium_298_ox-fuel_xenorium_xen_298_ox.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/chemical_reactor/xenorium_298_za-xenorium_298_za-fuel_xenorium_xen_298_za.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
+file = "kubejs/data/nuclearcraft/recipes/fusion_core/lithium_6-xenorium298.json"
+hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
+
+[[files]]
 file = "kubejs/data/nuclearcraft/recipes/patchouli_book.json"
 hash = "40a5c4a07e995e3007f249257adc2a700614bd4c41e232c98ddfb4fcd11f5fa8"
 
