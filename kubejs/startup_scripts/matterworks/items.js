@@ -46,3 +46,28 @@ StartupEvents.registry('item', event => {
         .displayName('Particle Focusing Coil')
         .maxStackSize(64)
 })
+
+/*
+ * Endgame prestige components.
+ *
+ * These items deliberately have no independent utility. They exist to force
+ * near-creative equipment to consume proof from several completed industrial
+ * programs instead of collapsing into one mod's local material ladder.
+ */
+StartupEvents.registry('item', event => {
+    event.create('reactor_grade_frame')
+        .displayName('Reactor-Grade Frame')
+        .maxStackSize(16)
+
+    event.create('particle_confinement_matrix')
+        .displayName('Particle Confinement Matrix')
+        .maxStackSize(16)
+
+    event.create('fusion_field_core')
+        .displayName('Fusion Field Core')
+        .maxStackSize(16)
+
+    event.create('quantum_singularity_core')
+        .displayName('Quantum Singularity Core')
+        .maxStackSize(4)
+})
