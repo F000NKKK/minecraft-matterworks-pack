@@ -24,7 +24,8 @@ const MatterworksResearch = Object.freeze({
         { id: 'phase_5', stage: 'matterworks:phase/nuclear_engineering', ownerQuest: '2150000000000003', title: 'Nuclear Engineering' },
         { id: 'phase_6', stage: 'matterworks:phase/nuclear_research', ownerQuest: '2160000000000005', title: 'Nuclear Research' },
         { id: 'phase_7', stage: 'matterworks:phase/atomic_engineering', ownerQuest: '2170000000000003', title: 'Atomic Engineering' },
-        { id: 'phase_8', stage: 'matterworks:phase/fusion_engineering', ownerQuest: '2180000000000003', title: 'Fusion Engineering' }
+        { id: 'phase_8', stage: 'matterworks:phase/fusion_engineering', ownerQuest: '2180000000000003', title: 'Fusion Engineering' },
+        { id: 'phase_9', stage: 'matterworks:phase/prestige_engineering', ownerQuest: '2190000000000007', title: 'Prestige Engineering' }
     ]),
     guides: Object.freeze(['create', 'mekanism', 'alchemistry_chemlib', 'nuclearcraft', 'applied_energistics_2', 'cc_tweaked', 'pressure_engineering', 'high_temperature_metallurgy']),
     capabilities: Object.freeze({
@@ -37,7 +38,8 @@ const MatterworksResearch = Object.freeze({
         nuclear_fuel_cycle: { stage: 'matterworks:capability/nuclear_fuel_cycle', phase: 'phase_5', ownerQuest: '2150000000000003' },
         accelerator_research: { stage: 'matterworks:capability/accelerator_research', phase: 'phase_6', ownerQuest: '2160000000000005' },
         atomic_fission: { stage: 'matterworks:capability/atomic_fission', phase: 'phase_7', ownerQuest: '2170000000000003' },
-        fusion_engineering: { stage: 'matterworks:capability/fusion_engineering', phase: 'phase_8', ownerQuest: '2180000000000003' }
+        fusion_engineering: { stage: 'matterworks:capability/fusion_engineering', phase: 'phase_8', ownerQuest: '2180000000000003' },
+        prestige_engineering: { stage: 'matterworks:capability/prestige_engineering', phase: 'phase_9', ownerQuest: '2190000000000007' }
     }),
     synthesisFamilies: Object.freeze({
         basic_alloys: { stage: 'matterworks:synthesis/basic_alloys', phase: 'phase_2', ownerQuest: '2120000000000007', materials: ['bronze', 'brass', 'electrum', 'shibuichi', 'tin_silver', 'lead_platinum', 'osmiridium', 'carbon_manganese'] },
