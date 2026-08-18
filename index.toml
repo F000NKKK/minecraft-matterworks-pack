@@ -437,6 +437,10 @@ file = "kubejs/server_scripts/matterworks/recipes/composition_audit.js"
 hash = "3e64cfb1c3deb6f868fa5b8eaf817fb2200681ef06566e4dd1129db10abcb330"
 
 [[files]]
+file = "kubejs/server_scripts/matterworks/recipes/digital_control_gates.js"
+hash = "33767c355bb1913d0bf599e4690989e9393636d281ae4e9f293752ab46d5a4c8"
+
+[[files]]
 file = "kubejs/server_scripts/matterworks/recipes/electrical.js"
 hash = "4287e476a834b9efee24c1efda7253224e1c8d71061b85cd486298efa6dbed72"
 
