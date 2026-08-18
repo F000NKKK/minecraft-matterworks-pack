@@ -5,6 +5,10 @@ file = "config/ftbquests/quests/chapter_groups.snbt"
 hash = "c55d580e9e958693174302eb854ec1068358a235cdd537cfda843f5cc693d6d2"
 
 [[files]]
+file = "config/ftbquests/quests/chapters/field_equipment.snbt"
+hash = "ebd6d57a1ebe44dd5759b783300d6b3e68211e6890c8a76be44205e19df37662"
+
+[[files]]
 file = "config/ftbquests/quests/chapters/guide_ae2.snbt"
 hash = "b64e1058fc7b38df1b12e9889412f8355c45e3a4a10e6414b305152a2c83d4a8"
 
@@ -81,12 +85,60 @@ file = "kubejs/README.md"
 hash = "c4bcb33fb1b27641f55c01f275c08c91af0394490e1b684f6514289b9e6cd947"
 
 [[files]]
+file = "kubejs/assets/kubejs/models/item/coke.json"
+hash = "d8785d9aa885f46cad0771f4e1ddbf32de3ced75fba2d338cf88651e462fe2ec"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/electromagnetic_coil.json"
+hash = "baf35bd56c80391bae2988009bfdd70a04c7936ed8caee17ec0aaa0fcc223797"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/electromechanical_control_unit.json"
+hash = "9c1ca5991d8945c97b69d4aa413c5acd130b7e4b8b4865a34568b0c409126350"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/fusion_field_core.json"
+hash = "7943968e7f5d43b1382ef07ec45bf16fa913284a5809dd48d21a9bc37ff86cc0"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/graphite.json"
+hash = "1d5d401a86f95a3f6e1ed9c435cea27b95a0d63d6d8f7a8566750888a41cdb66"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/incomplete_electromagnetic_coil.json"
+hash = "6f8dca9fc199ca9bb84763a18d6eaf1d1117caa2905152cd225a37125b23dc17"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/incomplete_electromechanical_control_unit.json"
+hash = "d8acc4b928ad5ba78b51d7cf322584df347f3e1f129b6ba8baafa3df86aefbeb"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/incomplete_insulated_copper_wire.json"
+hash = "ab6e0a5fd558d6c63b6c75e25404736e6955e617958d229938942934590d9b5d"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/insulated_copper_wire.json"
+hash = "c076386a502f3afeafe915a6c07373e4aced817b5fb7a841258ae5d33ade61c3"
+
+[[files]]
 file = "kubejs/assets/kubejs/models/item/molecular_sieve_charge.json"
 hash = "6c4808c5e3262c9c3e368cf1b67e017b54d54a629f046b48509d21ad6c9cb557"
 
 [[files]]
+file = "kubejs/assets/kubejs/models/item/particle_confinement_matrix.json"
+hash = "c95c56c6d020bdc942eb1d152e1e9f38eccce5ebffc2b2ef8925f83a25caf814"
+
+[[files]]
 file = "kubejs/assets/kubejs/models/item/particle_focusing_coil.json"
 hash = "dd63c58cbddf938ae92c6d9ca9c41e0078ae3aa5b95d3964298bf1bc80cb345b"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/quantum_singularity_core.json"
+hash = "a966f59a3bfc0b8d2a9cbd214075e2f98fdf1e6b6b787d76969a386f606e6c1a"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/reactor_grade_frame.json"
+hash = "44f610ce0ee338c195f47103375a8f011095989d57908889edd4702a432a2eb5"
 
 [[files]]
 file = "kubejs/assets/kubejs/textures/item/coke.png"
@@ -99,6 +151,10 @@ hash = "67ddac171f60af6145cfeac99b9b798896264fa8391ea58268d1a2918c2ba1cd"
 [[files]]
 file = "kubejs/assets/kubejs/textures/item/electromechanical_control_unit.png"
 hash = "f185e2f6c23254613d4ad78a4b64b203821cd173e3b4f13672beb8215f0f7d3a"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/item/fusion_field_core.png"
+hash = "90cc93ee9d22637fadd42f93b88fe8333c693f3b6b5c213d2bd5b378e7c5186c"
 
 [[files]]
 file = "kubejs/assets/kubejs/textures/item/graphite.png"
@@ -125,8 +181,20 @@ file = "kubejs/assets/kubejs/textures/item/molecular_sieve_charge.png"
 hash = "b94907d6e9af397c1403253bce39837d7f8e900490cd056ec08197e9e6900312"
 
 [[files]]
+file = "kubejs/assets/kubejs/textures/item/particle_confinement_matrix.png"
+hash = "dd19588702728cf460062e9153cac7656508e544e22066d28bc0b2deeae83902"
+
+[[files]]
 file = "kubejs/assets/kubejs/textures/item/particle_focusing_coil.png"
 hash = "89af859682989111e3d80da125532d273ea837c3b77eabef46a7978cf8768397"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/item/quantum_singularity_core.png"
+hash = "2697ec406360c2a85d50c65bad7ce0c978f56a964cfc3cecde05ab04a8ce6f75"
+
+[[files]]
+file = "kubejs/assets/kubejs/textures/item/reactor_grade_frame.png"
+hash = "0ed97b4d1fd61d0fd0413fd0c736892c8eb0b4cda83a2ceee78074ad628d9938"
 
 [[files]]
 file = "kubejs/data/matterworks/recipes/chemistry/dissolver/alloys/brass_ingot.json"
@@ -343,6 +411,10 @@ hash = "95967fb1c41367626ec0a2e68cb64b897f119e283a52f3b2eeb36a090b768957"
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research_audit.js"
 hash = "5dc78465bb40cdff485a8c7d8eaccef40fc0b38f4be2d155e395d68d3e220cc1"
+
+[[files]]
+file = "kubejs/server_scripts/matterworks/recipes/advantage_equipment.js"
+hash = "36baddd547517b6b7b39ef1259738fc3460f98ccd3d227b993879a6d83dd853b"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/atmosphere.js"
