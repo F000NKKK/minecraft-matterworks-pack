@@ -3,67 +3,71 @@
 	default_quest_shape: "square"
 	filename: "guide_alchemistry_chemlib"
 	group: "1100000000000002"
-	icon: "alchemistry:dissolver"
+	icon: "chemlib:periodic_table"
 	id: "1120000000000003"
 	order_index: 130
 	quest_links: []
 	quests: [
 		{
+			dependencies: ["2110000000000004"]
 			id: "4130000000000001"
-			title: "Read Chemical Identity"
-			description: ["ChemLib represents elements and compounds as chemical identities rather than interchangeable crafting ingredients. Use JEI and the periodic-table tools to read formulas before attempting any synthesis. Matterworks progression assumes you understand what a formula says and, equally importantly, what it does not say about manufacturing history."]
+			title: "Chemical Reference Tools"
+			description: ["Start chemistry with the periodic table rather than memorising arbitrary item names. Use it together with JEI to identify atomic symbols, element families and compounds before interpreting Dissolver results."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.2d
-			tasks: [{ id: "5130000000000001", type: "checkmark" }]
+			tasks: [{ id: "5130000000000001", item: "chemlib:periodic_table", type: "item" }]
 			rewards: [{ id: "6230000000000001", type: "xp", xp: 25 }]
 		}
 		{
-			dependencies: ["4130000000000001"]
+			dependencies: ["4130000000000001", "2120000000000001"]
 			hide_dependency_lines: false
 			id: "4130000000000002"
-			title: "Elements vs Compounds"
-			description: ["An element has one atomic identity; a compound has a fixed relationship between multiple elements. When a recipe produces a compound, preserve its stoichiometry instead of treating the ingredient list as an unordered bag of elements."]
+			title: "Compare Element Samples"
+			description: ["After building the Dissolver, recover two different elemental samples. Hydrogen and oxygen are both elements: each item represents one atomic identity even though their physical behaviour is very different. This is the baseline for reading later compounds correctly."]
 			x: 2.5d
 			y: -1.25d
-			tasks: [{ id: "5130000000000002", type: "checkmark" }]
-			rewards: [{ id: "6230000000000002", type: "xp", xp: 35 }]
+			tasks: [
+				{ id: "5130000000000002", item: "chemlib:hydrogen", type: "item" }
+				{ id: "5130000000000006", item: "chemlib:oxygen", type: "item" }
+			]
+			rewards: [{ id: "6230000000000002", type: "xp", xp: 40 }]
 		}
 		{
 			dependencies: ["4130000000000002"]
 			hide_dependency_lines: false
 			id: "4130000000000003"
-			title: "Analysis and Reconstruction Are Different"
-			description: ["Decomposition answers 'what is this made of?'; reconstruction answers 'may this composition be assembled into this material?'. Matterworks deliberately separates those questions. Analysis can reveal a composition long before the corresponding industrial process is unlocked."]
+			title: "Read a Compound"
+			description: ["Obtain carbon dioxide and read it as a compound, not as a bag of interchangeable ingredients. Its identity includes a fixed carbon-to-oxygen relationship. This is why composition data must retain stoichiometry when Matterworks maps material chemistry."]
 			x: 5.0d
 			y: -1.25d
-			tasks: [{ id: "5130000000000003", type: "checkmark" }]
-			rewards: [{ id: "6230000000000003", type: "xp", xp: 45 }]
+			tasks: [{ id: "5130000000000003", item: "chemlib:carbon_dioxide", type: "item" }]
+			rewards: [{ id: "6230000000000003", type: "xp", xp: 50 }]
 		}
 		{
-			dependencies: ["4130000000000003"]
+			dependencies: ["4130000000000003", "2130000000000011"]
 			hide_dependency_lines: false
 			id: "4130000000000004"
-			title: "Matterworks Material Policies"
-			description: ["DIRECT means composition can represent the material once its research family is owned. PROCESS means a physical route matters. MANUFACTURED means structure or fabrication history matters. MIXTURE means a single molecular formula is not an adequate identity. NUCLEAR additionally preserves isotope, enrichment, irradiation and fuel-cycle provenance."]
-			x: 5.0d
-			y: 1.25d
-			tasks: [{ id: "5130000000000004", type: "checkmark" }]
-			rewards: [{ id: "6230000000000004", type: "xp", xp: 55 }]
-		}
-		{
-			dependencies: ["4130000000000004"]
-			hide_dependency_lines: false
-			id: "4130000000000005"
-			title: "Atomic Operations Are Late Research"
-			description: ["Breaking or constructing atomic nuclei is not ordinary chemistry. Fission and fusion chambers therefore belong to Phases 7 and 8 after NuclearCraft accelerator research. The guide explains the boundary here; the Main Program is where those machines are actually built."]
+			title: "Composition Is Not Manufacturing"
+			description: ["Turn the Phase 3 HDPE process into an HDPE sheet. This is a concrete PROCESS-policy example: even if chemistry can describe the polymer feedstocks, the finished engineering material remains owned by its industrial production route. Matterworks does not allow composition knowledge to bypass that route."]
 			x: 7.5d
 			y: 0.0d
+			tasks: [{ id: "5130000000000004", item: "mekanism:hdpe_sheet", type: "item" }]
+			rewards: [{ id: "6230000000000004", type: "xp", xp: 70 }]
+		}
+		{
+			dependencies: ["4130000000000004", "2180000000000003"]
+			hide_dependency_lines: false
+			id: "4130000000000005"
+			title: "Nuclear Identity Preserves Provenance"
+			description: ["After the fusion program is established, obtain a ChemLib uranium element sample. Compare it conceptually with NuclearCraft uranium isotopes, fuels and irradiated products: the parent element may become a generic atomic identity, but isotope, enrichment, fuel and waste states remain NuclearCraft process-owned and are never flattened into one universal material."]
+			x: 10.0d
+			y: 0.0d
 			shape: "diamond"
-			tasks: [{ id: "5130000000000005", type: "checkmark" }]
-			rewards: [{ id: "6230000000000005", type: "xp", xp: 75 }]
+			tasks: [{ id: "5130000000000005", item: "chemlib:uranium", type: "item" }]
+			rewards: [{ id: "6230000000000005", type: "xp", xp: 100 }]
 		}
 	]
-	title: "Guide - Chemical Reasoning"
+	title: "Guide - Chemical Reasoning Laboratory"
 }
