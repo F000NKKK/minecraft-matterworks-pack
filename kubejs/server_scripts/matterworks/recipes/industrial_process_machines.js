@@ -70,43 +70,5 @@ ServerEvents.recipes(event => {
         }
     ).id('matterworks:process/petrochemistry/refinery')
 
-    /*
-     * Digital Process Control is a real manufacturing boundary. Safety-critical
-     * nuclear hardware embeds programmable/network engineering instead of only
-     * having a quest dependency on the digital branch.
-     */
-    event.remove({ output: 'nuclearcraft:fission_reactor_controller' })
-    event.shaped(
-        'nuclearcraft:fission_reactor_controller',
-        [
-            'CEC',
-            'RPR',
-            'CAC'
-        ],
-        {
-            C: 'nuclearcraft:fission_reactor_casing',
-            E: 'ae2:engineering_processor',
-            R: 'mekanism:alloy_reinforced',
-            P: 'computercraft:computer_advanced',
-            A: 'mekanism:advanced_control_circuit'
-        }
-    ).id('matterworks:control/fission_reactor_controller')
-
-    event.remove({ output: 'nuclearcraft:ring_accelerator_controller' })
-    event.shaped(
-        'nuclearcraft:ring_accelerator_controller',
-        [
-            'FCF',
-            'AMA',
-            'FCF'
-        ],
-        {
-            F: 'kubejs:particle_focusing_coil',
-            C: 'nuclearcraft:accelerator_casing',
-            A: 'mekanism:alloy_atomic',
-            M: 'advancedperipherals:me_bridge'
-        }
-    ).id('matterworks:control/ring_accelerator_controller')
-
-    console.info('[Matterworks] Advanced process/control gates registered: metallurgy, specialty chemistry, petrochemistry, fission and accelerator supervision')
+    console.info('[Matterworks] Advanced process gates registered: high-temperature metallurgy, specialty chemistry and petrochemical fractionation')
 })
