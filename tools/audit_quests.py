@@ -1,23 +1,23 @@
 #!/usr/bin/env python3
 """Static sanity checks for Matterworks FTB Quests chapters.
 
-The audit intentionally focuses on structural mistakes that are easy to create
-while editing SNBT by hand:
-- the same item used as a mandatory Main Program task in multiple quests;
+Checks structural progression mistakes and basic visual-layout regressions:
+- duplicate mandatory Main Program item tasks;
 - guide tasks duplicating Main Program progression items;
 - passive checkmark tasks inside guides;
-- dependencies pointing to unknown quest IDs;
-- dependencies from an earlier phase to a later phase;
-- a later phase rewarding an item that was already a progression gate earlier.
+- unknown or backward phase dependencies;
+- late rewards repeating earlier progression gates;
+- overlapping or excessively close quest centres inside one chapter.
 
-It uses only the Python standard library and does not try to implement a full
-SNBT parser. The quest files use a deliberately regular layout, so balanced
-brace/bracket extraction is sufficient and fails loudly when that layout is
+This intentionally remains a small standard-library validator rather than a
+full SNBT parser. Matterworks quest files use a regular layout, so balanced
+brace/bracket extraction is sufficient and fails loudly when formatting is
 broken.
 """
 
 from __future__ import annotations
 
+import math
 import re
 import sys
 from dataclasses import dataclass
@@ -32,6 +32,9 @@ DEPENDENCY_RE = re.compile(r'\bdependencies:\s*\[([^\]]*)\]', re.S)
 QUOTED_ID_RE = re.compile(r'"(\d{16})"')
 PHASE_RE = re.compile(r"phase_(\d+)_")
 CHECKMARK_RE = re.compile(r'\btype:\s*"checkmark"')
+X_RE = re.compile(r'\bx:\s*(-?\d+(?:\.\d+)?)d?')
+Y_RE = re.compile(r'\by:\s*(-?\d+(?:\.\d+)?)d?')
+MIN_QUEST_CENTRE_DISTANCE = 1.75
 
 
 @dataclass(frozen=True)
@@ -44,6 +47,8 @@ class Quest:
     reward_items: tuple[str, ...]
     dependencies: tuple[str, ...]
     passive_checkmark: bool
+    x: float
+    y: float
 
 
 def extract_balanced(text: str, start: int, opener: str, closer: str) -> tuple[str, int]:
@@ -128,6 +133,13 @@ def task_section(block: str) -> str:
     return section
 
 
+def parse_coordinate(regex: re.Pattern[str], block: str, axis: str, path: Path) -> float:
+    match = regex.search(block)
+    if not match:
+        raise ValueError(f"Quest without {axis} coordinate in {path}")
+    return float(match.group(1))
+
+
 def parse_chapter(path: Path) -> list[Quest]:
     text = path.read_text(encoding="utf-8")
     phase_match = PHASE_RE.search(path.name)
@@ -152,6 +164,8 @@ def parse_chapter(path: Path) -> list[Quest]:
                 reward_items=section_items(block, "rewards:"),
                 dependencies=dependencies,
                 passive_checkmark=bool(CHECKMARK_RE.search(tasks)),
+                x=parse_coordinate(X_RE, block, "x", path),
+                y=parse_coordinate(Y_RE, block, "y", path),
             )
         )
     return result
@@ -164,7 +178,9 @@ def main() -> int:
 
     errors: list[str] = []
     by_id: dict[str, Quest] = {}
+    by_chapter: dict[Path, list[Quest]] = {}
     for quest in quests:
+        by_chapter.setdefault(quest.chapter, []).append(quest)
         if quest.quest_id in by_id:
             errors.append(
                 f"duplicate quest id {quest.quest_id}: {by_id[quest.quest_id].chapter.name} and {quest.chapter.name}"
@@ -177,6 +193,17 @@ def main() -> int:
                 f"passive guide checkmark is forbidden: {quest.chapter.name}/{quest.quest_id}; "
                 "guides must advance through concrete item or machine tasks"
             )
+
+    for chapter, chapter_quests in by_chapter.items():
+        for index, left in enumerate(chapter_quests):
+            for right in chapter_quests[index + 1 :]:
+                distance = math.hypot(left.x - right.x, left.y - right.y)
+                if distance < MIN_QUEST_CENTRE_DISTANCE:
+                    errors.append(
+                        f"quest layout overlap/near-overlap in {chapter.name}: "
+                        f"{left.quest_id} at ({left.x:g},{left.y:g}) and "
+                        f"{right.quest_id} at ({right.x:g},{right.y:g}) are only {distance:.2f} apart"
+                    )
 
     main_item_owners: dict[str, Quest] = {}
     for quest in quests:
@@ -205,11 +232,7 @@ def main() -> int:
         if not quest.guide and quest.phase is not None:
             for item in quest.reward_items:
                 owner = main_item_owners.get(item)
-                if (
-                    owner is not None
-                    and owner.phase is not None
-                    and owner.phase < quest.phase
-                ):
+                if owner is not None and owner.phase is not None and owner.phase < quest.phase:
                     errors.append(
                         f"late reward repeats earlier progression item {item}: "
                         f"phase {quest.phase} {quest.chapter.name}/{quest.quest_id} rewards item gated in "
@@ -219,15 +242,9 @@ def main() -> int:
         for dependency in quest.dependencies:
             target = by_id.get(dependency)
             if target is None:
-                errors.append(
-                    f"unknown dependency {dependency}: {quest.chapter.name}/{quest.quest_id}"
-                )
+                errors.append(f"unknown dependency {dependency}: {quest.chapter.name}/{quest.quest_id}")
                 continue
-            if (
-                quest.phase is not None
-                and target.phase is not None
-                and target.phase > quest.phase
-            ):
+            if quest.phase is not None and target.phase is not None and target.phase > quest.phase:
                 errors.append(
                     f"backward phase dependency: phase {quest.phase} quest {quest.quest_id} "
                     f"depends on phase {target.phase} quest {dependency}"
