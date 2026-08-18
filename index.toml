@@ -6,7 +6,7 @@ hash = "c55d580e9e958693174302eb854ec1068358a235cdd537cfda843f5cc693d6d2"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/age_1_industrial.snbt"
-hash = "d76a6ee7f1d4ac50ad7b2e21fafdf9d4d250bcc124883145d1e352ad02607aed"
+hash = "6d0b9b7abca8bc81c16b5c95bbbfb791a43d55875180e63cb0d3ec4c46b7db47"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/age_2_atomic.snbt"
@@ -85,8 +85,24 @@ file = "kubejs/assets/kubejs/models/item/incomplete_electromechanical_control_un
 hash = "d8acc4b928ad5ba78b51d7cf322584df347f3e1f129b6ba8baafa3df86aefbeb"
 
 [[files]]
+file = "kubejs/assets/kubejs/models/item/incomplete_fusion_field_core.json"
+hash = "7943968e7f5d43b1382ef07ec45bf16fa913284a5809dd48d21a9bc37ff86cc0"
+
+[[files]]
 file = "kubejs/assets/kubejs/models/item/incomplete_insulated_copper_wire.json"
 hash = "ab6e0a5fd558d6c63b6c75e25404736e6955e617958d229938942934590d9b5d"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/incomplete_particle_confinement_matrix.json"
+hash = "c95c56c6d020bdc942eb1d152e1e9f38eccce5ebffc2b2ef8925f83a25caf814"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/incomplete_quantum_singularity_core.json"
+hash = "a966f59a3bfc0b8d2a9cbd214075e2f98fdf1e6b6b787d76969a386f606e6c1a"
+
+[[files]]
+file = "kubejs/assets/kubejs/models/item/incomplete_reactor_grade_frame.json"
+hash = "44f610ce0ee338c195f47103375a8f011095989d57908889edd4702a432a2eb5"
 
 [[files]]
 file = "kubejs/assets/kubejs/models/item/insulated_copper_wire.json"
@@ -394,7 +410,7 @@ hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research.js"
-hash = "31aa5877cdd2ae74933cfdbfc48f478f30eeccd9e3179144464fa09af57492b3"
+hash = "61098963fd65ce4cccc3284bb10a0f37337d9b7a5ad3277f64ec717e4a15a68a"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research_audit.js"
@@ -466,7 +482,7 @@ hash = "c5d6d6b013eb2abaa717b983f002741d0c7fe38d3ef303f6db5748349b5ce369"
 
 [[files]]
 file = "kubejs/startup_scripts/matterworks/items.js"
-hash = "1e6669d6f18ed469f6eac022507158d3f4ca521e0e2482ec4358fc60ccc0eabb"
+hash = "17bf8ab4108b398b2b517e3a4af38dba3c2cf9fffaf6bdcdb539ff38dfa8e5fc"
 
 [[files]]
 file = "mods/advanced-peripherals.pw.toml"
