@@ -1,4 +1,3 @@
-# Matterworks 0.5.6 progression index
 name = "Matterworks"
 author = "F000NK"
 version = "0.5.6"
@@ -7,7 +6,7 @@ pack-format = "packwiz:1.1.0"
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "417d951b7355ca73caf3e4a8a66a04a24bf936141fb7a6da3f044578e098ea"
+hash = "9e4975e1d24e5181ce33e413b508fc38983f9a59a14ee18c3b2a6ed050d6a651"
 
 [versions]
 forge = "47.4.10"
