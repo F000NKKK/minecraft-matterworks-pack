@@ -25,7 +25,12 @@ jobs:
         run: |
           sha256sum \
             config/ftbquests/quests/chapters/age_1_industrial.snbt \
+            config/ftbquests/quests/chapters/guide_ae2.snbt \
+            config/ftbquests/quests/chapters/guide_alchemistry_chemlib.snbt \
             config/ftbquests/quests/chapters/guide_create.snbt \
+            config/ftbquests/quests/chapters/guide_mekanism.snbt \
+            config/ftbquests/quests/chapters/guide_nuclearcraft.snbt \
+            config/ftbquests/quests/chapters/guide_pressure_engineering.snbt \
             kubejs/server_scripts/matterworks/progression/research.js \
             kubejs/server_scripts/matterworks/recipes/advantage_equipment.js \
             index.toml
