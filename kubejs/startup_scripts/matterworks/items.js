@@ -50,24 +50,32 @@ StartupEvents.registry('item', event => {
 /*
  * Endgame prestige components.
  *
- * These items deliberately have no independent utility. They exist to force
- * near-creative equipment to consume proof from several completed industrial
- * programs instead of collapsing into one mod's local material ladder.
+ * Final components have no independent utility. Their incomplete forms are
+ * Create sequenced-assembly carriers, forcing late-game equipment to pass
+ * through a repeatable manufacturing process instead of one shaped recipe.
  */
 StartupEvents.registry('item', event => {
     event.create('reactor_grade_frame')
         .displayName('Reactor-Grade Frame')
         .maxStackSize(16)
+    event.create('incomplete_reactor_grade_frame', 'create:sequenced_assembly')
+        .displayName('Incomplete Reactor-Grade Frame')
 
     event.create('particle_confinement_matrix')
         .displayName('Particle Confinement Matrix')
         .maxStackSize(16)
+    event.create('incomplete_particle_confinement_matrix', 'create:sequenced_assembly')
+        .displayName('Incomplete Particle Confinement Matrix')
 
     event.create('fusion_field_core')
         .displayName('Fusion Field Core')
         .maxStackSize(16)
+    event.create('incomplete_fusion_field_core', 'create:sequenced_assembly')
+        .displayName('Incomplete Fusion Field Core')
 
     event.create('quantum_singularity_core')
         .displayName('Quantum Singularity Core')
         .maxStackSize(4)
+    event.create('incomplete_quantum_singularity_core', 'create:sequenced_assembly')
+        .displayName('Incomplete Quantum Singularity Core')
 })
