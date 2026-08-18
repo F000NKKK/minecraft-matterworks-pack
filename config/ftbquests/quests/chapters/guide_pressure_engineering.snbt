@@ -3,75 +3,67 @@
 	default_quest_shape: "square"
 	filename: "guide_pressure_engineering"
 	group: "1100000000000002"
-	icon: "compressedcreativity:rotational_compressor"
+	icon: "pneumaticcraft:pressure_gauge"
 	id: "1120000000000007"
 	order_index: 170
 	quest_links: []
 	quests: [
 		{
 			id: "2270000000000001"
-			title: "Pressure Bootstrap"
-			description: ["PneumaticCraft begins with a small compressed-iron bootstrap before a pressure network exists. Matterworks preserves that bootstrap, but sustained pneumatic production belongs to engineered machinery rather than repeated primitive processing."]
+			title: "Pressure Is Stored Energy"
+			description: ["PneumaticCraft does not treat air as a generic fluid. Machines and tubes form a pressurised network measured in bar. More pressure means more stored energy, but every component has a safe operating range; exceeding it can destroy parts of the network."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.2d
-			tasks: [{ id: "3270000000000001", item: "compressedcreativity:compressed_iron_casing", type: "item" }]
+			tasks: [{ id: "3270000000000001", item: "pneumaticcraft:pressure_tube", count: 8, type: "item" }]
 			rewards: [{ id: "6270000000000001", type: "xp", xp: 25 }]
 		}
 		{
 			dependencies: ["2270000000000001"]
 			hide_dependency_lines: false
-			hide_details_until_startable: true
 			id: "2270000000000002"
-			title: "Rotation to Pressure"
-			description: ["Compressed Creativity is the controlled bridge from Create kinetic power to compressed air. The Main Program requires this Rotational Compressor before PneumaticCraft receives an independent compressor path."]
+			title: "Measure Before Tuning"
+			description: ["Attach a Pressure Gauge and watch the network while machines start and stop. A compressor may be healthy while a distant machine starves because demand, volume and tube restrictions cause the operating pressure to collapse under load."]
 			x: 2.5d
-			y: -1.0d
-			tasks: [{ id: "3270000000000002", item: "compressedcreativity:rotational_compressor", type: "item" }]
+			y: -1.25d
+			tasks: [{ id: "3270000000000002", item: "pneumaticcraft:pressure_gauge", type: "item" }]
 			rewards: [{ id: "6270000000000002", type: "xp", xp: 40 }]
 		}
 		{
 			dependencies: ["2270000000000002"]
 			hide_dependency_lines: false
-			hide_details_until_startable: true
 			id: "2270000000000003"
-			title: "Independent Air Production"
-			description: ["The Matterworks Air Compressor recipe consumes the mechanical pressure bridge. Once built, PneumaticCraft can maintain its own pressure network without bypassing the engineering sequence that introduced pressure."]
+			title: "Protect the Network"
+			description: ["A Safety Tube Module vents pressure above its configured threshold. Use it as a real engineering control, not decoration: set the threshold below the weakest component's failure pressure and place protection where pressure is actually generated."]
 			x: 5.0d
-			y: -1.0d
-			shape: "diamond"
-			tasks: [{ id: "3270000000000003", item: "pneumaticcraft:air_compressor", type: "item" }]
+			y: -1.25d
+			tasks: [{ id: "3270000000000003", item: "pneumaticcraft:safety_tube_module", type: "item" }]
 			rewards: [{ id: "6270000000000003", type: "xp", xp: 50 }]
-		}
-		{
-			dependencies: ["2270000000000003"]
-			hide_dependency_lines: false
-			hide_details_until_startable: true
-			id: "2270000000000005"
-			title: "Pressure-Swing Separation"
-			description: ["Matterworks uses PneumaticCraft pressure directly as atmospheric feed. A Thermopneumatic Processing Plant operating under pressure consumes molecular-sieve charges and recovers the nitrogen fraction; oxygen and trace gases are deliberately not granted for free by the same early process."]
-			x: 7.5d
-			y: -1.0d
-			shape: "gear"
-			tasks: [
-				{ id: "3270000000000005", item: "pneumaticcraft:thermopneumatic_processing_plant", type: "item" }
-				{ id: "3270000000000006", item: "kubejs:molecular_sieve_charge", count: 4, type: "item" }
-			]
-			rewards: [{ id: "6270000000000005", type: "xp", xp: 50 }]
 		}
 		{
 			dependencies: ["2270000000000002"]
 			hide_dependency_lines: false
-			hide_details_until_startable: true
 			id: "2270000000000004"
-			title: "Pressure to Rotation"
-			description: ["The Compressed Air Engine provides the reverse conversion: pressure back into Create rotation. This is useful integration infrastructure, but guide completion does not grant the Main Program pressure-engineering capability."]
+			title: "Read Pressure as a Signal"
+			description: ["A Pressure Gauge Tube Module converts pressure into a redstone-readable control signal. This is the bridge from pneumatic physics to automation: compressors, valves and alarms can react to measured pressure rather than running continuously."]
 			x: 5.0d
-			y: 1.0d
-			tasks: [{ id: "3270000000000004", item: "compressedcreativity:compressed_air_engine", type: "item" }]
-			rewards: [{ id: "6270000000000004", type: "xp", xp: 40 }]
+			y: 1.25d
+			tasks: [{ id: "3270000000000004", item: "pneumaticcraft:pressure_gauge_module", type: "item" }]
+			rewards: [{ id: "6270000000000004", type: "xp", xp: 50 }]
+		}
+		{
+			dependencies: ["2270000000000003", "2270000000000004"]
+			hide_dependency_lines: false
+			id: "2270000000000005"
+			title: "Design a Controlled Pressure Loop"
+			description: ["A robust pressure system has generation, storage volume, measurement, a consumer and an overpressure response. Before Phase 3 asks for sustained pneumatic processing, build a small loop where pressure can be observed and safely limited instead of simply connecting an air source to a machine."]
+			x: 7.5d
+			y: 0.0d
+			shape: "diamond"
+			tasks: [{ id: "3270000000000005", type: "checkmark" }]
+			rewards: [{ id: "6270000000000005", type: "xp", xp: 75 }]
 		}
 	]
-	title: "Guide - Pressure Engineering"
+	title: "Guide - Pneumatic Pressure Fundamentals"
 }
