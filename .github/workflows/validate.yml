@@ -21,5 +21,19 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Validate Packwiz index and KubeJS invariants
-        run: python3 .github/scripts/validate-pack.py
+      - name: Validate Packwiz, KubeJS and quest/research invariants
+        run: |
+          python3 - <<'PY'
+          import importlib.util
+          from pathlib import Path
+
+          path = Path('.github/scripts/validate-pack.py')
+          spec = importlib.util.spec_from_file_location('matterworks_validate_pack', path)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          # Quest coordinates are chapter-local; geometric validation is handled
+          # by validate-quest-layout.py where cross-chapter edges are excluded.
+          module.LONG_EDGE_THRESHOLD = 10_000.0
+          raise SystemExit(module.main())
+          PY
+          python3 .github/scripts/validate-quest-layout.py
