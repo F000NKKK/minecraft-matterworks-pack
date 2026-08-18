@@ -445,6 +445,10 @@ file = "kubejs/server_scripts/matterworks/recipes/endgame_equipment.js"
 hash = "ab0efcae3b3ee7517bb0c3a5bb485aa02ee7ac310049223a02cde0a8a49b1f6a"
 
 [[files]]
+file = "kubejs/server_scripts/matterworks/recipes/industrial_process_machines.js"
+hash = "7fba273dec5da058364e65c3ff63ff778fed20669b5d2f8baa5609652e4f351f"
+
+[[files]]
 file = "kubejs/server_scripts/matterworks/recipes/material_unification.js"
 hash = "2946662d835a3a39a5c2937d9afaa2cc5970300d6dc0e0334c2a07384d36fd9c"
 
