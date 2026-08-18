@@ -6,7 +6,7 @@ hash = "c55d580e9e958693174302eb854ec1068358a235cdd537cfda843f5cc693d6d2"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/age_1_industrial.snbt"
-hash = "6ed1fa1cbd26bbc263dfc9c9c1a3a3bcd7a113f2495c0bf3d1556b3fc5fb1086"
+hash = "d76a6ee7f1d4ac50ad7b2e21fafdf9d4d250bcc124883145d1e352ad02607aed"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/age_2_atomic.snbt"
@@ -378,7 +378,7 @@ hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research.js"
-hash = "f875d92a5be52599d4bed814608adf2333125e790a72c762ef9b1a4c9855b3ed"
+hash = "31aa5877cdd2ae74933cfdbfc48f478f30eeccd9e3179144464fa09af57492b3"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research_audit.js"
@@ -386,7 +386,7 @@ hash = "6572321f70da3143a30bd1d6cdf91a7ab4a77b77740c0d5137236f7aedcfe145"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/advantage_equipment.js"
-hash = "5b5ccc00ece40fdeb0b521f09f533ce71144b8c2794d5669f3aee45e9e9860d7"
+hash = "2f12301052a9b8890e840d9ab2b121366fafad925c941c9982eb3e70c479d1d4"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/atmosphere.js"
