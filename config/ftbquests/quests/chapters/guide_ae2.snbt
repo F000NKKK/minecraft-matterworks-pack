@@ -10,40 +10,63 @@
 	quests: [
 		{
 			id: "2250000000000001"
-			title: "ME Networks"
-			description: ["Applied Energistics 2 provides digital storage and logistics. This guide teaches the network model; the Main Program decides when networked industry becomes a progression capability."]
+			title: "Power an ME Network"
+			description: ["An ME network must be powered before storage or automation works. Use an Energy Cell as a buffer and remember that AE2 power state is part of the network itself, not just an external cable touching a block."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.2d
-			tasks: [{ id: "3250000000000001", item: "ae2:certus_quartz_crystal", type: "item" }]
+			tasks: [{ id: "3250000000000001", item: "ae2:energy_cell", type: "item" }]
 			rewards: [{ id: "6250000000000001", type: "xp", xp: 25 }]
 		}
 		{
 			dependencies: ["2250000000000001"]
 			hide_dependency_lines: false
-			hide_details_until_startable: true
 			id: "2250000000000002"
-			title: "Channel Control"
-			description: ["Controllers organize larger ME networks and their channel topology. Treat them as infrastructure, not as a standalone research unlock."]
+			title: "Understand Channels"
+			description: ["Fluix Smart Cable shows channel usage directly on the cable. Build with it while learning AE2: if devices disappear from the network, inspect channel saturation before replacing machines or storage. Coloured smart cables use their own registry IDs; the uncoloured cable is fluix_smart_cable."]
 			x: 2.5d
-			y: -1.0d
-			tasks: [{ id: "3250000000000002", item: "ae2:controller", type: "item" }]
-			rewards: [{ id: "6250000000000002", type: "xp", xp: 50 }]
+			y: -1.25d
+			tasks: [{ id: "3250000000000002", item: "ae2:fluix_smart_cable", count: 8, type: "item" }]
+			rewards: [{ id: "6250000000000002", type: "xp", xp: 40 }]
 		}
 		{
 			dependencies: ["2250000000000002"]
 			hide_dependency_lines: false
-			hide_details_until_startable: true
 			id: "2250000000000003"
-			title: "Networked Crafting"
-			description: ["Crafting terminals expose production through the ME network. Matterworks later combines this digital logistics layer with programmable process control."]
+			title: "Attach Existing Storage"
+			description: ["A Storage Bus exposes an external inventory to the ME network instead of moving everything into cells. This is often the cleanest way to integrate existing process buffers and machine inventories."]
 			x: 5.0d
+			y: -1.25d
+			tasks: [{ id: "3250000000000003", item: "ae2:storage_bus", type: "item" }]
+			rewards: [{ id: "6250000000000003", type: "xp", xp: 50 }]
+		}
+		{
+			dependencies: ["2250000000000002"]
+			hide_dependency_lines: false
+			id: "2250000000000004"
+			title: "Move Items Deliberately"
+			description: ["Import and Export Buses automate direction: import pulls into ME storage, export pushes selected contents outward. Use filters and direction intentionally instead of treating the ME network as a magical shared chest."]
+			x: 5.0d
+			y: 1.25d
+			tasks: [
+				{ id: "3250000000000004", item: "ae2:import_bus", type: "item" }
+				{ id: "3250000000000005", item: "ae2:export_bus", type: "item" }
+			]
+			rewards: [{ id: "6250000000000004", type: "xp", xp: 60 }]
+		}
+		{
+			dependencies: ["2250000000000003", "2250000000000004"]
+			hide_dependency_lines: false
+			id: "2250000000000005"
+			title: "Expose Machines as Services"
+			description: ["An ME Interface is a controlled boundary between the network and external automation. Learn to use interfaces and buses before Phase 4 asks the ME system to become plant-wide logistics and fabrication infrastructure."]
+			x: 7.5d
 			y: 0.0d
 			shape: "diamond"
-			tasks: [{ id: "3250000000000003", item: "ae2:crafting_terminal", type: "item" }]
-			rewards: [{ id: "6250000000000003", type: "xp", xp: 75 }]
+			tasks: [{ id: "3250000000000006", item: "ae2:interface", type: "item" }]
+			rewards: [{ id: "6250000000000005", type: "xp", xp: 75 }]
 		}
 	]
-	title: "Guide - Applied Energistics 2"
+	title: "Guide - Applied Energistics 2 Fundamentals"
 }

@@ -1,0 +1,69 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "square"
+	filename: "guide_pressure_engineering"
+	group: "1100000000000002"
+	icon: "pneumaticcraft:pressure_gauge"
+	id: "1120000000000007"
+	order_index: 170
+	quest_links: []
+	quests: [
+		{
+			id: "2270000000000001"
+			title: "Pressure Is Stored Energy"
+			description: ["PneumaticCraft does not treat air as a generic fluid. Machines and tubes form a pressurised network measured in bar. More pressure means more stored energy, but every component has a safe operating range; exceeding it can destroy parts of the network."]
+			x: 0.0d
+			y: 0.0d
+			shape: "gear"
+			size: 1.2d
+			tasks: [{ id: "3270000000000001", item: "pneumaticcraft:pressure_tube", count: 8, type: "item" }]
+			rewards: [{ id: "6270000000000001", type: "xp", xp: 25 }]
+		}
+		{
+			dependencies: ["2270000000000001"]
+			hide_dependency_lines: false
+			id: "2270000000000002"
+			title: "Measure Before Tuning"
+			description: ["Attach a Pressure Gauge and watch the network while machines start and stop. A compressor may be healthy while a distant machine starves because demand, volume and tube restrictions cause the operating pressure to collapse under load."]
+			x: 2.5d
+			y: -1.25d
+			tasks: [{ id: "3270000000000002", item: "pneumaticcraft:pressure_gauge", type: "item" }]
+			rewards: [{ id: "6270000000000002", type: "xp", xp: 40 }]
+		}
+		{
+			dependencies: ["2270000000000002"]
+			hide_dependency_lines: false
+			id: "2270000000000003"
+			title: "Protect the Network"
+			description: ["A Safety Tube Module vents pressure above its configured threshold. Use it as a real engineering control, not decoration: set the threshold below the weakest component's failure pressure and place protection where pressure is actually generated."]
+			x: 5.0d
+			y: -1.25d
+			tasks: [{ id: "3270000000000003", item: "pneumaticcraft:safety_tube_module", type: "item" }]
+			rewards: [{ id: "6270000000000003", type: "xp", xp: 50 }]
+		}
+		{
+			dependencies: ["2270000000000002"]
+			hide_dependency_lines: false
+			id: "2270000000000004"
+			title: "Read Pressure as a Signal"
+			description: ["A Pressure Gauge Tube Module converts pressure into a redstone-readable control signal. This is the bridge from pneumatic physics to automation: compressors, valves and alarms can react to measured pressure rather than running continuously."]
+			x: 5.0d
+			y: 1.25d
+			tasks: [{ id: "3270000000000004", item: "pneumaticcraft:pressure_gauge_module", type: "item" }]
+			rewards: [{ id: "6270000000000004", type: "xp", xp: 50 }]
+		}
+		{
+			dependencies: ["2270000000000003", "2270000000000004"]
+			hide_dependency_lines: false
+			id: "2270000000000005"
+			title: "Design a Controlled Pressure Loop"
+			description: ["A robust pressure system has generation, storage volume, measurement, a consumer and an overpressure response. Before Phase 3 asks for sustained pneumatic processing, build a small loop where pressure can be observed and safely limited instead of simply connecting an air source to a machine."]
+			x: 7.5d
+			y: 0.0d
+			shape: "diamond"
+			tasks: [{ id: "3270000000000005", type: "checkmark" }]
+			rewards: [{ id: "6270000000000005", type: "xp", xp: 75 }]
+		}
+	]
+	title: "Guide - Pneumatic Pressure Fundamentals"
+}

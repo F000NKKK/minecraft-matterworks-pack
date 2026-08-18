@@ -8,8 +8,9 @@
 	icon: "create:precision_mechanism"
 	id: "1110000000000001"
 	images: [
-		{ x: 2.5d, y: 0.0d, width: 8.0d, height: 5.0d, image: "minecraft:textures/block/andesite.png", alpha: 28, order: -20 }
-		{ x: 2.5d, y: 0.0d, width: 6.5d, height: 3.5d, image: "minecraft:textures/block/copper_block.png", alpha: 18, order: -19 }
+		{ x: 2.5d, y: 0.0d, width: 6.0d, height: 8.0d, image: "minecraft:textures/block/andesite.png", alpha: 28, order: -30 }
+		{ x: 7.0d, y: 0.0d, width: 7.0d, height: 8.0d, image: "minecraft:textures/block/copper_block.png", alpha: 22, order: -29 }
+		{ x: 11.5d, y: 0.0d, width: 4.0d, height: 8.0d, image: "minecraft:textures/block/redstone_block.png", alpha: 16, order: -28 }
 	]
 	order_index: 10
 	quest_links: []
@@ -17,52 +18,110 @@
 		{
 			id: "2110000000000001"
 			title: "Precision Manufacturing"
-			description: ["Establish repeatable Create precision manufacturing. This is the mechanical foundation for later electromechanical and chemical equipment."]
+			description: ["Establish repeatable Create precision manufacturing. This is the first machine-building discipline of Matterworks and the foundation for every later electromechanical assembly."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.35d
 			tasks: [{ id: "3110000000000001", item: "create:precision_mechanism", type: "item" }]
-			rewards: [{ id: "6110000000000001", type: "xp", xp: 100 }]
+			rewards: [
+				{ id: "6110000000000001", type: "xp", xp: 75 }
+				{ id: "6110000000000010", item: "create:andesite_alloy", count: 4, type: "item" }
+			]
 		}
 		{
 			dependencies: ["2110000000000001"]
+			hide_dependency_lines: false
+			id: "2110000000000005"
+			title: "Mechanical Forming"
+			description: ["Build a Mechanical Press. Matterworks electrical components depend on controlled sheet forming; hand-crafted substitutes must not bypass this manufacturing step."]
+			x: 2.75d
+			y: 0.0d
+			shape: "square"
+			tasks: [{ id: "3110000000000005", item: "create:mechanical_press", type: "item" }]
+			rewards: [{ id: "6110000000000011", type: "xp", xp: 75 }]
+		}
+		{
+			dependencies: ["2110000000000005"]
+			hide_dependency_lines: false
+			id: "2110000000000006"
+			title: "Primitive Insulation"
+			description: ["Manufacture insulated copper wire using the Matterworks sequenced-assembly route. Early insulation is deliberately primitive and process-made rather than a generic copper crafting recipe."]
+			x: 5.5d
+			y: -2.25d
+			shape: "square"
+			tasks: [{ id: "3110000000000006", item: "kubejs:insulated_copper_wire", type: "item" }]
+			rewards: [
+				{ id: "6110000000000012", type: "xp", xp: 100 }
+				{ id: "6110000000000013", item: "minecraft:paper", count: 8, type: "item" }
+			]
+		}
+		{
+			dependencies: ["2110000000000005"]
+			hide_dependency_lines: false
+			id: "2110000000000007"
+			title: "Primitive Capacitors"
+			description: ["Build a primitive capacitor from formed copper, dielectric material, impregnant and redstone. This is charge-storage engineering, not a free Create Crafts & Additions entry point."]
+			x: 5.5d
+			y: 0.0d
+			shape: "square"
+			tasks: [{ id: "3110000000000007", item: "createaddition:capacitor", type: "item" }]
+			rewards: [
+				{ id: "6110000000000014", type: "xp", xp: 100 }
+				{ id: "6110000000000015", item: "minecraft:redstone", count: 4, type: "item" }
+			]
+		}
+		{
+			dependencies: ["2110000000000005"]
 			hide_dependency_lines: false
 			id: "2110000000000002"
 			title: "Industrial Carbon"
-			description: ["Produce coke through the Matterworks carbon route. Raw coal is no longer a valid substitute for an industrial carbon-processing line."]
-			x: 2.5d
-			y: -1.5d
+			description: ["Produce coke through the Matterworks carbon route. This branch establishes deliberate thermal carbon processing before steelmaking and engineered carbon become progression capabilities."]
+			x: 5.5d
+			y: 2.25d
 			shape: "square"
 			tasks: [{ id: "3110000000000002", item: "kubejs:coke", type: "item" }]
-			rewards: [{ id: "6110000000000002", type: "xp", xp: 125 }]
+			rewards: [{ id: "6110000000000002", type: "xp", xp: 100 }]
 		}
 		{
-			dependencies: ["2110000000000001"]
+			dependencies: ["2110000000000006"]
+			hide_dependency_lines: false
+			id: "2110000000000008"
+			title: "Electromagnetic Components"
+			description: ["Wind a primitive electromagnetic coil around a processed magnetic core. Coils become a reusable Matterworks component family rather than an incidental ingredient hidden inside one machine recipe."]
+			x: 8.25d
+			y: -2.25d
+			shape: "square"
+			tasks: [{ id: "3110000000000008", item: "kubejs:electromagnetic_coil", type: "item" }]
+			rewards: [{ id: "6110000000000016", type: "xp", xp: 125 }]
+		}
+		{
+			dependencies: ["2110000000000006", "2110000000000007"]
 			hide_dependency_lines: false
 			id: "2110000000000003"
 			title: "Electromechanical Control"
-			description: ["Assemble the first Matterworks control unit. It is the bridge between mechanical automation and the electrical/process era."]
-			x: 2.5d
-			y: 1.5d
-			shape: "square"
-			tasks: [{ id: "3110000000000003", item: "kubejs:electromechanical_control_unit", type: "item" }]
-			rewards: [{ id: "6110000000000003", type: "xp", xp: 125 }]
-		}
-		{
-			dependencies: ["2110000000000002", "2110000000000003"]
-			hide_dependency_lines: false
-			id: "2110000000000004"
-			title: "Generate Electricity Mechanically"
-			description: ["Build the Matterworks alternator path. Completing this proves that the factory can convert mechanical work into controlled electrical power."]
-			x: 5.0d
+			description: ["Assemble the first Matterworks electromechanical control unit. This is the control boundary between raw mechanical automation and machines that intentionally coordinate electrical subsystems."]
+			x: 8.25d
 			y: 0.0d
 			shape: "diamond"
-			size: 1.25d
+			size: 1.2d
+			tasks: [{ id: "3110000000000003", item: "kubejs:electromechanical_control_unit", type: "item" }]
+			rewards: [{ id: "6110000000000003", type: "xp", xp: 175 }]
+		}
+		{
+			dependencies: ["2110000000000008", "2110000000000003", "2110000000000002"]
+			hide_dependency_lines: false
+			id: "2110000000000004"
+			title: "Mechanical Power Generation"
+			description: ["Construct the Matterworks alternator after establishing coils, control components and industrial carbon processing. The factory can now convert kinetic work into controlled electrical power without skipping the mechanical era."]
+			x: 11.25d
+			y: 0.0d
+			shape: "hexagon"
+			size: 1.5d
 			tasks: [{ id: "3110000000000004", item: "createaddition:alternator", type: "item" }]
 			rewards: [
-				{ id: "6110000000000004", type: "xp", xp: 250 }
-				{ id: "6110000000000005", item: "minecraft:redstone", count: 4, type: "item" }
+				{ id: "6110000000000004", type: "xp", xp: 350 }
+				{ id: "6110000000000017", item: "create:copper_sheet", count: 4, type: "item" }
 			]
 		}
 	]

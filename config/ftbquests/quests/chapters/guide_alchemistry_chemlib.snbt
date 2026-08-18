@@ -3,34 +3,71 @@
 	default_quest_shape: "square"
 	filename: "guide_alchemistry_chemlib"
 	group: "1100000000000002"
-	icon: "alchemistry:combiner"
+	icon: "chemlib:periodic_table"
 	id: "1120000000000003"
 	order_index: 130
 	quest_links: []
 	quests: [
 		{
+			dependencies: ["2110000000000004"]
 			id: "4130000000000001"
-			title: "Chemical Analysis"
-			description: ["The Dissolver answers what a material contains. In Matterworks, decomposition and synthesis are intentionally separate capabilities."]
+			title: "Chemical Reference Tools"
+			description: ["Start chemistry with the periodic table rather than memorising arbitrary item names. Use it together with JEI to identify atomic symbols, element families and compounds before interpreting Dissolver results."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.2d
-			tasks: [{ id: "5130000000000001", item: "alchemistry:dissolver", type: "item" }]
+			tasks: [{ id: "5130000000000001", item: "chemlib:periodic_table", type: "item" }]
 			rewards: [{ id: "6230000000000001", type: "xp", xp: 25 }]
 		}
 		{
-			dependencies: ["4130000000000001"]
+			dependencies: ["4130000000000001", "2120000000000001"]
 			hide_dependency_lines: false
-			hide_details_until_startable: true
 			id: "4130000000000002"
-			title: "The Combiner Is Not Omnipotent"
-			description: ["The Combiner is a synthesis platform. A recipe is permitted only after the Main Program proves the technology that makes that material manufacturable. Nuclear provenance-sensitive states are never recreated by generic combination."]
+			title: "Compare Element Samples"
+			description: ["After building the Dissolver, recover two different elemental samples. Hydrogen and oxygen are both elements: each item represents one atomic identity even though their physical behaviour is very different. This is the baseline for reading later compounds correctly."]
 			x: 2.5d
+			y: -1.25d
+			tasks: [
+				{ id: "5130000000000002", item: "chemlib:hydrogen", type: "item" }
+				{ id: "5130000000000006", item: "chemlib:oxygen", type: "item" }
+			]
+			rewards: [{ id: "6230000000000002", type: "xp", xp: 40 }]
+		}
+		{
+			dependencies: ["4130000000000002"]
+			hide_dependency_lines: false
+			id: "4130000000000003"
+			title: "Read a Compound"
+			description: ["Obtain carbon dioxide and read it as a compound, not as a bag of interchangeable ingredients. Its identity includes a fixed carbon-to-oxygen relationship. This is why composition data must retain stoichiometry when Matterworks maps material chemistry."]
+			x: 5.0d
+			y: -1.25d
+			tasks: [{ id: "5130000000000003", item: "chemlib:carbon_dioxide", type: "item" }]
+			rewards: [{ id: "6230000000000003", type: "xp", xp: 50 }]
+		}
+		{
+			dependencies: ["4130000000000003", "2130000000000011"]
+			hide_dependency_lines: false
+			id: "4130000000000004"
+			title: "Composition Is Not Manufacturing"
+			description: ["Turn the Phase 3 HDPE process into an HDPE sheet. This is a concrete PROCESS-policy example: even if chemistry can describe the polymer feedstocks, the finished engineering material remains owned by its industrial production route. Matterworks does not allow composition knowledge to bypass that route."]
+			x: 7.5d
 			y: 0.0d
-			tasks: [{ id: "5130000000000002", item: "alchemistry:combiner", type: "item" }]
-			rewards: [{ id: "6230000000000002", type: "xp", xp: 50 }]
+			tasks: [{ id: "5130000000000004", item: "mekanism:hdpe_sheet", type: "item" }]
+			rewards: [{ id: "6230000000000004", type: "xp", xp: 70 }]
+		}
+		{
+			dependencies: ["4130000000000004", "2180000000000003"]
+			hide_dependency_lines: false
+			id: "4130000000000005"
+			title: "Nuclear Identity Preserves Provenance"
+			description: ["After the fusion program is established, obtain a ChemLib uranium element sample. Compare it conceptually with NuclearCraft uranium isotopes, fuels and irradiated products: the parent element may become a generic atomic identity, but isotope, enrichment, fuel and waste states remain NuclearCraft process-owned and are never flattened into one universal material."]
+			x: 10.0d
+			y: 0.0d
+			shape: "diamond"
+			tasks: [{ id: "5130000000000005", item: "chemlib:uranium", type: "item" }]
+			rewards: [{ id: "6230000000000005", type: "xp", xp: 100 }]
 		}
 	]
-	title: "Guide - Alchemistry / ChemLib"
+	title: "Guide - Chemical Reasoning Laboratory"
 }

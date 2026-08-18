@@ -10,41 +10,60 @@
 	quests: [
 		{
 			id: "2240000000000001"
-			title: "NuclearCraft Processing"
-			description: ["NuclearCraft supplies the pack's nuclear-material processing and reactor physics. This guide explains the mod; completing it does not grant Matterworks nuclear research permissions."]
+			title: "Nuclear Materials Preserve History"
+			description: ["NuclearCraft materials are not ordinary alloy ingredients. Isotope, enrichment, irradiation and burnup are part of identity. Matterworks therefore never lets generic chemistry recreate reactor fuel, depleted fuel or waste from a list of elements."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.2d
-			tasks: [{ id: "3240000000000001", item: "nuclearcraft:manufactory", type: "item" }]
+			tasks: [{ id: "3240000000000001", type: "checkmark" }]
 			rewards: [{ id: "6240000000000001", type: "xp", xp: 25 }]
 		}
 		{
 			dependencies: ["2240000000000001"]
 			hide_dependency_lines: false
-			hide_details_until_startable: true
 			id: "2240000000000002"
-			title: "Fission Reactors"
-			description: ["The fission reactor is a physical process system. Matterworks requires the Main Program to prove the reactor/fuel-cycle capability before later atomic chemistry is unlocked."]
+			title: "A Fission Reactor Is a Heat System"
+			description: ["Fuel generates heat; reactor geometry and cooling determine whether that heat can be removed safely. Do not judge a reactor only by RF output. Before activation, understand where heat is produced, which cooling rules are satisfied and what happens when cooling capacity is lost."]
 			x: 2.5d
-			y: -1.0d
-			shape: "diamond"
-			tasks: [{ id: "3240000000000002", item: "nuclearcraft:fission_reactor_controller", type: "item" }]
-			rewards: [{ id: "6240000000000002", type: "xp", xp: 50 }]
+			y: -1.25d
+			tasks: [{ id: "3240000000000002", type: "checkmark" }]
+			rewards: [{ id: "6240000000000002", type: "xp", xp: 40 }]
 		}
 		{
 			dependencies: ["2240000000000002"]
 			hide_dependency_lines: false
-			hide_details_until_startable: true
 			id: "2240000000000003"
-			title: "Particle Accelerators"
-			description: ["Accelerators create controlled nuclear and isotope transformations. Matterworks removes bulk-transmutation shortcuts that would replace extraction or chemistry, while preserving the accelerator as a real research system."]
+			title: "Fuel Handling Is Part of the Reactor"
+			description: ["A controller does not make a complete reactor. The multiblock needs structure and explicit interfaces for fuel and products. Design loading, unloading and shutdown behaviour before continuous operation so a blocked output cannot silently turn into a process failure."]
 			x: 5.0d
+			y: -1.25d
+			tasks: [{ id: "3240000000000003", type: "checkmark" }]
+			rewards: [{ id: "6240000000000003", type: "xp", xp: 50 }]
+		}
+		{
+			dependencies: ["2240000000000002"]
+			hide_dependency_lines: false
+			id: "2240000000000004"
+			title: "Control Before Optimisation"
+			description: ["Matterworks places digital process control before nuclear engineering for a reason. Establish measured state, alarms and a safe shutdown path first; optimise fuel utilisation or power density only after the reactor can be supervised predictably."]
+			x: 5.0d
+			y: 1.25d
+			tasks: [{ id: "3240000000000004", type: "checkmark" }]
+			rewards: [{ id: "6240000000000004", type: "xp", xp: 50 }]
+		}
+		{
+			dependencies: ["2240000000000003", "2240000000000004"]
+			hide_dependency_lines: false
+			id: "2240000000000005"
+			title: "Accelerators Are Beam Systems"
+			description: ["An accelerator is not one transmutation block. It needs magnetic focusing, a controlled structure, an ion source and a beam path. Phase 6 follows that physical sequence explicitly, and Matterworks removes shortcuts that would turn the accelerator into a bulk resource generator."]
+			x: 7.5d
 			y: 0.0d
 			shape: "diamond"
-			tasks: [{ id: "3240000000000003", item: "nuclearcraft:accelerator_casing", type: "item" }]
-			rewards: [{ id: "6240000000000003", type: "xp", xp: 75 }]
+			tasks: [{ id: "3240000000000005", type: "checkmark" }]
+			rewards: [{ id: "6240000000000005", type: "xp", xp: 75 }]
 		}
 	]
-	title: "Guide - NuclearCraft: Neoteric"
+	title: "Guide - NuclearCraft Engineering"
 }

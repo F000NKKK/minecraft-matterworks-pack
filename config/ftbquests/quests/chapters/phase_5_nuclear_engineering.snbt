@@ -8,53 +8,74 @@
 	icon: "nuclearcraft:fission_reactor_controller"
 	id: "1110000000000005"
 	images: [
-		{ x: 3.0d, y: 0.0d, width: 9.0d, height: 5.5d, image: "minecraft:textures/block/deepslate_tiles.png", alpha: 30, order: -20 }
-		{ x: 3.0d, y: 0.0d, width: 7.0d, height: 4.0d, image: "minecraft:textures/block/lime_concrete.png", alpha: 10, order: -19 }
+		{ x: 5.0d, y: 0.0d, width: 14.0d, height: 8.0d, image: "minecraft:textures/block/deepslate_tiles.png", alpha: 30, order: -20 }
+		{ x: 5.0d, y: 0.0d, width: 11.0d, height: 6.0d, image: "minecraft:textures/block/lime_concrete.png", alpha: 10, order: -19 }
 	]
 	order_index: 50
 	quest_links: []
 	quests: [
 		{
-			dependencies: ["2140000000000003"]
+			dependencies: ["2140000000000008"]
 			hide_dependency_lines: false
 			id: "2150000000000001"
-			title: "Nuclear Engineering Program"
-			description: ["Enter the NuclearCraft program only after process industry and digital control exist. From this point nuclear materials are tracked as process states, not interchangeable elemental inventory."]
+			title: "Nuclear Material Processing"
+			description: ["Enter NuclearCraft by building the Manufactory. Nuclear engineering starts with dedicated material preparation; this machine is the first place where ordinary industrial production becomes nuclear-process infrastructure."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
-			size: 1.4d
+			size: 1.35d
 			tasks: [{ id: "3150000000000001", item: "nuclearcraft:manufactory", type: "item" }]
-			rewards: [{ id: "6150000000000001", type: "xp", xp: 500 }]
+			rewards: [{ id: "6150000000000001", type: "xp", xp: 400 }]
 		}
 		{
 			dependencies: ["2150000000000001"]
 			hide_dependency_lines: false
 			id: "2150000000000002"
-			title: "Fission Infrastructure"
-			description: ["Construct the NuclearCraft fission reactor controller. Owning the controller is only the infrastructure milestone; fuel preparation, irradiation and reprocessing remain separate capabilities."]
+			title: "Isotope Separation"
+			description: ["Build the Isotope Separator before reactor construction. Fuel preparation and enrichment are process steps with provenance; they are not implied by simply owning uranium or a reactor controller."]
 			x: 3.0d
-			y: -1.0d
-			shape: "diamond"
-			size: 1.25d
-			tasks: [{ id: "3150000000000002", item: "nuclearcraft:fission_reactor_controller", type: "item" }]
-			rewards: [{ id: "6150000000000002", type: "xp", xp: 750 }]
+			y: -2.25d
+			shape: "square"
+			tasks: [{ id: "3150000000000002", item: "nuclearcraft:isotope_separator", type: "item" }]
+			rewards: [{ id: "6150000000000002", type: "xp", xp: 500 }]
 		}
 		{
-			dependencies: ["2150000000000002"]
+			dependencies: ["2150000000000001"]
+			hide_dependency_lines: false
+			id: "2150000000000005"
+			title: "Reactor Structure"
+			description: ["Manufacture a real reactor shell before the controller. A fission reactor is a multiblock thermal system, not one magic block; prepare enough casing to begin constructing an actual machine."]
+			x: 3.0d
+			y: 2.25d
+			shape: "square"
+			tasks: [{ id: "3150000000000005", item: "nuclearcraft:fission_reactor_casing", count: 16, type: "item" }]
+			rewards: [{ id: "6150000000000005", type: "xp", xp: 450 }]
+		}
+		{
+			dependencies: ["2150000000000002", "2150000000000005"]
+			hide_dependency_lines: false
+			id: "2150000000000004"
+			title: "Fission Control"
+			description: ["Construct the Fission Reactor Controller only after fuel preparation and reactor structure exist. At this point you have the hardware needed to assemble and operate a controlled NuclearCraft fission system."]
+			x: 6.5d
+			y: 0.0d
+			shape: "diamond"
+			size: 1.35d
+			tasks: [{ id: "3150000000000004", item: "nuclearcraft:fission_reactor_controller", type: "item" }]
+			rewards: [{ id: "6150000000000004", type: "xp", xp: 750 }]
+		}
+		{
+			dependencies: ["2150000000000004"]
 			hide_dependency_lines: false
 			id: "2150000000000003"
-			title: "Fuel Cycle Authority"
-			description: ["Establish a controlled fission program. This stable research milestone owns nuclear fuel-cycle knowledge; runtime validation will be tightened to a verified spent/depleted or reprocessing output once the installed NuclearCraft registry audit supplies the exact product IDs."]
-			x: 6.0d
+			title: "Fuel Handling"
+			description: ["Add a Fission Reactor Port. The reactor now has an explicit fuel and product interface, completing the minimum physical chain from material preparation through isotope separation, structure, control and fuel handling."]
+			x: 10.0d
 			y: 0.0d
 			shape: "hexagon"
-			size: 1.45d
-			tasks: [{ id: "3150000000000003", item: "nuclearcraft:isotope_separator", type: "item" }]
-			rewards: [
-				{ id: "6150000000000003", type: "xp", xp: 1000 }
-				{ id: "6150000000000004", item: "nuclearcraft:lead_ingot", count: 8, type: "item" }
-			]
+			size: 1.5d
+			tasks: [{ id: "3150000000000003", item: "nuclearcraft:fission_reactor_port", type: "item" }]
+			rewards: [{ id: "6150000000000003", type: "xp", xp: 900 }]
 		}
 	]
 	title: "Phase 5 - Nuclear Engineering"

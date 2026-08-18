@@ -6,13 +6,25 @@ ServerEvents.recipes(event => {
     /*
      * Matterworks: Electromechanical Control Unit
      *
-     * First integration component between the mechanical
-     * and electrical eras.
+     * First integration component between the mechanical and electrical eras.
+     * The quest graph requires primitive wiring and charge-storage engineering
+     * before this milestone, so the physical recipe now consumes both instead
+     * of making those prerequisites purely narrative.
      */
     event.recipes.create.sequenced_assembly(
         controlUnit,
         'create:precision_mechanism',
         [
+            event.recipes.create.deploying(
+                incompleteControlUnit,
+                [incompleteControlUnit, '#matterworks:components/wires/primitive']
+            ),
+
+            event.recipes.create.deploying(
+                incompleteControlUnit,
+                [incompleteControlUnit, '#matterworks:components/capacitors/primitive']
+            ),
+
             event.recipes.create.deploying(
                 incompleteControlUnit,
                 [incompleteControlUnit, 'minecraft:redstone']
@@ -30,7 +42,7 @@ ServerEvents.recipes(event => {
         ]
     )
         .transitionalItem(incompleteControlUnit)
-        .loops(2)
+        .loops(1)
 
     /*
      * Remove Mekanism's default entry point.
@@ -40,8 +52,8 @@ ServerEvents.recipes(event => {
     })
 
     /*
-     * The Metallurgic Infuser now requires an established
-     * Create production line.
+     * The Metallurgic Infuser now requires an established Create production
+     * line and the electromechanical control component proven in Phase 1.
      */
     event.shaped(
         'mekanism:metallurgic_infuser',

@@ -1,0 +1,78 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: "square"
+	filename: "guide_high_temperature_metallurgy"
+	group: "1100000000000002"
+	icon: "minecraft:blast_furnace"
+	id: "1120000000000009"
+	order_index: 190
+	quest_links: []
+	quests: [
+		{
+			dependencies: ["2130000000000007"]
+			hide_dependency_lines: false
+			id: "4190000000000001"
+			title: "Temperature Changes the Process"
+			description: ["Start with a Blast Furnace as the simplest visible example of temperature-specific processing. A chemical formula says which elements are present; it does not describe melting range, atmosphere, phase transitions or heat treatment. High-temperature metallurgy is therefore a process discipline, not a larger version of ordinary crafting."]
+			x: 0.0d
+			y: 0.0d
+			shape: "gear"
+			size: 1.2d
+			tasks: [{ id: "5190000000000001", item: "minecraft:blast_furnace", type: "item" }]
+			rewards: [{ id: "6290000000000001", type: "xp", xp: 25 }]
+		}
+		{
+			dependencies: ["4190000000000001"]
+			hide_dependency_lines: false
+			id: "4190000000000002"
+			title: "Composition Is a Constraint"
+			description: ["Keep separate iron and copper samples while thinking about alloys. Industrial alloys are not defined by two arbitrary ingredients touching each other: ratio, impurities and processing route matter. Matterworks therefore refuses shortcuts that treat ingredient presence as a complete alloy specification."]
+			x: 3.0d
+			y: -2.0d
+			tasks: [
+				{ id: "5190000000000002", item: "minecraft:iron_ingot", type: "item" }
+				{ id: "5190000000000006", item: "minecraft:copper_ingot", type: "item" }
+			]
+			rewards: [{ id: "6290000000000002", type: "xp", xp: 35 }]
+		}
+		{
+			dependencies: ["4190000000000001"]
+			hide_dependency_lines: false
+			id: "4190000000000003"
+			title: "Ceramics Follow Different Rules"
+			description: ["Compare fired brick and quartz with metallic feedstocks. Ceramics and ceramic-matrix composites depend on bonding, porosity and microstructure rather than metallic alloying alone. They therefore need their own processing family instead of being hidden inside a generic alloy recipe."]
+			x: 3.0d
+			y: 2.0d
+			tasks: [
+				{ id: "5190000000000003", item: "minecraft:brick", count: 4, type: "item" }
+				{ id: "5190000000000007", item: "minecraft:quartz", count: 4, type: "item" }
+			]
+			rewards: [{ id: "6290000000000003", type: "xp", xp: 35 }]
+		}
+		{
+			dependencies: ["4190000000000002", "4190000000000003"]
+			hide_dependency_lines: false
+			id: "4190000000000004"
+			title: "Inspect the Quarantined Process Layer"
+			description: ["Build a NuclearCraft Chemical Reactor only after the ordinary process industry exists. Several of its molten-alloy recipes depend on material states or tags that Matterworks intentionally keeps quarantined. Owning the machine teaches where those routes would live; it does not make an invalid route valid."]
+			x: 6.5d
+			y: 0.0d
+			shape: "diamond"
+			tasks: [{ id: "5190000000000004", item: "nuclearcraft:chemical_reactor", type: "item" }]
+			rewards: [{ id: "6290000000000004", type: "xp", xp: 50 }]
+		}
+		{
+			dependencies: ["4190000000000004"]
+			hide_dependency_lines: false
+			id: "4190000000000005"
+			title: "Keep Metallurgical Families Separate"
+			description: ["Use an Alloy Smelter as the reference machine for the next distinction: steel grades, stainless alloys, superconductors, refractory alloys, ceramics and high-pressure carbon will become separate production families. A family leaves quarantine only when Matterworks has both a physically meaningful route and a correctly placed Main Program milestone."]
+			x: 10.0d
+			y: 0.0d
+			shape: "hexagon"
+			tasks: [{ id: "5190000000000005", item: "nuclearcraft:alloy_smelter", type: "item" }]
+			rewards: [{ id: "6290000000000005", type: "xp", xp: 75 }]
+		}
+	]
+	title: "Guide - High-Temperature Metallurgy"
+}
