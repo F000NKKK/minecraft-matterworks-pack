@@ -29,7 +29,7 @@ ServerEvents.recipes(event => {
         'mekanism:jetpack_armored'
     ]
 
-    rewrittenOutputs.forEach(output => event.remove({ output }))
+    rewrittenOutputs.forEach(output => event.remove({ output: output }))
 
     // Industrial Age — powered movement without armour-level protection.
     event.shaped(
