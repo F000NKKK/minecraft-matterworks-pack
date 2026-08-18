@@ -60,7 +60,7 @@
 			hide_dependency_lines: false
 			id: "2250000000000005"
 			title: "Expose Machines as Services"
-			description: ["An ME Interface is a controlled boundary between the network and external automation. Learn to use interfaces and buses before Phase 4 asks the ME system to become plant-wide logistics and fabrication infrastructure."]
+			description: ["An ME Interface is a controlled boundary between the network and external automation. Learn to use interfaces and buses before the Atomic Age asks the ME system to become plant-wide logistics and fabrication infrastructure."]
 			x: 7.5d
 			y: 0.0d
 			shape: "diamond"

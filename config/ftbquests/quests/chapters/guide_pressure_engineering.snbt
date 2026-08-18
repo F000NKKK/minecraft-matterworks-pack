@@ -57,11 +57,15 @@
 			hide_dependency_lines: false
 			id: "2270000000000005"
 			title: "Design a Controlled Pressure Loop"
-			description: ["A robust pressure system has generation, storage volume, measurement, a consumer and an overpressure response. Before Phase 3 asks for sustained pneumatic processing, build a small loop where pressure can be observed and safely limited instead of simply connecting an air source to a machine."]
+			description: ["A robust pressure system has generation, storage volume, measurement, a consumer and an overpressure response. Prepare real volume, safety and measurement hardware before the Industrial Age pressure branch asks for sustained pneumatic processing; the guide now ends on tangible control hardware instead of a manual completion checkbox."]
 			x: 7.5d
 			y: 0.0d
 			shape: "diamond"
-			tasks: [{ id: "3270000000000005", type: "checkmark" }]
+			tasks: [
+				{ id: "3270000000000005", item: "pneumaticcraft:volume_upgrade", count: 4, type: "item" }
+				{ id: "3270000000000006", item: "pneumaticcraft:safety_tube_module", type: "item" }
+				{ id: "3270000000000007", item: "pneumaticcraft:pressure_gauge_module", type: "item" }
+			]
 			rewards: [{ id: "6270000000000005", type: "xp", xp: 75 }]
 		}
 	]

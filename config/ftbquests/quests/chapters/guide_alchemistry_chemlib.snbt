@@ -50,7 +50,7 @@
 			hide_dependency_lines: false
 			id: "4130000000000004"
 			title: "Composition Is Not Manufacturing"
-			description: ["Turn the Phase 3 HDPE process into an HDPE sheet. This is a concrete PROCESS-policy example: even if chemistry can describe the polymer feedstocks, the finished engineering material remains owned by its industrial production route. Matterworks does not allow composition knowledge to bypass that route."]
+			description: ["Turn the Industrial Age HDPE process into an HDPE sheet. This is a concrete PROCESS-policy example: even if chemistry can describe the polymer feedstocks, the finished engineering material remains owned by its industrial production route. Matterworks does not allow composition knowledge to bypass that route."]
 			x: 7.5d
 			y: 0.0d
 			tasks: [{ id: "5130000000000004", item: "mekanism:hdpe_sheet", type: "item" }]
