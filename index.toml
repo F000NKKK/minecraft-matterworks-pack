@@ -6,7 +6,7 @@ hash = "c55d580e9e958693174302eb854ec1068358a235cdd537cfda843f5cc693d6d2"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_ae2.snbt"
-hash = "954afa45228cca0812bd581323fec075a06bc4f6ce5cb68c18a38747c01fcdcb"
+hash = "b64e1058fc7b38df1b12e9889412f8355c45e3a4a10e6414b305152a2c83d4a8"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_alchemistry_chemlib.snbt"
@@ -46,7 +46,7 @@ hash = "fdb7282e29bf8b341c6ea85dfe11d76c73db40a2be68a8fe13bbb5e8b019501c"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_3_process_industry.snbt"
-hash = "6862a595a90263d570e0072b533d1dbdb18bfe57bee0dcd3710d054d524237f0"
+hash = "2743519c4914987e7696c615c394f361241a17eec2ad06323eba6a3b2c871291"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_4_digital_industry.snbt"
@@ -366,7 +366,7 @@ hash = "2946662d835a3a39a5c2937d9afaa2cc5970300d6dc0e0334c2a07384d36fd9c"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/mekanism.js"
-hash = "3e06700d9a0be60ef8c26d48d41bbfeefbbc6f16582b203b1370c1d34401e73d"
+hash = "bad4d2f21e589b0c57f8acd832384a7c1f8f6e847cc04b1f5af72f4f9fb2b9ea"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/metallurgy.js"
