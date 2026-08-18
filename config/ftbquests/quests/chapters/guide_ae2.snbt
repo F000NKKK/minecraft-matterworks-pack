@@ -24,10 +24,10 @@
 			hide_dependency_lines: false
 			id: "2250000000000002"
 			title: "Understand Channels"
-			description: ["Smart Cable shows channel usage directly on the cable. Build with it while learning AE2: if devices disappear from the network, inspect channel saturation before replacing machines or storage."]
+			description: ["Fluix Smart Cable shows channel usage directly on the cable. Build with it while learning AE2: if devices disappear from the network, inspect channel saturation before replacing machines or storage. Coloured smart cables use their own registry IDs; the uncoloured cable is fluix_smart_cable."]
 			x: 2.5d
 			y: -1.25d
-			tasks: [{ id: "3250000000000002", item: "ae2:smart_cable", count: 8, type: "item" }]
+			tasks: [{ id: "3250000000000002", item: "ae2:fluix_smart_cable", count: 8, type: "item" }]
 			rewards: [{ id: "6250000000000002", type: "xp", xp: 40 }]
 		}
 		{
