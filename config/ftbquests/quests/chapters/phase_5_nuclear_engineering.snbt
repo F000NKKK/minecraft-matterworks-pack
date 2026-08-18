@@ -18,12 +18,12 @@
 			dependencies: ["2140000000000008"]
 			hide_dependency_lines: false
 			id: "2150000000000001"
-			title: "Nuclear Engineering Program"
-			description: ["Enter the NuclearCraft program only after process industry and digital control exist. Establish dedicated nuclear-material processing with the Manufactory; nuclear states are no longer treated as interchangeable elemental inventory."]
+			title: "Nuclear Material Processing"
+			description: ["Enter NuclearCraft by building the Manufactory. Nuclear engineering starts with dedicated material preparation; this machine is the first place where ordinary industrial production becomes nuclear-process infrastructure."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
-			size: 1.4d
+			size: 1.35d
 			tasks: [{ id: "3150000000000001", item: "nuclearcraft:manufactory", type: "item" }]
 			rewards: [{ id: "6150000000000001", type: "xp", xp: 400 }]
 		}
@@ -32,9 +32,9 @@
 			hide_dependency_lines: false
 			id: "2150000000000002"
 			title: "Isotope Separation"
-			description: ["Construct an Isotope Separator before reactor infrastructure. Matterworks treats enrichment and isotope preparation as an explicit process capability rather than something implied by owning a reactor controller."]
+			description: ["Build the Isotope Separator before reactor construction. Fuel preparation and enrichment are process steps with provenance; they are not implied by simply owning uranium or a reactor controller."]
 			x: 2.75d
-			y: -1.5d
+			y: -1.25d
 			shape: "square"
 			tasks: [{ id: "3150000000000002", item: "nuclearcraft:isotope_separator", type: "item" }]
 			rewards: [{ id: "6150000000000002", type: "xp", xp: 500 }]
@@ -43,38 +43,41 @@
 			dependencies: ["2150000000000001"]
 			hide_dependency_lines: false
 			id: "2150000000000005"
-			title: "Nuclear Fabrication Discipline"
-			description: ["Keep nuclear machining as its own production branch. Reactor hardware and fuel-cycle equipment must originate from a dedicated processing layer rather than being a direct extension of ordinary crafting."]
+			title: "Reactor Structure"
+			description: ["Manufacture a real reactor shell before the controller. A fission reactor is a multiblock thermal system, not one magic block; prepare enough casing to begin constructing an actual machine."]
 			x: 2.75d
-			y: 1.5d
+			y: 1.25d
 			shape: "square"
-			tasks: [{ id: "3150000000000005", item: "nuclearcraft:manufactory", type: "item" }]
-			rewards: [{ id: "6150000000000005", type: "xp", xp: 350 }]
+			tasks: [{ id: "3150000000000005", item: "nuclearcraft:fission_reactor_casing", count: 16, type: "item" }]
+			rewards: [{ id: "6150000000000005", type: "xp", xp: 450 }]
 		}
 		{
 			dependencies: ["2150000000000002", "2150000000000005"]
 			hide_dependency_lines: false
 			id: "2150000000000004"
-			title: "Fission Infrastructure"
-			description: ["Construct the NuclearCraft fission reactor controller only after isotope preparation and dedicated nuclear fabrication are established. The controller proves infrastructure, not yet generic transmutation authority."]
+			title: "Fission Control"
+			description: ["Construct the Fission Reactor Controller only after fuel preparation and reactor structure exist. At this point you have the hardware needed to assemble and operate a controlled NuclearCraft fission system."]
 			x: 5.5d
 			y: 0.0d
 			shape: "diamond"
-			size: 1.3d
+			size: 1.35d
 			tasks: [{ id: "3150000000000004", item: "nuclearcraft:fission_reactor_controller", type: "item" }]
-			rewards: [{ id: "6150000000000004", type: "xp", xp: 700 }]
+			rewards: [{ id: "6150000000000004", type: "xp", xp: 750 }]
 		}
 		{
 			dependencies: ["2150000000000004"]
 			hide_dependency_lines: false
 			id: "2150000000000003"
 			title: "Fuel Cycle Authority"
-			description: ["Establish the controlled fission-program boundary. Enrichment, reactor operation and later reprocessing remain provenance-sensitive NuclearCraft processes. This quest owns the fuel-cycle research permission until runtime auditing can replace the final infrastructure check with a verified depleted-fuel or reprocessing output ID."]
+			description: ["Complete the first nuclear-engineering program by demonstrating both enrichment infrastructure and reactor-control infrastructure. This milestone owns the NuclearCraft fuel-cycle research boundary; depleted fuel, irradiated states and waste remain physical-process products and are never generic synthesis outputs."]
 			x: 8.0d
 			y: 0.0d
 			shape: "hexagon"
 			size: 1.5d
-			tasks: [{ id: "3150000000000003", item: "nuclearcraft:fission_reactor_controller", type: "item" }]
+			tasks: [
+				{ id: "3150000000000003", item: "nuclearcraft:fission_reactor_casing", count: 24, type: "item" }
+				{ id: "3150000000000006", item: "nuclearcraft:isotope_separator", type: "item" }
+			]
 			rewards: [{ id: "6150000000000003", type: "xp", xp: 900 }]
 		}
 	]
