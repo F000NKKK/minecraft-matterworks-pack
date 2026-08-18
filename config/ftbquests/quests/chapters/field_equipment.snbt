@@ -7,7 +7,7 @@
 	icon: "mekanism:free_runners"
 	id: "1110000000000010"
 	images: [
-		{ x: 4.0d, y: 0.0d, width: 11.0d, height: 7.0d, image: "minecraft:textures/block/iron_block.png", alpha: 18, order: -20 }
+		{ x: 2.0d, y: 0.0d, width: 8.5d, height: 6.0d, image: "minecraft:textures/block/iron_block.png", alpha: 18, order: -20 }
 	]
 	order_index: 35
 	quest_links: []
@@ -47,18 +47,6 @@
 			size: 1.4d
 			tasks: [{ id: "3200000000000003", item: "mekanism:jetpack", type: "item" }]
 			rewards: [{ id: "6200000000000003", type: "xp", xp: 350 }]
-		}
-		{
-			dependencies: ["2200000000000003", "2190000000000007"]
-			id: "2200000000000004"
-			title: "Field Equipment Superseded"
-			description: ["The ordinary field-equipment ladder ends when Prestige Engineering provides the MekaSuit and gravitational module. The earlier equipment remains useful stepping-stone technology rather than an alternate route around the final armour program."]
-			x: 8.0d
-			y: 0.0d
-			shape: "hexagon"
-			size: 1.35d
-			tasks: [{ id: "3200000000000004", item: "mekanism:module_gravitational_modulating_unit", type: "item" }]
-			rewards: [{ id: "6200000000000004", type: "xp", xp: 500 }]
 		}
 	]
 	title: "Field Equipment"
