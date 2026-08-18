@@ -18,11 +18,11 @@ hash = "71979d18dcbe3a36ca0ddbe28ad7667b0a477a79a8f43e8218576354730a3eea"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_ae2.snbt"
-hash = "b64e1058fc7b38df1b12e9889412f8355c45e3a4a10e6414b305152a2c83d4a8"
+hash = "ad73b959245eee673f96c916b3bd24231d5a11119287d5c91c39a019ee779cdf"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_alchemistry_chemlib.snbt"
-hash = "592b62fe4eeabe8d2f733e730be849f325515b7467c15d3a86ccfa8b5b552a0c"
+hash = "162d2db5e4602518bcd270aedaaa16a1f79ad8cd183791fa07c274274483a02d"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_cc_tweaked.snbt"
