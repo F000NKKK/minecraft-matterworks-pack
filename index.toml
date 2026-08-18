@@ -10,7 +10,7 @@ hash = "1a2112c6306ed22e38ae9281a775e19321eac5d281c8cf06fc26f061007058ed"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/age_2_atomic.snbt"
-hash = "ab9387a6debb66c2c0bb42172fd5cb7aa7cf685faa9b70235e34f9d9ed65e1d0"
+hash = "409e6674e793b246b3db35df777fc6cc6eb73cfa2c41fb157a55224b9c05eaeb"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/age_3_fusion.snbt"
@@ -386,7 +386,7 @@ hash = "6572321f70da3143a30bd1d6cdf91a7ab4a77b77740c0d5137236f7aedcfe145"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/advantage_equipment.js"
-hash = "36baddd547517b6b7b39ef1259738fc3460f98ccd3d227b993879a6d83dd853b"
+hash = "5b5ccc00ece40fdeb0b521f09f533ce71144b8c2794d5669f3aee45e9e9860d7"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/atmosphere.js"
