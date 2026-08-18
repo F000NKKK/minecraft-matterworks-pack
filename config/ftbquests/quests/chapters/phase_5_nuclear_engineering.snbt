@@ -8,8 +8,8 @@
 	icon: "nuclearcraft:fission_reactor_controller"
 	id: "1110000000000005"
 	images: [
-		{ x: 4.0d, y: 0.0d, width: 11.5d, height: 6.5d, image: "minecraft:textures/block/deepslate_tiles.png", alpha: 30, order: -20 }
-		{ x: 4.0d, y: 0.0d, width: 9.0d, height: 4.5d, image: "minecraft:textures/block/lime_concrete.png", alpha: 10, order: -19 }
+		{ x: 5.0d, y: 0.0d, width: 14.0d, height: 8.0d, image: "minecraft:textures/block/deepslate_tiles.png", alpha: 30, order: -20 }
+		{ x: 5.0d, y: 0.0d, width: 11.0d, height: 6.0d, image: "minecraft:textures/block/lime_concrete.png", alpha: 10, order: -19 }
 	]
 	order_index: 50
 	quest_links: []
@@ -33,8 +33,8 @@
 			id: "2150000000000002"
 			title: "Isotope Separation"
 			description: ["Build the Isotope Separator before reactor construction. Fuel preparation and enrichment are process steps with provenance; they are not implied by simply owning uranium or a reactor controller."]
-			x: 2.75d
-			y: -1.25d
+			x: 3.0d
+			y: -2.25d
 			shape: "square"
 			tasks: [{ id: "3150000000000002", item: "nuclearcraft:isotope_separator", type: "item" }]
 			rewards: [{ id: "6150000000000002", type: "xp", xp: 500 }]
@@ -45,8 +45,8 @@
 			id: "2150000000000005"
 			title: "Reactor Structure"
 			description: ["Manufacture a real reactor shell before the controller. A fission reactor is a multiblock thermal system, not one magic block; prepare enough casing to begin constructing an actual machine."]
-			x: 2.75d
-			y: 1.25d
+			x: 3.0d
+			y: 2.25d
 			shape: "square"
 			tasks: [{ id: "3150000000000005", item: "nuclearcraft:fission_reactor_casing", count: 16, type: "item" }]
 			rewards: [{ id: "6150000000000005", type: "xp", xp: 450 }]
@@ -57,7 +57,7 @@
 			id: "2150000000000004"
 			title: "Fission Control"
 			description: ["Construct the Fission Reactor Controller only after fuel preparation and reactor structure exist. At this point you have the hardware needed to assemble and operate a controlled NuclearCraft fission system."]
-			x: 5.5d
+			x: 6.5d
 			y: 0.0d
 			shape: "diamond"
 			size: 1.35d
@@ -70,7 +70,7 @@
 			id: "2150000000000003"
 			title: "Fuel Handling"
 			description: ["Add a Fission Reactor Port. The reactor now has an explicit fuel and product interface, completing the minimum physical chain from material preparation through isotope separation, structure, control and fuel handling."]
-			x: 8.0d
+			x: 10.0d
 			y: 0.0d
 			shape: "hexagon"
 			size: 1.5d
