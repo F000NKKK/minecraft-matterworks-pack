@@ -46,7 +46,7 @@
 			hide_dependency_lines: false
 			id: "4120000000000004"
 			title: "Move Chemicals"
-			description: ["Pressurized Tubes carry Mekanism chemicals. Gas and chemical inventory is not an item stack and cannot be routed through ordinary transporters; learn this distinction before Phase 3 starts depending on chemical process chains."]
+			description: ["Pressurized Tubes carry Mekanism chemicals. Gas and chemical inventory is not an item stack and cannot be routed through ordinary transporters; learn this distinction before the Industrial Age starts depending on connected chemical process chains."]
 			x: 2.5d
 			y: 1.5d
 			tasks: [{ id: "5120000000000004", item: "mekanism:basic_pressurized_tube", count: 8, type: "item" }]
