@@ -10,7 +10,7 @@ hash = "b64e1058fc7b38df1b12e9889412f8355c45e3a4a10e6414b305152a2c83d4a8"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_alchemistry_chemlib.snbt"
-hash = "928d40c08b766ecfe9d6bb110da4826b2a31522c83a1770d07754233bf465fcc"
+hash = "592b62fe4eeabe8d2f733e730be849f325515b7467c15d3a86ccfa8b5b552a0c"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_cc_tweaked.snbt"
@@ -18,7 +18,7 @@ hash = "e80bb2a372aee06fc81cd2fd7df00cfc4874bc5cc3b01fff2bf3eded94627157"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_create.snbt"
-hash = "795eea38ea69beea2ab2db1c7f93fb1b6dbbe04bd04a0274c80cc9210c69c047"
+hash = "897064728c023f72bdbd237609ddc5da4c9d181ba6ce6e493575a5f2659d46ad"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_high_temperature_metallurgy.snbt"
