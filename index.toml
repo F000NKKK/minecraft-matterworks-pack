@@ -30,7 +30,7 @@ hash = "e80bb2a372aee06fc81cd2fd7df00cfc4874bc5cc3b01fff2bf3eded94627157"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_create.snbt"
-hash = "897064728c023f72bdbd237609ddc5da4c9d181ba6ce6e493575a5f2659d46ad"
+hash = "451217310068231387e367fb612dac90900587efa50eb758af830d09f01409f3"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_high_temperature_metallurgy.snbt"
@@ -42,11 +42,11 @@ hash = "0786604cdf7e57c35411ac85e232422ddf68bdaccc13cffe9d2ed753baf31dac"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_nuclearcraft.snbt"
-hash = "f7018b3a50d4debf3278d8b8d97400cf14476372d041095b0fb7c72c057cd019"
+hash = "61692ae6acd0a65e9e9195ea922bf80d273008a172e847e31979f98fab13641d"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_pressure_engineering.snbt"
-hash = "be6618a59246d60e543c208b42ff0599a65c77be8157e19cf91b06e7efa80ad8"
+hash = "d9fb31567e0dd5b0b94a98da019e7f303707044af19959d8153d5f1af3809405"
 
 [[files]]
 file = "config/ftbquests/quests/data.snbt"
