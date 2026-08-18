@@ -31,210 +31,165 @@ ServerEvents.recipes(event => {
 
     rewrittenOutputs.forEach(output => event.remove({ output: output }))
 
-    // Industrial Age — powered movement without armour-level protection.
-    event.shaped(
-        'mekanism:free_runners',
-        [
-            'E E',
-            'AWA',
-            'CSC'
-        ],
-        {
-            E: 'mekanism:energy_tablet',
-            A: 'mekanism:alloy_infused',
-            W: 'kubejs:insulated_copper_wire',
-            C: 'mekanism:basic_control_circuit',
-            S: '#forge:ingots/steel'
-        }
-    )
-        .id('matterworks:equipment/free_runners')
+    event.shaped('mekanism:free_runners', ['E E', 'AWA', 'CSC'], {
+        E: 'mekanism:energy_tablet',
+        A: 'mekanism:alloy_infused',
+        W: 'kubejs:insulated_copper_wire',
+        C: 'mekanism:basic_control_circuit',
+        S: '#forge:ingots/steel'
+    }).id('matterworks:equipment/free_runners')
 
-    // Industrial Age — breathing is a complete gas-handling system, not just a mask.
-    event.shaped(
-        'mekanism:scuba_mask',
-        [
-            'GCG',
-            'SWS',
-            'G G'
-        ],
-        {
-            G: '#forge:glass',
-            C: 'mekanism:basic_control_circuit',
-            S: '#forge:ingots/steel',
-            W: 'kubejs:insulated_copper_wire'
-        }
-    )
-        .id('matterworks:equipment/scuba_mask')
+    event.shaped('mekanism:scuba_mask', ['GCG', 'SWS', 'G G'], {
+        G: '#forge:glass',
+        C: 'mekanism:basic_control_circuit',
+        S: '#forge:ingots/steel',
+        W: 'kubejs:insulated_copper_wire'
+    }).id('matterworks:equipment/scuba_mask')
 
-    event.shaped(
-        'mekanism:scuba_tank',
-        [
-            'ACA',
-            'TWT',
-            'SSS'
-        ],
-        {
-            A: 'mekanism:alloy_infused',
-            C: 'mekanism:advanced_control_circuit',
-            T: 'mekanism:basic_chemical_tank',
-            W: 'kubejs:electromagnetic_coil',
-            S: '#forge:ingots/steel'
-        }
-    )
-        .id('matterworks:equipment/scuba_tank')
+    event.shaped('mekanism:scuba_tank', ['ACA', 'TWT', 'SSS'], {
+        A: 'mekanism:alloy_infused',
+        C: 'mekanism:advanced_control_circuit',
+        T: 'mekanism:basic_chemical_tank',
+        W: 'kubejs:electromagnetic_coil',
+        S: '#forge:ingots/steel'
+    }).id('matterworks:equipment/scuba_tank')
 
-    // Industrial Age — powered flight only after pressurised reaction chemistry.
-    event.shaped(
-        'mekanism:jetpack',
-        [
-            'SCS',
-            'ETE',
-            'WPW'
-        ],
-        {
-            S: '#forge:ingots/steel',
-            C: 'mekanism:advanced_control_circuit',
-            E: 'mekanism:energy_tablet',
-            T: 'mekanism:basic_chemical_tank',
-            W: 'kubejs:electromagnetic_coil',
-            P: 'mekanism:pressurized_reaction_chamber'
-        }
-    )
-        .id('matterworks:equipment/jetpack')
+    event.shaped('mekanism:jetpack', ['SCS', 'ETE', 'WPW'], {
+        S: '#forge:ingots/steel',
+        C: 'mekanism:advanced_control_circuit',
+        E: 'mekanism:energy_tablet',
+        T: 'mekanism:basic_chemical_tank',
+        W: 'kubejs:electromagnetic_coil',
+        P: 'mekanism:pressurized_reaction_chamber'
+    }).id('matterworks:equipment/jetpack')
 
-    /*
-     * Atomic Age — radiological protection.
-     *
-     * The stock Hazmat recipes are mostly lead and dye. In Matterworks the
-     * suit is a proper shielded composite: lead mass, HDPE backing, reinforced
-     * alloy and NuclearCraft reactor-structure material.
-     */
-    event.shaped(
-        'mekanism:hazmat_mask',
-        [
-            'LHL',
-            'GCG',
-            ' R '
-        ],
-        {
-            L: '#forge:ingots/lead',
-            H: 'mekanism:hdpe_sheet',
-            G: '#forge:glass_panes',
-            C: 'nuclearcraft:fission_reactor_casing',
-            R: 'mekanism:alloy_reinforced'
-        }
-    )
-        .id('matterworks:equipment/hazmat_mask')
+    event.shaped('mekanism:hazmat_mask', ['LHL', 'GCG', ' R '], {
+        L: '#forge:ingots/lead',
+        H: 'mekanism:hdpe_sheet',
+        G: '#forge:glass_panes',
+        C: 'nuclearcraft:fission_reactor_casing',
+        R: 'mekanism:alloy_reinforced'
+    }).id('matterworks:equipment/hazmat_mask')
 
-    event.shaped(
-        'mekanism:hazmat_gown',
-        [
-            'LHL',
-            'LCL',
-            'LRL'
-        ],
-        {
-            L: '#forge:ingots/lead',
-            H: 'mekanism:hdpe_sheet',
-            C: 'nuclearcraft:fission_reactor_casing',
-            R: 'mekanism:alloy_reinforced'
-        }
-    )
-        .id('matterworks:equipment/hazmat_gown')
+    event.shaped('mekanism:hazmat_gown', ['LHL', 'LCL', 'LRL'], {
+        L: '#forge:ingots/lead',
+        H: 'mekanism:hdpe_sheet',
+        C: 'nuclearcraft:fission_reactor_casing',
+        R: 'mekanism:alloy_reinforced'
+    }).id('matterworks:equipment/hazmat_gown')
 
-    event.shaped(
-        'mekanism:hazmat_pants',
-        [
-            'LCL',
-            'LHL',
-            'R R'
-        ],
-        {
-            L: '#forge:ingots/lead',
-            H: 'mekanism:hdpe_sheet',
-            C: 'nuclearcraft:fission_reactor_casing',
-            R: 'mekanism:alloy_reinforced'
-        }
-    )
-        .id('matterworks:equipment/hazmat_pants')
+    event.shaped('mekanism:hazmat_pants', ['LCL', 'LHL', 'R R'], {
+        L: '#forge:ingots/lead',
+        H: 'mekanism:hdpe_sheet',
+        C: 'nuclearcraft:fission_reactor_casing',
+        R: 'mekanism:alloy_reinforced'
+    }).id('matterworks:equipment/hazmat_pants')
 
-    event.shaped(
-        'mekanism:hazmat_boots',
-        [
-            'L L',
-            'CRC',
-            ' H '
-        ],
-        {
-            L: '#forge:ingots/lead',
-            H: 'mekanism:hdpe_sheet',
-            C: 'nuclearcraft:fission_reactor_casing',
-            R: 'mekanism:alloy_reinforced'
-        }
-    )
-        .id('matterworks:equipment/hazmat_boots')
+    event.shaped('mekanism:hazmat_boots', ['L L', 'CRC', ' H '], {
+        L: '#forge:ingots/lead',
+        H: 'mekanism:hdpe_sheet',
+        C: 'nuclearcraft:fission_reactor_casing',
+        R: 'mekanism:alloy_reinforced'
+    }).id('matterworks:equipment/hazmat_boots')
+
+    event.shaped('mekanism:hdpe_elytra', ['AHA', 'HEH', 'P P'], {
+        A: 'mekanism:alloy_atomic',
+        H: 'mekanism:hdpe_sheet',
+        E: 'minecraft:elytra',
+        P: 'ae2:engineering_processor'
+    }).id('matterworks:equipment/hdpe_elytra')
+
+    event.shaped('mekanism:free_runners_armored', ['RAR', 'QFQ', ' C '], {
+        R: 'mekanism:alloy_reinforced',
+        A: 'mekanism:alloy_atomic',
+        Q: '#forge:gems/diamond',
+        F: 'mekanism:free_runners',
+        C: 'nuclearcraft:fission_reactor_casing'
+    }).id('matterworks:equipment/free_runners_armored')
+
+    event.shaped('mekanism:jetpack_armored', ['RAR', 'QJQ', 'CPC'], {
+        R: 'mekanism:alloy_reinforced',
+        A: 'mekanism:alloy_atomic',
+        Q: '#forge:gems/diamond',
+        J: 'mekanism:jetpack',
+        C: 'nuclearcraft:fission_reactor_casing',
+        P: 'nuclearcraft:fission_reactor_port'
+    }).id('matterworks:equipment/jetpack_armored')
 
     /*
-     * Atomic Age — reinforced/gliding equipment.
-     *
-     * HDPE Elytra remains below powered armored flight: the End-sourced Elytra
-     * is retained, but its reinforcement now also consumes AE2 engineering
-     * processors to tie the upgrade to digitally controlled manufacturing.
+     * PneumaticCraft is another major survival-power path. Pneumatic Armor is
+     * programmable powered equipment, and Jet Boots can become full flight.
+     * Keep the base suit in Atomic Age and push the strongest flight upgrades
+     * through accelerator/fusion prestige components.
      */
-    event.shaped(
-        'mekanism:hdpe_elytra',
-        [
-            'AHA',
-            'HEH',
-            'P P'
-        ],
-        {
-            A: 'mekanism:alloy_atomic',
-            H: 'mekanism:hdpe_sheet',
-            E: 'minecraft:elytra',
-            P: 'ae2:engineering_processor'
-        }
-    )
-        .id('matterworks:equipment/hdpe_elytra')
+    const pneumaticArmor = [
+        'pneumaticcraft:pneumatic_helmet',
+        'pneumaticcraft:pneumatic_chestplate',
+        'pneumaticcraft:pneumatic_leggings',
+        'pneumaticcraft:pneumatic_boots'
+    ]
+    pneumaticArmor.forEach(output => event.remove({ output: output }))
 
-    // Armored Free Runners require an actual fission-structure component.
-    event.shaped(
-        'mekanism:free_runners_armored',
-        [
-            'RAR',
-            'QFQ',
-            ' C '
-        ],
-        {
-            R: 'mekanism:alloy_reinforced',
-            A: 'mekanism:alloy_atomic',
-            Q: '#forge:gems/diamond',
-            F: 'mekanism:free_runners',
-            C: 'nuclearcraft:fission_reactor_casing'
-        }
-    )
-        .id('matterworks:equipment/free_runners_armored')
+    const pneumaticArmorIngredients = {
+        P: 'pneumaticcraft:printed_circuit_board',
+        A: 'pneumaticcraft:reinforced_air_canister',
+        R: 'mekanism:alloy_reinforced',
+        E: 'ae2:engineering_processor',
+        I: '#forge:ingots/compressed_iron'
+    }
 
-    // Armored Jetpack is later still: the fuel-handling branch must be real.
-    event.shaped(
-        'mekanism:jetpack_armored',
-        [
-            'RAR',
-            'QJQ',
-            'CPC'
-        ],
-        {
-            R: 'mekanism:alloy_reinforced',
-            A: 'mekanism:alloy_atomic',
-            Q: '#forge:gems/diamond',
-            J: 'mekanism:jetpack',
-            C: 'nuclearcraft:fission_reactor_casing',
-            P: 'nuclearcraft:fission_reactor_port'
-        }
-    )
-        .id('matterworks:equipment/jetpack_armored')
+    event.shaped('pneumaticcraft:pneumatic_helmet', ['IPI', 'AEA', ' R '], pneumaticArmorIngredients)
+        .id('matterworks:equipment/pneumatic_helmet')
+    event.shaped('pneumaticcraft:pneumatic_chestplate', ['R R', 'APA', 'IEI'], pneumaticArmorIngredients)
+        .id('matterworks:equipment/pneumatic_chestplate')
+    event.shaped('pneumaticcraft:pneumatic_leggings', ['RPR', 'A A', 'IEI'], pneumaticArmorIngredients)
+        .id('matterworks:equipment/pneumatic_leggings')
+    event.shaped('pneumaticcraft:pneumatic_boots', ['A A', 'RPR', 'I I'], pneumaticArmorIngredients)
+        .id('matterworks:equipment/pneumatic_boots')
+
+    for (let level = 1; level <= 5; level++) {
+        event.remove({ output: `pneumaticcraft:jet_boots_upgrade_${level}` })
+    }
+
+    event.shaped('pneumaticcraft:jet_boots_upgrade_1', [' C ', 'PJP', ' A '], {
+        C: 'pneumaticcraft:printed_circuit_board',
+        P: '#forge:ingots/compressed_iron',
+        J: 'mekanism:jetpack',
+        A: 'pneumaticcraft:reinforced_air_canister'
+    }).id('matterworks:equipment/jet_boots_upgrade_1')
+
+    event.shaped('pneumaticcraft:jet_boots_upgrade_2', [' R ', 'PUP', ' A '], {
+        R: 'mekanism:alloy_reinforced',
+        P: 'pneumaticcraft:printed_circuit_board',
+        U: 'pneumaticcraft:jet_boots_upgrade_1',
+        A: 'pneumaticcraft:reinforced_air_canister'
+    }).id('matterworks:equipment/jet_boots_upgrade_2')
+
+    event.shaped('pneumaticcraft:jet_boots_upgrade_3', ['CRC', 'PUP', ' A '], {
+        C: 'nuclearcraft:fission_reactor_casing',
+        R: 'mekanism:alloy_atomic',
+        P: 'ae2:engineering_processor',
+        U: 'pneumaticcraft:jet_boots_upgrade_2',
+        A: 'pneumaticcraft:reinforced_air_canister'
+    }).id('matterworks:equipment/jet_boots_upgrade_3')
+
+    event.shaped('pneumaticcraft:jet_boots_upgrade_4', ['PMP', 'RUR', ' A '], {
+        P: 'kubejs:particle_focusing_coil',
+        M: 'kubejs:particle_confinement_matrix',
+        R: 'mekanism:alloy_atomic',
+        U: 'pneumaticcraft:jet_boots_upgrade_3',
+        A: 'pneumaticcraft:reinforced_air_canister'
+    }).id('matterworks:equipment/jet_boots_upgrade_4')
+
+    event.shaped('pneumaticcraft:jet_boots_upgrade_5', ['FQF', 'PUP', 'AAA'], {
+        F: 'kubejs:fusion_field_core',
+        Q: 'kubejs:quantum_singularity_core',
+        P: 'kubejs:particle_confinement_matrix',
+        U: 'pneumaticcraft:jet_boots_upgrade_4',
+        A: 'mekanism:pellet_antimatter'
+    }).id('matterworks:equipment/jet_boots_upgrade_5')
 
     console.info(
-        `[Matterworks] Advantage equipment progression registered: ${rewrittenOutputs.length} stock outputs rewritten across Industrial/Atomic tiers`
+        `[Matterworks] Advantage equipment progression registered: ${rewrittenOutputs.length} Mekanism outputs plus PneumaticCraft powered armour/flight rewritten across Industrial/Atomic/Fusion tiers`
     )
 })
