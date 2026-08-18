@@ -6,7 +6,8 @@ while editing SNBT by hand:
 - the same item used as a mandatory Main Program task in multiple quests;
 - guide tasks duplicating Main Program progression items;
 - dependencies pointing to unknown quest IDs;
-- dependencies from an earlier phase to a later phase.
+- dependencies from an earlier phase to a later phase;
+- a later phase rewarding an item that was already a progression gate earlier.
 
 It uses only the Python standard library and does not try to implement a full
 SNBT parser. The quest files use a deliberately regular layout, so balanced
@@ -38,6 +39,7 @@ class Quest:
     phase: int | None
     guide: bool
     task_items: tuple[str, ...]
+    reward_items: tuple[str, ...]
     dependencies: tuple[str, ...]
 
 
@@ -101,16 +103,15 @@ def _skip_string(text: str, start: int) -> tuple[str, int]:
     raise ValueError(f"Unterminated string at offset {start}")
 
 
-def task_items(block: str) -> tuple[str, ...]:
-    marker = "tasks:"
+def section_items(block: str, marker: str) -> tuple[str, ...]:
     pos = block.find(marker)
     if pos < 0:
         return ()
     array_start = block.find("[", pos)
     if array_start < 0:
         return ()
-    tasks, _ = extract_balanced(block, array_start, "[", "]")
-    return tuple(ITEM_RE.findall(tasks))
+    section, _ = extract_balanced(block, array_start, "[", "]")
+    return tuple(ITEM_RE.findall(section))
 
 
 def parse_chapter(path: Path) -> list[Quest]:
@@ -132,7 +133,8 @@ def parse_chapter(path: Path) -> list[Quest]:
                 quest_id=id_match.group(1),
                 phase=phase,
                 guide=guide,
-                task_items=task_items(block),
+                task_items=section_items(block, "tasks:"),
+                reward_items=section_items(block, "rewards:"),
                 dependencies=dependencies,
             )
         )
@@ -176,6 +178,20 @@ def main() -> int:
                     errors.append(
                         f"guide duplicates progression item {item}: "
                         f"{quest.chapter.name}/{quest.quest_id} overlaps {owner.chapter.name}/{owner.quest_id}"
+                    )
+
+        if not quest.guide and quest.phase is not None:
+            for item in quest.reward_items:
+                owner = main_item_owners.get(item)
+                if (
+                    owner is not None
+                    and owner.phase is not None
+                    and owner.phase < quest.phase
+                ):
+                    errors.append(
+                        f"late reward repeats earlier progression item {item}: "
+                        f"phase {quest.phase} {quest.chapter.name}/{quest.quest_id} rewards item gated in "
+                        f"phase {owner.phase} {owner.chapter.name}/{owner.quest_id}"
                     )
 
         for dependency in quest.dependencies:
