@@ -5,6 +5,7 @@ The audit intentionally focuses on structural mistakes that are easy to create
 while editing SNBT by hand:
 - the same item used as a mandatory Main Program task in multiple quests;
 - guide tasks duplicating Main Program progression items;
+- passive checkmark tasks inside guides;
 - dependencies pointing to unknown quest IDs;
 - dependencies from an earlier phase to a later phase;
 - a later phase rewarding an item that was already a progression gate earlier.
@@ -30,6 +31,7 @@ ITEM_RE = re.compile(r'\bitem:\s*"([^"]+)"')
 DEPENDENCY_RE = re.compile(r'\bdependencies:\s*\[([^\]]*)\]', re.S)
 QUOTED_ID_RE = re.compile(r'"(\d{16})"')
 PHASE_RE = re.compile(r"phase_(\d+)_")
+CHECKMARK_RE = re.compile(r'\btype:\s*"checkmark"')
 
 
 @dataclass(frozen=True)
@@ -41,6 +43,7 @@ class Quest:
     task_items: tuple[str, ...]
     reward_items: tuple[str, ...]
     dependencies: tuple[str, ...]
+    passive_checkmark: bool
 
 
 def extract_balanced(text: str, start: int, opener: str, closer: str) -> tuple[str, int]:
@@ -114,6 +117,17 @@ def section_items(block: str, marker: str) -> tuple[str, ...]:
     return tuple(ITEM_RE.findall(section))
 
 
+def task_section(block: str) -> str:
+    pos = block.find("tasks:")
+    if pos < 0:
+        return ""
+    array_start = block.find("[", pos)
+    if array_start < 0:
+        return ""
+    section, _ = extract_balanced(block, array_start, "[", "]")
+    return section
+
+
 def parse_chapter(path: Path) -> list[Quest]:
     text = path.read_text(encoding="utf-8")
     phase_match = PHASE_RE.search(path.name)
@@ -127,15 +141,17 @@ def parse_chapter(path: Path) -> list[Quest]:
             raise ValueError(f"Quest without a 16-digit id in {path}")
         dep_match = DEPENDENCY_RE.search(block)
         dependencies = tuple(QUOTED_ID_RE.findall(dep_match.group(1))) if dep_match else ()
+        tasks = task_section(block)
         result.append(
             Quest(
                 chapter=path,
                 quest_id=id_match.group(1),
                 phase=phase,
                 guide=guide,
-                task_items=section_items(block, "tasks:"),
+                task_items=tuple(ITEM_RE.findall(tasks)),
                 reward_items=section_items(block, "rewards:"),
                 dependencies=dependencies,
+                passive_checkmark=bool(CHECKMARK_RE.search(tasks)),
             )
         )
     return result
@@ -155,6 +171,12 @@ def main() -> int:
             )
         else:
             by_id[quest.quest_id] = quest
+
+        if quest.guide and quest.passive_checkmark:
+            errors.append(
+                f"passive guide checkmark is forbidden: {quest.chapter.name}/{quest.quest_id}; "
+                "guides must advance through concrete item or machine tasks"
+            )
 
     main_item_owners: dict[str, Quest] = {}
     for quest in quests:
