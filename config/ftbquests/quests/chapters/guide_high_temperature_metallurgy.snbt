@@ -10,38 +10,60 @@
 	quests: [
 		{
 			id: "4190000000000001"
-			title: "Thermal Metallurgy Is a Process"
-			description: ["A material formula does not describe temperature history, atmosphere, melt handling, phase control or heat treatment. Matterworks therefore treats advanced alloys as process-owned materials instead of generic Combiner outputs."]
+			title: "Temperature Changes the Process"
+			description: ["A chemical formula says which elements are present; it does not describe melting range, atmosphere, phase transitions or heat treatment. High-temperature metallurgy is therefore a process discipline, not a larger version of ordinary crafting."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.2d
-			tasks: [{ id: "5190000000000001", item: "minecraft:blast_furnace", type: "item" }]
+			tasks: [{ id: "5190000000000001", type: "checkmark" }]
 			rewards: [{ id: "6290000000000001", type: "xp", xp: 25 }]
 		}
 		{
 			dependencies: ["4190000000000001"]
 			hide_dependency_lines: false
 			id: "4190000000000002"
-			title: "Molten Routes Are Quarantined"
-			description: ["Several NuclearCraft Chemical Reactor recipes reference molten material tags that are absent in the pinned pack. Matterworks removes those routes instead of inventing placeholder fluids. Some upstream pairings are also chemically incomplete, so supplying the missing tags would create progression bypasses rather than fix them."]
+			title: "Alloys Need Controlled Composition"
+			description: ["Industrial alloys are not defined by two arbitrary ingredients touching each other. Ratio, impurities and processing route matter. That is why Matterworks does not accept shortcuts such as iron + chromium pretending to be nichrome, or a generic molten recipe standing in for stainless-steel production."]
 			x: 2.5d
-			y: 0.0d
-			shape: "diamond"
-			tasks: [{ id: "5190000000000002", item: "kubejs:graphite", type: "item" }]
+			y: -1.25d
+			tasks: [{ id: "5190000000000002", type: "checkmark" }]
 			rewards: [{ id: "6290000000000002", type: "xp", xp: 35 }]
 		}
 		{
-			dependencies: ["4190000000000002"]
+			dependencies: ["4190000000000001"]
 			hide_dependency_lines: false
 			id: "4190000000000003"
-			title: "Separate Metallurgical Families"
-			description: ["Steel grades, stainless alloys, superconductors, refractory alloys, ceramic composites and high-pressure carbon are separate process families. They will be promoted from the backlog only when Matterworks has a physically meaningful machine route and a matching Main Program milestone for that family."]
+			title: "Ceramics and Composites Are Not Metals"
+			description: ["Silicon carbide and SiC-SiC ceramic-matrix composites require ceramic processing and controlled structure. They must not be folded into the same alloying abstraction used for metallic melts simply because some ingredients overlap."]
+			x: 2.5d
+			y: 1.25d
+			tasks: [{ id: "5190000000000003", type: "checkmark" }]
+			rewards: [{ id: "6290000000000003", type: "xp", xp: 35 }]
+		}
+		{
+			dependencies: ["4190000000000002", "4190000000000003"]
+			hide_dependency_lines: false
+			id: "4190000000000004"
+			title: "Why Molten Routes Are Quarantined"
+			description: ["Several NuclearCraft Chemical Reactor recipes depend on molten Forge tags absent from this pack. Matterworks removes those recipes instead of fabricating placeholder fluids because doing so would silently activate incomplete or chemically invalid process graphs."]
 			x: 5.0d
 			y: 0.0d
+			shape: "diamond"
+			tasks: [{ id: "5190000000000004", type: "checkmark" }]
+			rewards: [{ id: "6290000000000004", type: "xp", xp: 50 }]
+		}
+		{
+			dependencies: ["4190000000000004"]
+			hide_dependency_lines: false
+			id: "4190000000000005"
+			title: "One Family at a Time"
+			description: ["Steel grades, stainless alloys, superconductors, refractory alloys, ceramics and high-pressure carbon will become separate production families. A family leaves quarantine only when the pack has both a physically meaningful recipe route and a correctly placed Main Program milestone."]
+			x: 7.5d
+			y: 0.0d
 			shape: "hexagon"
-			tasks: [{ id: "5190000000000003", item: "mekanism:advanced_control_circuit", type: "item" }]
-			rewards: [{ id: "6290000000000003", type: "xp", xp: 50 }]
+			tasks: [{ id: "5190000000000005", type: "checkmark" }]
+			rewards: [{ id: "6290000000000005", type: "xp", xp: 75 }]
 		}
 	]
 	title: "Guide - High-Temperature Metallurgy"
