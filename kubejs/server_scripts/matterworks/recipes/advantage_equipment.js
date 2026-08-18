@@ -21,6 +21,10 @@ ServerEvents.recipes(event => {
         'mekanism:scuba_tank',
         'mekanism:jetpack',
         'mekanism:hdpe_elytra',
+        'mekanism:hazmat_mask',
+        'mekanism:hazmat_gown',
+        'mekanism:hazmat_pants',
+        'mekanism:hazmat_boots',
         'mekanism:free_runners_armored',
         'mekanism:jetpack_armored'
     ]
@@ -97,6 +101,78 @@ ServerEvents.recipes(event => {
         }
     )
         .id('matterworks:equipment/jetpack')
+
+    /*
+     * Atomic Age — radiological protection.
+     *
+     * The stock Hazmat recipes are mostly lead and dye. In Matterworks the
+     * suit is a proper shielded composite: lead mass, HDPE backing, reinforced
+     * alloy and NuclearCraft reactor-structure material.
+     */
+    event.shaped(
+        'mekanism:hazmat_mask',
+        [
+            'LHL',
+            'GCG',
+            ' R '
+        ],
+        {
+            L: '#forge:ingots/lead',
+            H: 'mekanism:hdpe_sheet',
+            G: '#forge:glass_panes',
+            C: 'nuclearcraft:fission_reactor_casing',
+            R: 'mekanism:alloy_reinforced'
+        }
+    )
+        .id('matterworks:equipment/hazmat_mask')
+
+    event.shaped(
+        'mekanism:hazmat_gown',
+        [
+            'LHL',
+            'LCL',
+            'LRL'
+        ],
+        {
+            L: '#forge:ingots/lead',
+            H: 'mekanism:hdpe_sheet',
+            C: 'nuclearcraft:fission_reactor_casing',
+            R: 'mekanism:alloy_reinforced'
+        }
+    )
+        .id('matterworks:equipment/hazmat_gown')
+
+    event.shaped(
+        'mekanism:hazmat_pants',
+        [
+            'LCL',
+            'LHL',
+            'R R'
+        ],
+        {
+            L: '#forge:ingots/lead',
+            H: 'mekanism:hdpe_sheet',
+            C: 'nuclearcraft:fission_reactor_casing',
+            R: 'mekanism:alloy_reinforced'
+        }
+    )
+        .id('matterworks:equipment/hazmat_pants')
+
+    event.shaped(
+        'mekanism:hazmat_boots',
+        [
+            'L L',
+            'CRC',
+            ' H '
+        ],
+        {
+            L: '#forge:ingots/lead',
+            H: 'mekanism:hdpe_sheet',
+            C: 'nuclearcraft:fission_reactor_casing',
+            R: 'mekanism:alloy_reinforced'
+        }
+    )
+        .id('matterworks:equipment/hazmat_boots')
 
     /*
      * Atomic Age — reinforced/gliding equipment.
