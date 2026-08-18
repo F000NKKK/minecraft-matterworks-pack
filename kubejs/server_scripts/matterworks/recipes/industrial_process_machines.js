@@ -6,7 +6,8 @@ ServerEvents.recipes(event => {
      *
      * Keep NuclearCraft's chemically meaningful alloy-smelter recipes, but
      * prevent the machine itself from bypassing Matterworks electrical furnace,
-     * engineered-carbon and electromechanical infrastructure.
+     * engineered-carbon and electromechanical infrastructure. The gate must not
+     * consume a NuclearCraft alloy whose own production requires this machine.
      */
     event.remove({ output: 'nuclearcraft:alloy_smelter' })
     event.shaped(
@@ -14,14 +15,14 @@ ServerEvents.recipes(event => {
         [
             'SGS',
             'CEC',
-            'SFS'
+            'SRS'
         ],
         {
             S: '#forge:ingots/steel',
             G: 'kubejs:graphite',
             C: 'kubejs:electromechanical_control_unit',
             E: 'mekanism:energized_smelter',
-            F: 'nuclearcraft:ferroboron_ingot'
+            R: 'mekanism:alloy_reinforced'
         }
     ).id('matterworks:process/high_temperature/alloy_smelter')
 
