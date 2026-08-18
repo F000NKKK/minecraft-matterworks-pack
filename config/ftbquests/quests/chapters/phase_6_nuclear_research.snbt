@@ -8,8 +8,8 @@
 	icon: "nuclearcraft:ring_accelerator_controller"
 	id: "1110000000000006"
 	images: [
-		{ x: 4.5d, y: 0.0d, width: 13.0d, height: 7.0d, image: "minecraft:textures/block/obsidian.png", alpha: 28, order: -20 }
-		{ x: 4.5d, y: 0.0d, width: 10.0d, height: 5.0d, image: "minecraft:textures/block/purple_stained_glass.png", alpha: 14, order: -19 }
+		{ x: 6.0d, y: 0.0d, width: 16.5d, height: 8.5d, image: "minecraft:textures/block/obsidian.png", alpha: 28, order: -20 }
+		{ x: 6.0d, y: 0.0d, width: 13.5d, height: 6.5d, image: "minecraft:textures/block/purple_stained_glass.png", alpha: 14, order: -19 }
 	]
 	order_index: 60
 	quest_links: []
@@ -33,7 +33,7 @@
 			id: "2160000000000002"
 			title: "Accelerator Vacuum Structure"
 			description: ["Build accelerator casing. The casing represents the controlled beam environment and structural envelope required before source or transport hardware is meaningful."]
-			x: 2.5d
+			x: 3.0d
 			y: 0.0d
 			shape: "square"
 			tasks: [{ id: "3160000000000002", item: "nuclearcraft:accelerator_casing", count: 16, type: "item" }]
@@ -45,8 +45,8 @@
 			id: "2160000000000003"
 			title: "Ion Injection"
 			description: ["Construct the ion-source port. This is the beam origin: matter must be ionised and injected before focusing or downstream experiments can occur."]
-			x: 5.0d
-			y: -1.5d
+			x: 6.0d
+			y: -2.5d
 			shape: "square"
 			tasks: [{ id: "3160000000000003", item: "nuclearcraft:accelerator_ion_source_port", type: "item" }]
 			rewards: [{ id: "6160000000000003", type: "xp", xp: 500 }]
@@ -57,8 +57,8 @@
 			id: "2160000000000004"
 			title: "Beam Extraction"
 			description: ["Construct the beam port. The source creates a beam; the beam port gives that beam a controlled interface to experiments and downstream particle systems."]
-			x: 5.0d
-			y: 1.5d
+			x: 6.0d
+			y: 2.5d
 			shape: "square"
 			tasks: [{ id: "3160000000000004", item: "nuclearcraft:accelerator_beam_port", type: "item" }]
 			rewards: [{ id: "6160000000000004", type: "xp", xp: 500 }]
@@ -69,7 +69,7 @@
 			id: "2160000000000006"
 			title: "Accelerator Interface"
 			description: ["Add the accelerator port that integrates the multiblock with its external process infrastructure. Injection, extraction and machine interfaces are now all present."]
-			x: 7.5d
+			x: 9.5d
 			y: 0.0d
 			shape: "diamond"
 			size: 1.25d
@@ -82,7 +82,7 @@
 			id: "2160000000000005"
 			title: "Ring Accelerator"
 			description: ["Construct the Matterworks-gated Ring Accelerator Controller. This is the first point where all prior magnetic, structural, source and beam-interface work converges into a complete high-energy research machine."]
-			x: 10.0d
+			x: 13.0d
 			y: 0.0d
 			shape: "hexagon"
 			size: 1.5d
