@@ -38,7 +38,7 @@ hash = "be6618a59246d60e543c208b42ff0599a65c77be8157e19cf91b06e7efa80ad8"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_1_mechanical_industry.snbt"
-hash = "218fa9de484bb048f15b426a6de257467858a053cb8cd0af10066cea431092c2"
+hash = "86ffbd7d24c87fe90ce19ad53ca08091922fa0ecb3444a76eb842276b4e5fd82"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_2_chemical_analysis.snbt"
@@ -50,7 +50,7 @@ hash = "2743519c4914987e7696c615c394f361241a17eec2ad06323eba6a3b2c871291"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_4_digital_industry.snbt"
-hash = "ce757698055e7c171718314351ac93e80d620c1aa321cad000dfe34daf1de034"
+hash = "3e76e489e7ff302d866741fb27c3c6b7f2df670ba8adcd38ec3089997744062d"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/phase_5_nuclear_engineering.snbt"
