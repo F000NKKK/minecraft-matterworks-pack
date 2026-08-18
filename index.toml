@@ -6,7 +6,7 @@ hash = "c55d580e9e958693174302eb854ec1068358a235cdd537cfda843f5cc693d6d2"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/age_1_industrial.snbt"
-hash = "1a2112c6306ed22e38ae9281a775e19321eac5d281c8cf06fc26f061007058ed"
+hash = "6ed1fa1cbd26bbc263dfc9c9c1a3a3bcd7a113f2495c0bf3d1556b3fc5fb1086"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/age_2_atomic.snbt"
