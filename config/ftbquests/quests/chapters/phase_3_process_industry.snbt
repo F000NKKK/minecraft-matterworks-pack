@@ -52,11 +52,23 @@
 			rewards: [{ id: "6130000000000003", type: "xp", xp: 125 }]
 		}
 		{
-			dependencies: ["2130000000000002", "2130000000000003"]
+			dependencies: ["2130000000000002"]
+			hide_dependency_lines: false
+			id: "2130000000000006"
+			title: "Engineered Carbon Production"
+			description: ["Produce graphite through the industrial carbon route. Graphite is now a real process material and becomes the electrode feed for the first industrial electrolysis stack."]
+			x: 5.0d
+			y: 1.75d
+			shape: "square"
+			tasks: [{ id: "3130000000000006", item: "kubejs:graphite", count: 4, type: "item" }]
+			rewards: [{ id: "6130000000000006", type: "xp", xp: 150 }]
+		}
+		{
+			dependencies: ["2130000000000002", "2130000000000003", "2130000000000006"]
 			hide_dependency_lines: false
 			id: "2130000000000004"
 			title: "Electrochemical Core"
-			description: ["Construct the graphite-electrode electrochemical core. The core joins engineered carbon, primitive electrical components and infused materials into a real electrolysis cell stack."]
+			description: ["Construct the graphite-electrode electrochemical core only after infused alloy, gas-handling hardware and engineered graphite are available. The recipe physically consumes graphite electrodes, primitive wiring, a capacitor, quartz and infused alloy."]
 			x: 5.0d
 			y: -1.75d
 			shape: "square"
@@ -68,7 +80,7 @@
 			hide_dependency_lines: false
 			id: "2130000000000005"
 			title: "Industrial Electrolysis"
-			description: ["Build an Electrolytic Separator. The plant can now split feedstocks into controlled gas products; this is a process milestone, not an inventory shortcut."]
+			description: ["Build an Electrolytic Separator around the electrochemical core. The separator adds dedicated gas tanks and control circuitry, completing a usable water-electrolysis system rather than merely proving that the core exists."]
 			x: 7.5d
 			y: -2.0d
 			shape: "gear"
@@ -91,21 +103,9 @@
 		{
 			dependencies: ["2130000000000002"]
 			hide_dependency_lines: false
-			id: "2130000000000006"
-			title: "Engineered Carbon Production"
-			description: ["Produce graphite through the industrial carbon route and preserve its process provenance. Matterworks may understand graphite as carbon without allowing arbitrary carbon synthesis to replace manufacturing."]
-			x: 5.0d
-			y: 1.75d
-			shape: "square"
-			tasks: [{ id: "3130000000000006", item: "kubejs:graphite", count: 4, type: "item" }]
-			rewards: [{ id: "6130000000000006", type: "xp", xp: 150 }]
-		}
-		{
-			dependencies: ["2130000000000002"]
-			hide_dependency_lines: false
 			id: "2130000000000008"
 			title: "Electromechanical Power Conversion"
-			description: ["Build the Matterworks-gated Electric Motor. Phase 1 proved kinetic-to-electrical generation; this milestone establishes the reverse FE-to-kinetic conversion only after controlled steelmaking and Mekanism control electronics exist."]
+			description: ["Build the Matterworks-gated Electric Motor after controlled metallurgy has produced both steel and Mekanism control electronics. Phase 1 proved kinetic-to-electrical generation; this establishes the reverse FE-to-kinetic conversion without trivialising the mechanical era."]
 			x: 7.5d
 			y: 1.5d
 			shape: "square"
