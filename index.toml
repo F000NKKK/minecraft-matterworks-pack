@@ -446,7 +446,7 @@ hash = "ab0efcae3b3ee7517bb0c3a5bb485aa02ee7ac310049223a02cde0a8a49b1f6a"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/industrial_process_machines.js"
-hash = "7fba273dec5da058364e65c3ff63ff778fed20669b5d2f8baa5609652e4f351f"
+hash = "14d13fb4bc0dbcd947e8d6f962d53cf20082b4ff54cc7fa7c341b0e26493217a"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/material_unification.js"
