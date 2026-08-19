@@ -5,6 +5,9 @@ The composition registry describes what a material *is* while the research
 registry describes who owns its production path. These concepts must not drift:
 every composition entry needs exactly one research disposition, and nuclear
 state must never accidentally become ordinary generic chemistry.
+
+A process backlog is an explicit disposition, not an exception. A material may
+be synthesis-owned, provenance-only, or backlog-owned, but never more than one.
 """
 
 from __future__ import annotations
@@ -27,9 +30,12 @@ FAMILY_RE = re.compile(
     r"^\s*([a-z0-9_]+):\s*ageOwned\(\{\s*stage:\s*'[^']+',\s*age:\s*'([^']+)',\s*ownerQuest:\s*'(\d{16})',\s*materials:\s*\[([^\]]*)\]",
     re.MULTILINE,
 )
+BACKLOG_FAMILY_RE = re.compile(
+    r"^\s*([a-z0-9_]+):\s*Object\.freeze\(\{\s*targetAge:\s*'([^']+)',\s*materials:\s*\[([^\]]*)\]",
+    re.MULTILINE,
+)
 STRING_RE = re.compile(r"'([^']+)'")
 PROVENANCE_RE = re.compile(r"provenanceOnly:\s*Object\.freeze\(\[([^\]]*)\]\)")
-UNRESOLVED_RE = re.compile(r"const MatterworksBacklogFamilies = Object\.freeze\(\{([^}]*)\}\)", re.DOTALL)
 NUCLEAR_PARENT_ARRAY_RE = re.compile(
     r"const matterworksNuclearOwnedParentElements = \[([^\]]*)\]",
     re.MULTILINE,
@@ -47,6 +53,7 @@ ALLOWED_POLICIES = {
     "MIXTURE",
     "UNKNOWN",
 }
+KNOWN_AGES = {"industrial_age", "atomic_age", "fusion_age"}
 EXPECTED_NUCLEAR_PARENT_FORMS = {
     "ores",
     "dusts",
@@ -98,21 +105,27 @@ def main() -> int:
         for material in materials:
             material_families[material].append(key)
 
+    backlog_families: dict[str, dict[str, object]] = {}
+    backlog_materials: dict[str, list[str]] = defaultdict(list)
+    for key, target_age, raw_materials in BACKLOG_FAMILY_RE.findall(research_text):
+        materials = parse_string_list(raw_materials)
+        backlog_families[key] = {
+            "targetAge": target_age,
+            "materials": materials,
+        }
+        if target_age not in KNOWN_AGES:
+            errors.append(f"backlog family {key!r} targets unknown age {target_age!r}")
+        if not materials:
+            errors.append(f"backlog family {key!r} has no materials")
+        for material in materials:
+            backlog_materials[material].append(key)
+
     provenance_match = PROVENANCE_RE.search(research_text)
     if provenance_match is None:
         provenance: set[str] = set()
         errors.append("research registry has no parseable provenanceOnly list")
     else:
         provenance = set(parse_string_list(provenance_match.group(1)))
-
-    # 0.5.7 intentionally has no unresolved process backlog. Keep this strict so
-    # a future backlog addition has to be represented by a real parser/contract
-    # rather than silently bypassing disposition checks.
-    backlog_match = UNRESOLVED_RE.search(research_text)
-    if backlog_match is None:
-        errors.append("research registry has no parseable MatterworksBacklogFamilies")
-    elif backlog_match.group(1).strip():
-        errors.append("material provenance validator requires explicit support before reintroducing unresolved backlog families")
 
     for material, owners in sorted(material_families.items()):
         if len(owners) != 1:
@@ -122,6 +135,18 @@ def main() -> int:
         if material not in composition:
             errors.append(f"synthesis material {material!r} has no composition entry")
 
+    for material, owners in sorted(backlog_materials.items()):
+        if len(owners) != 1:
+            errors.append(
+                f"material {material!r} belongs to multiple backlog families: {', '.join(sorted(owners))}"
+            )
+        if material not in composition:
+            errors.append(f"backlog material {material!r} has no composition entry")
+        if material in material_families:
+            errors.append(
+                f"material {material!r} is both synthesis-owned by {material_families[material]} and backlog-owned by {owners}"
+            )
+
     for material in sorted(provenance):
         if material not in composition:
             errors.append(f"provenance-only material {material!r} has no composition entry")
@@ -129,9 +154,17 @@ def main() -> int:
             errors.append(
                 f"material {material!r} is both provenance-only and synthesis-owned by {material_families[material]}"
             )
+        if material in backlog_materials:
+            errors.append(
+                f"material {material!r} is both provenance-only and backlog-owned by {backlog_materials[material]}"
+            )
 
     for material in sorted(composition):
-        dispositions = int(material in material_families) + int(material in provenance)
+        dispositions = (
+            int(material in material_families)
+            + int(material in provenance)
+            + int(material in backlog_materials)
+        )
         if dispositions == 0:
             errors.append(f"composition material {material!r} has no research disposition")
         elif dispositions > 1:
@@ -145,6 +178,13 @@ def main() -> int:
         errors.append(
             "provenance-only entries must currently be NUCLEAR materials: "
             + ", ".join(sorted(non_nuclear_provenance))
+        )
+
+    nuclear_backlog = set(backlog_materials) & nuclear_materials
+    if nuclear_backlog:
+        errors.append(
+            "NUCLEAR state must remain provenance-only or late parent-element synthesis, not generic process backlog: "
+            + ", ".join(sorted(nuclear_backlog))
         )
 
     parent_family = families.get("nuclear_parent_elements")
@@ -214,6 +254,7 @@ def main() -> int:
     print(
         "Matterworks material provenance validation passed: "
         f"{len(composition)} composition materials, {len(material_families)} synthesis-owned, "
+        f"{len(backlog_materials)} backlog-owned across {len(backlog_families)} process families, "
         f"{len(provenance)} provenance-only, {len(nuclear_materials)} nuclear-policy materials, "
         f"{len(parent_materials)} late parent elements with generic Dissolver routes blocked."
     )
