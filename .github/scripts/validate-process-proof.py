@@ -112,6 +112,24 @@ CAPABILITY_PROOFS: dict[str, Proof] = {
         "2160000000000005",
         frozenset({"nuclearcraft:ring_accelerator_controller"}),
     ),
+    "atomic_fission": Proof(
+        "2170000000000003",
+        frozenset({"alchemistry:fission_chamber_controller"}),
+    ),
+    "nuclear_transmutation": Proof(
+        "2180000000000003",
+        frozenset({"alchemistry:fusion_chamber_controller"}),
+    ),
+    "fusion_engineering": Proof(
+        "2180000000000004",
+        frozenset({
+            "mekanismgenerators:fusion_reactor_frame",
+            "mekanismgenerators:fusion_reactor_port",
+            "mekanismgenerators:laser_focus_matrix",
+            "mekanismgenerators:fusion_reactor_controller",
+            "mekanismgenerators:hohlraum",
+        }),
+    ),
 }
 
 NUCLEAR_FRONT_END_PROOFS: dict[str, frozenset[str]] = {
