@@ -6,6 +6,10 @@ is not sufficient: their owning module and late-game dependencies are part of
 the pack's design contract. This validator makes that contract explicit so a
 future refactor cannot silently move or simplify MekaSuit, powered flight, or
 prestige components while structural recipe checks still pass.
+
+The policy also pins the exact upstream mod artifacts whose registry/source
+contracts were audited. Updating one of those artifacts must intentionally fail
+this gate until the assumptions below are re-verified against the new version.
 """
 
 from __future__ import annotations
@@ -38,6 +42,13 @@ dependencies = load_module("matterworks_policy_dependencies", DEPENDENCY_VALIDAT
 def recipe_module(name: str) -> str:
     return f"kubejs/server_scripts/matterworks/recipes/{name}"
 
+
+EXPECTED_MOD_FILES = {
+    "mods/mekanism.pw.toml": "Mekanism-1.20.1-10.4.16.80.jar",
+    "mods/mekanism-generators.pw.toml": "MekanismGenerators-1.20.1-10.4.16.80.jar",
+    "mods/pneumaticcraft-repressurized.pw.toml": "pneumaticcraft-repressurized-6.0.23+mc1.20.1.jar",
+    "mods/nuclearcraft-neoteric.pw.toml": "NuclearCraft-1.20.1-1.2.34.jar",
+}
 
 EXPECTED_OWNERS = {
     # Mekanism field equipment.
@@ -144,6 +155,19 @@ PRESTIGE_COMPONENTS = {
 }
 
 
+def read_packwiz_filename(path: Path) -> str | None:
+    if not path.is_file():
+        return None
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line.startswith("filename = "):
+            continue
+        value = line[len("filename = ") :].strip()
+        if len(value) >= 2 and value[0] == value[-1] == '"':
+            return value[1:-1]
+    return None
+
+
 def collect_replacement_owners(paths: list[Path]) -> dict[str, set[str]]:
     owners: dict[str, set[str]] = defaultdict(set)
     for path in paths:
@@ -176,6 +200,14 @@ def main() -> int:
     owners = collect_replacement_owners(paths)
     recipe_deps, recipe_sources = collect_recipe_dependencies(paths)
     errors: list[str] = []
+
+    for rel, expected_filename in sorted(EXPECTED_MOD_FILES.items()):
+        actual_filename = read_packwiz_filename(ROOT / rel)
+        if actual_filename != expected_filename:
+            errors.append(
+                f"audited mod contract {rel} changed: expected {expected_filename!r}, "
+                f"actual {actual_filename!r}; re-audit registry/progression assumptions before updating the pin"
+            )
 
     for output, expected_owner in sorted(EXPECTED_OWNERS.items()):
         actual = owners.get(output, set())
@@ -222,6 +254,7 @@ def main() -> int:
 
     print(
         "Matterworks progression policy validation passed: "
+        f"{len(EXPECTED_MOD_FILES)} audited mod contracts, "
         f"{len(EXPECTED_OWNERS)} protected replacements, "
         f"{len(REQUIRED_DEPENDENCIES)} dependency contracts, "
         f"{len(PRESTIGE_COMPONENTS)} prestige components."
