@@ -1,8 +1,6 @@
 console.info('[Matterworks] Loading quest-owned research registry')
 
-const MatterworksBacklogFamilies = Object.freeze({
-    exotic_process_materials: Object.freeze({ targetAge: 'atomic_age', targetPhase: 'atomic_age', title: 'Exotic Process Materials', materials: Object.freeze(['memory_essence']) })
-})
+const MatterworksBacklogFamilies = Object.freeze({})
 
 const MatterworksUnresolved = Object.freeze(
     Object.values(MatterworksBacklogFamilies).reduce((materials, family) => {
@@ -59,6 +57,7 @@ const MatterworksResearch = Object.freeze({
         pressure_materials: ageOwned({ stage: 'matterworks:synthesis/pressure_materials', age: 'industrial_age', ownerQuest: '2130000000000010', materials: ['compressed_iron'] }),
         organophosphorus: ageOwned({ stage: 'matterworks:synthesis/organophosphorus', age: 'atomic_age', ownerQuest: '2150000000000003', materials: ['tributyl_phosphate'] }),
         polymers: ageOwned({ stage: 'matterworks:synthesis/polymers', age: 'industrial_age', ownerQuest: '2130000000000011', materials: ['pneumaticcraft_plastic', 'mekanism_hdpe'] }),
+        experience_capture: ageOwned({ stage: 'matterworks:synthesis/experience_capture', age: 'atomic_age', ownerQuest: '2140000000000008', materials: ['memory_essence'] }),
         nuclear_parent_elements: ageOwned({ stage: 'matterworks:synthesis/nuclear_parent_elements', age: 'fusion_age', ownerQuest: '2180000000000003', materials: ['uranium', 'thorium', 'polonium', 'radium'] })
     }),
     backlogFamilies: MatterworksBacklogFamilies,
