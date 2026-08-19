@@ -19,7 +19,7 @@ ServerEvents.recipes(event => {
             'GSG'
         ],
         {
-            P: 'pneumaticcraft:plastic',
+            P: '#pneumaticcraft:plastic_sheets',
             E: 'ae2:engineering_processor',
             C: 'mekanism:advanced_control_circuit',
             A: 'computercraft:computer_advanced',
