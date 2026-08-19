@@ -8,68 +8,13 @@
 	order_index: 140
 	quest_links: []
 	quests: [
-		{
-			id: "2240000000000001"
-			title: "Nuclear Materials Preserve History"
-			description: ["NuclearCraft materials are not ordinary alloy ingredients. Isotope, enrichment, irradiation and burnup are part of identity. Matterworks therefore never lets generic chemistry recreate reactor fuel, depleted fuel or waste from a list of elements. The Manufactory is your first concrete nuclear-process machine and marks the point where material history starts to matter operationally."]
-			x: 0.0d
-			y: 0.0d
-			shape: "gear"
-			size: 1.2d
-			tasks: [{ id: "3240000000000001", item: "nuclearcraft:manufactory", type: "item" }]
-			rewards: [{ id: "6240000000000001", type: "xp", xp: 25 }]
-		}
-		{
-			dependencies: ["2240000000000001"]
-			hide_dependency_lines: false
-			id: "2240000000000002"
-			title: "A Fission Reactor Is a Heat System"
-			description: ["Fuel generates heat; reactor geometry and cooling determine whether that heat can be removed safely. Do not judge a reactor only by RF output. Prepare real reactor casing and think in terms of a multiblock thermal envelope before activation: where heat is produced, which cooling rules are satisfied and what happens when cooling capacity is lost."]
-			x: 2.5d
-			y: -1.25d
-			tasks: [{ id: "3240000000000002", item: "nuclearcraft:fission_reactor_casing", count: 16, type: "item" }]
-			rewards: [{ id: "6240000000000002", type: "xp", xp: 40 }]
-		}
-		{
-			dependencies: ["2240000000000002"]
-			hide_dependency_lines: false
-			id: "2240000000000003"
-			title: "Fuel Handling Is Part of the Reactor"
-			description: ["A controller does not make a complete reactor. The multiblock needs structure and explicit interfaces for fuel and products. Build a reactor port and design loading, unloading and shutdown behaviour before continuous operation so a blocked output cannot silently turn into a process failure."]
-			x: 5.0d
-			y: -1.25d
-			tasks: [{ id: "3240000000000003", item: "nuclearcraft:fission_reactor_port", type: "item" }]
-			rewards: [{ id: "6240000000000003", type: "xp", xp: 50 }]
-		}
-		{
-			dependencies: ["2240000000000002"]
-			hide_dependency_lines: false
-			id: "2240000000000004"
-			title: "Control Before Optimisation"
-			description: ["Matterworks places digital process control before the nuclear program for a reason. Pair a programmable computer with the reactor controller conceptually: establish measured state, alarms and a safe shutdown path first; optimise fuel utilisation or power density only after the reactor can be supervised predictably."]
-			x: 5.0d
-			y: 1.25d
-			tasks: [
-				{ id: "3240000000000004", item: "computercraft:computer_advanced", type: "item" }
-				{ id: "3240000000000006", item: "nuclearcraft:fission_reactor_controller", type: "item" }
-			]
-			rewards: [{ id: "6240000000000004", type: "xp", xp: 50 }]
-		}
-		{
-			dependencies: ["2240000000000003", "2240000000000004"]
-			hide_dependency_lines: false
-			id: "2240000000000005"
-			title: "Accelerators Are Beam Systems"
-			description: ["An accelerator is not one transmutation block. It needs magnetic focusing, a controlled structure, an ion source and a beam path. Build both ends of a real beam line: the ion-source port defines where matter enters the accelerator and the beam port defines where the accelerated particles leave for downstream experiments. The Atomic Age accelerator branch follows that physical sequence explicitly."]
-			x: 7.5d
-			y: 0.0d
-			shape: "diamond"
-			tasks: [
-				{ id: "3240000000000005", item: "nuclearcraft:accelerator_ion_source_port", type: "item" }
-				{ id: "3240000000000007", item: "nuclearcraft:accelerator_beam_port", type: "item" }
-			]
-			rewards: [{ id: "6240000000000005", type: "xp", xp: 75 }]
-		}
+		{ id: "2240000000000001", title: "Nuclear Materials Preserve History", description: ["Nuclear materials are defined by more than elemental composition. Conversion state, isotope ratio, enrichment, irradiation and burnup are part of identity. Matterworks therefore never lets generic chemistry recreate fuel, depleted fuel or fission products from a bag of elements."], x: 0.0d, y: 0.0d, shape: "gear", size: 1.2d, tasks: [{ id: "3240000000000001", item: "nuclearcraft:manufactory", type: "item" }], rewards: [{ id: "6240000000000001", type: "xp", xp: 25 }] }
+		{ dependencies: ["2240000000000001"], hide_dependency_lines: false, id: "2240000000000006", title: "Conversion Before Enrichment", description: ["NuclearCraft 1.2.34 already contains a useful front end: uranium dust and oxygen become uranium-oxide fluid, the Crystallizer produces yellowcake, and only then does isotope separation begin. Matterworks disables the alternate direct uranium-dust separator recipe so this conversion history cannot be skipped."], x: 0.0d, y: 3.0d, shape: "square", tasks: [{ id: "3240000000000008", item: "nuclearcraft:yellowcake_dust", count: 10, type: "item" } { id: "3240000000000009", item: "nuclearcraft:uranium_235", type: "item" }], rewards: [{ id: "6240000000000006", type: "xp", xp: 40 }] }
+		{ dependencies: ["2240000000000006"], hide_dependency_lines: false, id: "2240000000000002", title: "A Fission Reactor Is a Heat System", description: ["Fuel generates heat; geometry and cooling determine whether that heat can be removed safely. Main progression now requires real heat-sink hardware before the controller instead of merely explaining thermal design in this guide."], x: 0.0d, y: 6.0d, tasks: [{ id: "3240000000000002", item: "nuclearcraft:fission_reactor_casing", count: 16, type: "item" } { id: "3240000000000010", item: "nuclearcraft:copper_heat_sink", count: 4, type: "item" }], rewards: [{ id: "6240000000000002", type: "xp", xp: 40 }] }
+		{ dependencies: ["2240000000000002"], hide_dependency_lines: false, id: "2240000000000003", title: "Burnup Proves Operation", description: ["A controller and port only prove construction. Depleted LEU fuel proves the reactor actually accepted fabricated fuel and completed irradiation/burnup. Matterworks therefore uses depleted fuel as the operational-fission milestone."], x: 0.0d, y: 9.0d, tasks: [{ id: "3240000000000003", item: "nuclearcraft:depleted_fuel_uranium_leu_235", type: "item" }], rewards: [{ id: "6240000000000003", type: "xp", xp: 50 }] }
+		{ dependencies: ["2240000000000003"], hide_dependency_lines: false, id: "2240000000000004", title: "Control Before Optimisation", description: ["Digital process control remains a prerequisite for the reactor controller. Establish measured state, alarms and a safe shutdown path before optimising fuel utilisation or power density; automation is safety infrastructure here, not decoration."], x: -3.0d, y: 12.0d, tasks: [{ id: "3240000000000004", item: "computercraft:computer_advanced", type: "item" } { id: "3240000000000006", item: "nuclearcraft:fission_reactor_controller", type: "item" }], rewards: [{ id: "6240000000000004", type: "xp", xp: 50 }] }
+		{ dependencies: ["2240000000000003"], hide_dependency_lines: false, id: "2240000000000007", title: "Reprocessing Closes the Fuel Cycle", description: ["Depleted fuel is not ordinary waste. The Fuel Reprocessor recovers useful actinides and exposes fission-product streams. Main progression now completes this post-irradiation step before particle engineering begins."], x: 3.0d, y: 12.0d, tasks: [{ id: "3240000000000011", item: "nuclearcraft:fuel_reprocessor", type: "item" } { id: "3240000000000012", item: "nuclearcraft:plutonium_239", type: "item" }], rewards: [{ id: "6240000000000007", type: "xp", xp: 60 }] }
+		{ dependencies: ["2240000000000004", "2240000000000007"], hide_dependency_lines: false, id: "2240000000000005", title: "Accelerators Are Beam Systems", description: ["Only after the fuel cycle is operational does the program move to particle engineering. An accelerator needs magnetic focusing, controlled structure, an ion source, a beam path and machine interfaces; it is not a single transmutation block."], x: 0.0d, y: 15.0d, shape: "diamond", tasks: [{ id: "3240000000000005", item: "nuclearcraft:accelerator_ion_source_port", type: "item" } { id: "3240000000000007", item: "nuclearcraft:accelerator_beam_port", type: "item" }], rewards: [{ id: "6240000000000005", type: "xp", xp: 75 }] }
 	]
 	title: "Guide - NuclearCraft Engineering"
 }
