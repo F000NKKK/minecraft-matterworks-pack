@@ -442,7 +442,7 @@ hash = "33767c355bb1913d0bf599e4690989e9393636d281ae4e9f293752ab46d5a4c8"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/electrical.js"
-hash = "71fbf4d97e0a7423e5e13f3323cf311e076868286384bb54736bbc900657ec98"
+hash = "334d348bb393b01dec5e5ffda851464e5a10f8592c67b780bdfed00280dc352e"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/endgame_equipment.js"
@@ -458,7 +458,7 @@ hash = "2946662d835a3a39a5c2937d9afaa2cc5970300d6dc0e0334c2a07384d36fd9c"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/mekanism.js"
-hash = "bad4d2f21e589b0c57f8acd832384a7c1f8f6e847cc04b1f5af72f4f9fb2b9ea"
+hash = "c5938926d878e5e1a6dfd39ff45f4a153e14e801624629e7dce51f320a532fc3"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/metallurgy.js"
