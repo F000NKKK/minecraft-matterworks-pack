@@ -32,7 +32,7 @@ const MatterworksBacklogFamilies = Object.freeze({
     }),
     specialist_alloying: Object.freeze({
         targetAge: 'industrial_age',
-        materials: ['ferroboron', 'zirconium_molybdenum', 'nichrome', 'niobium_tin', 'niobium_titanium', 'thermoconducting_alloy', 'extreme_alloy', 'super_alloy', 'sic_sic_cmc', 'c_mn_blend'],
+        materials: ['carbon_manganese', 'ferroboron', 'zirconium_molybdenum', 'nichrome', 'niobium_tin', 'niobium_titanium', 'thermoconducting_alloy', 'extreme_alloy', 'super_alloy', 'sic_sic_cmc', 'c_mn_blend'],
         reason: 'each material needs a validated alloy/composite route instead of inheriting the generic alloy-smelter milestone'
     }),
     specialty_formulations: Object.freeze({
@@ -108,7 +108,7 @@ const MatterworksResearch = Object.freeze({
         prestige_engineering: ageOwned({ stage: 'matterworks:capability/prestige_engineering', age: 'fusion_age', ownerQuest: '2190000000000007' })
     }),
     synthesisFamilies: Object.freeze({
-        basic_alloys: ageOwned({ stage: 'matterworks:synthesis/basic_alloys', age: 'industrial_age', ownerQuest: '2120000000000007', materials: ['bronze', 'brass', 'electrum', 'shibuichi', 'tin_silver', 'lead_platinum', 'osmiridium', 'carbon_manganese'] }),
+        basic_alloys: ageOwned({ stage: 'matterworks:synthesis/basic_alloys', age: 'industrial_age', ownerQuest: '2120000000000007', materials: ['bronze', 'brass', 'electrum', 'shibuichi', 'tin_silver', 'lead_platinum', 'osmiridium'] }),
         graphite_engineering: ageOwned({ stage: 'matterworks:synthesis/graphite_engineering', age: 'industrial_age', ownerQuest: '2130000000000006', materials: ['graphite'] }),
         controlled_steelmaking: ageOwned({ stage: 'matterworks:synthesis/controlled_steelmaking', age: 'industrial_age', ownerQuest: '2130000000000020', materials: ['steel', 'hsla_steel', 'stainless_steel'] }),
         tough_alloy_processing: ageOwned({ stage: 'matterworks:synthesis/tough_alloy_processing', age: 'industrial_age', ownerQuest: '2130000000000020', materials: ['tough_alloy'] }),
