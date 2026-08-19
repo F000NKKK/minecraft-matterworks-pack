@@ -26,6 +26,56 @@ ID_CALL_RE = re.compile(
 )
 
 
+def strip_js_comments(text: str) -> str:
+    """Blank JS comments while preserving strings, offsets and line numbers."""
+    chars = list(text)
+    i = 0
+    quote: str | None = None
+    escaped = False
+
+    while i < len(chars):
+        ch = chars[i]
+        if quote is not None:
+            if escaped:
+                escaped = False
+            elif ch == "\\":
+                escaped = True
+            elif ch == quote:
+                quote = None
+            i += 1
+            continue
+
+        if ch in {'"', "'", '`'}:
+            quote = ch
+            i += 1
+            continue
+
+        if ch == '/' and i + 1 < len(chars) and chars[i + 1] == '/':
+            chars[i] = chars[i + 1] = ' '
+            i += 2
+            while i < len(chars) and chars[i] != '\n':
+                chars[i] = ' '
+                i += 1
+            continue
+
+        if ch == '/' and i + 1 < len(chars) and chars[i + 1] == '*':
+            chars[i] = chars[i + 1] = ' '
+            i += 2
+            while i + 1 < len(chars):
+                if chars[i] == '*' and chars[i + 1] == '/':
+                    chars[i] = chars[i + 1] = ' '
+                    i += 2
+                    break
+                if chars[i] != '\n':
+                    chars[i] = ' '
+                i += 1
+            continue
+
+        i += 1
+
+    return ''.join(chars)
+
+
 def find_matching_paren(text: str, open_index: int) -> int | None:
     depth = 0
     quote: str | None = None
@@ -68,7 +118,8 @@ def main() -> int:
     custom_count = 0
 
     for path in sorted(RECIPES_ROOT.glob("*.js")):
-        text = path.read_text(encoding="utf-8")
+        original_text = path.read_text(encoding="utf-8")
+        text = strip_js_comments(original_text)
         rel = path.relative_to(ROOT).as_posix()
 
         for match in CUSTOM_START_RE.finditer(text):
