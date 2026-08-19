@@ -2,10 +2,11 @@
 """Enforce Matterworks protected-output progression policy.
 
 Some items remove enough survival friction that merely checking recipe validity
-is not sufficient: their owning module and late-game dependencies are part of
-the pack's design contract. This validator makes that contract explicit so a
-future refactor cannot silently move or simplify MekaSuit, powered flight, or
-prestige components while structural recipe checks still pass.
+is not sufficient: their owning module, late-game dependencies and quest-book
+visibility are part of the pack's design contract. This validator makes that
+contract explicit so a future refactor cannot silently move, simplify or hide
+MekaSuit, powered flight, or prestige components while structural recipe checks
+still pass.
 
 The policy also pins the exact upstream mod artifacts whose registry/source
 contracts were audited. Updating one of those artifacts must intentionally fail
@@ -48,6 +49,34 @@ EXPECTED_MOD_FILES = {
     "mods/mekanism-generators.pw.toml": "MekanismGenerators-1.20.1-10.4.16.80.jar",
     "mods/pneumaticcraft-repressurized.pw.toml": "pneumaticcraft-repressurized-6.0.23+mc1.20.1.jar",
     "mods/nuclearcraft-neoteric.pw.toml": "NuclearCraft-1.20.1-1.2.34.jar",
+}
+
+EXPECTED_QUEST_COVERAGE = {
+    "config/ftbquests/quests/chapters/age_2_atomic.snbt": {
+        "mekanism:hdpe_elytra",
+        "mekanism:hazmat_mask",
+        "mekanism:hazmat_gown",
+        "mekanism:hazmat_pants",
+        "mekanism:hazmat_boots",
+        "nuclearcraft:fission_reactor_controller",
+        "nuclearcraft:fission_reactor_port",
+        "mekanism:free_runners_armored",
+        "mekanism:jetpack_armored",
+        "nuclearcraft:ring_accelerator_controller",
+    },
+    "config/ftbquests/quests/chapters/age_3_fusion.snbt": {
+        "kubejs:reactor_grade_frame",
+        "kubejs:particle_confinement_matrix",
+        "kubejs:fusion_field_core",
+        "kubejs:quantum_singularity_core",
+        "mekanism:mekasuit_helmet",
+        "mekanism:mekasuit_bodyarmor",
+        "mekanism:mekasuit_pants",
+        "mekanism:mekasuit_boots",
+        "mekanism:meka_tool",
+        "mekanism:atomic_disassembler",
+        "mekanism:module_gravitational_modulating_unit",
+    },
 }
 
 EXPECTED_OWNERS = {
@@ -209,6 +238,23 @@ def main() -> int:
                 f"actual {actual_filename!r}; re-audit registry/progression assumptions before updating the pin"
             )
 
+    for rel, expected_items in sorted(EXPECTED_QUEST_COVERAGE.items()):
+        chapter = ROOT / rel
+        if not chapter.is_file():
+            errors.append(f"protected progression chapter is missing: {rel}")
+            continue
+        text = chapter.read_text(encoding="utf-8")
+        missing = {
+            item
+            for item in expected_items
+            if f'item: "{item}"' not in text
+        }
+        if missing:
+            errors.append(
+                f"protected progression chapter {rel} is missing item-task coverage: "
+                f"{', '.join(sorted(missing))}"
+            )
+
     for output, expected_owner in sorted(EXPECTED_OWNERS.items()):
         actual = owners.get(output, set())
         if actual != {expected_owner}:
@@ -252,12 +298,14 @@ def main() -> int:
             print(f"  - {error}", file=sys.stderr)
         return 1
 
+    quest_items = sum(len(items) for items in EXPECTED_QUEST_COVERAGE.values())
     print(
         "Matterworks progression policy validation passed: "
         f"{len(EXPECTED_MOD_FILES)} audited mod contracts, "
         f"{len(EXPECTED_OWNERS)} protected replacements, "
         f"{len(REQUIRED_DEPENDENCIES)} dependency contracts, "
-        f"{len(PRESTIGE_COMPONENTS)} prestige components."
+        f"{len(PRESTIGE_COMPONENTS)} prestige components, "
+        f"{quest_items} protected quest item tasks."
     )
     return 0
 
