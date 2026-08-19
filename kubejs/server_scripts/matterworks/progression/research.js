@@ -101,7 +101,8 @@ const MatterworksResearch = Object.freeze({
         industrial_process_integration: ageOwned({ stage: 'matterworks:capability/industrial_process_integration', age: 'industrial_age', ownerQuest: '2130000000000024' }),
         network_supervision: ageOwned({ stage: 'matterworks:capability/network_supervision', age: 'atomic_age', ownerQuest: '2140000000000007' }),
         digital_control: ageOwned({ stage: 'matterworks:capability/digital_control', age: 'atomic_age', ownerQuest: '2140000000000008' }),
-        nuclear_fuel_cycle: ageOwned({ stage: 'matterworks:capability/nuclear_fuel_cycle', age: 'atomic_age', ownerQuest: '2150000000000003' }),
+        operational_fission: ageOwned({ stage: 'matterworks:capability/operational_fission', age: 'atomic_age', ownerQuest: '2150000000000009' }),
+        nuclear_fuel_cycle: ageOwned({ stage: 'matterworks:capability/nuclear_fuel_cycle', age: 'atomic_age', ownerQuest: '2150000000000010' }),
         accelerator_research: ageOwned({ stage: 'matterworks:capability/accelerator_research', age: 'atomic_age', ownerQuest: '2160000000000005' }),
         atomic_fission: ageOwned({ stage: 'matterworks:capability/atomic_fission', age: 'atomic_age', ownerQuest: '2170000000000003' }),
         fusion_engineering: ageOwned({ stage: 'matterworks:capability/fusion_engineering', age: 'fusion_age', ownerQuest: '2180000000000003' }),
@@ -121,7 +122,7 @@ const MatterworksResearch = Object.freeze({
         nuclear_parent_elements: ageOwned({ stage: 'matterworks:synthesis/nuclear_parent_elements', age: 'fusion_age', ownerQuest: '2180000000000003', materials: ['uranium', 'thorium', 'polonium', 'radium'] })
     }),
     backlogFamilies: MatterworksBacklogFamilies,
-    provenanceOnly: Object.freeze(['yellowcake', 'uranium_oxide', 'uranium_hexafluoride', 'irradiated_borax', 'nuclear_isotopes', 'reactor_fuel', 'depleted_fuel', 'nuclear_waste']),
+    provenanceOnly: Object.freeze(['yellowcake', 'uranium_oxide', 'irradiated_borax', 'nuclear_isotopes', 'reactor_fuel', 'depleted_fuel', 'nuclear_waste']),
     unresolved: MatterworksUnresolved
 })
 
