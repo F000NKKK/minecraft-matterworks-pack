@@ -179,35 +179,13 @@ ServerEvents.recipes(event => {
         .id('matterworks:particle/accelerator_beam_port')
 
     /*
-     * Ring accelerator
-     *
-     * NuclearCraft registers the ring controller as
-     * `nuclearcraft:ring_accelerator_controller`.
-     *
-     * Keep NuclearCraft's own high-tier materials in the recipe and add the
-     * Matterworks focusing component. Useful Target Chamber reactions will be
-     * introduced as production/experimental recipes later; artificial
-     * calibration-token items are intentionally not part of progression.
+     * Ring accelerator controller recipe ownership intentionally lives in
+     * digital_control_gates.js. The particle module owns beam hardware and
+     * accelerator structure; the control module owns the safety-critical
+     * programmable controller boundary.
      */
-    event.remove({ output: 'nuclearcraft:ring_accelerator_controller' })
-    event.shaped(
-        'nuclearcraft:ring_accelerator_controller',
-        [
-            'PFP',
-            'XAX',
-            'PCP'
-        ],
-        {
-            P: 'nuclearcraft:plate_elite',
-            F: 'kubejs:particle_focusing_coil',
-            X: '#forge:ingots/extreme',
-            A: 'nuclearcraft:advanced_processor',
-            C: 'nuclearcraft:accelerator_casing'
-        }
-    )
-        .id('matterworks:particle/ring_accelerator_controller')
 
     console.info(
-        '[Matterworks] Particle progression registered: focusing hardware -> linear/ring accelerator infrastructure'
+        '[Matterworks] Particle progression registered: focusing hardware -> accelerator infrastructure; controller delegated to digital control'
     )
 })
