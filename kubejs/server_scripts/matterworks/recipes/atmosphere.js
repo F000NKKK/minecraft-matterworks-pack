@@ -14,11 +14,12 @@ ServerEvents.recipes(event => {
      * The pressure network itself is the atmosphere feed. No bottled or
      * virtual "compressed air" fluid exists.
      *
-     * `molecular_sieve_charge` is now the replaceable adsorbent media, not a
-     * fake disposable pressure vessel. Quartz supplies the silica fraction,
-     * clay supplies the aluminosilicate precursor and sodium hydroxide stands
-     * in for the alkaline zeolite-synthesis/activation step. Media replacement
-     * and regeneration are compressed into one stackable maintenance charge.
+     * 0.5.8 models `molecular_sieve_charge` as replaceable carbon molecular
+     * sieve media rather than a disposable metal cartridge. Charcoal is the
+     * carbon precursor; hot water/steam activation in the Thermopneumatic
+     * Processing Plant represents pore development and media conditioning.
+     * The resulting stackable charge compresses bed replacement/regeneration
+     * into a maintainable gameplay consumable.
      *
      * The nitrogen generator recovers the nitrogen fraction. Oxygen, argon
      * and trace gases are vented as the oxygen-rich waste stream. Oxygen for
@@ -26,19 +27,28 @@ ServerEvents.recipes(event => {
      * route until a later cryogenic-separation tier is introduced.
      */
 
-    event.shaped(
-        Item.of('kubejs:molecular_sieve_charge', 4),
-        [
-            'QAQ',
-            'ASA',
-            'QAQ'
-        ],
-        {
-            Q: '#forge:gems/quartz',
-            A: 'minecraft:clay_ball',
-            S: 'chemlib:sodium_hydroxide'
-        }
-    )
+    event.custom({
+        type: 'pneumaticcraft:thermo_plant',
+        item_input: {
+            item: 'minecraft:charcoal'
+        },
+        fluid_input: {
+            type: 'pneumaticcraft:fluid',
+            amount: 250,
+            tag: 'minecraft:water'
+        },
+        item_output: {
+            count: 2,
+            item: 'kubejs:molecular_sieve_charge'
+        },
+        pressure: 2.0,
+        temperature: {
+            min_temp: 700
+        },
+        air_use_multiplier: 2.0,
+        speed: 0.5,
+        exothermic: false
+    })
         .id('matterworks:chemistry/atmosphere/molecular_sieve_charge')
 
     event.custom({
@@ -61,6 +71,6 @@ ServerEvents.recipes(event => {
         .id('matterworks:chemistry/atmosphere/pressure_swing_nitrogen')
 
     console.info(
-        '[Matterworks] Atmospheric processing registered: pneumatic PSA -> nitrogen with replaceable aluminosilicate molecular-sieve media'
+        '[Matterworks] Atmospheric processing registered: steam-activated carbon molecular sieve -> pneumatic PSA -> nitrogen'
     )
 })
