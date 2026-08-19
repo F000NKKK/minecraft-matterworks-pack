@@ -21,10 +21,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 CHAPTERS = ROOT / "config" / "ftbquests" / "quests" / "chapters"
-ID_RE = re.compile(r'^\s*id:\s*"(\d{16})"\s*$', re.MULTILINE)
-X_RE = re.compile(r'^\s*x:\s*(-?\d+(?:\.\d+)?)d\s*$', re.MULTILINE)
-Y_RE = re.compile(r'^\s*y:\s*(-?\d+(?:\.\d+)?)d\s*$', re.MULTILINE)
-DEPS_RE = re.compile(r'^\s*dependencies:\s*\[([^\]]*)\]', re.MULTILINE)
+ID_RE = re.compile(r'\bid\s*:\s*"(\d{16})"')
+X_RE = re.compile(r'\bx\s*:\s*(-?\d+(?:\.\d+)?)d')
+Y_RE = re.compile(r'\by\s*:\s*(-?\d+(?:\.\d+)?)d')
+DEPS_RE = re.compile(r'\bdependencies\s*:\s*\[([^\]]*)\]')
 QUOTED_ID_RE = re.compile(r'"(\d{16})"')
 LONG_EDGE_THRESHOLD = 32.0
 
@@ -106,6 +106,9 @@ def parse(path: Path) -> tuple[dict[str, tuple[float, float]], dict[str, list[st
     deps: dict[str, list[str]] = {}
 
     for block in extract_quest_objects(text):
+        # The first id in a top-level quest object is the quest id; nested task
+        # and reward ids occur later in the same object. x/y are quest-only
+        # fields in these chapters, so the first occurrences are authoritative.
         id_match = ID_RE.search(block)
         x_match = X_RE.search(block)
         y_match = Y_RE.search(block)
