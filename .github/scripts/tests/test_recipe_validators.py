@@ -30,6 +30,10 @@ dependencies = load_module(
     "matterworks_recipe_dependencies_test",
     ".github/scripts/validate-recipe-dependencies.py",
 )
+custom_recipes = load_module(
+    "matterworks_custom_recipe_test",
+    ".github/scripts/validate-custom-recipes.py",
+)
 
 
 class RecipeOwnershipValidatorTests(unittest.TestCase):
@@ -144,6 +148,68 @@ class RecipeDependencyValidatorTests(unittest.TestCase):
             'kubejs:c': set(),
         }
         self.assertEqual(dependencies.find_cycles(graph), [])
+
+
+class CustomRecipeValidatorTests(unittest.TestCase):
+    def test_nested_pneumatic_fluid_type_is_not_recipe_serializer(self):
+        body = """
+        {
+            type: 'pneumaticcraft:thermo_plant',
+            fluid_input: {
+                type: 'pneumaticcraft:fluid',
+                amount: 250,
+                fluid: 'pneumaticcraft:lpg'
+            }
+        }
+        """
+        self.assertEqual(
+            custom_recipes.find_top_level_recipe_types(body),
+            ['pneumaticcraft:thermo_plant'],
+        )
+
+    def test_nested_stacked_item_type_is_not_recipe_serializer(self):
+        body = """
+        {
+            type: 'pneumaticcraft:pressure_chamber',
+            inputs: [
+                {
+                    type: 'pneumaticcraft:stacked_item',
+                    count: 3,
+                    item: 'chemlib:hydrogen'
+                }
+            ]
+        }
+        """
+        self.assertEqual(
+            custom_recipes.find_top_level_recipe_types(body),
+            ['pneumaticcraft:pressure_chamber'],
+        )
+
+    def test_comment_stripper_ignores_fake_custom_call_but_preserves_strings(self):
+        source = """
+        // event.custom({ type: 'fake:line' })
+        /* event.custom({ type: 'fake:block' }) */
+        const literal = "event.custom({ type: 'kept:inside_string' })"
+        event.custom({ type: 'mekanism:reaction' })
+        """
+        stripped = custom_recipes.strip_js_comments(source)
+        self.assertEqual(len(custom_recipes.CUSTOM_START_RE.findall(stripped)), 2)
+        self.assertIn("kept:inside_string", stripped)
+        self.assertNotIn("fake:line", stripped)
+        self.assertNotIn("fake:block", stripped)
+
+    def test_top_level_type_scanner_ignores_type_text_in_strings(self):
+        body = """
+        {
+            note: "type: 'fake:string'",
+            type: 'mekanism:reaction',
+            nested: { type: 'pneumaticcraft:fluid' }
+        }
+        """
+        self.assertEqual(
+            custom_recipes.find_top_level_recipe_types(body),
+            ['mekanism:reaction'],
+        )
 
 
 if __name__ == '__main__':
