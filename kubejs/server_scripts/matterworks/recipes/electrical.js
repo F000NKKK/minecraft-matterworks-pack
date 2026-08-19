@@ -154,7 +154,7 @@ ServerEvents.recipes(event => {
         },
 
         acceptMirrored: false
-    })
+    }).id('matterworks:electrical/alternator')
 
     console.info(
         '[Matterworks] Electrical component production chain registered'
