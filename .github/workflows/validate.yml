@@ -37,3 +37,4 @@ jobs:
           raise SystemExit(module.main())
           PY
           python3 .github/scripts/validate-quest-layout.py
+          python3 .github/scripts/validate-recipe-ownership.py
