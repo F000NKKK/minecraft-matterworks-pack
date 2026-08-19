@@ -38,7 +38,7 @@ ServerEvents.recipes(event => {
         ]
     )
         .transitionalItem(incompleteParticleMatrix)
-        .loops(2)
+        .loops(3)
         .id('matterworks:endgame/particle_confinement_matrix')
 
     event.recipes.create.sequenced_assembly(
@@ -52,7 +52,7 @@ ServerEvents.recipes(event => {
         ]
     )
         .transitionalItem(incompleteFusionCore)
-        .loops(2)
+        .loops(3)
         .id('matterworks:endgame/fusion_field_core')
 
     event.recipes.create.sequenced_assembly(
@@ -66,7 +66,7 @@ ServerEvents.recipes(event => {
         ]
     )
         .transitionalItem(incompleteSingularityCore)
-        .loops(2)
+        .loops(4)
         .id('matterworks:endgame/quantum_singularity_core')
 
     const extremeOutputs = [
