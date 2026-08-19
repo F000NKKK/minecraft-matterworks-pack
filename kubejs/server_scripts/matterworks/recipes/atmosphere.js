@@ -9,15 +9,16 @@ ServerEvents.recipes(event => {
     const nitrogen = 'chemlib:nitrogen_fluid'
 
     /*
-     * Consumable pressure-swing adsorption abstraction.
+     * Pressure-swing adsorption abstraction.
      *
      * The pressure network itself is the atmosphere feed. No bottled or
      * virtual "compressed air" fluid exists.
      *
-     * One molecular-sieve charge represents the adsorbent wear, drying media
-     * and replacement material consumed by a long automated production run.
-     * It is deliberately stackable and disposable: the player does not need
-     * to stop the plant to refill or repair individual cartridges.
+     * `molecular_sieve_charge` is now the replaceable adsorbent media, not a
+     * fake disposable pressure vessel. Quartz supplies the silica fraction,
+     * clay supplies the aluminosilicate precursor and sodium hydroxide stands
+     * in for the alkaline zeolite-synthesis/activation step. Media replacement
+     * and regeneration are compressed into one stackable maintenance charge.
      *
      * The nitrogen generator recovers the nitrogen fraction. Oxygen, argon
      * and trace gases are vented as the oxygen-rich waste stream. Oxygen for
@@ -28,15 +29,14 @@ ServerEvents.recipes(event => {
     event.shaped(
         Item.of('kubejs:molecular_sieve_charge', 4),
         [
-            'QFQ',
-            'ICI',
-            'QFQ'
+            'QAQ',
+            'ASA',
+            'QAQ'
         ],
         {
             Q: '#forge:gems/quartz',
-            F: 'minecraft:paper',
-            I: '#forge:ingots/compressed_iron',
-            C: 'minecraft:charcoal'
+            A: 'minecraft:clay_ball',
+            S: 'chemlib:sodium_hydroxide'
         }
     )
         .id('matterworks:chemistry/atmosphere/molecular_sieve_charge')
@@ -61,6 +61,6 @@ ServerEvents.recipes(event => {
         .id('matterworks:chemistry/atmosphere/pressure_swing_nitrogen')
 
     console.info(
-        '[Matterworks] Atmospheric processing registered: pneumatic PSA -> nitrogen with consumable molecular-sieve media'
+        '[Matterworks] Atmospheric processing registered: pneumatic PSA -> nitrogen with replaceable aluminosilicate molecular-sieve media'
     )
 })
