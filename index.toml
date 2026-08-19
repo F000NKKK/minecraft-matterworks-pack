@@ -386,7 +386,7 @@ hash = "d873d6dad2d89a95a24ce638317adf44640bd237a893ef60983571d03088cae8"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/materials/composition.js"
-hash = "72daa701af2b86221bf66f43bdc359aac9cc1165df5282dcf17f0111ccc1fab2"
+hash = "9712526f3aa5d66e72a787a5675a7f153c361068addd6afb73fed32ccfb597f3"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/materials/material_matrix.js"
@@ -402,7 +402,7 @@ hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research.js"
-hash = "cfd69c94b67ae37f5a2094dd7d75384d883906931298f7064547dcb56b8e0d7b"
+hash = "aaa710220fa5aa396c729f355cba802376f799e72b2ff4aa453afe90e2ae8a72"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research_audit.js"
