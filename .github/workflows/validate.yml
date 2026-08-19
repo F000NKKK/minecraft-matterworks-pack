@@ -23,7 +23,10 @@ jobs:
 
       - name: Validate Packwiz, KubeJS and quest/research invariants
         run: |
+          # Structural checks are deliberately first: they remain useful while
+          # Packwiz hashes are temporarily stale during active branch editing.
           python3 .github/scripts/validate-recipe-ownership.py
+          python3 .github/scripts/validate-quest-layout.py
           python3 - <<'PY'
           import importlib.util
           from pathlib import Path
@@ -37,4 +40,3 @@ jobs:
           module.LONG_EDGE_THRESHOLD = 10_000.0
           raise SystemExit(module.main())
           PY
-          python3 .github/scripts/validate-quest-layout.py
