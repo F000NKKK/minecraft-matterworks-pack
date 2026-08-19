@@ -21,6 +21,36 @@ jobs:
           ref: feature/0.5.8-process-realism
           fetch-depth: 0
 
+      - name: Route reconstruction through specialty chemistry
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('config/ftbquests/quests/chapters/age_1_industrial.snbt')
+          text = path.read_text(encoding='utf-8')
+
+          old_specialty = 'dependencies: ["2130000000000005", "2130000000000012"], hide_dependency_lines: false, id: "2130000000000023", title: "Specialty Industrial Chemistry"'
+          new_specialty = 'dependencies: ["2130000000000005", "2130000000000012", "2120000000000007"], hide_dependency_lines: false, id: "2130000000000023", title: "Specialty Industrial Chemistry"'
+
+          old_final = 'dependencies: ["2130000000000024", "2130000000000008", "2130000000000006", "2120000000000007"], hide_dependency_lines: false, id: "2130000000000007", title: "Industrial Age Established"'
+          new_final = 'dependencies: ["2130000000000024", "2130000000000008", "2130000000000006"], hide_dependency_lines: false, id: "2130000000000007", title: "Industrial Age Established"'
+
+          if old_specialty in text:
+              text = text.replace(old_specialty, new_specialty, 1)
+          elif new_specialty not in text:
+              raise SystemExit('specialty chemistry quest fragment not found')
+
+          if old_final in text:
+              text = text.replace(old_final, new_final, 1)
+          elif new_final not in text:
+              raise SystemExit('Industrial Age final quest fragment not found')
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Validate patched quest geometry
+        run: python3 .github/scripts/validate-quest-layout.py
+
       - name: Install Packwiz
         run: |
           go install github.com/packwiz/packwiz@latest
@@ -29,14 +59,14 @@ jobs:
       - name: Refresh local-file index
         run: packwiz refresh
 
-      - name: Commit refreshed Packwiz metadata
+      - name: Commit patch and refreshed Packwiz metadata
         run: |
-          if git diff --quiet -- index.toml pack.toml; then
-            echo "Packwiz metadata already current"
+          if git diff --quiet; then
+            echo "Quest and Packwiz metadata already current"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.toml pack.toml
-          git commit -m "chore: refresh Packwiz for 0.5.8"
+          git add config/ftbquests/quests/chapters/age_1_industrial.snbt index.toml pack.toml
+          git commit -m "fix: route reconstruction through specialty chemistry"
           git push origin HEAD:feature/0.5.8-process-realism
