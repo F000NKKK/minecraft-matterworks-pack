@@ -29,8 +29,6 @@ jobs:
 
           # Structural checks are deliberately first: they remain useful while
           # Packwiz hashes are temporarily stale during active branch editing.
-          # Recipe ownership includes literal and grouped/dynamic rewrite sets;
-          # recipe dependencies reject bootstrap cycles between owned outputs.
           python3 .github/scripts/validate-recipe-ownership.py
           python3 .github/scripts/validate-recipe-dependencies.py
           python3 .github/scripts/validate-quest-layout.py
