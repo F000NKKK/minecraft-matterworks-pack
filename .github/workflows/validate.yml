@@ -33,6 +33,7 @@ jobs:
           python3 .github/scripts/validate-recipe-dependencies.py
           python3 .github/scripts/validate-sequenced-assembly.py
           python3 .github/scripts/validate-prestige-depth.py
+          python3 .github/scripts/validate-material-provenance.py
           python3 .github/scripts/validate-progression-policy.py
           python3 .github/scripts/validate-quest-layout.py
           python3 - <<'PY'
