@@ -39,7 +39,7 @@ SERIALIZER_CONTRACTS = {
         "mods/mekanism.pw.toml",
         "Mekanism-1.20.1-10.4.16.80.jar",
     ),
-    "mekanism:smelting": (
+    "mekanism:reaction": (
         "mods/mekanism.pw.toml",
         "Mekanism-1.20.1-10.4.16.80.jar",
     ),
