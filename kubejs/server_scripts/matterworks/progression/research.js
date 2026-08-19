@@ -105,7 +105,8 @@ const MatterworksResearch = Object.freeze({
         nuclear_fuel_cycle: ageOwned({ stage: 'matterworks:capability/nuclear_fuel_cycle', age: 'atomic_age', ownerQuest: '2150000000000010' }),
         accelerator_research: ageOwned({ stage: 'matterworks:capability/accelerator_research', age: 'atomic_age', ownerQuest: '2160000000000005' }),
         atomic_fission: ageOwned({ stage: 'matterworks:capability/atomic_fission', age: 'atomic_age', ownerQuest: '2170000000000003' }),
-        fusion_engineering: ageOwned({ stage: 'matterworks:capability/fusion_engineering', age: 'fusion_age', ownerQuest: '2180000000000003' }),
+        nuclear_transmutation: ageOwned({ stage: 'matterworks:capability/nuclear_transmutation', age: 'fusion_age', ownerQuest: '2180000000000003' }),
+        fusion_engineering: ageOwned({ stage: 'matterworks:capability/fusion_engineering', age: 'fusion_age', ownerQuest: '2180000000000004' }),
         prestige_engineering: ageOwned({ stage: 'matterworks:capability/prestige_engineering', age: 'fusion_age', ownerQuest: '2190000000000007' })
     }),
     synthesisFamilies: Object.freeze({
