@@ -14,7 +14,7 @@ hash = "6239814979af7c29af2755b10161f88acad8db4fdc3acfa3832f10b90a763c7d"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/age_3_fusion.snbt"
-hash = "f309f651c65b82146ac836a5ccb8997fba65b9bfeeb54ebefb07f00d75794ad7"
+hash = "c12cf380f99ca18a8646e5388e0577bde850d175c375aed5d4dd27c81bf3858b"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_ae2.snbt"
@@ -402,7 +402,7 @@ hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research.js"
-hash = "aaa710220fa5aa396c729f355cba802376f799e72b2ff4aa453afe90e2ae8a72"
+hash = "58b8f4ef07736124548b9807be70e0dd7ea3d32c723ca88e38a870e1b8ef38a3"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research_audit.js"
