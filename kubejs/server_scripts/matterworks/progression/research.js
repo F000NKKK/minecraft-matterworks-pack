@@ -1,6 +1,71 @@
 console.info('[Matterworks] Loading quest-owned research registry')
 
-const MatterworksBacklogFamilies = Object.freeze({})
+/*
+ * 0.5.8 tightens the meaning of a synthesis owner.
+ *
+ * A quest may own a synthesis family only when completing that quest proves
+ * the physical process which creates the listed material. Materials that are
+ * known to the composition layer but are not yet demonstrated by a concrete
+ * process are deliberately placed in the process backlog instead of being
+ * silently unlocked by a nearby machine milestone.
+ */
+const MatterworksBacklogFamilies = Object.freeze({
+    salt_and_fluoride_chemistry: Object.freeze({
+        targetAge: 'industrial_age',
+        materials: ['fluorite', 'villiaumite', 'carobbiite', 'potassium_fluoride', 'sodium_fluoride', 'potassium_iodide'],
+        reason: 'requires explicit salt preparation / electrochemical production rather than generic water electrolysis'
+    }),
+    ceramic_and_refractory_processing: Object.freeze({
+        targetAge: 'industrial_age',
+        materials: ['boron_nitride', 'boron_arsenide', 'magnesium_diboride', 'silicon_carbide', 'tungsten_carbide', 'lithium_manganese_dioxide'],
+        reason: 'requires dedicated ceramic, powder-metallurgy or high-temperature routes'
+    }),
+    industrial_inorganic_chemistry: Object.freeze({
+        targetAge: 'industrial_age',
+        materials: ['rhodochrosite', 'manganese_oxide', 'manganese_dioxide', 'calcium_sulfate', 'sodium_hydroxide', 'potassium_hydroxide', 'barium_nitrate'],
+        reason: 'requires explicit acid/base, precipitation, oxidation or chlor-alkali process ownership'
+    }),
+    advanced_engineered_carbon: Object.freeze({
+        targetAge: 'industrial_age',
+        materials: ['pyrolytic_carbon', 'hard_carbon'],
+        reason: 'graphite production does not prove pyrolytic-carbon deposition or hard-carbon processing'
+    }),
+    specialist_alloying: Object.freeze({
+        targetAge: 'industrial_age',
+        materials: ['ferroboron', 'zirconium_molybdenum', 'nichrome', 'niobium_tin', 'niobium_titanium', 'thermoconducting_alloy', 'extreme_alloy', 'super_alloy', 'sic_sic_cmc', 'c_mn_blend'],
+        reason: 'each material needs a validated alloy/composite route instead of inheriting the generic alloy-smelter milestone'
+    }),
+    specialty_formulations: Object.freeze({
+        targetAge: 'industrial_age',
+        materials: ['etching_acid'],
+        reason: 'borax/baratol production does not prove an etchant formulation route'
+    }),
+    petrochemical_feed_and_light_fractions: Object.freeze({
+        targetAge: 'industrial_age',
+        materials: ['crude_oil', 'lpg', 'gasoline', 'kerosene'],
+        reason: 'refinery commissioning proves diesel/lubricant fractionation but must not create or automatically unlock its feedstock and all fractions'
+    }),
+    renewable_feedstocks_and_bioprocessing: Object.freeze({
+        targetAge: 'industrial_age',
+        materials: ['vegetable_oil', 'yeast_culture'],
+        reason: 'biodiesel production does not prove oil extraction or fermentation/yeast cultivation'
+    }),
+    pneumatic_polymer_processing: Object.freeze({
+        targetAge: 'industrial_age',
+        materials: ['pneumaticcraft_plastic'],
+        reason: 'Mekanism HDPE production is not equivalent to PneumaticCraft plastic chemistry'
+    }),
+    nuclear_structural_materials: Object.freeze({
+        targetAge: 'atomic_age',
+        materials: ['zircaloy'],
+        reason: 'fuel handling does not prove a zirconium-alloy fabrication route'
+    }),
+    nuclear_solvent_extraction: Object.freeze({
+        targetAge: 'atomic_age',
+        materials: ['tributyl_phosphate'],
+        reason: 'requires an explicit solvent-extraction/reprocessing chemistry milestone'
+    })
+})
 
 const MatterworksUnresolved = Object.freeze(
     Object.values(MatterworksBacklogFamilies).reduce((materials, family) => {
@@ -44,19 +109,14 @@ const MatterworksResearch = Object.freeze({
     }),
     synthesisFamilies: Object.freeze({
         basic_alloys: ageOwned({ stage: 'matterworks:synthesis/basic_alloys', age: 'industrial_age', ownerQuest: '2120000000000007', materials: ['bronze', 'brass', 'electrum', 'shibuichi', 'tin_silver', 'lead_platinum', 'osmiridium', 'carbon_manganese'] }),
-        fluorides_and_salts: ageOwned({ stage: 'matterworks:synthesis/fluorides_and_salts', age: 'industrial_age', ownerQuest: '2130000000000005', materials: ['fluorite', 'villiaumite', 'carobbiite', 'potassium_fluoride', 'sodium_fluoride', 'potassium_iodide'] }),
-        ceramic_and_refractory: ageOwned({ stage: 'matterworks:synthesis/ceramic_and_refractory', age: 'industrial_age', ownerQuest: '2130000000000007', materials: ['boron_nitride', 'boron_arsenide', 'magnesium_diboride', 'silicon_carbide', 'tungsten_carbide', 'lithium_manganese_dioxide'] }),
-        industrial_inorganics: ageOwned({ stage: 'matterworks:synthesis/industrial_inorganics', age: 'industrial_age', ownerQuest: '2130000000000005', materials: ['rhodochrosite', 'manganese_oxide', 'manganese_dioxide', 'calcium_sulfate', 'sodium_hydroxide', 'potassium_hydroxide', 'barium_nitrate'] }),
-        engineered_carbon: ageOwned({ stage: 'matterworks:synthesis/engineered_carbon', age: 'industrial_age', ownerQuest: '2130000000000006', materials: ['graphite', 'pyrolytic_carbon', 'hard_carbon'] }),
-        controlled_steelmaking: ageOwned({ stage: 'matterworks:synthesis/controlled_steelmaking', age: 'industrial_age', ownerQuest: '2130000000000002', materials: ['steel', 'ferroboron', 'zirconium_molybdenum', 'nichrome', 'niobium_tin', 'niobium_titanium'] }),
-        high_temperature_engineering: ageOwned({ stage: 'matterworks:synthesis/high_temperature_engineering', age: 'industrial_age', ownerQuest: '2130000000000020', materials: ['tough_alloy', 'thermoconducting_alloy', 'extreme_alloy', 'hsla_steel', 'stainless_steel', 'super_alloy', 'sic_sic_cmc', 'c_mn_blend'] }),
-        specialty_chemistry: ageOwned({ stage: 'matterworks:synthesis/specialty_chemistry', age: 'industrial_age', ownerQuest: '2130000000000023', materials: ['borax', 'baratol', 'etching_acid'] }),
-        petrochemistry: ageOwned({ stage: 'matterworks:synthesis/petrochemistry', age: 'industrial_age', ownerQuest: '2130000000000021', materials: ['crude_oil', 'lpg', 'gasoline', 'kerosene', 'diesel', 'lubricant'] }),
-        renewable_organics: ageOwned({ stage: 'matterworks:synthesis/renewable_organics', age: 'industrial_age', ownerQuest: '2130000000000022', materials: ['vegetable_oil', 'biodiesel', 'yeast_culture'] }),
-        nuclear_structural_alloys: ageOwned({ stage: 'matterworks:synthesis/nuclear_structural_alloys', age: 'atomic_age', ownerQuest: '2150000000000003', materials: ['zircaloy'] }),
+        graphite_engineering: ageOwned({ stage: 'matterworks:synthesis/graphite_engineering', age: 'industrial_age', ownerQuest: '2130000000000006', materials: ['graphite'] }),
+        controlled_steelmaking: ageOwned({ stage: 'matterworks:synthesis/controlled_steelmaking', age: 'industrial_age', ownerQuest: '2130000000000020', materials: ['steel', 'hsla_steel', 'stainless_steel'] }),
+        tough_alloy_processing: ageOwned({ stage: 'matterworks:synthesis/tough_alloy_processing', age: 'industrial_age', ownerQuest: '2130000000000020', materials: ['tough_alloy'] }),
+        specialty_chemistry: ageOwned({ stage: 'matterworks:synthesis/specialty_chemistry', age: 'industrial_age', ownerQuest: '2130000000000023', materials: ['borax', 'baratol'] }),
+        refinery_products: ageOwned({ stage: 'matterworks:synthesis/refinery_products', age: 'industrial_age', ownerQuest: '2130000000000021', materials: ['diesel', 'lubricant'] }),
+        biodiesel_processing: ageOwned({ stage: 'matterworks:synthesis/biodiesel_processing', age: 'industrial_age', ownerQuest: '2130000000000022', materials: ['biodiesel'] }),
         pressure_materials: ageOwned({ stage: 'matterworks:synthesis/pressure_materials', age: 'industrial_age', ownerQuest: '2130000000000010', materials: ['compressed_iron'] }),
-        organophosphorus: ageOwned({ stage: 'matterworks:synthesis/organophosphorus', age: 'atomic_age', ownerQuest: '2150000000000003', materials: ['tributyl_phosphate'] }),
-        polymers: ageOwned({ stage: 'matterworks:synthesis/polymers', age: 'industrial_age', ownerQuest: '2130000000000011', materials: ['pneumaticcraft_plastic', 'mekanism_hdpe'] }),
+        mekanism_hdpe: ageOwned({ stage: 'matterworks:synthesis/mekanism_hdpe', age: 'industrial_age', ownerQuest: '2130000000000011', materials: ['mekanism_hdpe'] }),
         experience_capture: ageOwned({ stage: 'matterworks:synthesis/experience_capture', age: 'atomic_age', ownerQuest: '2140000000000008', materials: ['memory_essence'] }),
         nuclear_parent_elements: ageOwned({ stage: 'matterworks:synthesis/nuclear_parent_elements', age: 'fusion_age', ownerQuest: '2180000000000003', materials: ['uranium', 'thorium', 'polonium', 'radium'] })
     }),
