@@ -106,9 +106,15 @@ class RecipeDependencyValidatorTests(unittest.TestCase):
         """
 
         with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / 'recipe.js'
+            fixture_root = Path(tmp)
+            path = fixture_root / 'recipe.js'
             path.write_text(source, encoding='utf-8')
-            calls = dependencies.parse_recipe_calls(path)
+            original_root = dependencies.ROOT
+            dependencies.ROOT = fixture_root
+            try:
+                calls = dependencies.parse_recipe_calls(path)
+            finally:
+                dependencies.ROOT = original_root
 
         self.assertEqual(len(calls), 1)
         self.assertEqual(calls[0].output, 'kubejs:machine')
