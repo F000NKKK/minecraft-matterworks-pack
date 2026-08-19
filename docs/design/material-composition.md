@@ -1,104 +1,136 @@
 # Matterworks Material Composition
 
-Matterworks 0.5.3 introduces an explicit composition layer on top of the 0.5.2 material registry.
+Matterworks keeps material **identity**, **composition** and **process ownership** as separate concepts.
 
-The material matrix answers identity/state compatibility. The composition layer answers what a material is made of and whether that composition may be exposed through Alchemistry's Dissolver without violating progression.
+The composition layer answers what a material is made of. It does not automatically grant a Dissolver or Combiner route, and an engineering alloy ratio is not treated as a molecular formula merely because it is convenient to write one down.
 
 ## Composition policies
 
-- `DIRECT`: the material may decompose directly into ChemLib units.
-- `PROCESS`: composition is known, but direct Dissolver decomposition is blocked because process history, purity, treatment or technological state is gameplay-relevant.
-- `NUCLEAR`: elemental composition is known, but direct decomposition is blocked before nuclear processing/transmutation.
-- `MANUFACTURED`: composition follows the underlying bulk material, but geometry must first be normalized by an explicit manufacturing/recycling route.
-- `MIXTURE`: the material is a formulation or non-stoichiometric mixture and must not be represented as a fake molecular formula.
-- `UNKNOWN`: insufficient evidence for a defensible composition; no Dissolver recipe is generated.
+- `DIRECT`: a defensible fixed stoichiometric model exists and direct decomposition is acceptable.
+- `PROCESS`: composition is known, but grade, purity, treatment or production history is part of identity.
+- `NUCLEAR`: isotope/conversion/irradiation history is progression-relevant and ordinary chemistry must not erase it.
+- `MANUFACTURED`: bulk composition is known, but geometry/composite architecture is part of identity.
+- `MIXTURE`: formulation or variable-composition material; no fake molecular formula.
+- `UNKNOWN`: there is not enough pinned upstream evidence for a defensible composition model.
 
-ChemLib/Alchemistry chemical units are used as the pack's abstract stoichiometric scale. The coefficients below are therefore ratios, not claims about Minecraft item mass.
+ChemLib units are Matterworks' abstract stoichiometric scale. Ratios are mass-balance/gameplay grades, not Minecraft item masses or assertions that metallic alloys are discrete molecules.
 
-## Direct compositions
+## Direct composition models
 
-| Material | Composition | Policy |
+| Material | Matterworks model | Notes |
 | --- | --- | --- |
-| bronze | Cu3Sn | `DIRECT` |
-| brass | Cu3Zn | `DIRECT` |
-| electrum | AuAg | `DIRECT` |
-| shibuichi | Cu3Ag | `DIRECT` |
-| tin-silver | Sn3Ag | `DIRECT` |
-| lead-platinum | Pb3Pt | `DIRECT` |
-| osmiridium | Os3Ir | `DIRECT` |
-| zircaloy | Zr7Sn | `DIRECT` pack abstraction |
-| carbon-manganese | MnC | `DIRECT` pack abstraction |
-| boron nitride | BN | `DIRECT` |
-| boron arsenide | BAs | `DIRECT` |
-| fluorite | CaF2 | `DIRECT` |
-| villiaumite | NaF | `DIRECT` |
-| carobbiite | KF | `DIRECT` |
-| rhodochrosite | MnCO3 | `DIRECT` |
-| magnesium diboride | MgB2 | `DIRECT` |
-| silicon carbide | SiC | `DIRECT` |
-| tungsten carbide | WC | `DIRECT` |
-| lithium manganese dioxide | LiMnO2 | `DIRECT` |
-| manganese oxide | MnO | `DIRECT` |
-| manganese dioxide | MnO2 | `DIRECT` |
-| potassium fluoride | KF | `DIRECT` |
-| sodium fluoride | NaF | `DIRECT` |
-| potassium iodide | KI | `DIRECT` |
-| calcium sulfate | CaSO4 | `DIRECT` |
-| sodium hydroxide | NaOH | `DIRECT` |
-| potassium hydroxide | KOH | `DIRECT` |
-| barium nitrate | BaN2O6 | `DIRECT` |
-| graphite | C | `DIRECT` only for NuclearCraft graphite forms; Matterworks progression still controls graphite production |
-| pyrolytic carbon | C | `DIRECT` |
-| hard carbon | C | `DIRECT` |
+| bronze | Cu3Sn | nominal pack grade |
+| brass | Cu3Zn | nominal pack grade |
+| electrum | AuAg | nominal pack grade |
+| shibuichi | Cu3Ag | nominal pack grade |
+| tin-silver | Sn3Ag | nominal pack grade |
+| lead-platinum | Pb3Pt | nominal pack grade |
+| osmiridium | Os3Ir | nominal pack grade |
+| boron nitride | BN | fixed compound |
+| boron arsenide | BAs | fixed compound |
+| fluorite | CaF2 | fixed compound/mineral model |
+| villiaumite | NaF | fixed compound/mineral model |
+| carobbiite | KF | fixed compound/mineral model |
+| rhodochrosite | MnCO3 | fixed compound/mineral model |
+| magnesium diboride | MgB2 | fixed compound |
+| silicon carbide | SiC | fixed compound |
+| tungsten carbide | WC | fixed compound abstraction |
+| lithium manganese dioxide | LiMnO2 | fixed compound abstraction |
+| manganese oxide | MnO | fixed compound |
+| manganese dioxide | MnO2 | fixed compound |
+| potassium fluoride | KF | fixed compound |
+| sodium fluoride | NaF | fixed compound |
+| potassium iodide | KI | fixed compound |
+| calcium sulfate | CaSO4 | fixed compound |
+| sodium hydroxide | NaOH | fixed compound; production route still unresolved |
+| potassium hydroxide | KOH | fixed compound; production route still unresolved |
+| barium nitrate | Ba(NO3)2 | fixed compound |
+| graphite | C | allotrope identity retained by production policy |
+| pyrolytic carbon | C | carbon chemistry known; process route still separate |
+| hard carbon | C | carbon chemistry known; process route still separate |
 
-## Process/engineering compositions
+`DIRECT` only means decomposition is chemically representable. It does not mean Matterworks claims that generic reconstruction is the correct industrial production route.
 
-These compositions are recorded for audit, JEI documentation and future process recipes but are not automatically exposed through a Dissolver.
+## Engineering/process materials
 
-| Material | Composition model | Policy / reason |
+| Material | Model | Policy / reason |
 | --- | --- | --- |
-| steel | Fe + C | `PROCESS`; grade and carbon fraction matter |
-| ferroboron | Fe + B | `PROCESS`; grade is unspecified upstream |
-| tough alloy | specialist Ni/Cr/Fe-family engineering alloy | `UNKNOWN` until exact upstream composition is pinned |
+| steel | Fe + C family | `PROCESS`; carbon fraction and treatment matter |
+| ferroboron | Fe + B family | `PROCESS`; upstream grade not pinned |
+| tough alloy | upstream specialist alloy | `UNKNOWN`; exact composition not yet defensible |
 | thermoconducting alloy | specialist engineering alloy | `UNKNOWN` |
-| zirconium-molybdenum | Zr + Mo | `PROCESS`; grade ratio must be explicit before decomposition |
-| extreme alloy | specialist NuclearCraft alloy | `UNKNOWN` |
-| HSLA steel | Fe-based microalloy | `MIXTURE`; no fake formula |
-| nichrome | Ni + Cr | `PROCESS`; upstream Fe+Cr recipe is invalid and remains quarantined |
+| zirconium-molybdenum | Zr + Mo family | `PROCESS`; grade ratio/process matter |
+| extreme alloy | NuclearCraft specialist alloy | `UNKNOWN` |
+| HSLA steel | Fe-based microalloy | `MIXTURE` |
+| nichrome | Ni-Cr family | `PROCESS`; invalid Fe+Cr shortcut remains quarantined |
 | niobium-tin | Nb3Sn target phase | `PROCESS` |
-| niobium-titanium | Nb + Ti | `PROCESS`; superconducting grade ratio not yet fixed |
-| stainless steel | Fe + Cr + Ni + C family | `MIXTURE`; grade must be selected |
+| niobium-titanium | Nb-Ti family | `PROCESS` |
+| stainless steel | Fe-Cr-Ni-C family | `MIXTURE`; grade-dependent |
 | super alloy | multicomponent high-temperature alloy | `MIXTURE` |
-| SiC-SiC CMC | SiC fibre/matrix composite | `MANUFACTURED`; composite architecture is part of identity |
+| SiC-SiC CMC | SiC fibre/matrix composite | `MANUFACTURED`; architecture is part of identity |
 | compressed iron | Fe | `PROCESS`; pressure/explosion treatment is identity |
-| refined obsidian | enriched/infused engineered material | `PROCESS` |
-| refined glowstone | engineered material | `PROCESS` |
-| yellowcake | uranium oxide concentrate mixture | `PROCESS` |
+| Zircaloy | nominal Zr-Sn engineering grade | `PROCESS`; **not** a direct `Zr7Sn` chemistry shortcut |
+| carbon-manganese | carbon/manganese metallurgical blend | `MIXTURE`; **not** a fictitious `MnC` molecule |
 | C-Mn blend | carbon/manganese precursor blend | `MIXTURE` |
-| borax | hydrated sodium borate family | `PROCESS`; hydrate state must be pinned |
-| irradiated borax | borax-derived irradiated material | `NUCLEAR` |
+| borax | hydrated borate family | `PROCESS`; hydrate/process state matters |
 | baratol | barium-nitrate/TNT formulation | `MIXTURE` |
-| tributyl phosphate | C12H27O4P | `PROCESS`; extraction reagent |
-| PneumaticCraft plastic | polymer family | `PROCESS`; monomer/polymer identity not globally equivalent to HDPE |
+| tributyl phosphate | C12H27O4P | `PROCESS`; extraction reagent manufacture is separate |
+| PneumaticCraft plastic | polymer family | `PROCESS`; not globally equivalent to HDPE |
 | Mekanism HDPE | polyethylene family | `PROCESS`; polymerisation state is identity |
-| crude oil / LPG / gasoline / kerosene / diesel / lubricant | hydrocarbon mixtures | `MIXTURE` |
-| biodiesel / vegetable oil | organic mixtures | `MIXTURE` |
+| crude oil / LPG / gasoline / kerosene / diesel / lubricant | hydrocarbon streams | `MIXTURE` |
+| vegetable oil / biodiesel | organic process streams | `MIXTURE` |
 | yeast culture / memory essence / etching acid | functional process streams | `MIXTURE` |
+
+## Nuclear process states
+
+NuclearCraft 1.2.34 is treated according to the states it actually models. Matterworks does not add a fictional UF6 chain merely because real-world gaseous-diffusion/centrifuge enrichment commonly uses uranium hexafluoride.
+
+The implemented front end is:
+
+```text
+uranium dust + oxygen
+  -> uranium-oxide fluid
+  -> crystallization
+  -> yellowcake
+  -> isotope separation
+  -> U-235 + U-238
+  -> LEU fuel fabrication
+  -> irradiation/burnup
+  -> depleted fuel
+  -> reprocessing
+```
+
+The following are `NUCLEAR` provenance states:
+
+- `uranium_oxide` — conversion stream before yellowcake crystallization;
+- `yellowcake` — prepared uranium feed for isotope separation;
+- isotope-specific material identity;
+- fabricated reactor fuel;
+- irradiated/depleted fuel;
+- fission/reprocessing products and waste;
+- irradiated borax and other irradiation-owned states.
+
+Generic Alchemistry decomposition/reconstruction must not erase these histories.
 
 ## Nuclear parent elements
 
-Uranium, thorium, polonium and radium remain special even though their elemental composition is trivial.
+Uranium, thorium, polonium and radium are also `NUCLEAR` even though their elemental formula is trivial.
 
-Their ordinary NuclearCraft forms are `NUCLEAR`, not `DIRECT`. A generic Dissolver route would destroy the distinction between ore-derived nuclear material, isotope processing and post-accelerator transmutation. Matterworks therefore keeps the existing block on stock Alchemistry parent-element recipes.
+Ordinary NuclearCraft U/Th/Po/Ra forms do not receive generic Dissolver routes before the late transmutation programme. This prevents a bulk radioactive feed item from being flattened into ChemLib units and reconstructed around enrichment/irradiation progression.
 
-This means `nuclearcraft:uranium_* -> chemlib:uranium` is intentionally **not** a 0.5.3 direct Dissolver recipe. Uranium chemistry will be exposed through the nuclear processing chain instead.
+## 0.5.8 process-backlog rule
+
+A known composition is not permission to assign a material to the nearest existing machine milestone. If the physical production route is not yet represented, the material stays in an explicit `MatterworksBacklogFamilies` entry.
+
+Examples currently include chlor-alkali products, specialist superconducting/refractory alloys, advanced carbon forms, renewable feedstock extraction/bioprocessing and Zircaloy fabrication.
 
 ## Rule for new materials
 
-Every new non-element material added to Matterworks must define all of:
+Every new non-element material must define:
 
-1. canonical material/state identity in `material-registry-matrix.md`;
-2. composition policy in this document;
-3. direct Dissolver recipe only when policy is `DIRECT`;
-4. an explicit process route for `PROCESS`, `NUCLEAR` and `MANUFACTURED` materials;
-5. no decomposition for `MIXTURE`, `UNKNOWN` or compositionally defective upstream materials until resolved.
+1. canonical identity/state in the material registry matrix;
+2. composition policy here and in `composition.js`;
+3. a direct Dissolver route only when decomposition is defensible;
+4. a physical process owner for `PROCESS`, `NUCLEAR` and `MANUFACTURED` states;
+5. `MIXTURE`/`UNKNOWN` semantics instead of a fabricated formula when composition is variable or unverified;
+6. an explicit backlog owner when the required physical route has not been implemented yet.
