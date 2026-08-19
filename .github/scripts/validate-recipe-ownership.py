@@ -44,9 +44,8 @@ FOREACH_REMOVE_RE = re.compile(
     re.MULTILINE,
 )
 
-DYNAMIC_OUTPUT_REMOVE_RE = re.compile(
-    r"event\.remove\(\s*\{\s*output\s*:\s*"
-    r"(?P<expr>(?!['\"])[^}\n]+?)\s*\}\s*\)",
+ANY_OUTPUT_REMOVE_RE = re.compile(
+    r"event\.remove\(\s*\{\s*output\s*:\s*(?P<expr>[^}\n]+?)\s*\}\s*\)",
     re.MULTILINE,
 )
 
@@ -92,8 +91,8 @@ def resolve_grouped_removals(text: str) -> tuple[set[str], set[str]]:
     for match in FOREACH_REMOVE_RE.finditer(text):
         array_name = match.group("array")
         param = match.group("param")
-        expr = match.group("expr")
-        matched_expressions.add(expr.strip())
+        expr = match.group("expr").strip()
+        matched_expressions.add(expr)
 
         values = arrays.get(array_name)
         if values is None:
@@ -110,6 +109,15 @@ def resolve_grouped_removals(text: str) -> tuple[set[str], set[str]]:
                 resolved.update(template.replace(marker, value) for value in values)
 
     return resolved, matched_expressions
+
+
+def is_literal_expression(expr: str) -> bool:
+    expr = expr.strip()
+    return (
+        len(expr) >= 2
+        and expr[0] in {"'", '"'}
+        and expr[-1] == expr[0]
+    )
 
 
 def main() -> int:
@@ -139,10 +147,13 @@ def main() -> int:
         for output in grouped_outputs:
             owners[output].add(rel)
 
-        for dynamic_match in DYNAMIC_OUTPUT_REMOVE_RE.finditer(text):
-            expr = dynamic_match.group("expr").strip()
-            if expr not in matched_expressions:
-                unresolved_dynamic.append((rel, expr))
+        for removal_match in ANY_OUTPUT_REMOVE_RE.finditer(text):
+            expr = removal_match.group("expr").strip()
+            if is_literal_expression(expr):
+                continue
+            if expr in matched_expressions:
+                continue
+            unresolved_dynamic.append((rel, expr))
 
     conflicts = {
         output: sorted(files)
