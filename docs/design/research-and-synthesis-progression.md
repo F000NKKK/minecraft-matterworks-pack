@@ -2,185 +2,170 @@
 
 ## Status
 
-Design contract for 0.5.4+.
+Design contract for 0.5.8+.
 
 ## Core rule
 
-Matterworks treats material analysis and material synthesis as two different capabilities.
+Matterworks treats material analysis, physical manufacture and generic chemical/nuclear reconstruction as different capabilities.
 
 1. **Analysis / decomposition** answers: "what is this material made of?"
-2. **Synthesis** answers: "do we know how to manufacture this material from its chemical basis?"
+2. **Physical process ownership** answers: "which process gives this material its useful state, grade or provenance?"
+3. **Generic reconstruction / transmutation** answers: "may the chemistry system create this identity from chemical or nuclear building blocks?"
 
-Every material resource exposed by an installed content mod must participate in the chemistry system unless it is explicitly classified as a non-material artifact or a provenance-sensitive nuclear state.
+A material being chemically understandable MUST NOT imply that it can be manufactured by the Combiner. A material being decomposable MUST NOT imply that its production history is irrelevant.
 
-A resource being decomposable MUST NOT imply that it is synthesizable.
+## What the questbook actually enforces in 0.5.8
 
-## Questbook is the progression authority
+FTB Quests is the player-facing progression authority, but the `stage` strings in `research.js` are **not** currently a per-player recipe-gating runtime.
 
-FTB Quests is the player-facing source of progression truth.
+The implemented enforcement model is:
 
-A synthesis capability is unlocked by completing a quest that proves the corresponding technology or process has actually been established. The quest grants a stage. Runtime scripts and recipe restrictions consume that stage; they do not invent an independent progression tree.
+```text
+physical recipe / machine boundary
+        -> characteristic process output
+        -> quest proof
+        -> research ownership metadata
+```
+
+Hard recipe removals and replacement recipes enforce the physical boundary globally. Quests prove that the process has been exercised. `research.js` records which quest owns which capability/material family, and CI verifies that the owner quest contains the characteristic process proof.
+
+The `stage` fields remain stable identifiers for a future team-scoped runtime research layer. Until such a consumer is implemented, they are metadata and MUST NOT be described as active recipe locks.
+
+This is sufficient for the current chemistry model because Alchemistry 2.3.4 has a finite Combiner recipe set; it does not dynamically synthesize every entry from Matterworks' composition registry.
+
+## Research ownership
+
+A synthesis or capability owner is allowed only when its quest proves the corresponding physical operation.
 
 Examples:
 
-- construct the required pressure infrastructure -> unlock synthesis routes that require industrial gas handling;
-- obtain/build the relevant reactor/process unit -> unlock the material family produced by that process;
-- establish NuclearCraft fuel preparation -> unlock the appropriate nuclear feed material route;
-- establish the accelerator -> unlock accelerator-dependent element production;
-- complete the Alchemistry fission milestone -> unlock fission-mediated synthesis knowledge;
-- complete the Alchemistry fusion milestone -> unlock fusion-mediated synthesis knowledge.
+- `graphite_engineering` is owned by the quest that requires actual graphite from the high-temperature graphitization route;
+- `refinery_products` is limited to diesel/lubricant because those are the fractions the refinery milestone demonstrates;
+- `biodiesel_processing` owns biodiesel only; vegetable-oil extraction and yeast/fermentation are separate process gaps;
+- `operational_fission` requires depleted LEU fuel, not a reactor controller;
+- `nuclear_fuel_cycle` requires Fuel Reprocessor operation and recovered Pu-239;
+- Alchemistry Fusion is `nuclear_transmutation`; Mekanism fusion-reactor startup is the separate `fusion_engineering` capability.
 
-The intended flow is therefore:
+`.github/scripts/validate-process-proof.py` is the static contract connecting these owners to their required quest outputs/hardware.
 
-`physical capability -> quest completion -> synthesis knowledge stage -> recipe permission`
+## Explicit process backlog
 
-not:
+A material may be chemically classified while its production route is not yet implemented. Such a material belongs to exactly one explicit backlog family instead of being silently assigned to a nearby broad milestone.
 
-`obtain arbitrary item -> recipe globally appears`.
+Examples include:
 
-## Resource-level synthesis knowledge
+- chlor-alkali products until a process can represent chlorine, hydrogen and sodium hydroxide without fake coproduct chemistry;
+- specialist superconducting/refractory alloys until their exact routes are validated;
+- pyrolytic/hard carbon until their own processes exist;
+- vegetable oil and yeast culture until extraction/bioprocessing exists;
+- Zircaloy fabrication until a real structural-alloy route is introduced.
 
-Synthesis unlocks are resource-specific or family-specific, never a single global "Combiner unlocked" flag.
-
-Each synthesis entry has at least:
-
-- canonical resource id or canonical material key;
-- chemical composition;
-- decomposition permission;
-- synthesis permission stage;
-- prerequisite quest / research milestone;
-- required process class;
-- provenance policy;
-- preferred canonical output item;
-- aliases from other mods.
-
-Conceptual registry entry:
-
-```text
-material = steel
-composition = Fe + C
-analysis = available
-synthesis_stage = matterworks:synthesis/steel
-unlock = establish controlled steelmaking process
-process = metallurgy
-canonical_output = <pack canonical steel item>
-```
-
-Another example:
-
-```text
-material = uranium_feed
-composition = U
-analysis = available for ordinary parent-element feed
-synthesis_stage = matterworks:synthesis/uranium
-unlock = establish the required nuclear-material process
-process = nuclear
-provenance = parent-element only
-```
+A backlog entry is a deliberate unsupported process state, not permission to obtain the material through generic synthesis.
 
 ## Decomposition coverage
 
-The chemistry compatibility audit must cover material resources from every installed content mod, not only Alchemistry/ChemLib/NuclearCraft.
-
-The audit should enumerate the runtime item registry and classify resource-like items using:
-
-- Forge material tags (`ores`, `raw_materials`, `dusts`, `ingots`, `nuggets`, `gems`, `plates`, `storage_blocks`, etc.);
-- known mod-specific resource tags;
-- explicit Matterworks material aliases;
-- explicit compound/alloy registry entries;
-- explicit exceptions.
-
 For every classified material resource, the audit must be able to answer one of:
 
-- decomposable with a known composition;
-- intentionally atomic / canonical element;
-- intentionally provenance-sensitive and handled by a dedicated process;
-- explicitly unsupported with a documented reason.
+- directly decomposable with a defensible stoichiometric model;
+- process-owned: composition is known but grade/state/history matters;
+- mixture/manufactured state where a fake formula would be misleading;
+- provenance-sensitive nuclear state;
+- explicitly unresolved in a named process backlog family.
 
 Silent gaps are defects.
 
-## Synthesis coverage
+## Alloy semantics
 
-Every decomposable ordinary material should have a corresponding synthesis definition, but that definition remains locked until its research stage is granted.
+A fixed Matterworks ratio for a simple alloy is a **nominal pack grade**, not a claim that an alloy is a molecular compound.
 
-The synthesis audit must detect:
-
-- decomposable resource with no synthesis definition;
-- synthesis definition with no unlock stage;
-- unlock stage with no quest owner;
-- quest unlock with no recipe/runtime consumer;
-- alias that can bypass the canonical stage;
-- stock recipe that bypasses Matterworks synthesis policy.
+Engineering materials whose identity depends strongly on grade, microstructure or manufacturing history use `PROCESS`, `MIXTURE` or `MANUFACTURED` semantics. Zircaloy and carbon-manganese material must not be flattened into fake `Zr7Sn` / `MnC` direct chemistry merely because convenient gameplay ratios can be written down.
 
 ## Nuclear provenance boundary
 
-"Everything can be chemically understood" does not mean that every nuclear state can be recreated by ordinary element recombination.
+"Everything can be chemically understood" does not mean every nuclear state can be recreated by ordinary element recombination.
 
-The following remain provenance-sensitive and MUST NOT collapse into generic parent elements through the normal Dissolver/Combiner path:
+NuclearCraft 1.2.34's authoritative uranium front end is:
 
-- isotopically enriched/depleted materials;
-- reactor fuels;
-- irradiated/depleted fuels;
-- fission products and process wastes;
-- isotope-specific intermediates;
-- materials whose identity depends on neutron exposure or enrichment history.
+```text
+uranium dust + oxygen
+    -> uranium-oxide fluid
+    -> crystallization
+    -> yellowcake
+    -> isotope separation
+    -> U-235 + U-238
+    -> LEU fuel fabrication
+    -> reactor burnup
+    -> depleted fuel
+    -> reprocessing
+```
 
-Their composition may be analyzable, but synthesis must require the process that gives the state its physical provenance (enrichment, irradiation, reprocessing, accelerator production, etc.).
+Matterworks removes NuclearCraft's alternate direct `uranium dust -> isotopes` separator recipe because it bypasses that conversion history. Matterworks does not invent a UF6 step that NuclearCraft 1.2.34 does not model.
+
+The following remain provenance-sensitive:
+
+- conversion intermediates such as uranium-oxide fluid and yellowcake;
+- isotope-specific material identity;
+- fabricated reactor fuel;
+- irradiated/depleted fuel;
+- reprocessing products and waste;
+- any material whose identity depends on enrichment, irradiation or burnup history.
 
 ## Gate policy
 
-Use quest dependencies and quest-awarded stages whenever possible.
+Use the strongest truthful gate available, in this order:
 
-Hard KubeJS/datapack restrictions remain only where required to prevent bypasses:
+1. physical recipe dependency on already-proven process hardware/materials;
+2. removal/replacement of a stock recipe that bypasses the intended process;
+3. quest proof based on a characteristic output or operating-state product;
+4. acquisition of complete startup infrastructure when runtime observation is unavailable;
+5. controller/block acquisition only when the mod exposes no stronger proof;
+6. future team-scoped research stages only after an actual runtime consumer exists.
 
-- removing stock recipes that violate the progression contract;
-- canonicalization and anti-loop rules;
-- provenance protection;
-- machine serializers that cannot safely express per-player/per-team knowledge by themselves.
-
-Hard restrictions are enforcement; quests are progression authority.
-
-## Team semantics
-
-Research should normally be shared at the FTB Teams level so a factory operated by a team has one coherent technology state. Individual-only stages should be reserved for genuinely personal progression.
+Hard restrictions are enforcement; quests are player-facing proof and explanation.
 
 ## Machine milestone semantics
 
-A quest should unlock synthesis only after the required capability is demonstrated. Preferred proof, in order:
+Preferred proof, in order:
 
 1. successful production of the characteristic process output;
-2. observation/validation of a correctly built multiblock or machine where supported;
-3. acquisition of the process controller/block if runtime validation is not available yet.
+2. operating-state product proving the machine ran, e.g. depleted reactor fuel;
+3. observation/validation of a correctly built multiblock where supported;
+4. acquisition of complete startup infrastructure;
+5. acquisition of a controller/block only as a last resort.
 
-Simply possessing a random component is not considered research completion.
+Simply possessing a random component is not research completion.
 
-## Example progression chain
+## Current progression model
 
 ```text
-Create mechanical processing
-  -> controlled carbon / metallurgy
-  -> electrical infrastructure
-  -> Mekanism chemical processing
-  -> pressure and industrial gases
-  -> NuclearCraft fuel preparation
-  -> NuclearCraft fission operation
-  -> fuel reprocessing / nuclear chemistry
-  -> accelerator operation
-  -> Alchemistry fission knowledge
-  -> Alchemistry fusion knowledge
+Create mechanical manufacturing
+  -> electromechanical generation
+  -> parallel analysis/reconstruction + physical metallurgy
+  -> process heat / pressure / electrochemistry
+  -> atmospheric separation + Haber-Bosch
+  -> refinery / renewable organics / polymer convergence
+  -> digital plant supervision
+  -> uranium conversion -> yellowcake -> isotope separation
+  -> LEU fabrication -> reactor thermal design -> operational fission
+  -> depleted-fuel reprocessing
+  -> accelerator engineering
+  -> Alchemistry atomic transmutation
+  -> high-energy transmutation
+  -> separate Mekanism fusion-reactor engineering
+  -> prestige integration
 ```
 
-Each node may unlock a set of material synthesis stages, and later nodes may depend on earlier material knowledge.
+The player should ask "which technological capability is missing from the plant?", not "which mod do I finish next?"
 
 ## Acceptance criteria
 
 A release is not progression-complete until:
 
-- all installed-mod material resources are classified by the chemistry audit;
-- all ordinary classified resources have decomposition data;
-- all intended synthetic resources have a synthesis definition;
-- every synthesis definition has an explicit quest-owned unlock stage;
-- no stock recipe provides an ungated equivalent route;
-- JEI-visible aliases cannot bypass the canonical material rule;
-- nuclear provenance-sensitive materials cannot be recreated through ordinary synthesis;
-- questbook dependencies represent the same graph enforced by runtime recipes/scripts.
+- all installed-mod material resources are classified by the chemistry/provenance audit;
+- every composition entry has exactly one disposition: synthesis-owned, provenance-only or explicit process backlog;
+- every claimed synthesis/capability owner proves the characteristic physical process;
+- no stock recipe provides a known ungated equivalent route around a process/provenance boundary;
+- JEI-visible aliases cannot bypass canonical material rules;
+- nuclear states cannot be recreated through ordinary generic chemistry;
+- questbook dependencies represent the same physical graph enforced by recipes/scripts;
+- any future `stage`-based restriction is not called active until a real runtime consumer and team semantics are implemented.
