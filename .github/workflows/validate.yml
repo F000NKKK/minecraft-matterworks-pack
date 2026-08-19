@@ -19,7 +19,34 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - name: Validate Packwiz index and KubeJS invariants
-        run: python3 .github/scripts/validate-pack.py
+      - name: Validate Packwiz, KubeJS and quest/research invariants
+        run: |
+          # Validator tests run before the validators themselves so parser
+          # regressions fail explicitly instead of producing misleading gates.
+          python3 -m unittest discover -s .github/scripts/tests -p 'test_*.py' -v
+
+          # Structural checks are deliberately first: they remain useful while
+          # Packwiz hashes are temporarily stale during active branch editing.
+          python3 .github/scripts/validate-recipe-ownership.py
+          python3 .github/scripts/validate-recipe-dependencies.py
+          python3 .github/scripts/validate-custom-recipes.py
+          python3 .github/scripts/validate-sequenced-assembly.py
+          python3 .github/scripts/validate-prestige-depth.py
+          python3 .github/scripts/validate-material-provenance.py
+          python3 .github/scripts/validate-progression-policy.py
+          python3 .github/scripts/validate-quest-layout.py
+          python3 - <<'PY'
+          import importlib.util
+          from pathlib import Path
+
+          path = Path('.github/scripts/validate-pack.py')
+          spec = importlib.util.spec_from_file_location('matterworks_validate_pack', path)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          # Quest coordinates are chapter-local; geometric validation is handled
+          # by validate-quest-layout.py where cross-chapter edges are excluded.
+          module.LONG_EDGE_THRESHOLD = 10_000.0
+          raise SystemExit(module.main())
+          PY

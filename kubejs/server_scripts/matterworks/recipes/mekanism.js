@@ -43,6 +43,7 @@ ServerEvents.recipes(event => {
     )
         .transitionalItem(incompleteControlUnit)
         .loops(1)
+        .id('matterworks:mekanism/electromechanical_control_unit')
 
     /*
      * Remove Mekanism's default entry point.

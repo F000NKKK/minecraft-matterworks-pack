@@ -64,6 +64,21 @@
 			tasks: [{ id: "3260000000000005", item: "computercraft:redstone_relay", type: "item" }]
 			rewards: [{ id: "6260000000000005", type: "xp", xp: 75 }]
 		}
+		{
+			dependencies: ["2260000000000005", "2140000000000008"]
+			hide_dependency_lines: false
+			id: "2260000000000006"
+			title: "Capture Process State as Experience"
+			description: ["After Atomic digital control is established, build PneumaticCraft's rewritten Memory Stick and extract Memory Essence from player experience. Matterworks treats this fluid as process-owned information/experience: it is captured by PneumaticCraft hardware, never reconstructed from chemical elements. The Aerial Interface is the later stationary upgrade of the same process."]
+			x: 10.5d
+			y: 0.0d
+			shape: "hexagon"
+			tasks: [
+				{ id: "3260000000000006", item: "pneumaticcraft:memory_stick", type: "item" }
+				{ id: "3260000000000007", item: "pneumaticcraft:memory_essence_bucket", type: "item" }
+			]
+			rewards: [{ id: "6260000000000006", type: "xp", xp: 125 }]
+		}
 	]
 	title: "Guide - CC:Tweaked Process Control"
 }

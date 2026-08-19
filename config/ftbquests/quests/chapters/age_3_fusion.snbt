@@ -8,23 +8,129 @@
 	icon: "kubejs:quantum_singularity_core"
 	id: "1110000000000008"
 	images: [
-		{ x: 2.0d, y: 0.0d, width: 8.5d, height: 6.0d, image: "minecraft:textures/block/crying_obsidian.png", alpha: 26, order: -30 }
-		{ x: 14.0d, y: 0.0d, width: 20.0d, height: 10.0d, image: "minecraft:textures/block/obsidian.png", alpha: 26, order: -29 }
-		{ x: 14.0d, y: 0.0d, width: 17.0d, height: 7.0d, image: "minecraft:textures/block/purple_stained_glass.png", alpha: 13, order: -28 }
+		{ x: 0.0d, y: 3.0d, width: 13.0d, height: 9.0d, image: "minecraft:textures/block/crying_obsidian.png", alpha: 24, order: -30 }
+		{ x: 0.0d, y: 12.0d, width: 18.0d, height: 11.0d, image: "minecraft:textures/block/obsidian.png", alpha: 25, order: -29 }
+		{ x: 0.0d, y: 19.0d, width: 12.0d, height: 8.0d, image: "minecraft:textures/block/purple_stained_glass.png", alpha: 14, order: -28 }
 	]
 	order_index: 30
 	quest_links: []
 	quests: [
-		{ dependencies: ["2170000000000003"], hide_dependency_lines: false, id: "2180000000000001", title: "Fusion-Energy Catalyst", description: ["Prepare a Nether Star for the fusion program. Unlike the atomic chamber structure already mastered, this is a genuinely new high-energy prerequisite used by the Matterworks Fusion Chamber Controller recipe."], x: 0.0d, y: 0.0d, shape: "gear", size: 1.35d, tasks: [{ id: "3180000000000001", item: "minecraft:nether_star", type: "item" }], rewards: [{ id: "6180000000000001", type: "xp", xp: 900 }] }
-		{ dependencies: ["2180000000000001"], hide_dependency_lines: false, id: "2180000000000003", title: "Controlled Fusion", description: ["Construct the Fusion Chamber Controller using infrastructure and research established by the earlier programs. Fusion is the final generic element-construction capability; isotope-specific, fuel, irradiated and waste states remain excluded because provenance is part of their identity."], x: 3.5d, y: 0.0d, shape: "hexagon", size: 1.6d, tasks: [{ id: "3180000000000003", item: "alchemistry:fusion_chamber_controller", type: "item" }], rewards: [{ id: "6180000000000003", type: "xp", xp: 2200 }] }
+		{
+			dependencies: ["2170000000000003"]
+			hide_dependency_lines: false
+			id: "2180000000000001"
+			title: "Fusion-Energy Catalyst"
+			description: ["Prepare a Nether Star for the fusion program. Unlike the atomic chamber structure already mastered, this is a genuinely new high-energy prerequisite used by the Matterworks Fusion Chamber Controller recipe."]
+			x: 0.0d
+			y: 0.0d
+			shape: "gear"
+			size: 1.35d
+			tasks: [{ id: "3180000000000001", item: "minecraft:nether_star", type: "item" }]
+			rewards: [{ id: "6180000000000001", type: "xp", xp: 900 }]
+		}
+		{
+			dependencies: ["2180000000000001"]
+			hide_dependency_lines: false
+			id: "2180000000000003"
+			title: "Controlled Fusion"
+			description: ["Construct the Fusion Chamber Controller using infrastructure and research established by the earlier programs. Fusion is the final generic element-construction capability; isotope-specific, fuel, irradiated and waste states remain excluded because provenance is part of their identity."]
+			x: 0.0d
+			y: 4.0d
+			shape: "hexagon"
+			size: 1.6d
+			tasks: [{ id: "3180000000000003", item: "alchemistry:fusion_chamber_controller", type: "item" }]
+			rewards: [{ id: "6180000000000003", type: "xp", xp: 2200 }]
+		}
 
-		{ dependencies: ["2180000000000003"], hide_dependency_lines: false, id: "2190000000000001", title: "Reactor-Grade Engineering", description: ["Build a Reactor-Grade Frame from NuclearCraft reactor structure, a fission controller, Mekanism fission casing and polonium pellets. A functioning late nuclear chain must exist; controller ownership alone is insufficient."], x: 8.0d, y: -3.0d, shape: "gear", size: 1.25d, tasks: [{ id: "3190000000000001", item: "kubejs:reactor_grade_frame", type: "item" }], rewards: [{ id: "6190000000000001", type: "xp", xp: 1000 }] }
-		{ dependencies: ["2180000000000003"], hide_dependency_lines: false, id: "2190000000000002", title: "Particle Confinement", description: ["Build a Particle Confinement Matrix. It consumes Matterworks focusing coils, an actual Ring Accelerator Controller, an AE2 singularity and antimatter pellets. High-energy equipment therefore depends on particle infrastructure and the extreme process chain behind antimatter."], x: 8.0d, y: 0.0d, shape: "gear", size: 1.25d, tasks: [{ id: "3190000000000002", item: "kubejs:particle_confinement_matrix", type: "item" }], rewards: [{ id: "6190000000000002", type: "xp", xp: 1250 }] }
-		{ dependencies: ["2180000000000003"], hide_dependency_lines: false, id: "2190000000000003", title: "Fusion Field Engineering", description: ["Build a Fusion Field Core from Mekanism fusion-reactor control hardware, the Alchemistry Fusion Chamber Controller, antimatter and Nether Stars. Two independent fusion-era systems must converge rather than allowing either mod to complete the endgame alone."], x: 8.0d, y: 3.0d, shape: "gear", size: 1.25d, tasks: [{ id: "3190000000000003", item: "kubejs:fusion_field_core", type: "item" }], rewards: [{ id: "6190000000000003", type: "xp", xp: 1250 }] }
-		{ dependencies: ["2190000000000001", "2190000000000002", "2190000000000003"], hide_dependency_lines: false, id: "2190000000000004", title: "Quantum Singularity Core", description: ["Converge reactor engineering, accelerator research, fusion engineering and AE2 singularity technology into the Quantum Singularity Core. This is the prestige component used by equipment whose capability approaches creative-mode convenience."], x: 12.0d, y: 0.0d, shape: "diamond", size: 1.5d, tasks: [{ id: "3190000000000004", item: "kubejs:quantum_singularity_core", type: "item" }], rewards: [{ id: "6190000000000004", type: "xp", xp: 2000 }] }
-		{ dependencies: ["2190000000000004"], hide_dependency_lines: false, id: "2190000000000005", title: "MekaSuit", description: ["Construct the complete MekaSuit only after the prestige component chain exists. Every armour piece consumes multiple multi-program components, so the suit represents completion of the factory rather than the point where one mod happens to become available."], x: 16.0d, y: -2.0d, shape: "hexagon", tasks: [{ id: "3190000000000005", item: "mekanism:mekasuit_helmet", type: "item" } { id: "3190000000000006", item: "mekanism:mekasuit_bodyarmor", type: "item" } { id: "3190000000000007", item: "mekanism:mekasuit_pants", type: "item" } { id: "3190000000000008", item: "mekanism:mekasuit_boots", type: "item" }], rewards: [{ id: "6190000000000005", type: "xp", xp: 3000 }] }
-		{ dependencies: ["2190000000000004"], hide_dependency_lines: false, id: "2190000000000006", title: "Prestige Tooling", description: ["Build the Meka-Tool and Atomic Disassembler. These tools remove large amounts of ordinary mining friction, so they share the same multi-program endgame boundary as the suit instead of appearing during ordinary Mekanism progression."], x: 16.0d, y: 2.0d, shape: "hexagon", tasks: [{ id: "3190000000000009", item: "mekanism:meka_tool", type: "item" } { id: "3190000000000010", item: "mekanism:atomic_disassembler", type: "item" }], rewards: [{ id: "6190000000000006", type: "xp", xp: 2500 }] }
-		{ dependencies: ["2190000000000005", "2190000000000006"], hide_dependency_lines: false, id: "2190000000000007", title: "Fusion Age Mastery", description: ["Only after the suit and prestige tooling exist may you manufacture the Gravitational Modulating Unit. Creative-like flight is the final additional purchase and marks mastery of the Fusion Age rather than a side effect of obtaining armour."], x: 20.0d, y: 0.0d, shape: "diamond", size: 1.7d, tasks: [{ id: "3190000000000011", item: "mekanism:module_gravitational_modulating_unit", type: "item" }], rewards: [{ id: "6190000000000007", type: "xp", xp: 5000 }] }
+		{
+			dependencies: ["2180000000000003"]
+			hide_dependency_lines: false
+			id: "2190000000000001"
+			title: "Reactor-Grade Engineering"
+			description: ["Manufacture a Reactor-Grade Frame through two full Create sequenced-assembly passes. Each pass consumes polonium, Mekanism fission structure and a NuclearCraft fission controller. The component is therefore proof of a functioning late nuclear production chain, not an expensive crafting token."]
+			x: -5.0d
+			y: 8.0d
+			shape: "gear"
+			size: 1.25d
+			tasks: [{ id: "3190000000000001", item: "kubejs:reactor_grade_frame", type: "item" }]
+			rewards: [{ id: "6190000000000001", type: "xp", xp: 1000 }]
+		}
+		{
+			dependencies: ["2180000000000003"]
+			hide_dependency_lines: false
+			id: "2190000000000002"
+			title: "Particle Confinement"
+			description: ["Manufacture a Particle Confinement Matrix through three sequenced-assembly passes. Focusing coils, an actual Ring Accelerator Controller, AE2 singularity technology and antimatter must all be available repeatedly. High-energy equipment therefore depends on sustained particle infrastructure rather than one trophy block."]
+			x: 0.0d
+			y: 8.0d
+			shape: "gear"
+			size: 1.25d
+			tasks: [{ id: "3190000000000002", item: "kubejs:particle_confinement_matrix", type: "item" }]
+			rewards: [{ id: "6190000000000002", type: "xp", xp: 1250 }]
+		}
+		{
+			dependencies: ["2180000000000003"]
+			hide_dependency_lines: false
+			id: "2190000000000003"
+			title: "Fusion Field Engineering"
+			description: ["Manufacture a Fusion Field Core through three sequenced-assembly passes. Mekanism fusion control hardware, the Alchemistry Fusion Chamber Controller, antimatter and Nether Stars must converge repeatedly, preventing either fusion implementation from completing the endgame by itself."]
+			x: 5.0d
+			y: 8.0d
+			shape: "gear"
+			size: 1.25d
+			tasks: [{ id: "3190000000000003", item: "kubejs:fusion_field_core", type: "item" }]
+			rewards: [{ id: "6190000000000003", type: "xp", xp: 1250 }]
+		}
+		{
+			dependencies: ["2190000000000001", "2190000000000002", "2190000000000003"]
+			hide_dependency_lines: false
+			id: "2190000000000004"
+			title: "Quantum Singularity Core"
+			description: ["Converge reactor engineering, accelerator research and fusion engineering into four full sequenced-assembly passes around AE2 singularity technology. Every pass consumes all three prestige components, turning the Quantum Singularity Core into a sustained-factory throughput test for equipment approaching creative-mode convenience."]
+			x: 0.0d
+			y: 12.0d
+			shape: "diamond"
+			size: 1.5d
+			tasks: [{ id: "3190000000000004", item: "kubejs:quantum_singularity_core", type: "item" }]
+			rewards: [{ id: "6190000000000004", type: "xp", xp: 2000 }]
+		}
+		{
+			dependencies: ["2190000000000004"]
+			hide_dependency_lines: false
+			id: "2190000000000005"
+			title: "MekaSuit"
+			description: ["Construct the complete MekaSuit only after the prestige component chain exists. Every armour piece consumes multiple multi-program components, so the suit represents completion of the factory rather than the point where one mod happens to become available."]
+			x: -3.5d
+			y: 16.0d
+			shape: "hexagon"
+			tasks: [{ id: "3190000000000005", item: "mekanism:mekasuit_helmet", type: "item" } { id: "3190000000000006", item: "mekanism:mekasuit_bodyarmor", type: "item" } { id: "3190000000000007", item: "mekanism:mekasuit_pants", type: "item" } { id: "3190000000000008", item: "mekanism:mekasuit_boots", type: "item" }]
+			rewards: [{ id: "6190000000000005", type: "xp", xp: 3000 }]
+		}
+		{
+			dependencies: ["2190000000000004"]
+			hide_dependency_lines: false
+			id: "2190000000000006"
+			title: "Prestige Tooling"
+			description: ["Build the Meka-Tool and Atomic Disassembler. These tools remove large amounts of ordinary mining friction, so they share the same multi-program endgame boundary as the suit instead of appearing during ordinary Mekanism progression."]
+			x: 3.5d
+			y: 16.0d
+			shape: "hexagon"
+			tasks: [{ id: "3190000000000009", item: "mekanism:meka_tool", type: "item" } { id: "3190000000000010", item: "mekanism:atomic_disassembler", type: "item" }]
+			rewards: [{ id: "6190000000000006", type: "xp", xp: 2500 }]
+		}
+		{
+			dependencies: ["2190000000000005", "2190000000000006"]
+			hide_dependency_lines: false
+			id: "2190000000000007"
+			title: "Fusion Age Mastery"
+			description: ["Only after the suit and prestige tooling exist may you manufacture the Gravitational Modulating Unit. Creative-like flight is the final additional purchase and marks mastery of the Fusion Age rather than a side effect of obtaining armour."]
+			x: 0.0d
+			y: 20.0d
+			shape: "diamond"
+			size: 1.7d
+			tasks: [{ id: "3190000000000011", item: "mekanism:module_gravitational_modulating_unit", type: "item" }]
+			rewards: [{ id: "6190000000000007", type: "xp", xp: 5000 }]
+		}
 	]
 	title: "Age III - Fusion Age"
 }

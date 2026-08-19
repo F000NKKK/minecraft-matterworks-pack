@@ -65,6 +65,7 @@ ServerEvents.recipes(event => {
     )
         .transitionalItem(incompleteInsulatedWire)
         .loops(2)
+        .id('matterworks:electrical/insulated_copper_wire')
 
 
     /*
@@ -108,6 +109,7 @@ ServerEvents.recipes(event => {
     )
         .transitionalItem(incompleteCoil)
         .loops(3)
+        .id('matterworks:electrical/electromagnetic_coil')
 
 
     /*
@@ -154,7 +156,7 @@ ServerEvents.recipes(event => {
         },
 
         acceptMirrored: false
-    })
+    }).id('matterworks:electrical/alternator')
 
     console.info(
         '[Matterworks] Electrical component production chain registered'
@@ -210,6 +212,7 @@ ServerEvents.recipes(event => {
     )
         .transitionalItem('create:copper_sheet')
         .loops(2)
+        .id('matterworks:electrical/primitive_capacitor')
 
 
     /*

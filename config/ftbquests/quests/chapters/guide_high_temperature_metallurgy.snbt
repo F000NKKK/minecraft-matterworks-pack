@@ -3,73 +3,71 @@
 	default_quest_shape: "square"
 	filename: "guide_high_temperature_metallurgy"
 	group: "1100000000000002"
-	icon: "minecraft:blast_furnace"
+	icon: "nuclearcraft:alloy_smelter"
 	id: "1120000000000009"
 	order_index: 190
 	quest_links: []
 	quests: [
 		{
-			dependencies: ["2130000000000007"]
+			dependencies: ["2130000000000013"]
 			hide_dependency_lines: false
 			id: "4190000000000001"
 			title: "Temperature Changes the Process"
-			description: ["Start with a Blast Furnace as the simplest visible example of temperature-specific processing. A chemical formula says which elements are present; it does not describe melting range, atmosphere, phase transitions or heat treatment. High-temperature metallurgy is therefore a process discipline, not a larger version of ordinary crafting."]
+			description: ["The Electrical Furnace milestone is the point where temperature becomes an explicit engineering variable. Composition tells you what a material contains; it does not specify melting range, atmosphere, phase transitions, heat treatment or microstructure. High-temperature metallurgy is therefore a process discipline, not generic chemical synthesis."]
 			x: 0.0d
 			y: 0.0d
 			shape: "gear"
 			size: 1.2d
-			tasks: [{ id: "5190000000000001", item: "minecraft:blast_furnace", type: "item" }]
+			tasks: [{ id: "5190000000000001", item: "mekanism:energized_smelter", type: "item" }]
 			rewards: [{ id: "6290000000000001", type: "xp", xp: 25 }]
 		}
 		{
 			dependencies: ["4190000000000001"]
 			hide_dependency_lines: false
 			id: "4190000000000002"
-			title: "Composition Is a Constraint"
-			description: ["Keep separate iron and copper samples while thinking about alloys. Industrial alloys are not defined by two arbitrary ingredients touching each other: ratio, impurities and processing route matter. Matterworks therefore refuses shortcuts that treat ingredient presence as a complete alloy specification."]
-			x: 3.0d
-			y: -2.0d
-			tasks: [
-				{ id: "5190000000000002", item: "minecraft:iron_ingot", type: "item" }
-				{ id: "5190000000000006", item: "minecraft:copper_ingot", type: "item" }
-			]
+			title: "Dedicated Alloy Smelting"
+			description: ["Build the Matterworks-gated NuclearCraft Alloy Smelter. Its machine recipe requires the electrical furnace, engineered graphite, reinforced control material and electromechanical control hardware. This is the entry point for the high-temperature branch, not an early side machine."]
+			x: 0.0d
+			y: 3.0d
+			shape: "gear"
+			tasks: [{ id: "5190000000000002", item: "nuclearcraft:alloy_smelter", type: "item" }]
 			rewards: [{ id: "6290000000000002", type: "xp", xp: 35 }]
 		}
 		{
-			dependencies: ["4190000000000001"]
+			dependencies: ["4190000000000002"]
 			hide_dependency_lines: false
 			id: "4190000000000003"
-			title: "Ceramics Follow Different Rules"
-			description: ["Compare fired brick and quartz with metallic feedstocks. Ceramics and ceramic-matrix composites depend on bonding, porosity and microstructure rather than metallic alloying alone. They therefore need their own processing family instead of being hidden inside a generic alloy recipe."]
-			x: 3.0d
-			y: 2.0d
-			tasks: [
-				{ id: "5190000000000003", item: "minecraft:brick", count: 4, type: "item" }
-				{ id: "5190000000000007", item: "minecraft:quartz", count: 4, type: "item" }
-			]
-			rewards: [{ id: "6290000000000003", type: "xp", xp: 35 }]
+			title: "High-Temperature Engineering Alloy"
+			description: ["Produce Tough Alloy as a concrete process proof. The important distinction is that its identity is not enough to grant a Combiner shortcut: the material remains owned by controlled alloy processing."]
+			x: -3.0d
+			y: 6.0d
+			tasks: [{ id: "5190000000000003", item: "nuclearcraft:tough_alloy_ingot", type: "item" }]
+			rewards: [{ id: "6290000000000003", type: "xp", xp: 40 }]
 		}
 		{
-			dependencies: ["4190000000000002", "4190000000000003"]
+			dependencies: ["4190000000000002"]
 			hide_dependency_lines: false
 			id: "4190000000000004"
-			title: "Inspect the Quarantined Process Layer"
-			description: ["Build a NuclearCraft Chemical Reactor only after the ordinary process industry exists. Several of its molten-alloy recipes depend on material states or tags that Matterworks intentionally keeps quarantined. Owning the machine teaches where those routes would live; it does not make an invalid route valid."]
-			x: 6.5d
-			y: 0.0d
-			shape: "diamond"
-			tasks: [{ id: "5190000000000004", item: "nuclearcraft:chemical_reactor", type: "item" }]
+			title: "Controlled Steel Grades"
+			description: ["Produce HSLA and stainless steel as explicit grades rather than treating every iron-based material as interchangeable steel. Alloy composition, process conditions and intended engineering role remain separate constraints."]
+			x: 3.0d
+			y: 6.0d
+			tasks: [
+				{ id: "5190000000000004", item: "nuclearcraft:hsla_steel_ingot", type: "item" }
+				{ id: "5190000000000006", item: "nuclearcraft:stainless_steel_ingot", type: "item" }
+			]
 			rewards: [{ id: "6290000000000004", type: "xp", xp: 50 }]
 		}
 		{
-			dependencies: ["4190000000000004"]
+			dependencies: ["4190000000000003", "4190000000000004"]
 			hide_dependency_lines: false
 			id: "4190000000000005"
-			title: "Keep Metallurgical Families Separate"
-			description: ["Use an Alloy Smelter as the reference machine for the next distinction: steel grades, stainless alloys, superconductors, refractory alloys, ceramics and high-pressure carbon will become separate production families. A family leaves quarantine only when Matterworks has both a physically meaningful route and a correctly placed Main Program milestone."]
-			x: 10.0d
-			y: 0.0d
+			title: "Process Ownership Boundaries"
+			description: ["The 0.5.7 Industrial branch promotes validated high-temperature materials into explicit process ownership, but that does not legalise every stock molten shortcut. Superconductors, ceramic-matrix composites, refractory systems and high-pressure carbon routes still require physically meaningful production paths before any quarantined edge can return."]
+			x: 0.0d
+			y: 9.0d
 			shape: "hexagon"
+			size: 1.25d
 			tasks: [{ id: "5190000000000005", item: "nuclearcraft:alloy_smelter", type: "item" }]
 			rewards: [{ id: "6290000000000005", type: "xp", xp: 75 }]
 		}

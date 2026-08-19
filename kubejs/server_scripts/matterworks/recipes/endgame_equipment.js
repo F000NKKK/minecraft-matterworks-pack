@@ -1,36 +1,73 @@
 ServerEvents.recipes(event => {
     const reactorFrame = 'kubejs:reactor_grade_frame'
+    const incompleteReactorFrame = 'kubejs:incomplete_reactor_grade_frame'
     const particleMatrix = 'kubejs:particle_confinement_matrix'
+    const incompleteParticleMatrix = 'kubejs:incomplete_particle_confinement_matrix'
     const fusionCore = 'kubejs:fusion_field_core'
+    const incompleteFusionCore = 'kubejs:incomplete_fusion_field_core'
     const singularityCore = 'kubejs:quantum_singularity_core'
+    const incompleteSingularityCore = 'kubejs:incomplete_quantum_singularity_core'
 
-    event.shaped(reactorFrame, ['PCP', 'RFR', 'PCP'], {
-        P: 'mekanism:pellet_polonium',
-        C: 'mekanismgenerators:fission_reactor_casing',
-        R: 'nuclearcraft:fission_reactor_casing',
-        F: 'nuclearcraft:fission_reactor_controller'
-    }).id('matterworks:endgame/reactor_grade_frame')
+    /*
+     * Prestige components are process proofs, not expensive crafting-table
+     * tokens. Each chain repeatedly handles hardware from another engineering
+     * program before the component becomes usable by near-creative equipment.
+     */
+    event.recipes.create.sequenced_assembly(
+        reactorFrame,
+        'nuclearcraft:fission_reactor_casing',
+        [
+            event.recipes.create.deploying(incompleteReactorFrame, [incompleteReactorFrame, 'mekanism:pellet_polonium']),
+            event.recipes.create.deploying(incompleteReactorFrame, [incompleteReactorFrame, 'mekanismgenerators:fission_reactor_casing']),
+            event.recipes.create.deploying(incompleteReactorFrame, [incompleteReactorFrame, 'nuclearcraft:fission_reactor_controller']),
+            event.recipes.create.pressing(incompleteReactorFrame, incompleteReactorFrame)
+        ]
+    )
+        .transitionalItem(incompleteReactorFrame)
+        .loops(2)
+        .id('matterworks:endgame/reactor_grade_frame')
 
-    event.shaped(particleMatrix, ['PAP', 'SRS', 'PAP'], {
-        P: 'kubejs:particle_focusing_coil',
-        A: 'mekanism:pellet_antimatter',
-        S: 'ae2:singularity',
-        R: 'nuclearcraft:ring_accelerator_controller'
-    }).id('matterworks:endgame/particle_confinement_matrix')
+    event.recipes.create.sequenced_assembly(
+        particleMatrix,
+        'ae2:singularity',
+        [
+            event.recipes.create.deploying(incompleteParticleMatrix, [incompleteParticleMatrix, 'kubejs:particle_focusing_coil']),
+            event.recipes.create.deploying(incompleteParticleMatrix, [incompleteParticleMatrix, 'mekanism:pellet_antimatter']),
+            event.recipes.create.deploying(incompleteParticleMatrix, [incompleteParticleMatrix, 'nuclearcraft:ring_accelerator_controller']),
+            event.recipes.create.pressing(incompleteParticleMatrix, incompleteParticleMatrix)
+        ]
+    )
+        .transitionalItem(incompleteParticleMatrix)
+        .loops(3)
+        .id('matterworks:endgame/particle_confinement_matrix')
 
-    event.shaped(fusionCore, ['ANA', 'FCF', 'ANA'], {
-        A: 'mekanism:pellet_antimatter',
-        N: 'minecraft:nether_star',
-        F: 'mekanismgenerators:fusion_reactor_controller',
-        C: 'alchemistry:fusion_chamber_controller'
-    }).id('matterworks:endgame/fusion_field_core')
+    event.recipes.create.sequenced_assembly(
+        fusionCore,
+        'alchemistry:fusion_chamber_controller',
+        [
+            event.recipes.create.deploying(incompleteFusionCore, [incompleteFusionCore, 'mekanism:pellet_antimatter']),
+            event.recipes.create.deploying(incompleteFusionCore, [incompleteFusionCore, 'mekanismgenerators:fusion_reactor_controller']),
+            event.recipes.create.deploying(incompleteFusionCore, [incompleteFusionCore, 'minecraft:nether_star']),
+            event.recipes.create.pressing(incompleteFusionCore, incompleteFusionCore)
+        ]
+    )
+        .transitionalItem(incompleteFusionCore)
+        .loops(3)
+        .id('matterworks:endgame/fusion_field_core')
 
-    event.shaped(singularityCore, ['RPR', 'FSF', 'RPR'], {
-        R: reactorFrame,
-        P: particleMatrix,
-        F: fusionCore,
-        S: 'ae2:singularity'
-    }).id('matterworks:endgame/quantum_singularity_core')
+    event.recipes.create.sequenced_assembly(
+        singularityCore,
+        'ae2:singularity',
+        [
+            event.recipes.create.deploying(incompleteSingularityCore, [incompleteSingularityCore, reactorFrame]),
+            event.recipes.create.deploying(incompleteSingularityCore, [incompleteSingularityCore, particleMatrix]),
+            event.recipes.create.deploying(incompleteSingularityCore, [incompleteSingularityCore, fusionCore]),
+            event.recipes.create.pressing(incompleteSingularityCore, incompleteSingularityCore)
+        ]
+    )
+        .transitionalItem(incompleteSingularityCore)
+        .loops(4)
+        .id('matterworks:endgame/quantum_singularity_core')
 
     const extremeOutputs = [
         'mekanism:mekasuit_helmet',
@@ -102,6 +139,6 @@ ServerEvents.recipes(event => {
     }).id('matterworks:endgame/module_gravitational_modulating_unit')
 
     console.info(
-        `[Matterworks] Extreme equipment policy registered: ${extremeOutputs.length} near-creative outputs moved behind multi-program prestige components`
+        `[Matterworks] Extreme equipment policy registered: ${extremeOutputs.length} near-creative outputs moved behind multi-program sequenced prestige components`
     )
 })

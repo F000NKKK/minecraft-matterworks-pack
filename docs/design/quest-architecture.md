@@ -2,147 +2,147 @@
 
 ## Purpose
 
-Matterworks uses two different kinds of quest content. They must not be conflated.
+Matterworks has two quest layers with different responsibilities.
 
-1. **Main progression — Phases 1..N** owns advancement, research, synthesis unlocks and cross-mod engineering goals.
-2. **Mod guides** teach individual mods and remain primarily explanatory/reference content.
+1. **Matterworks — Main Program** owns progression, research stages, synthesis permissions and cross-mod engineering milestones.
+2. **Mod Guides** teach individual systems and remain explanatory/reference curricula.
 
-A mod guide may explain how Alchemistry works. A main-phase quest may require the player to use chemical analysis as part of an engineering program. Only the latter is progression authority unless a quest is explicitly marked as a research milestone.
+A guide may teach how a machine works. The Main Program proves that the factory can use that machine as part of a technological capability. Only the Main Program owns progression unless a guide milestone is explicitly registered as an exception.
 
-## Main progression: Phases 1..N
+## Canonical progression model
 
-The main quest line describes Matterworks itself, not any individual mod. It is a cross-mod technology tree.
+The canonical macrostructure is now **Ages**, not numbered phases:
 
-Each phase represents a technological capability and may freely combine mechanics from Create, Mekanism, Alchemistry/ChemLib, NuclearCraft, AE2, CC:Tweaked and other installed mods.
+- **Age I — Industrial Age**: mechanical manufacturing, analytical chemistry, electrical engineering, pressure/process engineering, atmospheric separation, polymers, high-temperature metallurgy, petrochemistry and industrial control foundations.
+- **Age II — Atomic Age**: digital supervision, AE2/CC:Tweaked integration, nuclear fuel-cycle engineering, accelerator research, isotope handling and controlled atomic fission/transmutation.
+- **Age III — Fusion Age**: fusion engineering, antimatter-scale requirements, parent-element synthesis and prestige engineering.
 
-Main-phase quests may:
+An Age contains several engineering branches. Branches should converge on real capability milestones rather than form one long linear spine.
 
-- unlock research stages;
+The preferred visual grammar is:
+
+`branch -> local capability -> convergence milestone -> new branches`
+
+A later Age may require milestones from multiple branches of an earlier Age. New Ages may be appended as the pack grows.
+
+### Compatibility terminology
+
+The old Phase 1..8 model was the design scaffold used before 0.5.6. Runtime code may retain `phase` aliases temporarily for 0.5.x compatibility, but new design, quest and research work must use Age terminology. Old phase numbers are not progression authority.
+
+## Main Program responsibilities
+
+Main Program quests may:
+
+- grant an Age or capability research stage;
 - unlock synthesis of a material or material family;
 - prove construction of machinery or infrastructure;
-- require production of a process output rather than mere possession of a controller;
-- unlock the next phase;
-- branch into optional engineering goals while preserving a clear critical path.
+- require a meaningful process output rather than possession of a controller block;
+- require evidence from multiple engineering branches;
+- unlock the next Age;
+- expose optional engineering goals without weakening the critical path.
 
-The phase number is a pack-level concept. It must not be inferred from a mod's internal tier numbering.
-
-### Initial phase skeleton
-
-The exact contents will evolve, but the intended macrostructure is:
-
-- **Phase 1 — Mechanical Industry**: Create-based production, basic processing, coke and repeatable mechanical infrastructure.
-- **Phase 2 — Chemical Analysis**: ChemLib/Alchemistry analysis, decomposition, material identity and early chemical processes. Analysis is not equivalent to synthesis knowledge.
-- **Phase 3 — Electrotechnics and Process Industry**: Mekanism power, gases, pressure/process abstractions, industrial metallurgy and controlled synthesis families.
-- **Phase 4 — Digital Industry**: AE2 logistics plus CC:Tweaked measurement/control requirements where appropriate.
-- **Phase 5 — Nuclear Engineering**: NuclearCraft feed preparation, fission infrastructure, fuel cycle, irradiation and reprocessing.
-- **Phase 6 — Nuclear Research**: accelerator/isotope program and the research milestones required for atomic transformation.
-- **Phase 7 — Atomic Engineering**: Alchemistry Fission becomes a controlled end-game capability; nuclear provenance rules still apply.
-- **Phase 8 — Fusion Engineering**: Alchemistry Fusion and the highest-order synthetic material program.
-
-This list is a design baseline, not a promise that Matterworks ends at Phase 8. New phases may be inserted or appended as the pack grows.
+Machine possession alone is weak evidence. Prefer outputs, multistep processing, controlled infrastructure and cross-system integration.
 
 ## Mod-guide branches
 
-Every major gameplay mod should have its own guide chapter/branch, for example:
+Every major gameplay system should have a guide chapter where useful, including Create, Mekanism, Alchemistry/ChemLib, NuclearCraft, AE2, CC:Tweaked and pressure engineering.
 
-- Create
-- Mekanism
-- Alchemistry / ChemLib
-- NuclearCraft: Neoteric
-- Applied Energistics 2
-- CC:Tweaked
+Guides answer questions such as:
 
-These branches answer questions such as:
+- what does this machine or subsystem do?
+- what transport/storage model does the mod use?
+- what terminology is important?
+- what common configuration mistakes exist?
+- where does Matterworks intentionally alter stock behaviour?
 
-- what does this machine do?
-- how do this mod's transport/storage systems work?
-- what are the important machine families?
-- what terminology does the mod use?
-- what mistakes are easy to make?
-- where does Matterworks intentionally change vanilla mod behaviour?
-
-They are documentation/tutorials, not the primary technology tree.
-
-### Chemistry example
-
-The **Alchemistry / ChemLib guide** explains the Dissolver, Combiner, elements, compounds and Matterworks-specific restrictions.
-
-The **Main Progression / Phase 2 — Chemical Analysis** instead asks the player to establish an analysis laboratory and demonstrate analysis of selected materials. Later main phases use that capability to unlock new synthesis research.
-
-Thus there may be two quests concerning the same machine without duplication of responsibility:
-
-- mod guide: "This is a Dissolver; this is how it works."
-- main progression: "Build an analytical chemistry capability and prove that you can characterize material X."
-
-Only the main progression quest grants progression/research state.
+Guides are curricula, not the primary technology tree. They must not become hidden critical-path dependencies.
 
 ## Research ownership
 
-FTB Quests is the player-facing authority for progression.
+FTB Quests is the player-facing progression authority.
 
 Research flow:
 
-`physical capability -> main quest completion -> research stage -> recipe/process permission`
+`physical capability -> Main Program quest completion -> research stage -> recipe/process permission`
 
-Mod-guide completion must not accidentally grant broad progression. If a tutorial needs to grant a stage, that relationship must be explicit in the research registry and audit output.
+Every registered Age, capability and synthesis family must have exactly one documented Main Program owner quest unless explicitly documented otherwise.
 
-Material synthesis unlocks belong to main progression even when the underlying machine comes from a particular mod.
+Every research stage must also have at least one runtime consumer. A stage that is granted but never enforced is documentation, not a progression boundary.
+
+Material synthesis permissions belong to the Main Program even when the underlying machine belongs to a specific mod.
 
 Examples:
 
-- Create guide teaches heated mixing; a main metallurgy quest unlocks a controlled alloy synthesis family.
-- Mekanism guide teaches gas handling; a main process-engineering quest unlocks synthesis routes requiring industrial gases.
-- NuclearCraft guide teaches reactor concepts; a main nuclear-program quest proves an actual fuel cycle and unlocks subsequent research.
-- Alchemistry guide teaches Combiner operation; it does not grant universal permission to synthesize every known material.
+- Create guide teaches heated mixing; a Main Program metallurgy milestone owns controlled alloy synthesis.
+- Mekanism guide teaches gases; a Main Program process milestone owns industrial-gas-dependent synthesis.
+- NuclearCraft guide teaches reactor concepts; the Main Program proves a real fuel cycle before later nuclear research unlocks.
+- Alchemistry guide teaches the Combiner; it does not grant universal synthesis of every known material.
 
 ## Quest graph rules
 
-1. Main phases form the canonical critical path.
-2. A later phase can require milestones from multiple earlier phases.
-3. Mod-guide branches may be completed independently when their items become available.
-4. Guide quests should avoid hard-locking the player merely for failing to read documentation.
-5. Progression rewards/stages are normally owned by main-phase quests.
-6. Machine possession alone is weak evidence. Prefer a meaningful output, process result or multistep objective where possible.
-7. Team progression uses FTB Teams/FTB Quests semantics so a factory operated by a team advances the team's research consistently.
-8. Recipe removal and KubeJS enforcement exist to prevent bypasses, not to replace the quest graph.
-9. JEI visibility must not imply availability: locked synthesis routes require a real server-side permission boundary.
-10. Every research stage must have exactly one documented progression owner and at least one runtime consumer.
+1. Ages form the canonical critical path.
+2. Engineering disciplines branch inside an Age and should converge on capability milestones.
+3. A later Age can require milestones from multiple earlier branches.
+4. Mod guides may be completed independently when their hardware becomes available.
+5. Guide quests must not accidentally become mandatory Main Program dependencies.
+6. Progression stages are normally owned by Main Program quests.
+7. Machine possession alone is insufficient where a meaningful output can prove capability.
+8. Team progression follows FTB Teams/FTB Quests semantics.
+9. Recipe removal and KubeJS enforcement prevent bypasses; they do not replace the quest graph.
+10. JEI visibility must not imply availability. Locked processes require a real server-side boundary.
+11. Every research stage has exactly one owner and at least one runtime consumer.
+12. Quest dependencies must form a DAG: no cycles, no missing dependency IDs and no unreachable critical-path nodes.
+13. Main Program graph layout must avoid overlapping nodes and pathological long/crossing edges where a clearer branch/convergence layout is possible.
+
+## Industrial Age branch model
+
+Industrial Age should read as a factory architecture rather than a numbered recipe checklist. Its principal branches are:
+
+- mechanical manufacturing and electromechanical components;
+- analytical chemistry and controlled reconstruction;
+- electrical metallurgy and power conversion;
+- pressure engineering and atmospheric separation;
+- electrochemistry and reaction chemistry;
+- polymer engineering;
+- high-temperature metallurgy;
+- petrochemistry and renewable organic processing;
+- specialist industrial chemistry.
+
+These branches converge on **Industrial Age Established** only after the player has demonstrated the major process capabilities required by later Atomic Age infrastructure.
+
+## Atomic and Fusion Ages
+
+Atomic Age owns digitally supervised nuclear-scale industry: networks, programmable control, fuel-cycle provenance, accelerator research and atomic engineering.
+
+Fusion Age owns the highest-order process capabilities: fusion, antimatter-derived requirements, controlled parent-element synthesis and prestige equipment. Near-creative equipment should require evidence from several independent programs rather than a single expensive crafting recipe.
 
 ## Presentation
 
-Quest-book organization should visibly separate the two layers:
+The quest book must make two questions easy to answer:
 
-### Matterworks — Main Program
+- **What should I do next?** -> Matterworks — Main Program / current Age.
+- **How does this system work?** -> Mod Guides.
 
-- Phase 1
-- Phase 2
-- ...
-- Phase N
-
-### Mod Guides
-
-- Create
-- Mekanism
-- Alchemistry / ChemLib
-- NuclearCraft
-- AE2
-- CC:Tweaked
-- ...
-
-The player should always be able to answer two different questions from the book:
-
-- **What should I do next?** -> Main Program.
-- **How does this mod/system work?** -> Mod Guides.
+Age graphs should be predominantly top-down and visibly branched. Local branches should be compact; convergence nodes should communicate why previously independent capabilities are now being combined.
 
 ## Audit requirements
 
-The progression audit must eventually detect:
+Static and runtime audits should jointly detect:
 
-- main progression stages without quest owners;
-- research stages granted only by guide quests unintentionally;
-- synthesis permissions without research owners;
-- phase quests whose unlocks have no runtime consumer;
-- guide quests that accidentally become mandatory critical-path dependencies;
-- stock recipes that bypass main-progression research;
-- materials that can be synthesized before their research milestone;
-- circular quest/research dependencies.
+- duplicate chapter, quest, task and reward IDs;
+- missing quest dependency IDs;
+- circular quest dependencies;
+- unreachable Main Program quests;
+- registered research owners whose quest does not exist;
+- research stages without owners;
+- research stages without runtime consumers;
+- multiple registered owners for one stage/material family;
+- guide quests accidentally used as Main Program dependencies;
+- synthesis permissions without research disposition;
+- stock recipes that bypass Main Program progression;
+- materials synthesizable before their research milestone;
+- malformed owner IDs and unknown Age references;
+- unresolved/backlog materials without a named target process family;
+- overlapping quest coordinates and suspiciously long graph edges that indicate layout regressions.
+
+The repository validator should enforce everything that can be proven statically. Minecraft runtime verification remains mandatory for recipe registration, mod interoperability, fluid/tag resolution, multiblock behaviour and other game-engine semantics.

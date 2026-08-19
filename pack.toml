@@ -1,12 +1,12 @@
 name = "Matterworks"
 author = "F000NK"
-version = "0.5.6"
+version = "0.5.7"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "3737b25cfc8728d3b4f2b63a7ac9b95fe4c095a0353c6f29b62be61fadcb3edd"
+hash = "846124f28012f175f1d99795ab69f0053deaf0b05c02230808c54ea843950b85"
 
 [versions]
 forge = "47.4.10"
