@@ -1,16 +1,16 @@
 name: Temporary Packwiz refresh
 
 on:
-  push:
+  pull_request:
     branches:
-      - feature/0.5.7-industrial-process-expansion
+      - main
 
 permissions:
   contents: write
 
 jobs:
   refresh:
-    if: github.event.head_commit.message != 'chore: refresh packwiz hashes'
+    if: github.event.pull_request.number == 13 && github.event.pull_request.head.ref == 'feature/0.5.7-industrial-process-expansion'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,10 +35,10 @@ jobs:
           )
 
           missing = []
-          changed = 0
+          refreshed_count = [0]
 
           def repl(match):
-              nonlocal_state[0] += 1
+              refreshed_count[0] += 1
               rel = match.group(2)
               path = root / rel
               if not path.is_file():
@@ -47,7 +47,6 @@ jobs:
               digest = hashlib.sha256(path.read_bytes()).hexdigest()
               return match.group(1) + digest + match.group(4)
 
-          nonlocal_state = [0]
           refreshed = entry_re.sub(repl, text)
           if missing:
               raise SystemExit('Indexed files missing: ' + ', '.join(missing))
@@ -65,7 +64,7 @@ jobs:
           if count != 1:
               raise SystemExit('Could not update [index] hash in pack.toml')
           pack_path.write_text(pack, encoding='utf-8')
-          print(f'Refreshed {nonlocal_state[0]} index entries; index sha256={index_hash}')
+          print(f'Refreshed {refreshed_count[0]} index entries; index sha256={index_hash}')
           PY
 
       - name: Commit refreshed hashes
