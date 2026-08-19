@@ -1,0 +1,80 @@
+name: Temporary Packwiz refresh
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out PR branch
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Refresh indexed SHA256 hashes
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import re
+
+          index = Path('index.toml')
+          text = index.read_text(encoding='utf-8')
+          lines = text.splitlines(keepends=True)
+
+          current_file = None
+          changed = 0
+          for i, line in enumerate(lines):
+              file_match = re.match(r'file = "([^"]+)"', line.strip())
+              if file_match:
+                  current_file = file_match.group(1)
+                  continue
+              if current_file and line.strip().startswith('hash = "'):
+                  path = Path(current_file)
+                  if not path.is_file():
+                      raise SystemExit(f'Indexed file is missing: {current_file}')
+                  digest = hashlib.sha256(path.read_bytes()).hexdigest()
+                  expected = f'hash = "{digest}"'
+                  newline = '\n' if line.endswith('\n') else ''
+                  if line.strip() != expected:
+                      lines[i] = expected + newline
+                      changed += 1
+                  current_file = None
+
+          index.write_text(''.join(lines), encoding='utf-8')
+          index_hash = hashlib.sha256(index.read_bytes()).hexdigest()
+
+          pack = Path('pack.toml')
+          pack_text = pack.read_text(encoding='utf-8')
+          before, sep, after = pack_text.partition('[index]')
+          if not sep:
+              raise SystemExit('pack.toml has no [index] section')
+          after = re.sub(
+              r'(?m)^hash = "[0-9a-f]+"$',
+              f'hash = "{index_hash}"',
+              after,
+              count=1,
+          )
+          pack.write_text(before + sep + after, encoding='utf-8')
+          print(f'Refreshed {changed} indexed hashes; index={index_hash}')
+          PY
+
+      - name: Commit refreshed hashes
+        run: |
+          if git diff --quiet -- index.toml pack.toml; then
+            echo "Packwiz hashes already current"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.toml pack.toml
+          git commit -m "chore: refresh Packwiz hashes"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
