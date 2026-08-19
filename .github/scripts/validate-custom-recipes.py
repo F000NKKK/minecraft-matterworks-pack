@@ -47,6 +47,10 @@ SERIALIZER_CONTRACTS = {
         "mods/pneumaticcraft-repressurized.pw.toml",
         "pneumaticcraft-repressurized-6.0.23+mc1.20.1.jar",
     ),
+    "pneumaticcraft:pressure_chamber": (
+        "mods/pneumaticcraft-repressurized.pw.toml",
+        "pneumaticcraft-repressurized-6.0.23+mc1.20.1.jar",
+    ),
 }
 
 
