@@ -26,7 +26,7 @@ hash = "162d2db5e4602518bcd270aedaaa16a1f79ad8cd183791fa07c274274483a02d"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_cc_tweaked.snbt"
-hash = "e80bb2a372aee06fc81cd2fd7df00cfc4874bc5cc3b01fff2bf3eded94627157"
+hash = "44e36239d29c1ea4677801222dac49f423895f3cfff67eac99887917a1e3b7d3"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_create.snbt"
@@ -410,7 +410,7 @@ hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research.js"
-hash = "61098963fd65ce4cccc3284bb10a0f37337d9b7a5ad3277f64ec717e4a15a68a"
+hash = "53fe33364739f4a325a7698c5e57401ae83c0a76e961cf3bae0f59de8e34ec69"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research_audit.js"
@@ -640,3 +640,7 @@ metafile = true
 file = "mods/spark.pw.toml"
 hash = "d0e1a79dbcda8499e0f12f4adaa5503f9bbc84a6274ce07b3a3839476622e8e5"
 metafile = true
+
+[[files]]
+file = "kubejs/server_scripts/matterworks/recipes/experience_capture.js"
+hash = "a29a53e25ba9c7bc98e5756cc345c10c0433ea733166379668ff7c53c59d4893"
