@@ -23,6 +23,10 @@ jobs:
 
       - name: Validate Packwiz, KubeJS and quest/research invariants
         run: |
+          # Validator tests run before the validators themselves so parser
+          # regressions fail explicitly instead of producing misleading gates.
+          python3 -m unittest discover -s .github/scripts/tests -p 'test_*.py' -v
+
           # Structural checks are deliberately first: they remain useful while
           # Packwiz hashes are temporarily stale during active branch editing.
           python3 .github/scripts/validate-recipe-ownership.py
