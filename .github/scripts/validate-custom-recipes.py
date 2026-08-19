@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Validate identity and serializer shape of Matterworks `event.custom` recipes.
+"""Validate identity and serializer contracts of Matterworks `event.custom` recipes.
 
 Custom recipes bypass KubeJS' typed recipe DSL, so malformed serializer names or
 anonymous generated IDs are disproportionately likely to survive code review and
-fail only during datapack reload. Keep their identity explicit and auditable.
+fail only during datapack reload. Keep their identity explicit and tie each
+serializer family to the exact mod artifact whose recipe contract was audited.
 """
 
 from __future__ import annotations
@@ -24,6 +25,29 @@ ID_CALL_RE = re.compile(
     r")\s*\)",
     re.DOTALL,
 )
+
+SERIALIZER_CONTRACTS = {
+    "alchemistry:atomizer": (
+        "mods/alchemistry.pw.toml",
+        "alchemistry-1.20.1-2.3.4.jar",
+    ),
+    "create:mechanical_crafting": (
+        "mods/create.pw.toml",
+        "create-1.20.1-6.0.8.jar",
+    ),
+    "mekanism:enriching": (
+        "mods/mekanism.pw.toml",
+        "Mekanism-1.20.1-10.4.16.80.jar",
+    ),
+    "mekanism:smelting": (
+        "mods/mekanism.pw.toml",
+        "Mekanism-1.20.1-10.4.16.80.jar",
+    ),
+    "pneumaticcraft:thermo_plant": (
+        "mods/pneumaticcraft-repressurized.pw.toml",
+        "pneumaticcraft-repressurized-6.0.23+mc1.20.1.jar",
+    ),
+}
 
 
 def strip_js_comments(text: str) -> str:
@@ -108,6 +132,19 @@ def line_number(text: str, index: int) -> int:
     return text.count("\n", 0, index) + 1
 
 
+def read_packwiz_filename(path: Path) -> str | None:
+    if not path.is_file():
+        return None
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line.startswith("filename = "):
+            continue
+        value = line[len("filename = "):].strip()
+        if len(value) >= 2 and value[0] == value[-1] == '"':
+            return value[1:-1]
+    return None
+
+
 def main() -> int:
     if not RECIPES_ROOT.is_dir():
         print(f"Matterworks recipe directory is missing: {RECIPES_ROOT}", file=sys.stderr)
@@ -141,6 +178,11 @@ def main() -> int:
             else:
                 serializer = type_matches[0][1]
                 serializers[serializer] += 1
+                if serializer not in SERIALIZER_CONTRACTS:
+                    errors.append(
+                        f"{rel}:{line}: unaudited custom recipe serializer {serializer!r}; "
+                        "add an exact mod-artifact contract before using it"
+                    )
 
             suffix = text[close_index + 1:close_index + 300]
             id_match = ID_CALL_RE.match(suffix)
@@ -148,6 +190,29 @@ def main() -> int:
                 errors.append(
                     f"{rel}:{line}: custom recipe must chain an explicit .id('matterworks:...')"
                 )
+
+    used_serializers = set(serializers)
+    expected_serializers = set(SERIALIZER_CONTRACTS)
+    missing_serializers = expected_serializers - used_serializers
+    if missing_serializers:
+        errors.append(
+            "audited serializer contracts are no longer used; remove or re-audit them explicitly: "
+            + ", ".join(sorted(missing_serializers))
+        )
+
+    checked_artifacts: set[tuple[str, str]] = set()
+    for serializer in sorted(used_serializers & expected_serializers):
+        rel, expected_filename = SERIALIZER_CONTRACTS[serializer]
+        artifact = (rel, expected_filename)
+        if artifact in checked_artifacts:
+            continue
+        checked_artifacts.add(artifact)
+        actual_filename = read_packwiz_filename(ROOT / rel)
+        if actual_filename != expected_filename:
+            errors.append(
+                f"serializer contract for {serializer!r} changed artifact {rel}: "
+                f"expected {expected_filename!r}, actual {actual_filename!r}; re-audit serializer schema"
+            )
 
     if errors:
         print("Matterworks custom-recipe validation FAILED:", file=sys.stderr)
@@ -160,7 +225,8 @@ def main() -> int:
     )
     print(
         "Matterworks custom-recipe validation passed: "
-        f"{custom_count} custom recipes, {len(serializers)} serializer types; {summary}"
+        f"{custom_count} custom recipe call sites, {len(serializers)} audited serializer types / "
+        f"{len(checked_artifacts)} exact mod artifacts; {summary}"
     )
     return 0
 
