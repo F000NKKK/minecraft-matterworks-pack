@@ -449,6 +449,10 @@ file = "kubejs/server_scripts/matterworks/recipes/endgame_equipment.js"
 hash = "d38b310a4645df8c1e38510d52c2b09562f9c67b8367194f87be2a1a1c601993"
 
 [[files]]
+file = "kubejs/server_scripts/matterworks/recipes/experience_capture.js"
+hash = "3e19d764b9ecd2eae475aebae53f69b82731d84222088b99a435157d769a7047"
+
+[[files]]
 file = "kubejs/server_scripts/matterworks/recipes/industrial_process_machines.js"
 hash = "14d13fb4bc0dbcd947e8d6f962d53cf20082b4ff54cc7fa7c341b0e26493217a"
 
@@ -640,7 +644,3 @@ metafile = true
 file = "mods/spark.pw.toml"
 hash = "d0e1a79dbcda8499e0f12f4adaa5503f9bbc84a6274ce07b3a3839476622e8e5"
 metafile = true
-
-[[files]]
-file = "kubejs/server_scripts/matterworks/recipes/experience_capture.js"
-hash = "3e19d764b9ecd2eae475aebae53f69b82731d84222088b99a435157d769a7047"
