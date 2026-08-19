@@ -37,6 +37,7 @@ jobs:
           python3 .github/scripts/validate-material-provenance.py
           python3 .github/scripts/validate-progression-policy.py
           python3 .github/scripts/validate-process-proof.py
+          python3 .github/scripts/validate-energy-policy.py
           python3 .github/scripts/validate-quest-layout.py
           python3 - <<'PY'
           import importlib.util
