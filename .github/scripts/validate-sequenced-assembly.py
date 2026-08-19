@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """Validate KubeJS/Create sequenced-assembly item contracts.
 
-Create sequenced assembly has a runtime-sensitive contract: a transitional item
-must exist at startup and must be registered with the `create:sequenced_assembly`
-item type. Matterworks also keeps explicit item models for these carriers so a
-broken chain is visible rather than rendering as a missing-texture item.
+Matterworks uses two valid carrier styles:
+- pack-owned `kubejs:` transitional items, which must be registered at startup
+  with the `create:sequenced_assembly` type and have explicit item models;
+- existing mod-owned items, such as `create:copper_sheet`, which are already
+  registered by their source mod and therefore only need to resolve to a
+  namespace-qualified literal.
 
-This validator resolves the simple const-string style used by Matterworks and
+The validator resolves the simple const-string style used by Matterworks and
 checks every `.transitionalItem(...)` call across recipe modules.
 """
 
@@ -22,7 +24,7 @@ STARTUP_ITEMS = ROOT / "kubejs" / "startup_scripts" / "matterworks" / "items.js"
 MODELS_ROOT = ROOT / "kubejs" / "assets" / "kubejs" / "models" / "item"
 
 CONST_STRING_RE = re.compile(
-    r"\bconst\s+([A-Za-z_$][\w$]*)\s*=\s*['\"](kubejs:[a-z0-9_./-]+)['\"]"
+    r"\bconst\s+([A-Za-z_$][\w$]*)\s*=\s*['\"]([a-z0-9_.-]+:[a-z0-9_./-]+)['\"]"
 )
 TRANSITIONAL_RE = re.compile(r"\.transitionalItem\(\s*([^\)]+?)\s*\)")
 SEQUENCED_CALL_RE = re.compile(
@@ -34,13 +36,14 @@ STARTUP_CREATE_RE = re.compile(
     r"(?:\s*,\s*['\"]([^'\"]+)['\"])?\s*\)",
     re.MULTILINE,
 )
+RESOURCE_LOCATION_RE = re.compile(r"^[a-z0-9_.-]+:[a-z0-9_./-]+$")
 
 
 def resolve_item(expr: str, constants: dict[str, str]) -> str | None:
     expr = expr.strip()
     if len(expr) >= 2 and expr[0] in {"'", '"'} and expr[-1] == expr[0]:
         value = expr[1:-1]
-        return value if value.startswith("kubejs:") else None
+        return value if RESOURCE_LOCATION_RE.fullmatch(value) else None
     return constants.get(expr)
 
 
@@ -85,14 +88,23 @@ def main() -> int:
         for match in SEQUENCED_CALL_RE.finditer(text):
             expr = match.group(1).strip()
             item = resolve_item(expr, constants)
-            if item is not None:
-                sequenced_outputs.setdefault(item, set()).add(rel)
+            if item is None:
+                unresolved.append(f"{rel}: sequenced_assembly output {expr}")
+                continue
+            sequenced_outputs.setdefault(item, set()).add(rel)
 
     errors: list[str] = []
     for entry in unresolved:
         errors.append(f"could not resolve sequenced-assembly expression statically: {entry}")
 
+    kubejs_carriers = 0
+    external_carriers = 0
     for item, sources in sorted(transitional_items.items()):
+        if not item.startswith("kubejs:"):
+            external_carriers += 1
+            continue
+
+        kubejs_carriers += 1
         item_type = startup_types.get(item)
         if item_type != "create:sequenced_assembly":
             errors.append(
@@ -103,7 +115,12 @@ def main() -> int:
         if not model.is_file():
             errors.append(f"transitional item {item!r} has no explicit model: {model.relative_to(ROOT)}")
 
+    kubejs_outputs = 0
     for item, sources in sorted(sequenced_outputs.items()):
+        if not item.startswith("kubejs:"):
+            continue
+
+        kubejs_outputs += 1
         if item not in startup_types:
             errors.append(
                 f"KubeJS sequenced-assembly output {item!r} from {', '.join(sorted(sources))} "
@@ -121,8 +138,9 @@ def main() -> int:
 
     print(
         "Matterworks sequenced-assembly validation passed: "
-        f"{len(sequenced_outputs)} KubeJS outputs, "
-        f"{len(transitional_items)} transitional carriers, all registered and modeled."
+        f"{len(sequenced_outputs)} outputs ({kubejs_outputs} KubeJS), "
+        f"{len(transitional_items)} carriers ({kubejs_carriers} KubeJS / {external_carriers} external); "
+        "all pack-owned carriers and outputs are registered and modeled."
     )
     return 0
 
