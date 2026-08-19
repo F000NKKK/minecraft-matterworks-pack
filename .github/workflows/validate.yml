@@ -31,6 +31,7 @@ jobs:
           # Packwiz hashes are temporarily stale during active branch editing.
           python3 .github/scripts/validate-recipe-ownership.py
           python3 .github/scripts/validate-recipe-dependencies.py
+          python3 .github/scripts/validate-custom-recipes.py
           python3 .github/scripts/validate-sequenced-assembly.py
           python3 .github/scripts/validate-prestige-depth.py
           python3 .github/scripts/validate-material-provenance.py
