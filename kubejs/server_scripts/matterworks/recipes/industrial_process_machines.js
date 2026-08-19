@@ -49,26 +49,29 @@ ServerEvents.recipes(event => {
     ).id('matterworks:process/specialty_chemistry/chemical_reactor')
 
     /*
-     * Petrochemical fractionation belongs to the mature pressure branch. A
-     * PneumaticCraft refinery therefore consumes the thermopneumatic process
-     * hardware that the player already proved during atmospheric separation.
+     * Petrochemical fractionation is fundamentally a heat-and-phase-separation
+     * process, not a compressed-air process. PneumaticCraft remains the machine
+     * implementation, but 0.5.8 moves the manufacturing boundary from pressure
+     * tubing to process heat + thermopneumatic heat exchange + control hardware.
+     * The pressure network powers the PNC plant; it is no longer presented as
+     * the physical reason crude oil separates into boiling-range fractions.
      */
     event.remove({ output: 'pneumaticcraft:refinery' })
     event.shaped(
         'pneumaticcraft:refinery',
         [
-            'ITI',
-            'PCP',
+            'IHI',
+            'TCT',
             'IGI'
         ],
         {
             I: '#forge:ingots/compressed_iron',
+            H: 'mekanism:energized_smelter',
             T: 'pneumaticcraft:thermopneumatic_processing_plant',
-            P: 'pneumaticcraft:pressure_tube',
             C: 'kubejs:electromechanical_control_unit',
             G: '#forge:glass'
         }
     ).id('matterworks:process/petrochemistry/refinery')
 
-    console.info('[Matterworks] Advanced process gates registered: high-temperature metallurgy, specialty chemistry and petrochemical fractionation')
+    console.info('[Matterworks] Advanced process gates registered: high-temperature metallurgy, specialty chemistry and heat-owned petrochemical fractionation')
 })
