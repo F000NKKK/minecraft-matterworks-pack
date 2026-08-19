@@ -1,0 +1,81 @@
+name: Temporary Packwiz refresh
+
+on:
+  push:
+    branches:
+      - feature/0.5.7-industrial-process-expansion
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    if: github.event.head_commit.message != 'chore: refresh packwiz hashes'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/0.5.7-industrial-process-expansion
+          fetch-depth: 0
+
+      - name: Refresh index and pack hash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import re
+
+          root = Path('.')
+          index_path = root / 'index.toml'
+          text = index_path.read_text(encoding='utf-8')
+
+          entry_re = re.compile(
+              r'(\[\[files\]\]\nfile = "([^"]+)"\nhash = ")([0-9a-f]+)(")',
+              re.MULTILINE,
+          )
+
+          missing = []
+          changed = 0
+
+          def repl(match):
+              nonlocal_state[0] += 1
+              rel = match.group(2)
+              path = root / rel
+              if not path.is_file():
+                  missing.append(rel)
+                  return match.group(0)
+              digest = hashlib.sha256(path.read_bytes()).hexdigest()
+              return match.group(1) + digest + match.group(4)
+
+          nonlocal_state = [0]
+          refreshed = entry_re.sub(repl, text)
+          if missing:
+              raise SystemExit('Indexed files missing: ' + ', '.join(missing))
+          index_path.write_text(refreshed, encoding='utf-8')
+
+          index_hash = hashlib.sha256(index_path.read_bytes()).hexdigest()
+          pack_path = root / 'pack.toml'
+          pack = pack_path.read_text(encoding='utf-8')
+          pack, count = re.subn(
+              r'(\[index\]\nfile = "index\.toml"\nhash-format = "sha256"\nhash = ")[0-9a-f]+(")',
+              lambda m: m.group(1) + index_hash + m.group(2),
+              pack,
+              count=1,
+          )
+          if count != 1:
+              raise SystemExit('Could not update [index] hash in pack.toml')
+          pack_path.write_text(pack, encoding='utf-8')
+          print(f'Refreshed {nonlocal_state[0]} index entries; index sha256={index_hash}')
+          PY
+
+      - name: Commit refreshed hashes
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add index.toml pack.toml
+          if git diff --cached --quiet; then
+            echo 'Packwiz hashes already current.'
+            exit 0
+          fi
+          git commit -m 'chore: refresh packwiz hashes'
+          git push origin HEAD:feature/0.5.7-industrial-process-expansion
