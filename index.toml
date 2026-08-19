@@ -10,7 +10,7 @@ hash = "dc887a34f3c3012b37b0c98ad60ce9a9067b879316e3ce65a1063523a085697f"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/age_2_atomic.snbt"
-hash = "089d40ebacae81bc77ba6a8976e1fad9180e4d61b97e1b0abf3387b3a929bc7b"
+hash = "6239814979af7c29af2755b10161f88acad8db4fdc3acfa3832f10b90a763c7d"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/age_3_fusion.snbt"
@@ -42,7 +42,7 @@ hash = "786b96434ec2e9f765e23f7aeacc5958852d9f9b2096aa8d95da631b96d4e380"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_nuclearcraft.snbt"
-hash = "61692ae6acd0a65e9e9195ea922bf80d273008a172e847e31979f98fab13641d"
+hash = "1f5e19d8dddb73007ec14e0b6e02f810e247969bb58cb4ecb33228dda1f2f38d"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_pressure_engineering.snbt"
