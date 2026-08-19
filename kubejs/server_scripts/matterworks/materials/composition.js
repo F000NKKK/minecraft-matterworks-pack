@@ -63,9 +63,8 @@ const MatterworksComposition = Object.freeze({
     sic_sic_cmc: { policy: 'MANUFACTURED', formula: { silicon: 1, carbon: 1 } },
     compressed_iron: { policy: 'PROCESS', formula: { iron: 1 } },
 
-    yellowcake: { policy: 'NUCLEAR', note: 'uranium concentrate; nuclear-program owned' },
-    uranium_oxide: { policy: 'NUCLEAR' },
-    uranium_hexafluoride: { policy: 'NUCLEAR' },
+    yellowcake: { policy: 'NUCLEAR', note: 'uranium concentrate produced from NuclearCraft uranium-oxide fluid; nuclear-program owned' },
+    uranium_oxide: { policy: 'NUCLEAR', note: 'NuclearCraft fluid conversion state used before yellowcake crystallization' },
     irradiated_borax: { policy: 'NUCLEAR' },
     nuclear_isotopes: { policy: 'NUCLEAR', note: 'isotope number is part of identity' },
     reactor_fuel: { policy: 'NUCLEAR', note: 'composition/enrichment is part of identity' },
