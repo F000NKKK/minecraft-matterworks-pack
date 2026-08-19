@@ -643,4 +643,4 @@ metafile = true
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/experience_capture.js"
-hash = "a29a53e25ba9c7bc98e5756cc345c10c0433ea733166379668ff7c53c59d4893"
+hash = "3e19d764b9ecd2eae475aebae53f69b82731d84222088b99a435157d769a7047"
