@@ -23,6 +23,7 @@ jobs:
 
       - name: Validate Packwiz, KubeJS and quest/research invariants
         run: |
+          python3 .github/scripts/validate-recipe-ownership.py
           python3 - <<'PY'
           import importlib.util
           from pathlib import Path
@@ -37,4 +38,3 @@ jobs:
           raise SystemExit(module.main())
           PY
           python3 .github/scripts/validate-quest-layout.py
-          python3 .github/scripts/validate-recipe-ownership.py
