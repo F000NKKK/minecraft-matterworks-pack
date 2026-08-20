@@ -70,6 +70,17 @@ ServerEvents.recipes(event => {
     }).id('matterworks:process/high_temperature/nichrome_dusts')
 
     /*
+     * SiC-SiC ceramic-matrix composite is deliberately still backlog-owned.
+     * NuclearCraft's stock recipe converts carbon-manganese + titanium directly
+     * into the composite, without any silicon-carbide precursor or composite
+     * fabrication step. That is a material-identity shortcut, not an acceptable
+     * high-temperature alloy route, so both stock feed variants stay disabled
+     * until Matterworks has an explicit ceramic/composite manufacturing branch.
+     */
+    event.remove({ id: 'nuclearcraft:alloy_smelter/dusts_carbon_manganese-dusts_titanium' })
+    event.remove({ id: 'nuclearcraft:alloy_smelter/ingots_carbon_manganese-ingots_titanium' })
+
+    /*
      * Specialty chemistry starts only after the factory owns a controlled PRC
      * and industrial electrolysis. The NuclearCraft Chemical Reactor remains
      * the process authority for its specialist formulations.
@@ -116,5 +127,5 @@ ServerEvents.recipes(event => {
         }
     ).id('matterworks:process/petrochemistry/refinery')
 
-    console.info('[Matterworks] Advanced process gates registered: high-temperature metallurgy with corrected nichrome chemistry, specialty chemistry and heat-owned petrochemical fractionation')
+    console.info('[Matterworks] Advanced process gates registered: high-temperature metallurgy with corrected nichrome chemistry and blocked fake SiC-SiC composite route, specialty chemistry and heat-owned petrochemical fractionation')
 })
