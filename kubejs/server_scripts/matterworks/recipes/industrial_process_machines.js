@@ -27,6 +27,49 @@ ServerEvents.recipes(event => {
     ).id('matterworks:process/high_temperature/alloy_smelter')
 
     /*
+     * Nichrome correction.
+     *
+     * NuclearCraft Neoteric 1.2.34 calls an Fe + 4Cr alloy "nichrome".
+     * Matterworks treats material names as engineering semantics rather than
+     * opaque progression tokens, so that stock edge is not acceptable.
+     *
+     * Use a nominal Nichrome 80/20 grade instead: 4 nickel + 1 chromium.
+     * Both ingot and dust feeds remain Alloy Smelter processes and preserve the
+     * stock recipe's energy/time class; only the incorrect feed chemistry is
+     * replaced.
+     */
+    event.remove({ id: 'nuclearcraft:alloy_smelter/ingots_iron-ingots_chromium' })
+    event.remove({ id: 'nuclearcraft:alloy_smelter/dusts_iron-dusts_chromium' })
+
+    event.custom({
+        type: 'nuclearcraft:alloy_smelter',
+        input: [
+            { count: 4, tag: 'forge:ingots/nickel' },
+            { tag: 'forge:ingots/chromium' }
+        ],
+        output: [
+            { count: 5, item: 'nuclearcraft:nichrome_ingot' }
+        ],
+        powerModifier: 1.0,
+        radiation: 1.0,
+        timeModifier: 2.5
+    }).id('matterworks:process/high_temperature/nichrome_ingots')
+
+    event.custom({
+        type: 'nuclearcraft:alloy_smelter',
+        input: [
+            { count: 4, tag: 'forge:dusts/nickel' },
+            { tag: 'forge:dusts/chromium' }
+        ],
+        output: [
+            { count: 5, item: 'nuclearcraft:nichrome_ingot' }
+        ],
+        powerModifier: 1.0,
+        radiation: 1.0,
+        timeModifier: 2.0
+    }).id('matterworks:process/high_temperature/nichrome_dusts')
+
+    /*
      * Specialty chemistry starts only after the factory owns a controlled PRC
      * and industrial electrolysis. The NuclearCraft Chemical Reactor remains
      * the process authority for its specialist formulations.
@@ -73,5 +116,5 @@ ServerEvents.recipes(event => {
         }
     ).id('matterworks:process/petrochemistry/refinery')
 
-    console.info('[Matterworks] Advanced process gates registered: high-temperature metallurgy, specialty chemistry and heat-owned petrochemical fractionation')
+    console.info('[Matterworks] Advanced process gates registered: high-temperature metallurgy with corrected nichrome chemistry, specialty chemistry and heat-owned petrochemical fractionation')
 })
