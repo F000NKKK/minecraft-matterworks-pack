@@ -12,6 +12,9 @@ console.info('[Matterworks] Loading material composition registry')
  * 0.5.8 also distinguishes a nominal pack grade from a molecular formula.
  * Fixed ratios for ordinary DIRECT alloys are gameplay mass-balance grades;
  * engineering alloys whose grade/process history matters use PROCESS/MIXTURE.
+ *
+ * 0.5.9 starts auditing specialist NuclearCraft alloys against their actual
+ * process recipes instead of inferring chemistry from material names.
  */
 
 const MatterworksComposition = Object.freeze({
@@ -22,7 +25,7 @@ const MatterworksComposition = Object.freeze({
     tin_silver: { policy: 'DIRECT', formula: { tin: 3, silver: 1 }, note: 'nominal Matterworks grade' },
     lead_platinum: { policy: 'DIRECT', formula: { lead: 3, platinum: 1 }, note: 'nominal Matterworks grade' },
     osmiridium: { policy: 'DIRECT', formula: { osmium: 3, iridium: 1 }, note: 'nominal Matterworks grade' },
-    zircaloy: { policy: 'PROCESS', formula: { zirconium: 7, tin: 1 }, note: 'nominal grade abstraction; alloying/process history remains part of identity' },
+    zircaloy: { policy: 'PROCESS', formula: { zirconium: 7, tin: 1 }, note: 'nominal NuclearCraft process grade; alloy-smelter history remains part of identity' },
     carbon_manganese: { policy: 'MIXTURE', note: 'carbon/manganese metallurgical blend; no fake fixed molecular formula' },
 
     boron_nitride: { policy: 'DIRECT', formula: { boron: 1, nitrogen: 1 } },
@@ -49,13 +52,13 @@ const MatterworksComposition = Object.freeze({
     hard_carbon: { policy: 'DIRECT', formula: { carbon: 1 } },
 
     steel: { policy: 'PROCESS', formula: { iron: 1, carbon: 1 }, note: 'grade-dependent abstraction' },
-    ferroboron: { policy: 'PROCESS', formula: { iron: 1, boron: 1 }, note: 'grade ratio intentionally unresolved' },
+    ferroboron: { policy: 'PROCESS', note: 'NuclearCraft process uses boron + steel; final elemental ratio inherits the steel grade and is intentionally not flattened to FeB' },
     tough_alloy: { policy: 'UNKNOWN' },
     thermoconducting_alloy: { policy: 'UNKNOWN' },
-    zirconium_molybdenum: { policy: 'PROCESS', formula: { zirconium: 1, molybdenum: 1 } },
+    zirconium_molybdenum: { policy: 'PROCESS', formula: { molybdenum: 15, zirconium: 1 }, note: 'NuclearCraft high-duty alloy-smelter grade; 15 Mo : 1 Zr' },
     extreme_alloy: { policy: 'UNKNOWN' },
     hsla_steel: { policy: 'MIXTURE' },
-    nichrome: { policy: 'PROCESS', formula: { nickel: 1, chromium: 1 } },
+    nichrome: { policy: 'PROCESS', formula: { nickel: 4, chromium: 1 }, note: 'Matterworks corrected nominal Nichrome 80/20 grade; stock NuclearCraft Fe/Cr feed is replaced' },
     niobium_tin: { policy: 'PROCESS', formula: { niobium: 3, tin: 1 } },
     niobium_titanium: { policy: 'PROCESS', formula: { niobium: 1, titanium: 1 } },
     stainless_steel: { policy: 'MIXTURE' },
