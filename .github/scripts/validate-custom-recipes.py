@@ -43,6 +43,10 @@ SERIALIZER_CONTRACTS = {
         "mods/mekanism.pw.toml",
         "Mekanism-1.20.1-10.4.16.80.jar",
     ),
+    "nuclearcraft:alloy_smelter": (
+        "mods/nuclearcraft-neoteric.pw.toml",
+        "NuclearCraft-1.20.1-1.2.34.jar",
+    ),
     "pneumaticcraft:thermo_plant": (
         "mods/pneumaticcraft-repressurized.pw.toml",
         "pneumaticcraft-repressurized-6.0.23+mc1.20.1.jar",
