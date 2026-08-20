@@ -1,25 +1,29 @@
 console.info('[Matterworks] Loading material composition registry')
 
 /*
- * Matterworks 0.5.3 composition registry.
+ * Matterworks material composition registry.
  *
  * Identity, composition and process ownership are deliberately separate.
  * A known formula never implies that a material may be dissolved directly.
  * Nuclear parents, isotopes, fuels, irradiated states and nuclear process
  * intermediates stay behind the complete Create -> Mekanism -> NuclearCraft
  * technical-program boundary.
+ *
+ * 0.5.8 also distinguishes a nominal pack grade from a molecular formula.
+ * Fixed ratios for ordinary DIRECT alloys are gameplay mass-balance grades;
+ * engineering alloys whose grade/process history matters use PROCESS/MIXTURE.
  */
 
 const MatterworksComposition = Object.freeze({
-    bronze: { policy: 'DIRECT', formula: { copper: 3, tin: 1 } },
-    brass: { policy: 'DIRECT', formula: { copper: 3, zinc: 1 } },
+    bronze: { policy: 'DIRECT', formula: { copper: 3, tin: 1 }, note: 'nominal Matterworks bronze grade' },
+    brass: { policy: 'DIRECT', formula: { copper: 3, zinc: 1 }, note: 'nominal Matterworks brass grade' },
     electrum: { policy: 'DIRECT', formula: { gold: 1, silver: 1 } },
-    shibuichi: { policy: 'DIRECT', formula: { copper: 3, silver: 1 } },
-    tin_silver: { policy: 'DIRECT', formula: { tin: 3, silver: 1 } },
-    lead_platinum: { policy: 'DIRECT', formula: { lead: 3, platinum: 1 } },
-    osmiridium: { policy: 'DIRECT', formula: { osmium: 3, iridium: 1 } },
-    zircaloy: { policy: 'DIRECT', formula: { zirconium: 7, tin: 1 } },
-    carbon_manganese: { policy: 'DIRECT', formula: { manganese: 1, carbon: 1 } },
+    shibuichi: { policy: 'DIRECT', formula: { copper: 3, silver: 1 }, note: 'nominal Matterworks grade' },
+    tin_silver: { policy: 'DIRECT', formula: { tin: 3, silver: 1 }, note: 'nominal Matterworks grade' },
+    lead_platinum: { policy: 'DIRECT', formula: { lead: 3, platinum: 1 }, note: 'nominal Matterworks grade' },
+    osmiridium: { policy: 'DIRECT', formula: { osmium: 3, iridium: 1 }, note: 'nominal Matterworks grade' },
+    zircaloy: { policy: 'PROCESS', formula: { zirconium: 7, tin: 1 }, note: 'nominal grade abstraction; alloying/process history remains part of identity' },
+    carbon_manganese: { policy: 'MIXTURE', note: 'carbon/manganese metallurgical blend; no fake fixed molecular formula' },
 
     boron_nitride: { policy: 'DIRECT', formula: { boron: 1, nitrogen: 1 } },
     boron_arsenide: { policy: 'DIRECT', formula: { boron: 1, arsenic: 1 } },
@@ -59,9 +63,8 @@ const MatterworksComposition = Object.freeze({
     sic_sic_cmc: { policy: 'MANUFACTURED', formula: { silicon: 1, carbon: 1 } },
     compressed_iron: { policy: 'PROCESS', formula: { iron: 1 } },
 
-    yellowcake: { policy: 'NUCLEAR', note: 'uranium concentrate; nuclear-program owned' },
-    uranium_oxide: { policy: 'NUCLEAR' },
-    uranium_hexafluoride: { policy: 'NUCLEAR' },
+    yellowcake: { policy: 'NUCLEAR', note: 'uranium concentrate produced from NuclearCraft uranium-oxide fluid; nuclear-program owned' },
+    uranium_oxide: { policy: 'NUCLEAR', note: 'NuclearCraft fluid conversion state used before yellowcake crystallization' },
     irradiated_borax: { policy: 'NUCLEAR' },
     nuclear_isotopes: { policy: 'NUCLEAR', note: 'isotope number is part of identity' },
     reactor_fuel: { policy: 'NUCLEAR', note: 'composition/enrichment is part of identity' },

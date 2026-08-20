@@ -73,26 +73,37 @@ ServerEvents.recipes(event => {
      * Coke -> Graphite
      * ---------------------------------------------------------
      *
-     * Industrial graphitisation is a very high-temperature process.
-     * The Energized Smelter is currently used as the electrical-furnace
-     * abstraction. Matterworks Core will later model actual temperature
-     * and process envelopes instead of representing this only by a recipe.
+     * 0.5.7 used ordinary Mekanism smelting as an electrical-furnace token.
+     * That made graphitisation indistinguishable from routine ore smelting.
+     * 0.5.8 gives the conversion an explicit high-temperature process window
+     * in the Thermopneumatic Processing Plant. 1600 K is deliberately a
+     * gameplay process-class threshold, not a claim that industrial graphite
+     * is fully graphitised at that exact temperature; Matterworks Core can
+     * later replace the abstraction with a richer furnace model.
      */
 
-    event.custom({
-        type: 'mekanism:smelting',
-        input: {
-            ingredient: {
+    if (Platform.isLoaded('pneumaticcraft')) {
+        event.custom({
+            type: 'pneumaticcraft:thermo_plant',
+            item_input: {
                 item: coke
-            }
-        },
-        output: {
-            item: graphite
-        }
-    })
-        .id('matterworks:carbon/graphitization/coke_to_graphite')
+            },
+            item_output: {
+                item: graphite
+            },
+            temperature: {
+                min_temp: 1600
+            },
+            air_use_multiplier: 4.0,
+            speed: 0.25,
+            exothermic: false
+        })
+            .id('matterworks:carbon/graphitization/coke_to_graphite')
+    } else {
+        console.warn('[Matterworks] Graphitization skipped: PneumaticCraft not loaded')
+    }
 
     console.info(
-        '[Matterworks] Carbon chain registered: coal -> coke -> enriched carbon / graphite'
+        '[Matterworks] Carbon chain registered: coal -> coke -> enriched carbon; high-temperature coke -> graphite'
     )
 })

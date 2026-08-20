@@ -6,15 +6,15 @@ hash = "c55d580e9e958693174302eb854ec1068358a235cdd537cfda843f5cc693d6d2"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/age_1_industrial.snbt"
-hash = "6d0b9b7abca8bc81c16b5c95bbbfb791a43d55875180e63cb0d3ec4c46b7db47"
+hash = "7367f63da6326d7fea21269955bc85a9773bec1d1bdcff1cb5dd7c1d5a996e3d"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/age_2_atomic.snbt"
-hash = "089d40ebacae81bc77ba6a8976e1fad9180e4d61b97e1b0abf3387b3a929bc7b"
+hash = "6239814979af7c29af2755b10161f88acad8db4fdc3acfa3832f10b90a763c7d"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/age_3_fusion.snbt"
-hash = "f309f651c65b82146ac836a5ccb8997fba65b9bfeeb54ebefb07f00d75794ad7"
+hash = "c12cf380f99ca18a8646e5388e0577bde850d175c375aed5d4dd27c81bf3858b"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_ae2.snbt"
@@ -42,7 +42,7 @@ hash = "786b96434ec2e9f765e23f7aeacc5958852d9f9b2096aa8d95da631b96d4e380"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_nuclearcraft.snbt"
-hash = "61692ae6acd0a65e9e9195ea922bf80d273008a172e847e31979f98fab13641d"
+hash = "1f5e19d8dddb73007ec14e0b6e02f810e247969bb58cb4ecb33228dda1f2f38d"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/guide_pressure_engineering.snbt"
@@ -193,10 +193,6 @@ file = "kubejs/data/matterworks/recipes/chemistry/dissolver/alloys/bronze_dust.j
 hash = "8286f2d65afb4cb8700b42b85a064215da44efd6e025994b646fb6fd8e2c1396"
 
 [[files]]
-file = "kubejs/data/matterworks/recipes/chemistry/dissolver/alloys/carbon_manganese_dust.json"
-hash = "796c4f6b9941155da518be31a3963299a05476eba19ee43f212fc0f1656494c5"
-
-[[files]]
 file = "kubejs/data/matterworks/recipes/chemistry/dissolver/alloys/electrum_dust.json"
 hash = "0e9a78f91891513583ad335bdad4cc55a50dc9ba45de3ae2a3ebcac01619608b"
 
@@ -215,10 +211,6 @@ hash = "73ae5369643f740bb36c90fd53f3d7e12e430c74cb947eca148dfbb4f27e320a"
 [[files]]
 file = "kubejs/data/matterworks/recipes/chemistry/dissolver/alloys/tin_silver_dust.json"
 hash = "2905647c8a95bf87b7b4efd2aea33051f7dd23e1e343203765f351d4d5d42a53"
-
-[[files]]
-file = "kubejs/data/matterworks/recipes/chemistry/dissolver/alloys/zircaloy_dust.json"
-hash = "53a5294153c0d14d61ea72eb971b6521e01360f337dbb161885d7b13fd60921c"
 
 [[files]]
 file = "kubejs/data/matterworks/recipes/chemistry/dissolver/carbon/graphite_dust.json"
@@ -394,7 +386,7 @@ hash = "d873d6dad2d89a95a24ce638317adf44640bd237a893ef60983571d03088cae8"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/materials/composition.js"
-hash = "3113a34f511c8c0bebbce6b30a9e36228fee97666f919a1939f843019a7d6cf5"
+hash = "9712526f3aa5d66e72a787a5675a7f153c361068addd6afb73fed32ccfb597f3"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/materials/material_matrix.js"
@@ -406,11 +398,11 @@ hash = "9dbb51bd9f04daa1cda87a5da1843ca18f68fddc5746a288ef351f0947b8080d"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/electrical.js"
-hash = "ae1b36a57a06d00e7ca316dec7664397124ab7bff35b00869a0bde3ef74b99ac"
+hash = "d857970e96a926765ef23e7a36184ce340d42e98a0e80c86356559bfe8c07dc6"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research.js"
-hash = "53fe33364739f4a325a7698c5e57401ae83c0a76e961cf3bae0f59de8e34ec69"
+hash = "58b8f4ef07736124548b9807be70e0dd7ea3d32c723ca88e38a870e1b8ef38a3"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/progression/research_audit.js"
@@ -422,11 +414,11 @@ hash = "2f12301052a9b8890e840d9ab2b121366fafad925c941c9982eb3e70c479d1d4"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/atmosphere.js"
-hash = "c98dca6aee6adbf907f89fb019edd4a415e8c4ec5d33e731fca15e60478aa0de"
+hash = "242d72f67df82f4f7d90ea6f4eaebe13593c1e0bce173045bbd44b8df399634f"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/carbon.js"
-hash = "ca6259ff70c647703179695323eb0d342ddea1d3c1dd69418c46d745089b6940"
+hash = "8b3bfaf04049f690b1c678c94654046f3ea7e27e0b6981f561b76e9556b9538f"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/chemistry.js"
@@ -454,7 +446,7 @@ hash = "3e19d764b9ecd2eae475aebae53f69b82731d84222088b99a435157d769a7047"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/industrial_process_machines.js"
-hash = "14d13fb4bc0dbcd947e8d6f962d53cf20082b4ff54cc7fa7c341b0e26493217a"
+hash = "b35bfb3f172c0cb01b0a82120e638e1c1a744bfa88a03c70362b08a4dfd2ead1"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/material_unification.js"
@@ -470,11 +462,19 @@ hash = "388390a15b904db064a1434ab2a834ad384b55e101749faf84197816bff5fabc"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/nitrogen.js"
-hash = "22d75823d3fb12fba6e99fb09cf16fb6ed3f3632e5aec638d088d0b9bd0f5eb1"
+hash = "6f0b76eb4f47f4f8f9674bc40848aa11fa6de9385caf827000f4924ff2e54498"
+
+[[files]]
+file = "kubejs/server_scripts/matterworks/recipes/nuclear_fuel_cycle.js"
+hash = "475e8db0869cf7b811243ed33cf66038b60a793d4a728d50de21e19bdde1df7f"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/particle.js"
 hash = "780171842e0054b090a1e8f7a76a55a72435406371d4c2ac71ca4270ab761615"
+
+[[files]]
+file = "kubejs/server_scripts/matterworks/recipes/petrochemistry.js"
+hash = "153e45031e5d188f19bfb8f86d720156b3cf1b3f73fd809c153024fb341c2a28"
 
 [[files]]
 file = "kubejs/server_scripts/matterworks/recipes/pneumatic_advantage_equipment.js"

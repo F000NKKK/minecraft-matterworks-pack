@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 RECIPES_ROOT = ROOT / "kubejs/server_scripts/matterworks/recipes"
 CUSTOM_START_RE = re.compile(r"\bevent\.custom\s*\(")
-TYPE_RE = re.compile(r"\btype\s*:\s*(['\"])([a-z0-9_.-]+:[a-z0-9_./-]+)\1")
+TYPE_AT_RE = re.compile(r"type\s*:\s*(['\"])([a-z0-9_.-]+:[a-z0-9_./-]+)\1")
 ID_CALL_RE = re.compile(
     r"^\s*\.id\(\s*(?:"
     r"(['\"])(matterworks:[a-z0-9_./-]+)\1"
@@ -39,11 +39,15 @@ SERIALIZER_CONTRACTS = {
         "mods/mekanism.pw.toml",
         "Mekanism-1.20.1-10.4.16.80.jar",
     ),
-    "mekanism:smelting": (
+    "mekanism:reaction": (
         "mods/mekanism.pw.toml",
         "Mekanism-1.20.1-10.4.16.80.jar",
     ),
     "pneumaticcraft:thermo_plant": (
+        "mods/pneumaticcraft-repressurized.pw.toml",
+        "pneumaticcraft-repressurized-6.0.23+mc1.20.1.jar",
+    ),
+    "pneumaticcraft:pressure_chamber": (
         "mods/pneumaticcraft-repressurized.pw.toml",
         "pneumaticcraft-repressurized-6.0.23+mc1.20.1.jar",
     ),
@@ -128,6 +132,70 @@ def find_matching_paren(text: str, open_index: int) -> int | None:
     return None
 
 
+def find_top_level_recipe_types(body: str) -> list[str]:
+    """Return literal `type` values owned by the outer custom-recipe object.
+
+    Recipe payloads may legitimately contain nested discriminator properties,
+    e.g. PneumaticCraft fluid ingredients (`type: pneumaticcraft:fluid`) or a
+    pressure-chamber stacked ingredient (`type: pneumaticcraft:stacked_item`).
+    Those are ingredient serializers, not a second recipe serializer.
+    """
+    types: list[str] = []
+    brace_depth = 0
+    bracket_depth = 0
+    quote: str | None = None
+    escaped = False
+    i = 0
+
+    while i < len(body):
+        ch = body[i]
+
+        if quote is not None:
+            if escaped:
+                escaped = False
+            elif ch == "\\":
+                escaped = True
+            elif ch == quote:
+                quote = None
+            i += 1
+            continue
+
+        if ch in {'"', "'", '`'}:
+            quote = ch
+            i += 1
+            continue
+
+        if ch == '{':
+            brace_depth += 1
+            i += 1
+            continue
+        if ch == '}':
+            brace_depth -= 1
+            i += 1
+            continue
+        if ch == '[':
+            bracket_depth += 1
+            i += 1
+            continue
+        if ch == ']':
+            bracket_depth -= 1
+            i += 1
+            continue
+
+        if brace_depth == 1 and bracket_depth == 0:
+            previous = body[i - 1] if i > 0 else ''
+            if not (previous.isalnum() or previous in {'_', '$'}):
+                match = TYPE_AT_RE.match(body, i)
+                if match is not None:
+                    types.append(match.group(2))
+                    i = match.end()
+                    continue
+
+        i += 1
+
+    return types
+
+
 def line_number(text: str, index: int) -> int:
     return text.count("\n", 0, index) + 1
 
@@ -169,14 +237,14 @@ def main() -> int:
                 continue
 
             body = text[open_index + 1:close_index]
-            type_matches = TYPE_RE.findall(body)
+            type_matches = find_top_level_recipe_types(body)
             if len(type_matches) != 1:
                 errors.append(
-                    f"{rel}:{line}: custom recipe must contain exactly one literal namespace-qualified type; "
+                    f"{rel}:{line}: custom recipe must contain exactly one literal namespace-qualified top-level type; "
                     f"found {len(type_matches)}"
                 )
             else:
-                serializer = type_matches[0][1]
+                serializer = type_matches[0]
                 serializers[serializer] += 1
                 if serializer not in SERIALIZER_CONTRACTS:
                     errors.append(
